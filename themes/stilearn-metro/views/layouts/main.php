@@ -1149,7 +1149,16 @@
 
 
         <!-- footer, I place the footer on here. -->
-        <footer class="footer">
+        <footer class="footer" 
+                style="background: #DBD9D9;
+                bottom: 0;
+                color: #757575;
+                font-size: 12px;
+                padding: 10px;
+                position: fixed;
+                text-align: center;
+                width: 100%;
+                z-index: 101;">
             <p>Copyright &copy; 2013. All Right Reserved.</p>
         </footer><!--/ footer -->
 
