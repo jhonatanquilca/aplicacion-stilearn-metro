@@ -7,9 +7,11 @@ class Menu {
     public static function getMenu($controller) {
         self::$_controller = $controller;
         $items = array(
-            array('label' => '<i class="icon-dashboard"></i> Dashboard', 'url' => Yii::app()->homeUrl),
-//            array('label' => '<li> <a href="'.Yii::app()->homeUrl.'"> <i class="icon-dashboard"></i> Dashboard </a> </li>'),
-            array('label' => '<i class="icon-desktop"></i> Cuentas', 'url' => array('/tmp/ejemplo/admin'), 'access' => 'action_cuenta_admin', 'active_rules' => array('module' => 'crm', 'controller' => 'cuenta')),
+            array('label' => '<i class="aweso-dashboard"></i> Dashboard  ', 'url' => Yii::app()->homeUrl),
+            array('label' => '<i class="aweso-desktop"></i> Cuentas ',
+                'url' => array('/tmp/ejemplo/admin'),
+                'access' => 'action_cuenta_admin',
+                'active_rules' => array('module' => 'principal', 'controller' => 'default')),
 //            array('label' => '<a href="#"><i class="icon-edit"></i> Cuentas</a>', 'url' => array('/tmp/ejemplo/admin'), 'access' => 'action_cuenta_admin', 'active_rules' => array('module' => 'crm', 'controller' => 'cuenta')),
 //            array('label' => '<i class="icon-group"></i> Contactos', 'url' => array('/crm/contacto/admin'), 'access' => 'action_contacto_admin', 'active_rules' => array('module' => 'crm', 'controller' => 'contacto')),
 ////            array('label' => '<i class="icon-rocket"></i> Campañas', 'url' => array('/campanias/default/index'), 'active_rules' => array('module' => 'campanias')),
@@ -18,12 +20,16 @@ class Menu {
 //            array('label' => '<i class="icon-fire-extinguisher"></i>Incidencias', 'url' => array('/incidencias/incidencia/admin'), 'access' => 'action_incidencia_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidencia')),
 //            array('label' => '<i class="icon-tasks"></i> Tareas', 'url' => array('/tareas/tarea/admin'), 'access' => 'action_tarea_admin', 'active_rules' => array('module' => 'tareas')),
 //            array('label' => '<i class="icon-calendar"></i> Calendario', 'url' => array('/eventos/calendario/index'), 'access' => 'action_calendario_index', 'active_rules' => array('module' => 'eventos')),
-//            array('label' => '<i class="icon-book"></i>  Reportes', 'url' => '#', 'items' => array(
-//                array('label' => 'Llamadas', 'url' => array('/llamadas/llamadaReporte'), 'access' => 'action_llamadaReporte_admin', 'active_rules' => array('module' => 'llamadas', 'controller' => 'llamadaReporte')),
-//                array('label' => 'Sms', 'url' => array('/sms/reports/reporteSms'), 'access' => 'action_reporteSms_admin', 'active_rules' => array('module' => 'sms', 'controller' => 'reports/reporteSms')),
-//                array('label' => 'Mail', 'url' => array('/mail/mailReporte'), 'access' => 'action_mailReporte_index', 'active_rules' => array('module' => 'mail', 'controller' => 'reports/mailReporte')),
-//            )),
-);
+            array('label' => '<i class=" aweso-book"></i> Reportes',
+                'url' => '#',
+                'itemOptions' => array('class' => 'dropdown-list'),
+                'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown-list',),
+                'items' => array(
+                    array('label' => 'Llamadas', 'url' => array('/llamadas/llamadaReporte'), 'access' => 'action_llamadaReporte_admin', 'active_rules' => array('module' => 'llamadas', 'controller' => 'llamadaReporte')),
+                    array('label' => 'Sms', 'url' => array('/sms/reports/reporteSms'), 'access' => 'action_reporteSms_admin', 'active_rules' => array('module' => 'sms', 'controller' => 'reports/reporteSms')),
+                    array('label' => 'Mail', 'url' => array('/mail/mailReporte'), 'access' => 'action_mailReporte_index', 'active_rules' => array('module' => 'mail', 'controller' => 'reports/mailReporte')),
+                )),
+        );
 
         return self::generateMenu($items);
     }

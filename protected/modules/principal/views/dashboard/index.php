@@ -3,6 +3,7 @@
 
 //$this->pageTitle = Yii::app()->name;
 ?>
+
 <!-- content header -->
 <header class="content-header no-border">
     <!-- content title-->
@@ -28,11 +29,7 @@
 
 <!-- content page -->
 <article class="content-page">
-    <!-- breadcrumb -->
-    <ul class="breadcrumb breadcrumb-block">
-        <li><a href="#">Home</a> <span class="divider"><i class="aweso-angle-right"></i></span></li>
-        <li class="active">Dashboard</li>
-    </ul>
+
 
     <!-- main page, you're application here -->
     <div class="main-page">
