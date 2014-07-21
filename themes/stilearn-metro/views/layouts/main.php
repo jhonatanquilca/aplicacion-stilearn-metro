@@ -7,13 +7,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=9" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="stilearn metro admin bootstrap" />
+        <!--<meta name="description" content="stilearn metro admin bootstrap" />-->
         <meta name="author" content="stilearning" />
 
 
         <!-- styles -->
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" rel="stylesheet" />
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-responsive.css" rel="stylesheet" />
+        <!--@TODO borrar si no son importantes-->
+        <!--<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" rel="stylesheet" />-->
+        <!--<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-responsive.css" rel="stylesheet" />-->
+
         <!-- default theme -->
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/metro-bootstrap.css" rel="stylesheet" />
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/metro.css" rel="stylesheet" />
@@ -49,11 +51,11 @@
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
-    <body>
+    <body class="fixed">
         <!-- start header-->
         <header class="header">
             <!-- start navbar, this navbar on top -->
-            <div id="navbar-top" class="navbar navbar-cyan">
+            <div id="navbar-top" class="navbar navbar-cyan  navbar-fixed-top">
                 <!-- navbar inner-->
                 <div class="navbar-inner">
                     <!-- container-->
@@ -232,7 +234,7 @@
                                                 <div class="content">Fluid Layout</div>
                                                 <div class="checker">
                                                     <div class="checkbox-slide bg-silver help-block">
-                                                        <input class="input-fx" type="checkbox" id="layout-mode" name="layout-mode" checked="" />
+                                                        <input class="input-fx" type="checkbox" id="layout-mode" name="layout-mode"  />
                                                         <label for="layout-mode"></label>
                                                     </div>
                                                 </div>
@@ -272,7 +274,7 @@
                                                 <div class="content">Fixed Header</div>
                                                 <div class="checker">
                                                     <div class="checkbox-slide bg-silver help-block">
-                                                        <input class="input-fx" type="checkbox" id="header-mode" name="header-mode" />
+                                                        <input class="input-fx" type="checkbox" id="header-mode" name="header-mode" checked/>
                                                         <label for="header-mode"></label>
                                                     </div>
                                                 </div>
@@ -296,7 +298,7 @@
                                                 <div class="content">Light theme</div>
                                                 <div class="checker">
                                                     <div class="checkbox-slide bg-silver help-block">
-                                                        <input class="input-fx" type="radio" value="light" id="theme-light" name="theme-mode" checked="" />
+                                                        <input class="input-fx" type="radio" value="light" id="theme-light" name="theme-mode"  />
                                                         <label for="theme-light"></label>
                                                     </div>
                                                 </div>
@@ -320,7 +322,7 @@
                                                 <div class="content">Syncronize</div>
                                                 <div class="checker">
                                                     <div class="checkbox-slide bg-silver help-block">
-                                                        <input class="input-fx" type="checkbox" id="syncronize-theme" name="syncronize-theme" checked="" />
+                                                        <input class="input-fx" type="checkbox" id="syncronize-theme" name="syncronize-theme" />
                                                         <label for="syncronize-theme"></label>
                                                     </div>
                                                 </div>
@@ -442,8 +444,8 @@
         <!-- start section content-->
         <section class="section-content">
             <!-- side left, its part to menu on left-->
-            <div id="navside" class="side-left" data-collapse="navbar">
-                <form class="form-inline search-module" action="?" method="post" />
+            <div id="navside" class="side-left side-left-fixed" data-collapse="navbar" style="min-height: 100%;">
+                <form class="form-inline search-module" action="?" method="post" >
                 <div class="input-append input-append-inline">
                     <input name="search" class="input-block-level" type="text" placeholder="Type to search" />
                     <button class="btn bg-cyan" type="button">
@@ -1170,7 +1172,8 @@
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.ui.touch-punch.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
+        <!--@TODO revisar js bootstrap.min.js dedicado a calendar y hichrats-->
+        <script type="text/javascript" src="<?php // echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/m-scrollbar/jquery.mCustomScrollbar.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/sparkline/jquery.sparkline.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/looper/looper.min.js"></script> <!-- this required for tile multiple -->
