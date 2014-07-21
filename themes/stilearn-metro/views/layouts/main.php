@@ -100,7 +100,7 @@
                             <!--/pull left menu-->
 
                             <!-- pull right menu-->
-                            <ul class="nav pull-right" style="left: 10%">
+                            <ul class="nav pull-right">
                                 <!--                                <li class="dropdown">
                                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                                                         <div class="label">3</div>
@@ -224,7 +224,7 @@
                                                                         </li>
                                                                     </ul>
                                                                 </li>-->
-                                <!--                                <li class="dropdown">
+                                                                <li class="dropdown hidden">
                                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                                                         <i class="aweso-cog"></i>
                                                                     </a>
@@ -418,7 +418,7 @@
                                                                             <a tabindex="-1" href="#"><i class="aweso-angle-right pull-right"></i> Settings page</a>
                                                                         </li>
                                                                     </ul>
-                                                                </li>-->
+                                                                </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
@@ -457,6 +457,7 @@
         <section class="section-content">
             <!-- side left, its part to menu on left-->
             <div id="navside" class="side-left side-left-fixed" data-collapse="navbar" style="min-height: 100%;">
+                <!--@form search-->
                 <form class="form-inline search-module" action="?" method="post" >
                     <div class="input-append input-append-inline">
                         <input name="search" class="input-block-level" type="text" placeholder="Type to search" />
@@ -600,7 +601,7 @@
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.ui.touch-punch.min.js"></script>
         <!--@TODO revisar js bootstrap.min.js dedicado a calendar y hichrats-->
-        <script type="text/javascript" src="<?php // echo Yii::app()->theme->baseUrl;                  ?>/js/bootstrap.min.js"></script>
+        <!--<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>-->
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/m-scrollbar/jquery.mCustomScrollbar.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/sparkline/jquery.sparkline.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/looper/looper.min.js"></script> <!-- this required for tile multiple -->
