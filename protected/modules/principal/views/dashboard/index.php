@@ -3,1001 +3,590 @@
 
 //$this->pageTitle = Yii::app()->name;
 ?>
-<!-- cards -->
-<div class="row cards">
+<!-- content header -->
+<header class="content-header no-border">
+    <!-- content title-->
+    <div class="page-header"><h3><i class="aweso-home"></i> Dashboard</h3></div>
 
-    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
-        <div class="card card-redbrown hover">
-            <div class="front"> 
+    <!-- header extra -->
+    <!--    <ul class="header-ext">
+            <li>
+                <span data-chart="sparklines" data-height="32px" data-color="#76608A">4,6,8,6,9,7,8,6,7,6,7,5,9,8,7,9,5,7,8,7</span>
+                <div class="header-ext-text color-mauve"><span class="muted">Traffic</span> 76,567</div>
+            </li>
+            <li>
+                <span data-chart="sparklines" data-height="32px" data-color="#647687">4,6,7,9,5,6,9,5,6,7,6,5,7,8,7,5,7,8,6,5</span>
+                <div class="header-ext-text color-steel"><span class="muted">Orders</span> 9,537</div>
+            </li>
+            <li>
+                <span data-chart="sparklines" data-height="32px" data-color="#6D8764">3,7,8,4,5,9,5,10,5,5,6,7,8,4,7,9,5,5,6,7</span>
+                <div class="header-ext-text color-olive"><span class="muted">Ballance</span> 4,5M$</div>
+            </li>
+        </ul>-->
+</header> 
+<!--/ content header -->
 
-                <div class="media">        
-                    <span class="pull-left">
-                        <i class="fa fa-users media-object"></i>
-                    </span>
+<!-- content page -->
+<article class="content-page">
+    <!-- breadcrumb -->
+    <ul class="breadcrumb breadcrumb-block">
+        <li><a href="#">Home</a> <span class="divider"><i class="aweso-angle-right"></i></span></li>
+        <li class="active">Dashboard</li>
+    </ul>
 
-                    <div class="media-body">
-                        <small>New Users</small>
-                        <h2 class="media-heading animate-number" data-value="3659" data-animation-duration="1500">0</h2>
-                    </div>
-                </div> 
+    <!-- main page, you're application here -->
+    <div class="main-page">
+        <div class="content-inner">
+            <!-- SHORTCUT LINE DASHBOARD
+            ================================================== -->
+            <!-- row #1 -->
+            <div class="shortcut row-fluid">
+                <!-- tile -->
+                <div data-looper="go" data-interval="6000" class="span3 tile bg-cyan looper slide up">
+                    <!-- tile-content -->
+                    <div class="tile-content">
+                        <!-- block looper -->
+                        <div class="looper-inner">
+                            <div class="item">
+                                <a href="#post"><i class="aweso-pencil"></i></a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#post1">
+                                    <div class="text-based">
+                                        <p class="lead">10 Best Design With Twitter Bootstrap</p>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#post2">
+                                    <div class="text-based">
+                                        <p class="lead">How To Master Your Habits</p>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#post3">
+                                    <div class="text-based">
+                                        <p class="lead">Beyond The Inspiration</p>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                        </div><!-- /block looper -->
+                    </div><!-- /tile-content -->
 
-                <div class="progress-list">
-                    <div class="details">
-                        <div class="title">This month plan %</div>
-                    </div>
-                    <div class="status pull-right bg-transparent-black-1">
-                        <span class="animate-number" data-value="83" data-animation-duration="1500">0</span>%
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="progress progress-little progress-transparent-black">
-                        <div class="progress-bar animate-progress-bar" data-percentage="83%"></div>
-                    </div>
-                </div>
+                    <div class="tile-peek">
+                        <span class="brand">Posts & pages</span>
+                        <span class="badge">12</span>
+                    </div><!-- /tile-peek -->
+                </div><!-- /tile -->
 
-            </div>
-            <div class="back">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o fa-4x"></i>
-                    <span>Check Summary</span>
-                </a>  
-            </div>
-        </div>
-    </div>
+                <!-- tile -->
+                <div data-looper="go" data-interval="9000" class="span3 tile bg-magenta looper slide up">
+                    <!-- tile-content -->
+                    <div class="tile-content">
+                        <!-- block looper -->
+                        <div class="looper-inner">
+                            <div class="item">
+                                <a href="#message"><i class="aweso-envelope"></i></a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#message1">
+                                    <div class="text-based">
+                                        <h4>Re: Dinner Invitation</h4>
+                                        <p>Hi Bent, Vestibulum pellentesque risus wisi orci laoreet. Semper sagittis...</p>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#message1">
+                                    <div class="text-based">
+                                        <h4>Re: Sales Support</h4>
+                                        <p>Hi Bent, Netus est suspendisse, euismod phasellus aliquam wisi sed...</p>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                        </div><!-- /block looper -->
+                    </div><!-- /tile-content -->
 
+                    <div class="tile-peek">
+                        <span class="brand">Messages</span>
+                        <span class="badge">3</span>
+                    </div><!-- /tile-peek -->
+                </div><!-- /tile -->
 
-    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
-        <div class="card card-blue hover">
-            <div class="front">        
+                <!-- tile -->
+                <div data-looper="go" data-interval="7000" class="span3 tile bg-orange looper slide up">
+                    <!-- tile-content -->
+                    <div class="tile-content">
+                        <!-- block looper -->
+                        <div class="looper-inner">
+                            <div class="item text-center">
+                                <a href="#invoices"><i class="aweso-dollar"></i> </a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#invoices1">
+                                    <div class="tabular-based">
+                                        <dl class="dl-horizontal">
+                                            <dt>$25</dt>
+                                            <dd>Wireless keyboard and mouse connector</dd>
+                                            <dt>$18</dt>
+                                            <dd>Internet service</dd>
+                                            <dt>$90</dt>
+                                            <dd>A description list is perfect for defining terms</dd>
+                                            <dt>$30</dt>
+                                            <dd>Donec id elit non mi porta</dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#invoices2">
+                                    <div class="tabular-based">
+                                        <dl class="dl-horizontal">
+                                            <dt>$20</dt>
+                                            <dd>Stilearn metro admin</dd>
+                                            <dt>$4</dt>
+                                            <dd>Simple doc template</dd>
+                                        </dl>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                        </div><!-- /block looper -->
+                    </div><!-- /tile-content -->
 
-                <div class="media">                  
-                    <span class="pull-left">
-                        <i class="fa fa-shopping-cart media-object"></i>
-                    </span>
+                    <!-- tile-peek -->
+                    <div class="tile-peek">
+                        <span class="brand">Invoices</span>
+                        <span class="badge">5</span>
+                    </div><!-- /tile-peek -->
+                </div><!-- /tile -->
 
-                    <div class="media-body">
-                        <small>New Orders</small>
-                        <h2 class="media-heading animate-number" data-value="19214" data-animation-duration="1500">0</h2>
-                    </div>
-                </div> 
+                <!-- tile -->
+                <div data-looper="go" data-interval="6500" class="span3 tile bg-emerald looper slide up">
+                    <!-- tile-content -->
+                    <div class="tile-content">
+                        <!-- block looper -->
+                        <div class="looper-inner">
+                            <div class="item">
+                                <a href="#comments1">
+                                    <div class="text-based">
+                                        <p>"Non eu arcu, id eget purus et ridiculus, donec integer mauris. Dis mattis proin mauris..."</p>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#comments2">
+                                    <div class="text-based">
+                                        <p>"Quis eu quis arcu laoreet id, aliquam a est libero, morbi quisque mauris pede condimentum aliquam..."</p>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#comments3">
+                                    <div class="text-based">
+                                        <p>"Nam quis enim hendrerit. Leo elit dui commodo ipsum, eget orci rutrum tortor ut sit magna..."</p>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                            <div class="item">
+                                <a href="#comments4">
+                                    <div class="text-based">
+                                        <p>"Tincidunt libero vestibulum elementum, vitae interdum ullamcorper ut fusce pellentesque non..."</p>
+                                    </div>
+                                </a>
+                            </div><!-- /item -->
+                        </div><!-- /block looper -->
+                    </div><!-- /tile-content -->
 
-                <div class="progress-list">
-                    <div class="details">
-                        <div class="title">This month plan %</div>
-                    </div>
-                    <div class="status pull-right bg-transparent-black-1">
-                        <span class="animate-number" data-value="100" data-animation-duration="1500">0</span>%
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="progress progress-little progress-transparent-black">
-                        <div class="progress-bar animate-progress-bar" data-percentage="100%"></div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="back">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o fa-4x"></i>
-                    <span>Check Summary</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
-        <div class="card card-greensea hover">
-            <div class="front">        
-
-                <div class="media">
-                    <span class="pull-left">
-                        <i class="fa fa-usd media-object"></i>
-                    </span>
-
-                    <div class="media-body">
-                        <small>Sales</small>
-                        <h2 class="media-heading animate-number" data-value="169541" data-animation-duration="1500">0</h2>
-                    </div>
-                </div>
-
-                <div class="progress-list">
-                    <div class="details">
-                        <div class="title">This month plan %</div>
-                    </div>
-                    <div class="status pull-right bg-transparent-black-1">
-                        <span class="animate-number" data-value="42" data-animation-duration="1500">0</span>%
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="progress progress-little progress-transparent-black">
-                        <div class="progress-bar animate-progress-bar" data-percentage="42%"></div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="back">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o fa-4x"></i>
-                    <span>Check Summary</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card-container col-lg-3 col-sm-6 col-xs-12">
-        <div class="card card-slategray hover">
-            <div class="front"> 
-
-                <div class="media">                   
-                    <span class="pull-left">
-                        <i class="fa fa-eye media-object"></i>
-                    </span>
-
-                    <div class="media-body">
-                        <small>Visits</small>
-                        <h2 class="media-heading animate-number" data-value="9634" data-animation-duration="1500">0</h2>
-                    </div>
-                </div> 
-
-                <div class="progress-list">
-                    <div class="details">
-                        <div class="title">This month plan %</div>
-                    </div>
-                    <div class="status pull-right bg-transparent-black-1">
-                        <span class="animate-number" data-value="25" data-animation-duration="1500">0</span>%
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="progress progress-little progress-transparent-black">
-                        <div class="progress-bar animate-progress-bar" data-percentage="25%"></div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="back">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o fa-4x"></i>
-                    <span>Check Summary</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-<!-- /cards -->
-
-
-
-
-<!-- row -->
-<div class="row">
-
-
-    <!-- col 8 -->
-    <div class="col-lg-8 col-md-12">
-
-
-
-
-        <!-- tile -->
-        <section class="tile transparent">
-
-
-
-
-            <!-- tile header -->
-            <div class="tile-header color transparent-black textured rounded-top-corners">
-                <h1><strong>Statistic</strong> Chart</h1>
-                <div class="controls">
-                    <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
-                    <a href="#" class="remove"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <!-- /tile header -->
+                    <!-- tile-peek -->
+                    <div class="tile-peek">
+                        <div class="icon"><i class="aweso-comments"></i></div>
+                        <span class="badge">5</span>
+                    </div><!-- /tile-peek -->
+                </div><!-- /tile -->
+            </div> <!-- /row #1 -->
 
 
-            <!-- tile widget -->
-            <div class="tile-widget color transparent-black textured">
-                <div id="statistics-chart" class="chart statistics" style="height: 250px;"></div>
-            </div>
-            <!-- /tile widget -->
 
 
-            <!-- tile body -->
-            <div class="tile-body color transparent-white rounded-bottom-corners">
-                <div class="row">
-                    <ul class="inline">
+            <!-- PERFORMANCE #1
+            ================================================== -->
+            <!-- row #2 -->
+            <div id="row2" class="row-fluid">
+                <!-- span -->
+                <div class="span8">
+                    <!-- widget xcharts -->
+                    <div class="widget bg-white bg-steel" id="widget-xchart">
+                        <!-- widget content -->
+                        <div class="widget-content" style="padding-bottom: 20px">
 
-                        <li class="col-md-8 col-sm-12 col-xs-12 text-center">
+                            <div class="stats full-widget">
+                                <!-- chart placeholder -->
+                                <div id="sales-performance" style="width: 100%;height: 390px;margin-top:32px;"></div>
+                            </div><!-- /stats -->
 
-                            <h4 class="underline text-left"><strong>Actual</strong> Statistics</h4>
+                            <div class="stats-content full-widget">
+                                <div class="stats-help-block">
+                                    <span title="recent update">Today 11:45 <sup>am</sup></span>
+                                    <span class="help-block text-2x">Sales Performance</span>
+                                </div><!-- /stats-help-block -->
+                            </div><!-- /stats-content -->
 
-                            <div class="inner-container inline">
-                                <div data-percent="100" data-size="140" class="pie-chart inline" data-scale-color="false" data-track-color="rgba(0,0,0,0)" data-bar-color="#ffffff" data-line-width="5">
-                                    <div class="text-center">
-                                        <i class="fa fa-usd fa-5x"></i>
+                        </div><!-- /widget content -->
+                    </div> <!-- /widget xcharts -->
+                </div><!-- /span -->
+
+                <!-- span -->
+                <div class="span4">
+                    <!-- widget sales charts #1 -->
+                    <div class="widget">
+                        <!-- widget content -->
+                        <div class="widget-content bg-steel">
+
+                            <div class="stats full-widget bg-transparent">
+                                <div class="stats-inline-resume">
+                                    Sales performance by region
+                                    <div class="btn-group">
+                                        <a class="btn bg-transparent dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <i class="aweso-angle-down icon-white"></i>
+                                        </a>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li class="active"><a href="#">Pekalongan</a></li>
+                                            <li><a href="#">Jakarta</a></li>
+                                            <li><a href="#">Bandung</a></li>
+                                            <li><a href="#">Bali</a></li>
+                                            <li><a href="#">Makasar</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Something Place</a></li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <p class="chart-overall text-center medium-thin uppercase"><span class="big-medium animate-number" data-value="6175" data-animation-duration="2500">0</span> Sales</p>
+                                <!-- chart placeholder -->
+                                <div id="sales-byarea" style="height: 200px;"></div>
+                            </div><!-- /stats -->
+
+                            <div class="stats-content full-widget">
+                                <div class="stats-help-block">
+                                    <span title="recent update">Today 11:45 <sup>am</sup></span>
+                                    <span class="help-block text-2x">
+                                        Coverage area, Pekalongan
+                                    </span>
+                                </div><!-- /stats-help-block -->
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                        <div class="well text-center bg-transparent">
+
+                                            <strong class="text-2x">750 K</strong> 
+                                            <div class="text-small">Targets</div>
+                                        </div>
+                                    </div>
+                                    <div class="span6">
+                                        <div class="well text-center bg-transparent">
+                                            <strong class="text-2x">648 K</strong> 
+                                            <div class="text-small">Achievement</div>
+                                        </div>
+                                    </div>
+                                </div><!-- /row -->
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                        <p>Weekly</p>
+                                        <div class="well well-small bg-transparent">
+                                            <span class="text-2x"><i class="aweso-long-arrow-down pull-right"></i>&minus;215K</span>
+                                        </div>
+                                    </div>
+                                    <div class="span6">
+                                        <p>Monthly</p>
+                                        <div class="well well-small bg-transparent">
+                                            <span class="text-2x"><i class="aweso-long-arrow-up pull-right"></i>&plus;148K</span>
+                                        </div>
+                                    </div>
+                                </div><!-- /row -->
+                            </div><!-- /stats-content -->
+
+                        </div><!-- /widget content -->
+                    </div> <!-- /widget sales charts #1 -->
+                </div><!-- /span -->
+
+            </div><!-- /row #2 -->
+
+
+
+
+            <!-- PERFORMANCE #2
+            ================================================== -->
+            <!-- row #3 -->
+            <div id="row3" class="row-fluid">
+                <!-- span -->
+                <div class="span8">
+                    <!-- widget tfull -->
+                    <div class="widget bg-mauve" id="widget-tfull">
+                        <!-- widget header -->
+                        <div class="widget-header">
+                            <!-- widget icon -->
+                            <div class="widget-icon"><i class="aweso-user"></i></div>
+                            <!-- widget title -->
+                            <h4 class="widget-title">Sales by employee</h4>
+                            <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
+                            <div class="widget-action">
+                                <button data-toggle="collapse" data-collapse="#widget-tfull" class="btn">
+                                    <i class="aweso-minus" data-toggle-icon="aweso-minus aweso-plus"></i>
+                                </button>
                             </div>
+                        </div><!-- /widget header -->
 
+                        <!-- widget content -->
+                        <div class="widget-content">
+                            <table id="sale-employee" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Name</th>
+                                        <th>Achievement ($)</th>
+                                        <th>Target ($)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="row_selected">
+                                        <td>JD</td>
+                                        <td>John Doe</td>
+                                        <td>680,000</td>
+                                        <td>876,800</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AW</td>
+                                        <td>Alan Wheel</td>
+                                        <td>487,000</td>
+                                        <td>654,200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DX</td>
+                                        <td>Daisy Xian</td>
+                                        <td>839,000</td>
+                                        <td>941,855</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HB</td>
+                                        <td>Henry Bird</td>
+                                        <td>877,000</td>
+                                        <td>920,375</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ML</td>
+                                        <td>Mike Loan</td>
+                                        <td>748,000</td>
+                                        <td>674,200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>JS</td>
+                                        <td>Jake Sheet</td>
+                                        <td>675,000</td>
+                                        <td>675,450</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HD</td>
+                                        <td>Harold Dylan</td>
+                                        <td>860,000</td>
+                                        <td>856,790</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PJ</td>
+                                        <td>Prime Jono</td>
+                                        <td>250,000</td>
+                                        <td>235,465</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /widget content -->
+                    </div> <!-- /widget tfull -->
+                </div> <!-- /span -->
 
-                            <div class="inner-container inline">
-                                <div data-percent="85" data-size="140" class="pie-chart inline" data-scale-color="false" data-track-color="rgba(0,0,0,0)" data-bar-color="rgba(0,0,0,.4)" data-line-width="5">
-                                    <div class="text-center">
-                                        <span><i class="fa fa-eye fa-5x color-transparent-black"></i></span>
+                <!-- span -->
+                <div class="span4">
+                    <!-- widget sales charts #2 -->
+                    <div class="widget border-mauve">
+                        <!-- widget content -->
+                        <div class="widget-content" style="padding-bottom: 0;">
+                            <div class="stats bg-white full-widget help-block">
+                                <!-- chart placeholder -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="resumeStat">
+                                        <div class="stats-inline-resume lead" id="resume-title"><span class="employee-name">John Doe</span> Resume</div>
+                                        <div id="employee-resume"></div>
+                                    </div>
+                                    <div class="tab-pane" id="progressStat">
+                                        <div class="stats-inline-resume lead" id="progress-title"><span class="employee-name">John Doe</span> Progress</div>
+                                        <div id="employee-progress" style="overflow: hidden"></div>
                                     </div>
                                 </div>
-                                <p class="chart-overall text-center medium-thin uppercase color-transparent-black"><span class="big-medium animate-number" data-value="8213" data-animation-duration="2500">0</span> Visits</p>
+                            </div><!-- /stats -->
+
+                            <div class="coll-helper full-widget">
+                                <div class="coll2">
+                                    <a data-toggle="tab" href="#resumeStat" class="btn btn-block bg-mauve">Resume</a>
+                                </div>
+                                <div class="coll2">
+                                    <a data-toggle="tab" href="#progressStat" class="btn btn-block bg-mauve bordered-left">Progress</a>
+                                </div>
+                            </div><!-- /stats-content -->
+
+                        </div><!-- /widget content -->
+                    </div> <!-- /widget sales charts #2 -->
+
+                </div> <!-- /span -->
+            </div> <!-- /row #3 -->
+
+
+
+
+
+
+            <!-- CHAT & CALENDAR
+            ================================================== -->
+            <!-- row #4 -->
+            <div id="row4" class="row-fluid">
+                <!-- calendar -->
+                <div class="span6">
+                    <!-- widget calendar -->
+                    <div class="widget bg-cyan" id="widget-calendar">
+                        <!-- widget header -->
+                        <div class="widget-header">
+                            <!-- widget icon -->
+                            <div class="widget-icon"><i class="aweso-calendar-empty"></i></div>
+                            <!-- widget title -->
+                            <h4 class="widget-title">Calendar</h4>
+                        </div><!-- /widget header -->
+
+                        <!-- widget content -->
+                        <div class="widget-content">
+
+                            <div id='calendar'></div>
+
+                        </div><!-- /widget content -->
+                    </div> <!-- /widget calendar -->
+                </div><!-- /calendar -->
+
+                <!-- chat -->
+                <div class="span6">
+                    <!-- widget chat -->
+                    <div class="widget bg-cyan" id="widget-chat">
+                        <!-- widget header -->
+                        <div class="widget-header">
+                            <!-- widget icon -->
+                            <div class="widget-icon"><i class="aweso-comment"></i></div>
+                            <!-- widget title -->
+                            <h4 class="widget-title">Chat</h4>
+                            <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
+                            <div class="widget-action">
+                                <button class="btn" data-toggle="add-others">&plus;</button>
+                                <button data-toggle="collapse" data-collapse="#widget-chat" class="btn">
+                                    <i class="aweso-minus" data-toggle-icon="aweso-minus aweso-plus"></i>
+                                </button>
                             </div>
+                        </div><!-- /widget header -->
+
+                        <!-- widget content -->
+                        <div class="widget-content">
+                            <div class="add-to-chat bg-silver">
+                                <form id="form-addtochat" />
+                                <select name="addtochat" class="input-large" multiple="">
+                                    <option value="alexis" />Alexis
+                                    <option value="bent" />Bent
+                                    <option value="elissa" />Ellisa
+                                    <option value="bootmask" />Bootmask
+                                    <option value="others" />Other user
+                                </select>
+                                <button class="btn bg-cyan bordered" type="submit">add</button>
+                                </form>
+                            </div>
+                            <!-- chat container, use mscrollbar -->
+                            <div id="chat" class="chat-container" data-scrollbar="mscroll" data-theme="light-thick" data-button="true" style="height: 452px;max-height: 452px">
+                                <!-- chat module -->
+                                <div class="chat-module">
+                                    <!-- chat -->
+                                    <ol class="chats">
+                                        <li class="other">
+                                            <div class="avatar">
+                                                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/demo/2.jpg" alt="" title="john doe" />
+                                            </div>
+                                            <div class="messages bg-transparent">
+                                                <div class="message-box">
+                                                    <p class="color-white">Et malesuada consequat donec morbi. Ridiculus wisi diam velit arcu, fringilla ante, nec et semper convallis, curabitur consectetuer massa sit in, consequat habitasse pede dictumst ornare eu.</p>
+                                                    <time class="color-white" datetime="2013-06-05T20:00">john doe | 51 min</time>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="self">
+                                            <div class="avatar">
+                                                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/demo/1.jpg" alt="" title="me" />
+                                            </div>
+                                            <div class="messages bg-transparent">
+                                                <p class="color-white">Consequat pede integer sit, vestibulum pharetra. Eu nec non nulla non.</p>
+                                                <time class="color-white" datetime="2013-06-05T20:14">37 mins</time>
+                                            </div>
+                                        </li>
+                                        <li class="moderator">
+                                            <div class="messages">
+                                                <p>log: jane smith join to chat | 27 min</p>
+                                            </div>
+                                        </li>
+                                        <li class="other">
+                                            <div class="avatar">
+                                                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/demo/3.jpg" alt="" title="jane smith" />
+                                            </div>
+                                            <div class="messages bg-transparent">
+                                                <p class="color-white">Duis enim parturient semper amet justo rutrum, ac sed neque. Scelerisque id, nulla urna ut donec.</p>
+                                                <time class="color-white" datetime="2013-06-05T20:00">jane smith | 26 min</time>
+                                            </div>
+                                        </li>
+                                        <li class="other">
+                                            <div class="avatar">
+                                                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/demo/2.jpg" alt="" title="john doe" />
+                                            </div>
+                                            <div class="messages bg-transparent">
+                                                <div class="message-box">
+                                                    <p class="color-white">Et malesuada consequat donec morbi. Ridiculus wisi diam velit arcu, fringilla ante, nec et semper convallis</p>
+                                                    <time class="color-white" datetime="2013-06-05T20:00">john doe | 21 min</time>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="self">
+                                            <div class="avatar">
+                                                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/demo/1.jpg" alt="" title="me" />
+                                            </div>
+                                            <div class="messages bg-transparent">
+                                                <p class="color-white">Consequat pede integer sit, vestibulum pharetra. Eu nec non nulla non.</p>
+                                                <time class="color-white" datetime="2013-06-05T20:14">5 mins</time>
+                                            </div>
+                                        </li>
+                                        <li class="other">
+                                            <div class="avatar">
+                                                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/demo/3.jpg" alt="" title="jane smith" />
+                                            </div>
+                                            <div class="messages bg-transparent">
+                                                <p class="color-white">Duis enim parturient semper amet justo rutrum, ac sed neque. Scelerisque id, nulla urna ut donec.</p>
+                                                <time class="color-white" datetime="2013-06-05T20:00">jane smith | just now</time>
+                                            </div>
+                                        </li>
+                                    </ol><!-- /chat -->
+                                </div><!-- /chat module -->
+                            </div><!-- /chat container -->
+
+                            <!-- chat action -->
+                            <div class="chat-action bg-transparent">
+                                <form id="form-chat" />
+                                <div class="input-append input-append-inline" style="width: 100%">
+                                    <input class="input-block-level" name="chat-text" type="text" autocomplete="off" />
+                                    <button class="btn bg-cyan" type="submit"><i class="aweso-comment-alt"></i></button>
+                                </div>
+                                </form>
+                            </div><!-- /chat action -->
+
+                        </div><!-- /widget content -->
+                    </div><!-- /widget chat -->
+                </div><!-- /chat -->
+            </div><!-- /row #4 -->
 
-                        </li>
 
-                        <li class="col-md-4 col-sm-12 col-xs-12">
-                            <h4 class="underline"><strong>Visitors</strong> Statistics</h4>
-                            <ul class="progress-list">
-                                <li>
-                                    <div class="details">
-                                        <div class="title">America</div>
-                                        <div class="description">Visitors from America</div>
-                                    </div>
-                                    <div class="status pull-right">
-                                        <span class="animate-number" data-value="40" data-animation-duration="1500">0</span>%
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-green animate-progress-bar" data-percentage="40%" style="width: 0%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="details">
-                                        <div class="title">Europe</div>
-                                        <div class="description">Visitors from Europe</div>
-                                    </div>
-                                    <div class="status pull-right">
-                                        <span class="animate-number" data-value="38" data-animation-duration="1000">0</span>%
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-cyan animate-progress-bar" data-percentage="35%" style="width: 0%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="details">
-                                        <div class="title">Asia</div>
-                                        <div class="description">Visitors from Asia</div>
-                                    </div>
-                                    <div class="status pull-right">
-                                        <span class="animate-number" data-value="12" data-animation-duration="800">0</span>%
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-amethyst animate-progress-bar" data-percentage="12%" style="width: 0%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="details">
-                                        <div class="title">Africa</div>
-                                        <div class="description">Visitors from Africa</div>
-                                    </div>
-                                    <div class="status pull-right">
-                                        <span class="animate-number" data-value="7" data-animation-duration="600">0</span>%
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-orange animate-progress-bar" data-percentage="7%" style="width: 0%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="details">
-                                        <div class="title">Other</div>
-                                    </div>
-                                    <div class="status pull-right">
-                                        <span class="animate-number" data-value="6" data-animation-duration="400">0</span>%
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-red animate-progress-bar" data-percentage="6%" style="width: 0%;"></div>
-                                    </div>
-                                </li>       
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /tile body -->
-
-
-
-        </section>
-        <!-- /tile -->
-
-
-
-        <!-- tile -->
-        <section class="tile color transparent-black">
-
-
-
-
-            <!-- tile header -->
-            <div class="tile-header">
-                <h1><strong>Projects</strong> Progress</h1>
-                <div class="search">
-                    <input type="text" placeholder="Search...">
-                </div>
-                <div class="controls">
-                    <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
-                    <a href="#" class="remove"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <!-- /tile header -->
-
-
-            <!-- tile body -->
-            <div class="tile-body no-vpadding">
-                <div class="table-responsive">
-                    <table class="table table-custom table-sortable nomargin">
-                        <thead>
-                            <tr>
-                                <th class="sortable sort-numeric sort-asc">ID</th>
-                                <th class="sortable sort-alpha">Project</th>
-                                <th class="sortable">Priority</th>
-                                <th class="sortable sort-amount">Status</th>
-                                <th class="text-right">Chart</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Graphic Layout for client</td>
-                                <td class="color-red priority">High priority</td>
-                                <td class="progress-cell">
-                                    <div class="progress-info">
-                                        <div class="percent"><span class="animate-number" data-value="50" data-animation-duration="1500">0</span>%</div>
-                                    </div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-transparent-white animate-progress-bar" data-percentage="50%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-right"><span id="projectbar1">87,85,42,90,70,55,82,68</span></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Make website responsive</td>
-                                <td class="color-green priority">Low priority</td>
-                                <td class="progress-cell">
-                                    <div class="progress-info">
-                                        <div class="percent"><span class="animate-number" data-value="13" data-animation-duration="1500">0</span>%</div>
-                                    </div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-transparent-white animate-progress-bar" data-percentage="13%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-right"><span id="projectbar2">87,99,52,93,42,86,51,93</span></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Clean css/html/js code</td>
-                                <td class="color-red priority">High priority</td>
-                                <td class="progress-cell">
-                                    <div class="progress-info">
-                                        <div class="percent"><span class="animate-number" data-value="76" data-animation-duration="1500">0</span>%</div>
-                                    </div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-transparent-white animate-progress-bar" data-percentage="76%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-right"><span id="projectbar3">74,77,82,91,69,63,46,42</span></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Database Optimization</td>
-                                <td class="color-orange priority">Normal priority</td>
-                                <td class="progress-cell">
-                                    <div class="progress-info">
-                                        <div class="percent"><span class="animate-number" data-value="38" data-animation-duration="1500">0</span>%</div>
-                                    </div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-transparent-white animate-progress-bar" data-percentage="38%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-right"><span id="projectbar4">52,45,76,74,77,57,65,86</span></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Database Migration</td>
-                                <td class="color-green priority">Low priority</td>
-                                <td class="progress-cell">
-                                    <div class="progress-info">
-                                        <div class="percent"><span class="animate-number" data-value="9" data-animation-duration="1500">0</span>%</div>
-                                    </div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-transparent-white animate-progress-bar" data-percentage="9%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-right"><span id="projectbar5">53,70,47,96,62,49,69,55</span></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Email server backup</td>
-                                <td class="color-orange priority">Normal priority</td>
-                                <td class="progress-cell">
-                                    <div class="progress-info">
-                                        <div class="percent"><span class="animate-number" data-value="29" data-animation-duration="1500">0</span>%</div>
-                                    </div>
-                                    <div class="progress progress-little">
-                                        <div class="progress-bar progress-bar-transparent-white animate-progress-bar" data-percentage="29%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-right"><span id="projectbar6">69,80,85,96,67,58,75,82</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- /tile body -->
-
-
-            <!-- tile footer -->
-            <div class="tile-footer text-center">
-                <ul class="pagination pagination-sm nomargin pagination-custom">
-                    <li class="disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                </ul>
-            </div>
-            <!-- /tile footer -->
-
-
-
-        </section>
-        <!-- /tile -->
-
-
-    </div>
-    <!-- /col 8 -->
-
-
-
-    <!-- col 4 -->
-    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-
-
-
-
-        <!-- tile -->
-        <section class="tile color transparent-black textured">
-
-
-
-
-            <!-- tile header -->
-            <div class="tile-header">
-                <h1><strong>Server</strong> Load</h1>
-                <div class="controls">
-                    <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
-                    <a href="#" class="remove"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <!-- /tile header -->
-
-            <!-- tile widget -->
-            <div class="tile-widget">
-
-                <div class="progress-list with-heading">
-                    <div class="details">
-                        <div class="title"><h2><i class="fa fa-hdd-o"></i> <span class="animate-number" data-value="394" data-animation-duration="1600">0</span> GB</h2></div>
-                    </div>
-                    <div class="status pull-right bg-transparent-black-1">
-                        <span class="animate-number" data-value="42" data-animation-duration="1500">0</span>%
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="progress progress-little progress-transparent-black" style="margin-bottom: 5px">
-                        <div class="progress-bar animate-progress-bar" data-percentage="42%"></div>
-                    </div>
-                </div>  
-                <p class="description"><strong>394GB</strong> used of <strong class="white-text">2,048GB</strong> on File Server</p>
-            </div>
-            <!-- /tile widget -->
-
-
-            <!-- tile body -->
-            <div class="tile-body paddingtop">
-                <div id="serverload-chart"></div>
-            </div>
-            <!-- /tile body -->
-
-
-
-        </section>
-        <!-- /tile -->
-
-
-        <!-- tile -->
-        <section class="tile color transparent-black">
-
-
-
-            <!-- tile header -->
-            <div class="tile-header">
-                <h1><strong>Browser</strong> Usage</h1>
-                <div class="controls">
-                    <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
-                    <a href="#" class="remove"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <!-- /tile header -->
-
-            <!-- tile body -->
-            <div class="tile-body">
-                <div id="browser-usage" style="height: 230px;" class="morris-chart"></div>
-                <ul class="inline text-center chart-legend">
-                    <li><span class="badge badge-outline" style="border-color: #00a3d8"></span> Chrome <small>25%</small>,</li>
-                    <li><span class="badge badge-outline" style="border-color: #1693A5"></span> Other <small>25%</small>,</li>
-                    <li><span class="badge badge-outline" style="border-color: #2fbbe8"></span> Safari <small>20%</small>,</li>
-                    <li><span class="badge badge-outline" style="border-color: #72cae7"></span> Firefox <small>15%</small>,</li>
-                    <li><span class="badge badge-outline" style="border-color: #ffc100"></span> Internet Explorer <small>10%</small>,</li>
-                    <li><span class="badge badge-outline" style="border-color: #d9544f"></span> Opera <small>5%</small></li>
-                </ul>
-            </div>
-            <!-- /tile body --> 
-
-
-
-
-        </section>
-        <!-- /tile -->
-
-
-
-        <!-- tile -->
-        <section class="tile transparent">
-
-
-
-
-            <!-- tile header -->
-            <div class="tile-header color redbrown rounded-top-corners text-center">               
-                <button class="btn pull-left btn-black-transparent" type="button"><i class="fa fa-caret-square-o-down"></i></button>
-                <h2><strong>Todo</strong> List</h2>
-                <div class="controls">
-                    <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
-                    <a href="#" class="remove"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <!-- /tile header -->
-
-            <!-- tile body -->
-            <div class="tile-body color transparent-black rounded-bottom-corners">
-                <input type="text" placeholder="Add new todo..." class="w100p bottommargin">
-                <ul class="nolisttypes" id="todolist">
-                    <li>
-                        <div class="checkbox check-transparent">
-                            <input type="checkbox" value="1" id="todo-01">
-                            <label for="todo-01">Make a backup</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="checkbox check-transparent">
-                            <input type="checkbox" checked="checked" value="1" id="todo-02">
-                            <label for="todo-02" class="done">Send e-mail to Ici</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="checkbox check-transparent">
-                            <input type="checkbox" value="1" id="todo-03">
-                            <label for="todo-03">Buy tickets</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="checkbox check-transparent">
-                            <input type="checkbox" value="1" id="todo-04">
-                            <label for="todo-04">Resolve issues</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="checkbox check-transparent">
-                            <input type="checkbox" value="1" id="todo-05">
-                            <label for="todo-05">Compile new version</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="checkbox check-transparent">
-                            <input type="checkbox" value="1" id="todo-06">
-                            <label for="todo-06">Upload new version</label>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- /tile body -->
-
-
-
-        </section>
-        <!-- /tile -->
-
-
-    </div>
-    <!-- /col 4 -->
-
-
-</div>
-<!-- /row -->
-
-
-<!-- row -->
-<div class="row">
-
-
-
-
-    <!-- col 6 -->
-    <div class="col-md-6">
-
-
-        <!-- tile -->
-        <section class="tile transparent recent-activity">
-
-
-
-
-            <!-- tile header -->
-            <div class="tile-header transparent">               
-                <h1><strong>Recent</strong> Activity</h1>
-                <div class="controls">
-                    <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
-                    <a href="#" class="remove"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <!-- /tile header -->
-
-
-
-            <!-- tile widget -->
-            <div class="tile-widget color transparent-black rounded-top-corners nopadding">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs tabdrop">
-                    <li class="active"><a href="#users-tab" data-toggle="tab">Users</a></li>
-                    <li><a href="#orders-tab" data-toggle="tab">Orders</a></li>
-                    <li><a href="#messages-tab" data-toggle="tab">Messages</a></li>
-                    <li><a href="#tasks-tab" data-toggle="tab">Tasks</a></li>
-                    <li><a href="#comments-tab" data-toggle="tab">Comments</a></li>
-                </ul>
-                <!-- / Nav tabs -->
-            </div>
-            <!-- /tile widget -->
-
-
-
-
-            <!-- tile body -->
-            <div class="tile-body tab-content nopadding rounded-bottom-corners">
-                <!-- Tab panes -->
-
-                <ul id="users-tab" class="tab-pane fade in active">
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/peter-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Peter <strong>Kay</strong></span>
-                        <span class="subject">has been <strong>unbanned</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 15 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/arnold-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Arnold <strong>Karlsberg</strong></span>
-                        <span class="subject">has been <strong>unbanned</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 1 hour ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/arnold-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Arnold <strong>Karlsberg</strong></span>
-                        <span class="subject">has been <strong>banned</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 2 hours ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/ici-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Ing. Imrich <strong>Kamarel</strong></span>
-                        <span class="subject">has been <strong>updated</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 4 hours ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/arnold-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Arnold <strong>Karlsberg</strong></span>
-                        <span class="subject">has been <strong>registered</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 8 hours ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/peter-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Peter <strong>Kay</strong></span>
-                        <span class="subject">has been <strong>banned</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 12 hours ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/peter-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Peter <strong>Kay</strong></span>
-                        <span class="subject">has been <strong>registered</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> yesterday</span>
-                    </li>
-                </ul>
-
-                <ul id="orders-tab" class="tab-pane fade">
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/arnold-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Arnold <strong>Karlsberg</strong></span>
-                        <span class="subject">send new order <strong>OR_00012014</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 15 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/george-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">George <strong>McCain</strong></span>
-                        <span class="subject">change order <strong>OR_02172013</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 27 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/george-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">George <strong>McCain</strong></span>
-                        <span class="subject">send new order <strong>OR_02172013</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 35 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/peter-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Peter <strong>Kay</strong></span>
-                        <span class="subject">cancelled order <strong>OR_02162013</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 2 hours ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/peter-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Peter <strong>Kay</strong></span>
-                        <span class="subject">send new order <strong>OR_02162013</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 3 hours ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/ici-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Ing. Imrich <strong>Kamarel</strong></span>
-                        <span class="subject">send new order <strong>OR_02152013</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 5 hours ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/ici-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Ing. Imrich <strong>Kamarel</strong></span>
-                        <span class="subject">send new order <strong>OR_02142013</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 5 hours ago</span>
-                    </li>
-                </ul>
-
-                <ul id="messages-tab" class="tab-pane fade">
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">received new message from <strong>Peter Kay</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 15 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">received new message from <strong>Peter Kay</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 30 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">received new message from <strong>Ing. Imrich Kamarel</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 35 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">received new message from <strong>Arnold Arnold</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 42 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">received new message from <strong>George McCain</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 1 hour ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">received new message from <strong>Ing. Imrich Kamarel</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 1 hour ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">received new message from <strong>Ing. Imrich Kamarel</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 1 hour ago</span>
-                    </li>
-                </ul>
-
-                <ul id="tasks-tab" class="tab-pane fade">
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">cancelled task <strong>Get drunk</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 15 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">finished task <strong>Gifts!</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 59 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">finished task <strong>Make backup</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 3 hours ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">have a new task <strong>Gifts!</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> yesterday</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">finished task <strong>Send emails</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> yesterday</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">have a new task <strong>Send emails</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> yesterday</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab"><strong>You</strong></span>
-                        <span class="subject">have a new task <strong>Make backup</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> yesterday</span>
-                    </li>
-                </ul>
-
-                <ul id="comments-tab" class="tab-pane fade">
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/arnold-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Arnold <strong>Karlsberg</strong></span>
-                        <span class="subject">deleted comment <strong>CM_00019</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 5 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/arnold-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Arnold <strong>Karlsberg</strong></span>
-                        <span class="subject">posted a new comment <strong>CM_00019</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 8 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab">John <strong>Douey</strong></span>
-                        <span class="subject">posted a new comment <strong>CM_00018</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 9 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/peter-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Peter <strong>Kay</strong></span>
-                        <span class="subject">posted a new comment <strong>CM_00017</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 18 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/arnold-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Ing. Imrich <strong>Kamarel</strong></span>
-                        <span class="subject">updated comment <strong>CM_00016</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 25 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/arnold-avatar.jpg" class="w35" alt>
-                        <span class="user font-slab">Ing. Imrich <strong>Kamarel</strong></span>
-                        <span class="subject">posted a new comment <strong>CM_00016</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 42 minutes ago</span>
-                    </li>
-                    <li>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/images/profile-photo.jpg" class="w35" alt>
-                        <span class="user font-slab">John <strong>Douey</strong></span>
-                        <span class="subject">posted a new comment <strong>CM_00015</strong></span>
-                        <span class="time"><i class="fa fa-clock-o"></i> 56 minutes ago</span>
-                    </li>
-                </ul>
-
-                <!-- / Tab panes -->
-            </div>
-            <!-- /tile body -->
-
-
-
-        </section>
-        <!-- /tile -->
-
-
-    </div>
-    <!-- /col 6 -->
-
-
-
-
-    <!-- col 6 -->
-    <div class="col-md-6">
-
-
-
-        <!-- tile -->
-        <section class="tile transparent">
-
-
-
-
-            <!-- tile header -->
-            <div class="tile-header transparent">               
-                <h1><strong>Quick</strong> Message</h1>
-                <div class="controls">
-                    <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
-                    <a href="#" class="remove"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <!-- /tile header -->
-
-
-
-            <!-- tile widget -->
-            <div class="tile-widget color transparent-black rounded-top-corners">
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="message-to" class="col-sm-2 control-label font-slab">Recipients</label>
-                        <div class="col-sm-10">
-                            <select data-placeholder="Select recipients..." multiple="" tabindex="3" class="chosen-select form-control chosen-transparent" id="message-to">
-                                <option value="ici@gmail.com">ici@gmail.com</option>
-                                <option value="johny@gmail.com">johny@gmail.com</option>
-                                <option value="arnie@gmail.com">arnie@gmail.com</option>
-                                <option value="pete@gmail.com">pete@gmail.com</option>
-                                <option value="gorge@gmail.com">gorge@gmail.com</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group no-bottom-margin">
-                        <label for="subject" class="col-sm-2 control-label font-slab">Subject</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control transparent" id="subject" placeholder="Type subject here...">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- /tile widget -->
-
-
-
-            <!-- tile body -->
-            <div class="tile-body nopadding">
-                <div id="quick-message-content"></div>
-            </div>
-            <!-- /tile body -->
-
-
-            <!-- tile footer -->
-            <div class="tile-footer rounded-bottom-corners text-right">
-                <a class="submit font-slab" href="#"><strong>Send</strong> message <i class="fa fa-comment"></i></a>
-            </div>
-            <!-- /tile footer -->
-
-
-
-
-        </section>
-        <!-- /tile -->
-
-
-
-
-    </div>
-    <!-- /col 6 -->
-
-
-
-
-</div>
-<!-- /row -->  
-
+        </div><!-- /content-inner-->
+    </div><!-- /main-page-->
+</article> <!-- /content page -->
