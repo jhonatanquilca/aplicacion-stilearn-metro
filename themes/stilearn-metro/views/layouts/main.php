@@ -188,7 +188,7 @@
                     'encodeLabel' => false,
                     //Descomentar si se necesita que todos los items <li> tengan una sola clase
 //                    'itemCssClass' => 'active',
-//                    'activeCssClass' => 'active',
+                    'activeCssClass' => 'active',
                     'htmlOptions' => array('class' => 'nav nav-list'),
                     //class  para el submenu
                     'submenuHtmlOptions' => array('class' => 'dropdown-menu')
@@ -202,6 +202,7 @@
 
             <!-- start content -->
             <div class="content">
+                
                 <?php echo $content; ?>
 
             </div> <!--/ end content -->
