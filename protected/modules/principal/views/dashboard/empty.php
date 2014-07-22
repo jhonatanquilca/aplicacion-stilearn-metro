@@ -1,21 +1,18 @@
 <div class="empty-model">
-    <!--div class="span12 empty-model-header">
-        <p class="empty-model-cuote">"Skill is fine, and genius is splendid, but the right Contacts are more valuable than either."</p>
-        <div class="empty-model-cuote-author">- Arthur Conan Doyle, Sr.</div>
-    </div-->
-
     <div class="row-fluid">
-        <div class="span3">        
-              
-               
-            <div class=" empty-model-description"><i class="icon-adjust icon-4x"></i></div>
+        <div class="span3">
+            <div class="emty-icon">
+                <a href="#" style="color: #333;"><i class="aweso-dollar"></i> </a>
+
+            </div>
         </div>
+
         <div class="span9">
             <div class="empty-model-description">
-                <h1>Cuentas</h1>
-                <h2>Administra las empresas y personas con las que d&iacute;a a d&iacute;a estrechas lazos laborales.</h2>
+                <h1>Contactos</h1>
+                <h2>La mejor manera de tener la informaci&oacute;n de sus conocidos organizada.</h2>
                 <?php
-                echo CHtml::link('<i class="icon-plus-sign"></i> Crear Nueva', array('/crm/cuenta/create'), array(
+                echo CHtml::link('<i class="icon-plus-sign"></i> Crear Nuevo', array('/crm/contacto/create'), array(
                     'class' => 'btn btn-large btn-success'
                 ));
                 ?>
@@ -23,3 +20,17 @@
         </div>
     </div>
 </div>
+<style type="text/css">
+    .emty-icon{
+        position: absolute;
+        top: 15%;
+        left: 25%;
+        width: 64px;
+        height: 64px;
+        font-size: 125px;
+        margin-left: -32px;
+        margin-top: -42px;
+     
+    }
+</style>
+<!--</div>-->

@@ -60,7 +60,7 @@
                                         <p class="lead">How To Master Your Habits</p>
                                     </div>
                                 </a>
-                            </div><!-- /item -->
+                            </div><!--/item -->
                             <div class="item">
                                 <a href="#post3">
                                     <div class="text-based">
