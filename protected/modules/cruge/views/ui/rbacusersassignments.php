@@ -10,72 +10,85 @@ $loaderImg = "<img src='{$loaderSrc}'>";
 
 $selectedUserGetter = 'userdescription';
 ?>
-<div class="col-lg-12">
-    <div class="widget">
-        <div class="widget-header">
-            <h4>
-                <a class="icon-chevron-down" data-toggle="collapse" href=".widget-content"></a>
-                <i class="icon-key"></i> <?php echo ucfirst(CrugeTranslator::t("Roles Disponibles")); ?>
-            </h4>            
-        </div>
-        <div class="widget-content in form">
-            <div class='crugepanel user-assignments-role-list'>
-                <p><?php echo ucfirst(CrugeTranslator::t("Haz click en un rol para ver los usuarios asignados a el")); ?></p>
-                <ul class='auth-item'>
-                    <?php
-                    $loader = "<span class='loader'></span>";
-                    foreach ($rbac->roles as $rol) {
-                        echo "<li alt='" . $rol->name . "' class='btn'>" . $rol->name . $loader . "</li>";
-                    }
-                    ?>
-                </ul>
-            </div>
+<br/>
+<br/>
+<div class="row-fluid">
+    <div class="span12">
+        <!-- widget button -->
+        <div class="widget border-green" id="widget-button">
 
-
-            <div class='crugepanel user-assignments-detail'>
-                <div class='separator-form col-lg-11' id='mostrarSeleccion'></div>
-                <div class="clear"></div>
-
-                <div id='lista1' class='lista'>
-                    <div id='revocarSeleccion' class='btn btn-danger'>
-                        <i class="icon-lock"></i> <?php echo CrugeTranslator::t("revocar seleccion") ?>
-                    </div>
-                    <?php
-                    $this->widget(Yii::app()->user->ui->CGridViewClass, array(
-                        'id' => '_lista1',
-                        'selectableRows' => 2,
-                        'dataProvider' => $roleUsersDataProvider,
-                        'columns' => array(
-                            array(
-                                'class' => 'CCheckBoxColumn'
-                            ),
-                            $selectedUserGetter,
-                        )
-                    ));
-                    ?>	
+            <!-- widget header -->
+            <div class="widget-header bg-green">
+                <!-- widget title -->
+                <h4 class="widget-title"><i class="aweso-key"></i> <?php echo ucfirst(CrugeTranslator::t("Roles Disponibles")); ?></h4>
+                <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
+                <div class="widget-action">
+                    <button data-toggle="collapse" data-collapse="#widget-button" class="btn">
+                        <i class="aweso-chevron-up color-green" data-toggle-icon="aweso-chevron-down  aweso-chevron-up"></i>
+                    </button>
                 </div>
-                <div id='lista2' class='lista'>
-                    <div id='asignarSeleccion' class='btn btn-success'>
-                        <i class="icon-unlock"></i> <?php echo CrugeTranslator::t("asignar seleccion") ?>
+            </div><!-- /widget header -->
+
+            <div class="widget-content in form">
+                <div class='crugepanel user-assignments-role-list'>
+                    <p><?php echo ucfirst(CrugeTranslator::t("Haz click en un rol para ver los usuarios asignados a el")); ?></p>
+                    <ul class='auth-item'>
+                        <?php
+                        $loader = "<span class='loader'></span>";
+                        foreach ($rbac->roles as $rol) {
+                            echo "<li alt='" . $rol->name . "' class='btn'>" . $rol->name . $loader . "</li>";
+                        }
+                        ?>
+                    </ul>
+                </div>
+
+
+                <div class='crugepanel user-assignments-detail'>
+                    <div class='separator-form col-lg-11' id='mostrarSeleccion'></div>
+                    <div class="clear"></div>
+
+                    <div id='lista1' class='lista'>
+                        <div id='revocarSeleccion' class='btn btn-danger'>
+                            <i class="aweso-lock"></i> <?php echo CrugeTranslator::t("revocar seleccion") ?>
+                        </div>
+                        <?php
+                        $this->widget(Yii::app()->user->ui->CGridViewClass, array(
+                            'id' => '_lista1',
+                            'selectableRows' => 2,
+                            'dataProvider' => $roleUsersDataProvider,
+                            'columns' => array(
+                                array(
+                                    'class' => 'CCheckBoxColumn'
+                                ),
+                                $selectedUserGetter,
+                            )
+                        ));
+                        ?>	
                     </div>
-                    <?php
-                    $this->widget(Yii::app()->user->ui->CGridViewClass, array(
-                        'id' => '_lista2',
-                        'selectableRows' => 2,
-                        'dataProvider' => $allUsersDataProvider,
-                        'columns' => array(
-                            array(
-                                'class' => 'CCheckBoxColumn'
+                    <div id='lista2' class='lista'>
+                        <div id='asignarSeleccion' class='btn btn-success'>
+                            <i class="aweso-unlock"></i> <?php echo CrugeTranslator::t("asignar seleccion") ?>
+                        </div>
+                        <?php
+                        $this->widget(Yii::app()->user->ui->CGridViewClass, array(
+                            'id' => '_lista2',
+                            'selectableRows' => 2,
+                            'dataProvider' => $allUsersDataProvider,
+                            'columns' => array(
+                                array(
+                                    'class' => 'CCheckBoxColumn'
+                                ),
+                                $selectedUserGetter,
                             ),
-                            $selectedUserGetter,
-                        ),
-                    ));
-                    ?>	
+                        ));
+                        ?>	
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <script>
 <?php /* a cada LI del div de roles le anexa un evento click y le pone un cursor */ ?>
@@ -130,4 +143,5 @@ $selectedUserGetter = 'userdescription';
         }
     });
 </script>
+
 

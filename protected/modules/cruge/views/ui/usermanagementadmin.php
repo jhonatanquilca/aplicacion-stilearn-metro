@@ -4,7 +4,6 @@
 $this->pageTitle = Yii::t('app', 'Administrador de Usuarios');
 ?>
 
-
 <br/>
 <br/>
 <div class="row-fluid">

@@ -1,92 +1,103 @@
 <?php
 $this->pageTitle = Yii::t('app', 'Sistema');
 ?>
-<div class="col-lg-12">
-    <div class="widget">
-        <div class="widget-header">
-            <h4> 
-                <a class="icon-chevron-down" data-toggle="collapse" href=".widget-content"></a>                
-                <i class="icon-key"></i> <?php echo ucwords(CrugeTranslator::t("sesiones de usuario")); ?>
-            </h4>
+<br/>
+<br/>
+<div class="row-fluid">
+    <div class="span12">
+        <!-- widget button -->
+        <div class="widget border-green" id="widget-button">
 
-        </div>
-        <div class="widget-content in form">
-            <?php
-            //$this->widget(Yii::app()->user->ui->CGridViewClass, array(
-            //    'dataProvider'=>$dataProvider,
-            //    'columns'=>array(
-            //		'idsession',
-            //		array('name'=>'iduser','htmlOptions'=>array('width'=>'50px')),
-            //		array('name'=>'sessionname','filter'=>''),
-            //		array('name'=>'status','filter'=>array(1=>'Activa',0=>'Cerrada')
-            //			,'value'=>'$data->status==1 ? \'activa\' : \'cerrada\' '),
-            //		array('name'=>'created','type'=>'datetime'),
-            //		array('name'=>'lastusage','type'=>'datetime'),
-            //		array('name'=>'usagecount','type'=>'number'),
-            //		array('name'=>'expire','type'=>'datetime'),
-            //		'ipaddress',
-            //		array(
-            //			'class'=>'CButtonColumn',
-            //			'template' => '{delete}',
-            //			'deleteConfirmation'=>CrugeTranslator::t("Esta seguro de eliminar esta sesion ?"),
-            //			'buttons' => array(
-            //					'delete'=>array(
-            //						'label'=>CrugeTranslator::t("eliminar sesion"),
-            //						'imageUrl'=>Yii::app()->user->ui->getResource("delete.png"),
-            //						'url'=>'array("sessionadmindelete","id"=>$data->getPrimaryKey())'
-            //					),
-            //				),	
-            //		)	
-            //	),
-            //	'filter'=>$model,
-            //));
+            <!-- widget header -->
+            <div class="widget-header bg-green">
+                <!-- widget title -->
+                <h4 class="widget-title"><i class="aweso-key"></i> <?php echo ucwords(CrugeTranslator::t("sesiones de usuario")); ?></h4>
+                <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
+                <div class="widget-action">
+                    <button data-toggle="collapse" data-collapse="#widget-button" class="btn">
+                        <i class="aweso-chevron-up color-green" data-toggle-icon="aweso-chevron-down  aweso-chevron-up"></i>
+                    </button>
+                </div>
+            </div><!-- /widget header -->
 
-            $this->widget('bootstrap.widgets.TbGridView', array(
-                'id' => 'llamada-grid',
-                'type' => 'striped condensed',
-                'dataProvider' => $model->search(),
-                'filter' => $model,
-                'pager' => array(
-                    'header' => '',
-                    'htmlOptions' => array('class' => 'yiiPager pagination no-margin'),
-                ),
-                'columns' => array(
-                    //		'idsession',
-                    //		array('name'=>'iduser','htmlOptions'=>array('width'=>'50px')),
-                    array('name' => 'sessionname', 'filter' => ''),
-                    array('name' => 'status', 'filter' => array(1 => 'Activa', 0 => 'Cerrada')
-                        , 'value' => '$data->status==1 ? \'activa\' : \'cerrada\' '),
-                    array(
-                        'name' => 'created',
-                        'value' => 'date("d M Y h:i:s a",$data->created)',
-                    ),
-                    //		array(
-                    //                    'name'=>'lastusage',
-                    //                    'value' => 'date("d M Y h:i:s a",$data->lastusage)',
-                    //                ),
-                    //		array('name'=>'usagecount','type'=>'number', 'header'=>'contador'),
-                    array(
-                        'name' => 'expire',
-                        'value' => 'date("d M Y h:i:s a",$data->expire)',
-                    ),
-                    'ipaddress',
-                    array(
-                        'class' => 'CButtonColumn',
-                        'template' => '{delete}',
-                        'deleteConfirmation' => CrugeTranslator::t("Esta seguro de eliminar esta sesion ?"),
-                        'buttons' => array(
-                            'delete' => array(
-                                'label' => '<button class="btn btn-danger"><i class="icon-trash"></i></button>',
-                                'options' => array('title' => CrugeTranslator::t("eliminar sesion")),
-                                'url' => 'array("sessionadmindelete","id"=>$data->getPrimaryKey())',
-                                'imageUrl' => false,
-                            ),
+            <div class="widget-content in form">
+                <?php
+                //$this->widget(Yii::app()->user->ui->CGridViewClass, array(
+                //    'dataProvider'=>$dataProvider,
+                //    'columns'=>array(
+                //		'idsession',
+                //		array('name'=>'iduser','htmlOptions'=>array('width'=>'50px')),
+                //		array('name'=>'sessionname','filter'=>''),
+                //		array('name'=>'status','filter'=>array(1=>'Activa',0=>'Cerrada')
+                //			,'value'=>'$data->status==1 ? \'activa\' : \'cerrada\' '),
+                //		array('name'=>'created','type'=>'datetime'),
+                //		array('name'=>'lastusage','type'=>'datetime'),
+                //		array('name'=>'usagecount','type'=>'number'),
+                //		array('name'=>'expire','type'=>'datetime'),
+                //		'ipaddress',
+                //		array(
+                //			'class'=>'CButtonColumn',
+                //			'template' => '{delete}',
+                //			'deleteConfirmation'=>CrugeTranslator::t("Esta seguro de eliminar esta sesion ?"),
+                //			'buttons' => array(
+                //					'delete'=>array(
+                //						'label'=>CrugeTranslator::t("eliminar sesion"),
+                //						'imageUrl'=>Yii::app()->user->ui->getResource("delete.png"),
+                //						'url'=>'array("sessionadmindelete","id"=>$data->getPrimaryKey())'
+                //					),
+                //				),	
+                //		)	
+                //	),
+                //	'filter'=>$model,
+                //));
+
+                $this->widget('bootstrap.widgets.TbGridView', array(
+                    'id' => 'llamada-grid',
+                    'type' => 'striped condensed',
+                    'dataProvider' => $model->search(),
+                    'filter' => $model,
+//                    'pager' => array(
+//                        'header' => '',
+//                        'htmlOptions' => array('class' => 'yiiPager pagination no-margin'),
+//                    ),
+                    'columns' => array(
+                        //		'idsession',
+                        //		array('name'=>'iduser','htmlOptions'=>array('width'=>'50px')),
+                        array('name' => 'sessionname', 'filter' => ''),
+                        array('name' => 'status', 'filter' => array(1 => 'Activa', 0 => 'Cerrada')
+                            , 'value' => '$data->status==1 ? \'activa\' : \'cerrada\' '),
+                        array(
+                            'name' => 'created',
+                            'value' => 'date("d M Y h:i:s a",$data->created)',
                         ),
+                        //		array(
+                        //                    'name'=>'lastusage',
+                        //                    'value' => 'date("d M Y h:i:s a",$data->lastusage)',
+                        //                ),
+                        //		array('name'=>'usagecount','type'=>'number', 'header'=>'contador'),
+                        array(
+                            'name' => 'expire',
+                            'value' => 'date("d M Y h:i:s a",$data->expire)',
+                        ),
+                        'ipaddress',
+                        array(
+                            'class' => 'CButtonColumn',
+                            'template' => '{delete}',
+                            'deleteConfirmation' => CrugeTranslator::t("Esta seguro de eliminar esta sesion ?"),
+                            'buttons' => array(
+                                'delete' => array(
+                                    'label' => '<button class="btn btn-danger"><i class="aweso-trash"></i></button>',
+                                    'options' => array('title' => CrugeTranslator::t("eliminar sesion")),
+                                    'url' => 'array("sessionadmindelete","id"=>$data->getPrimaryKey())',
+                                    'imageUrl' => false,
+                                ),
+                            ),
+                        )
                     )
-                )
-            ));
-            ?>
+                ));
+                ?>
 
+            </div>
         </div>
     </div>
 </div>

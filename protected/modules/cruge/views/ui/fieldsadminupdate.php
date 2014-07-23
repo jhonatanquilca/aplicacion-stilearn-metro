@@ -42,8 +42,8 @@ $this->pageTitle = Yii::t('app', 'Campos Personalizados');
                 ));
                 ?>
                 <!--<fieldset>-->
-                <div class='separator-form span12'>
-                    <?php echo ucfirst(CrugeTranslator::t("datos del campo")); ?>
+                <div class='separator-form '>
+                    <?php echo ucfirst(CrugeTranslator::t("Datos del campo")); ?>
                     <hr/>
                 </div>
 
@@ -81,12 +81,13 @@ $this->pageTitle = Yii::t('app', 'Campos Personalizados');
                         <?php echo $form->error($model, 'showinreports', array('style' => 'color:#b94a48')); ?>
                     </div>
                 </div>
+
                 <legend></legend>
-                <div class='separator-form span12'>
+                <div class='separator-form '>
                     <?php echo ucfirst(CrugeTranslator::t("datos del contenido")); ?>
                     <hr/>
                 </div>
-                <legend></legend>
+
                 <div class="controls controls-row">
 
 
@@ -112,7 +113,7 @@ $this->pageTitle = Yii::t('app', 'Campos Personalizados');
                 </div>
 
                 <legend></legend>
-                <div class="controls controls-row">
+                <div class="controls controls-row ">
                     <div class='span3'>
                         <?php echo $form->labelEx($model, 'predetvalue'); ?>
                         <?php echo $form->textArea($model, 'predetvalue', array('rows' => 5, 'cols' => 40)); ?>
@@ -164,24 +165,24 @@ $this->pageTitle = Yii::t('app', 'Campos Personalizados');
 
 
 
-                <div class="form-actions">
-                    <div class="form-actions-float">
-                        <?php
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'buttonType' => 'submit',
-                            'type' => 'success',
-                            'icon' => 'ok',
-                            'label' => CrugeTranslator::t(($model->isNewRecord ? "Crear Campo" : "Actualizar Campo")),
-                        ));
-                        ?>
-                        <?php
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'icon' => 'remove',
-                            'label' => Yii::t('AweCrud.app', 'Cancel'),
-                            'htmlOptions' => array('onclick' => 'javascript:history.go(-1)')
-                        ));
-                        ?>
-                    </div>
+                <div class="form-actions text-center">
+                    <!--<div class="form-actions-float">-->
+                    <?php
+                    $this->widget('bootstrap.widgets.TbButton', array(
+                        'buttonType' => 'submit',
+                        'type' => 'success',
+                        'icon' => 'ok',
+                        'label' => CrugeTranslator::t(($model->isNewRecord ? "Crear Campo" : "Actualizar Campo")),
+                    ));
+                    ?>
+                    <?php
+                    $this->widget('bootstrap.widgets.TbButton', array(
+                        'icon' => 'remove',
+                        'label' => Yii::t('AweCrud.app', 'Cancel'),
+                        'htmlOptions' => array('onclick' => 'javascript:history.go(-1)')
+                    ));
+                    ?>
+                    <!--</div>-->
                 </div>
                 <?php echo $form->errorSummary($model); ?>
                 <!--</fieldset>-->

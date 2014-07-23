@@ -1076,8 +1076,11 @@ class UiController extends Controller {
     }
 
     public function actionSessionAdminDelete($id) {
+        var_dump($_POST);
+        die();
         if (Yii::app()->request->isAjaxRequest) {
             $model = Yii::app()->user->um->loadSessionById($id);
+
             if ($model != null) {
                 $model->delete();
             }
