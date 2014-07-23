@@ -12,8 +12,8 @@
                 <h1>Contactos</h1>
                 <h2>La mejor manera de tener la informaci&oacute;n de sus conocidos organizada.</h2>
                 <?php
-                echo CHtml::link('<i class="icon-plus-sign"></i> Crear Nuevo', array('/crm/contacto/create'), array(
-                    'class' => 'btn btn-large btn-success'
+                echo CHtml::link('<i class="aweso-plus"></i> Crear Nuevo', array('/crm/contacto/create'), array(
+                    'class' => 'btn btn-large btn-primary'
                 ));
                 ?>
             </div>

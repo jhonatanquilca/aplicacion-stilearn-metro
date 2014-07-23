@@ -1,97 +1,125 @@
-
 <?php
 /* $model:  es una instancia que implementa a ICrugeField */
 
 $this->pageTitle = Yii::t('app', 'Campos Personalizados');
 ?>
-<div class="col-lg-12">
-    <div class="widget">
-        <div class="widget-header">
-            <h4>
-                <a class="icon-chevron-down" data-toggle="collapse" href=".widget-content"></a>
-                <i class="icon-list"></i> <?php
-                echo ucwords(CrugeTranslator::t(
-                                (($model->isNewRecord == 1) ? "creando nuevo campo personalizado" : "editando campo personalizado")
+
+<br/>
+<br/>
+<div class="row-fluid">
+    <div class="span12">
+        <!-- widget button -->
+        <div class="widget border-green " id="widget-button">
+
+            <!-- widget header -->
+            <div class="widget-header bg-green">
+                <!-- widget title -->
+                <h4 class="widget-title"><i class="aweso-user"></i>
+                    <?php
+                    echo ucwords(CrugeTranslator::t(
+                                    (($model->isNewRecord == 1) ? "creando nuevo campo personalizado" : "editando campo personalizado")
+                    ));
+                    ?>
+                </h4>
+                <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
+                <div class="widget-action">
+                    <button data-toggle="collapse" data-collapse="#widget-button" class="btn">
+                        <i class="aweso-chevron-up color-green" data-toggle-icon="aweso-chevron-down  aweso-chevron-up"></i>
+                    </button>
+                </div>
+            </div><!-- /widget header -->
+
+            <div class="widget-content bg-white">
+                <?php
+                $form = $this->beginWidget('CActiveForm', array(
+//                'type'=>'horizontal',
+                    'id' => 'crugefield-form',
+                    'enableAjaxValidation' => false,
+                    'enableClientValidation' => false,
+                    'htmlOptions' => array(
+                        'class' => 'form-vertical'
+                    ),
                 ));
                 ?>
-            </h4>
+                <!--<fieldset>-->
+                <div class='separator-form span12'>
+                    <?php echo ucfirst(CrugeTranslator::t("datos del campo")); ?>
+                    <hr/>
+                </div>
 
-        </div>
-        <div class="widget-content">
-            <?php
-            $form = $this->beginWidget('CActiveForm', array(
-//                'type'=>'horizontal',
-                'id' => 'crugefield-form',
-                'enableAjaxValidation' => false,
-                'enableClientValidation' => false,
-                'htmlOptions' => array(
-                    'class' => 'form-horizontal'
-                ),
-            ));
-            ?>
-            <fieldset>
-                <div class="row-fluid form-group">
-                    <div class='separator-form col-lg-11'><?php echo ucfirst(CrugeTranslator::t("datos del campo")); ?></div>
-                    <div class="clear"></div>
-                    <div class='control-group'>
+                <div class="controls controls-row">
+
+                    <div class='span3'>
                         <?php echo $form->labelEx($model, 'fieldname'); ?>
                         <?php echo $form->textField($model, 'fieldname', array('size' => 15, 'maxlength' => 20)); ?>
-                        <?php echo $form->error($model, 'fieldname'); ?>
+                        <?php echo $form->error($model, 'fieldname', array('style' => 'color:#b94a48')); ?>
+
+
                     </div>
-                    <div class='control-group'>
+                    <div class='span3'>
                         <?php echo $form->labelEx($model, 'longname'); ?>
                         <?php echo $form->textField($model, 'longname'); ?>
-                        <?php echo $form->error($model, 'longname'); ?>
+                        <?php echo $form->error($model, 'longname', array('style' => 'color:#b94a48')); ?>
                     </div>
-                    <div class='control-group'>
+                    <div class='span3'>
                         <?php echo $form->labelEx($model, 'position'); ?>
                         <?php echo $form->textField($model, 'position', array('size' => 5, 'maxlength' => 3)); ?>
-                        <?php echo $form->error($model, 'position'); ?>
+                        <?php echo $form->error($model, 'position', array('style' => 'color:#b94a48')); ?>
                     </div>
-                    <div class='control-group'>
+
+                </div>
+                <legend></legend>
+                <div class="controls controls-row">
+                    <div class='span3'>
                         <?php echo $form->labelEx($model, 'required'); ?>
                         <?php echo $form->checkBox($model, 'required'); ?>
-                        <?php echo $form->error($model, 'required'); ?>
+                        <?php echo $form->error($model, 'required', array('style' => 'color:#b94a48')); ?>
                     </div>
-                    <div class='control-group'>
+                    <div class='span3'>
                         <?php echo $form->labelEx($model, 'showinreports'); ?>
                         <?php echo $form->checkBox($model, 'showinreports'); ?>
-                        <?php echo $form->error($model, 'showinreports'); ?>
+                        <?php echo $form->error($model, 'showinreports', array('style' => 'color:#b94a48')); ?>
+                    </div>
+                </div>
+                <legend></legend>
+                <div class='separator-form span12'>
+                    <?php echo ucfirst(CrugeTranslator::t("datos del contenido")); ?>
+                    <hr/>
+                </div>
+                <legend></legend>
+                <div class="controls controls-row">
+
+
+
+                    <div class='span3'>
+                        <?php echo $form->labelEx($model, 'fieldtype'); ?>
+                        <?php
+                        echo $form->dropDownList($model, 'fieldtype'
+                                , Yii::app()->user->um->getFieldTypeOptions());
+                        ?>
+                        <?php echo $form->error($model, 'fieldtype', array('style' => 'color:#b94a48')); ?>
+                    </div>
+                    <div class='span3'>
+                        <?php echo $form->labelEx($model, 'fieldsize'); ?>
+                        <?php echo $form->textField($model, 'fieldsize', array('size' => 5, 'maxlength' => 3)); ?>
+                        <?php echo $form->error($model, 'fieldsize', array('style' => 'color:#b94a48')); ?>
+                    </div>
+                    <div class='span3'>
+                        <?php echo $form->labelEx($model, 'maxlength'); ?>
+                        <?php echo $form->textField($model, 'maxlength', array('size' => 5, 'maxlength' => 5)); ?>
+                        <?php echo $form->error($model, 'maxlength', array('style' => 'color:#b94a48')); ?>
                     </div>
                 </div>
 
-                <div class="row-fluid form-group">
-                    <div class='separator-form col-lg-12'><?php echo ucfirst(CrugeTranslator::t("datos del contenido")); ?></div>
-                    <div class="clear"></div>
-                    <div class="field-group">
-                        <div class='control-group'>
-                            <?php echo $form->labelEx($model, 'fieldtype'); ?>
-                            <?php
-                            echo $form->dropDownList($model, 'fieldtype'
-                                    , Yii::app()->user->um->getFieldTypeOptions());
-                            ?>
-                            <?php echo $form->error($model, 'fieldtype'); ?>
-                        </div>
-                        <div class='control-group'>
-                            <?php echo $form->labelEx($model, 'fieldsize'); ?>
-                            <?php echo $form->textField($model, 'fieldsize', array('size' => 5, 'maxlength' => 3)); ?>
-                            <?php echo $form->error($model, 'fieldsize'); ?>
-                        </div>
-                        <div class='control-group'>
-                            <?php echo $form->labelEx($model, 'maxlength'); ?>
-                            <?php echo $form->textField($model, 'maxlength', array('size' => 5, 'maxlength' => 5)); ?>
-                            <?php echo $form->error($model, 'maxlength'); ?>
-                        </div>
-                    </div>
-
-                    <div class="field-group">
-                        <div class='control-group'>
-                            <?php echo $form->labelEx($model, 'predetvalue'); ?>
-                            <?php echo $form->textArea($model, 'predetvalue', array('rows' => 5, 'cols' => 40)); ?>
-                            <?php echo $form->error($model, 'predetvalue'); ?>
-                            <p class='hint'><?php
-                                echo CrugeTranslator::t(
-                                        "si el fieldtype es un Listbox ponga aqui las opciones una por cada linea,
+                <legend></legend>
+                <div class="controls controls-row">
+                    <div class='span3'>
+                        <?php echo $form->labelEx($model, 'predetvalue'); ?>
+                        <?php echo $form->textArea($model, 'predetvalue', array('rows' => 5, 'cols' => 40)); ?>
+                        <?php echo $form->error($model, 'predetvalue'); ?>
+                        <p class='hint'><?php
+                            echo CrugeTranslator::t(
+                                    "Si el fieldtype es un Listbox ponga aqui las opciones una por cada linea,
          el valor coloquelo al inicio seguido de una coma, ejemplo:
          <ul style='list-style: none;'>
          <li>1, azul</li>
@@ -99,10 +127,10 @@ $this->pageTitle = Yii::t('app', 'Campos Personalizados');
          <li>3, verde</li>
          </ul>
         "
-                                );
-                                ?></p>
-                        </div>
+                            );
+                            ?></p>
                     </div>
+
                 </div>
 
                 <!--<div class="row-fluid form-group">
@@ -156,8 +184,10 @@ $this->pageTitle = Yii::t('app', 'Campos Personalizados');
                     </div>
                 </div>
                 <?php echo $form->errorSummary($model); ?>
-            </fieldset>
-            <?php $this->endWidget(); ?>
+                <!--</fieldset>-->
+                <?php $this->endWidget(); ?>
+            </div>
         </div>
     </div>
 </div>
+
