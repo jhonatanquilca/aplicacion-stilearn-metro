@@ -156,9 +156,9 @@ var RLANG = {
 
 			imageGetJson: false, // url (ex. /folder/images.json ) or false
 
-			imageUpload:false, // url
-			imageUploadCallback: true, // function
-			imageUploadErrorCallback: true, // function
+			imageUpload: false, // url
+			imageUploadCallback: false, // function
+			imageUploadErrorCallback: false, // function
 
 			fileUpload: false, // url
 			fileUploadCallback: false, // function
