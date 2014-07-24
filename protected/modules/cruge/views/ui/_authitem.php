@@ -97,7 +97,7 @@
                             $url = Yii::app()->user->ui->getRbacAuthItemDeleteUrl($data->name);
                             $imagen = 'delete.png';
                     }
-                    echo CHtml::link('<i class="icon-remove"></i>',$url
+                    echo CHtml::link('<i class="aweso-remove"></i>',$url
                             ,array('title'=>CrugeTranslator::t($titulo),'class'=>'btn btn-danger pull-right')
                             );
             ?>

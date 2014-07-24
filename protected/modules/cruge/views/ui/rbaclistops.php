@@ -41,7 +41,7 @@ $this->pageTitle = Yii::t('app', 'Roles y Asignaciones');
                             </ul>
                         </div>
                         <?php
-                        echo CHtml::link('<i class="icon-plus icon-white"></i> ' . CrugeTranslator::t("Crear Nueva Operacion")
+                        echo CHtml::link('<i class="aweso-plus icon-white"></i> ' . CrugeTranslator::t("Crear Nueva Operacion")
                                 , Yii::app()->user->ui->getRbacAuthItemCreateUrl(CAuthItem::TYPE_OPERATION), array('class' => 'btn btn-success pull-right'));
                         ?>
                     </div>
