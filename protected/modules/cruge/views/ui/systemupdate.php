@@ -2,23 +2,23 @@
 /* formulario de edicion de CrugeSystem argumento: $model: instancia de ICrugeSession */
 $this->pageTitle = Yii::t('app', 'Sistema');
 ?>
-
+<br/>
+<br/>
 <?php
 if (Yii::app()->user->hasFlash('systemFormFlash')) {
-    echo "<div class='alert alert-success'>";
+    echo "<div class='alert bg-green'>";
     echo Yii::app()->user->getFlash('systemFormFlash');
     echo "</div>";
 }
 ?>
-<br/>
-<br/>
+
 <div class="row-fluid">
     <div class="span12">
         <!-- widget button -->
-        <div class="widget border-green" id="widget-button">
+        <div class="widget border-emerald" id="widget-button">
 
             <!-- widget header -->
-            <div class="widget-header bg-green">
+            <div class="widget-header  bg-emerald">
                 <!-- widget title -->
                 <h4 class="widget-title"><i class="aweso-key"></i> <?php echo ucwords(CrugeTranslator::t("sesiones de usuario")); ?></h4>
                 <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->

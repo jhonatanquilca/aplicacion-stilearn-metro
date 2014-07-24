@@ -2,20 +2,31 @@
 <?php $this->beginContent('//layouts/main'); ?>
 
 <?php if ($this->menu): ?>
-    <div class="top-controlls">
-        <?php foreach ($this->menu as $menu) : ?>
-            <?php
-            $this->widget(
-                    'bootstrap.widgets.TbButtonGroup', array(
-                'buttons' => array($menu),
-                    )
-            );
-            ?>
-    <?php endforeach; ?>
-    </div>
+
+    <header class="content-header">
+        <ul class="content-action pull-right">
+            <li>
+                <?php foreach ($this->menu as $menu) : ?>
+                    <?php
+                    $this->widget(
+                            'bootstrap.widgets.TbButtonGroup', array(
+                        'buttons' => array($menu),
+                            )
+                    );
+                    ?>
+                <?php endforeach; ?>
+            </li>
+        </ul>
+    </header>
+
 <?php endif; ?>
 
-<?php echo $content; ?>
-
+<article class="content-page">
+    <div class="main-page">
+        <div class="content-inner">
+            <?php echo $content; ?>
+        </div>
+    </div>
+</article>
 
 <?php $this->endContent(); ?>

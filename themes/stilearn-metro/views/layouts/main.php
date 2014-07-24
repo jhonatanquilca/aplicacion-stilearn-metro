@@ -100,7 +100,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                      
+
                                         <li>
                                             <div class="setting-list">
                                                 <div class="icon"><i class="aweso-2x aweso-pushpin"></i></div>
@@ -125,9 +125,9 @@
                                                 </div>
                                             </div>
                                         </li>
-                                     
-                                      
-                                                                 
+
+
+
                                         <li class="dropdown-footer">
                                             <a tabindex="-1" href="#"><i class="aweso-angle-right pull-right"></i> Settings page</a>
                                         </li>
@@ -202,7 +202,7 @@
 
             <!-- start content -->
             <div class="content">
-                
+
                 <?php echo $content; ?>
 
             </div> <!--/ end content -->
