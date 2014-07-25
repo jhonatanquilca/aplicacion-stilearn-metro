@@ -142,9 +142,9 @@
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                                         <?php if (!Yii::app()->user->isGuest): ?>
-                                            <li><?php echo CHtml::link('<i class="icon-user"></i>&nbsp;&nbsp;Mi Cuenta', array('/cruge/ui/editprofile')) ?></a></li>
+                                            <li><?php echo CHtml::link('<i class="aweso-user"></i>&nbsp;&nbsp;Mi Cuenta', array('/cruge/ui/editprofile')) ?></a></li>
                                             <?php if (Yii::app()->user->checkAccess('admin')): ?>
-                                                <li><?php echo CHtml::link('<i class="icon-cog"></i>&nbsp;&nbsp;Administración', Yii::app()->user->ui->userManagementAdminUrl) ?></li>
+                                                <li><?php echo CHtml::link('<i class="aweso-cog"></i>&nbsp;&nbsp;Administración', Yii::app()->user->ui->userManagementAdminUrl) ?></li>
                                                 <li class="divider"></li>
                                             <?php endif; ?>
                                             <li><?php echo CHtml::link('<i class="aweso-power-off"></i>&nbsp;&nbsp;Cerrar Sesión', Yii::app()->user->ui->logoutUrl) ?></a></li>
