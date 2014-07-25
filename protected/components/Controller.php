@@ -24,4 +24,11 @@ class Controller extends CController
          * @var bool context of the menu type. 
          */
         public $admin=false;
+        
+          /**
+         * @var string context of the title. 
+         */
+        public $header="";
+        
+        
 }

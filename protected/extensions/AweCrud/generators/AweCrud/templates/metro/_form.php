@@ -5,62 +5,81 @@
  */
 /** @var AweCrudCode $this */
 ?>
-<div class="form">
-    <?php echo "<?php\n" ?>
-    /** @var <?php echo $this->controllerClass; ?> $this */
-    /** @var <?php echo $this->modelClass; ?> $model */
-    /** @var AweActiveForm $form */
-    $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
-    'id' => '<?php echo $this->class2id($this->modelClass) ?>-form',
-    'enableAjaxValidation' => <?php echo $this->validation == 1 || $this->validation == 3 ? 'true' : 'false' ?>,
-    'enableClientValidation'=> <?php echo $this->validation == 2 || $this->validation == 3 ? 'true' : 'false' ?>,
-    )); ?>
 
-    <p class="note">
-        <?php echo "<?php echo Yii::t('AweCrud.app', 'Fields with') ?>" ?> <span class="required">*</span>
-        <?php echo "<?php echo Yii::t('AweCrud.app', 'are required') ?>." ?>
-    </p>
+<div class="row-fluid">
+    <div class="span12">
+        <!-- widget button -->
+        <div class="widget border-cyan" id="widget-button">
 
-    <?php echo "<?php echo \$form->errorSummary(\$model) ?>\n" ?>
+            <!-- widget header -->
+            <div class="widget-header bg-cyan">
+                <!-- widget title -->
+                <h4 class="widget-title"><i class="aweso-user"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo User1::label(2) ?></h4>
+                <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
+                <div class="widget-action">
+                    <button data-toggle="collapse" data-collapse="#widget-button" class="btn">
+                        <i class="aweso-chevron-up color-cyan" data-toggle-icon="aweso-chevron-down  aweso-chevron-up"></i>
+                    </button>
+                </div>
+            </div><!-- /widget header -->
+            <div class="widget-content form bg-white">
+                <?php echo "<?php\n" ?>
+                /** @var <?php echo $this->controllerClass; ?> $this */
+                /** @var <?php echo $this->modelClass; ?> $model */
+                /** @var AweActiveForm $form */
+                $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
+                'id' => '<?php echo $this->class2id($this->modelClass) ?>-form',
+                'enableAjaxValidation' => <?php echo $this->validation == 1 || $this->validation == 3 ? 'true' : 'false' ?>,
+                'enableClientValidation'=> <?php echo $this->validation == 2 || $this->validation == 3 ? 'true' : 'false' ?>,
+                'type'=>'horizontal',
+                )); ?>
 
-    <?php
-    foreach ($this->tableSchema->columns as $column): ?>
-        <?php
-        if ($column->autoIncrement || in_array($column->name, array_merge($this->create_time, $this->update_time))) {
-            continue;
-        }
-        //skip many to many relations, they are rendered below, this allows handling of nm relationships
-        foreach ($this->getRelations() as $relation) {
-            if ($relation[2] == $column->name && $relation[0] == 'CManyManyRelation') {
-                continue 2;
-            }
-        }
-        ?>
-        <?php echo "<?php echo " . $this->generateActiveField($this->modelClass, $column) . " ?>\n"; ?>
-        <?php endforeach; ?>
-    <?php
-    foreach ($this->getRelations() as $relatedModelClass => $relation) {
-        if ($relation[0] == 'CManyManyRelation') {
-            echo "<div class=\"row nm_row\">\n";
-            echo $this->getNMField($relation, $relatedModelClass, $this->modelClass);
-            echo "</div>\n\n";
-        }
-    }
+                <p class="note">
+                    <?php echo "<?php echo Yii::t('AweCrud.app', 'Fields with') ?>" ?> <span class="required">*</span>
+                    <?php echo "<?php echo Yii::t('AweCrud.app', 'are required') ?>." ?>
+                </p>
 
-    ?>
-    <div class="form-actions">
-        <?php echo "" ?>
-        <?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
+                <?php echo "<?php echo \$form->errorSummary(\$model) ?>\n" ?>
+
+                <?php foreach ($this->tableSchema->columns as $column): ?>
+                    <?php
+                    if ($column->autoIncrement || in_array($column->name, array_merge($this->create_time, $this->update_time))) {
+                        continue;
+                    }
+                    //skip many to many relations, they are rendered below, this allows handling of nm relationships
+                    foreach ($this->getRelations() as $relation) {
+                        if ($relation[2] == $column->name && $relation[0] == 'CManyManyRelation') {
+                            continue 2;
+                        }
+                    }
+                    ?>
+                    <?php echo "<?php echo " . $this->generateActiveField($this->modelClass, $column) . " ?>\n"; ?>
+                <?php endforeach; ?>
+                <?php
+                foreach ($this->getRelations() as $relatedModelClass => $relation) {
+                    if ($relation[0] == 'CManyManyRelation') {
+                        echo "<div class=\"row nm_row\">\n";
+                        echo $this->getNMField($relation, $relatedModelClass, $this->modelClass);
+                        echo "</div>\n\n";
+                    }
+                }
+                ?>
+                <div class="form-actions">
+                <?php echo "" ?>
+                    <?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
 			'label'=>\$model->isNewRecord ? Yii::t('AweCrud.app', 'Create') : Yii::t('AweCrud.app', 'Save'),
 		)); ?>\n" ?>
-        <?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
+                    <?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
 			//'buttonType'=>'submit',
 			'label'=> Yii::t('AweCrud.app', 'Cancel'),
 			'htmlOptions' => array('onclick' => 'javascript:history.go(-1)')
 		)); ?>\n" ?>
-    </div>
+                </div>
 
-    <?php echo "<?php \$this->endWidget(); ?>\n" ?>
+<?php echo "<?php \$this->endWidget(); ?>\n" ?>
+            </div>
+        </div>
+    </div>
 </div>

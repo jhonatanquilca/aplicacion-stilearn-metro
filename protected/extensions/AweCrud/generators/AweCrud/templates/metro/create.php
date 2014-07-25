@@ -15,7 +15,7 @@ echo "\$this->breadcrumbs=array(
 	Yii::t('AweCrud.app', 'Create'),
 );\n";
 ?>
-
+$this->header='<i class="aweso-paper-clip aweso-2x"></i> '. <?php echo " Yii::t('AweCrud.app', 'Create') " ?><?php echo ".' '.";?> <?php echo "{$this->modelClass}::label() ;\n" ?>
 $this->menu=array(
     //array('label' => Yii::t('AweCrud.app', 'List').' '.<?php echo $this->modelClass ?>::label(2), 'icon' => 'list', 'url' => array('index')),
     array('label' => Yii::t('AweCrud.app', 'Manage'), 'icon' => 'list-alt', 'url' => array('admin')),
@@ -23,6 +23,6 @@ $this->menu=array(
 ?>
 
 <fieldset>
-    <legend><?php echo "<?php echo Yii::t('AweCrud.app', 'Create') . ' ' . {$this->modelClass}::label(); ?>" ?></legend>
+    
     <?php echo "<?php echo \$this->renderPartial('_form', array('model' => \$model)); ?>".PHP_EOL; ?>
 </fieldset>
