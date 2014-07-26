@@ -1,17 +1,15 @@
 <?php
 /** @var User1Controller $this */
 /** @var User1 $model */
-
-
 ?>
 
 
 
-<?php 
-$this->header='<i class="aweso-dashboard aweso-2x"></i> '.  Yii::t('AweCrud.app', 'Manage') .' '. User1::label(2) ;
+<?php
+$this->header = '<i class="aweso-dashboard aweso-2x"></i> ' . Yii::t('AweCrud.app', 'Manage') . ' ' . User1::label(2);
 $this->menu = array(
-array('label' => Yii::t('AweCrud.app', 'List') . ' ' . User1::label(2), 'icon' => 'list', 'url' => array('index')),
-array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . User1::label(), 'icon' => 'plus', 'url' => array('create')),
+    array('label' => Yii::t('AweCrud.app', 'List') . ' ' . User1::label(2), 'icon' => 'list', 'url' => array('index')),
+    array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . User1::label(), 'icon' => 'plus', 'url' => array('create')),
 );
 ?>
 
@@ -35,23 +33,53 @@ array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . User1::label(), 'icon' 
                 </div><!-- /widget header -->
                 <!-- widget content -->
                 <div class="widget-content bg-white">
-                    <?php $this->widget('bootstrap.widgets.TbGridView',array(
-                    'id' => 'user1-grid',
-                    'type' => 'striped bordered hover advance wrapper',
-                    'template' => '{items}{summary}{pager}',
-                    'dataProvider' => $model->search(),
-                    'selectableRows' => 2,
-//                    'filter' => $model,
-                    'columns' => array(
-                                            'id',
-                                                'username',
-                                                'password',
-                                                'email',
-                                            array(
-                    'class'=>'bootstrap.widgets.TbButtonColumn',
-                    ),
-                    ),
-                    )); ?>
+                    <?php
+//$this->widget('bootstrap.widgets.TbGridView',array(
+                    $this->widget('ext.selgridview.BootSelGridView', array(
+                        'id' => 'user1-grid',
+                        'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
+                        'template' => '{summary}{items}{pager}',
+                        'dataProvider' => $model->search(),
+                        'pagerCssClass' => 'pagination text-center',
+                        'selectableRows' => 2,
+                        //'filter' => $model,
+                        'columns' => array(
+                            'id',
+                            'username',
+                            'password',
+                            'email',
+                            array(
+                                //'class'=>'bootstrap.widgets.TbButtonColumn',
+                                'class' => 'CButtonColumn',
+                                'template' => '{view} {update} {delete}',
+                                'deleteConfirmation' => CrugeTranslator::t('admin', 'Are you sure you want to delete this user'),
+                                'buttons' => array(
+                                    'view' => array(
+                                        'label' => '<button class="btn btn-success"><i class="aweso-eye-open"></i></button>',
+                                        'options' => array('title' => Yii::t('AweCrud.app', 'View')),
+                                        // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
+                                        'imageUrl' => false,
+                                    ),
+                                    'update' => array(
+                                        'label' => '<button class="btn btn-info"><i class="aweso-pencil"></i></button>',
+                                        'options' => array('title' => Yii::t('AweCrud.app', 'Update')),
+                                        // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
+                                        'imageUrl' => false,
+                                    ),
+                                    'delete' => array(
+                                        'label' => '<button class="btn btn-danger"><i class="aweso-trash"></i></button>',
+                                        'options' => array('title' => Yii::t('AweCrud.app', 'Delete')),
+                                        // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
+                                        'imageUrl' => false,
+                                    ),
+                                ),
+                                'htmlOptions' => array(
+                                    'width' => '120px'
+                                )
+                            ),
+                        ),
+                    ));
+                    ?>
                 </div>
             </div>
         </div>

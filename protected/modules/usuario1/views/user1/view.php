@@ -1,13 +1,13 @@
 <?php
 /** @var User1Controller $this */
 /** @var User1 $model */
-$this->breadcrumbs = array(
-    'User1s' => array('index'),
-    $model->id,
+$this->breadcrumbs=array(
+	'User1s'=>array('index'),
+	$model->id,
 );
 
-$this->header = '<i class="aweso-info-sign aweso-2x"></i> ' . Yii::t('AweCrud.app', 'View') . ' ' . User1::label() . ' ' . CHtml::encode($model);
-$this->menu = array(
+$this->header='<i class="aweso-info-sign aweso-2x"></i> '.  Yii::t('AweCrud.app', 'View') .' '. User1::label() .' '. CHtml::encode($model);
+$this->menu=array(
 //array('label' => Yii::t('AweCrud.app', 'List') . ' ' . User1::label(2), 'icon' => 'list', 'url' => array('index')),
 //array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . User1::label(), 'icon' => 'plus', 'url' => array('create')),
 //array('label' => Yii::t('AweCrud.app', 'Update'), 'icon' => 'pencil', 'url' => array('update', 'id' => $model->id)),
@@ -36,20 +36,18 @@ $this->menu = array(
                 <!-- widget content -->
                 <div class="widget-content bg-white">
 
-                    <?php
-                    $this->widget('bootstrap.widgets.TbDetailView', array(
-                        'data' => $model,
-                        'attributes' => array(
-                            'id',
-                            'username',
-                            'password',
-                            array(
-                                'name' => 'email',
-                                'type' => 'email'
-                            ),
-                        ),
-                    ));
-                    ?>
+                    <?php $this->widget('bootstrap.widgets.TbDetailView',array(
+                    'data' => $model,
+                    'attributes' => array(
+                                            'id',
+                                            'username',
+                                            'password',
+                                            array(
+                'name' => 'email',
+                'type' => 'email'
+            ),
+                                        ),
+                    )); ?>
                 </div>
             </div>
         </div>

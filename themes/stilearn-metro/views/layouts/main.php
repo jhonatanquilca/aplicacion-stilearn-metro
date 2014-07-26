@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
         <!--<title>Dashboard #4 - Stilearn Metro Admin Bootstrap</title>-->
