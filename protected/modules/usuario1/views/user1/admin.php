@@ -37,11 +37,11 @@ array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . User1::label(), 'icon' 
                 <div class="widget-content bg-white">
                     <?php $this->widget('bootstrap.widgets.TbGridView',array(
                     'id' => 'user1-grid',
-                    'type' => 'striped bordered hover advance',
+                    'type' => 'striped bordered hover advance wrapper',
                     'template' => '{items}{summary}{pager}',
                     'dataProvider' => $model->search(),
                     'selectableRows' => 2,
-                    'filter' => $model,
+//                    'filter' => $model,
                     'columns' => array(
                                             'id',
                                                 'username',

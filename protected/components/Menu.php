@@ -7,7 +7,7 @@ class Menu {
     public static function getMenu($controller) {
         self::$_controller = $controller;
         $items = array(
-            array('label' => '', 'itemOptions' => array('class' => 'divider '),),
+//            array('label' => '', 'itemOptions' => array('class' => 'divider '),),
             array('label' => '<i class="aweso-dashboard"></i> Dashboard  ', 'url' => Yii::app()->homeUrl, 'access' => 'Cruge.ui.*',),
             array('label' => '', 'itemOptions' => array('class' => 'divider'),),
             array('label' => '<i class="aweso-desktop"></i> Cuentas ',
@@ -44,7 +44,7 @@ class Menu {
     public static function getAdminMenu($controller) {
         self::$_controller = $controller;
         $items = array(
-            array('label' => '', 'itemOptions' => array('class' => 'divider '),),
+//            array('label' => '', 'itemOptions' => array('class' => 'divider '),),
             array('label' => '<i class="aweso-mail-reply"></i> Volver a la App', 'url' => Yii::app()->homeUrl),
             array('label' => '', 'itemOptions' => array('class' => 'divider'),),
             array('label' => '<i class="icon-user"></i>  Usuarios', 'url' => Yii::app()->user->ui->userManagementAdminUrl, 'access' => 'Cruge.ui.*', 'active_rules' => array('module' => 'cruge')),

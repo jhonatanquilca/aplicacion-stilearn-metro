@@ -118,12 +118,21 @@ return array(
                 'AweCrud' => 'ext.AweCrud.messages', // AweCrud messages directory.
             ),
         ),
-        // uncomment the following to enable URLs in path-format        
+        // uncomment the following to enable URLs in path-format 
+        // url limpias        
+//        'urlManager' => array(
+//            'urlFormat' => 'path',
+//            'showScriptName' => false,
+//            //false no muestrael nombre del archivo en url
+//            //Configura tambien el htaccces principal
+//            'rules' => array(
+//                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+//                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+//                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+//            ),
+//        ),
         'urlManager' => array(
             'urlFormat' => 'path',
-            'showScriptName' => false,
-            //false no muestrael nombre del archivo en url
-            //Configura tambien el htaccces principal
             'rules' => array(
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
@@ -138,6 +147,16 @@ return array(
             'password' => '',
             'charset' => 'utf8',
         ),
+         /* base de datos hostinget */
+       
+//          'db' => array(
+//
+//          'connectionString' => 'mysql:host=mysql.hostinger.co;dbname=u778181481_deuda',
+//          'emulatePrepare' => true,
+//          'username' => 'u778181481_deuda',
+//          'password' => '1004476568',
+//          'charset' => 'utf8',
+//          ), 
         'errorHandler' => array(
             // use 'site/error' action to display errors
 //            'errorAction' => 'site/error',
