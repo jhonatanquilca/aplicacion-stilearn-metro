@@ -14,7 +14,7 @@
             <!-- widget header -->
             <div class="widget-header bg-cyan">
                 <!-- widget title -->
-                <h4 class="widget-title"><i class="aweso-user"></i>  <?php echo Yii::t('AweCrud.app', 'Manage') ?><?php echo "{$this->modelClass}::label() ;\n" ?> </h4>
+                <h4 class="widget-title"><i class="aweso-user"></i> <?php echo "<?php echo Yii::t('AweCrud.app', 'Create') . ' ' . {$this->modelClass}::label(); ?>" ?></h4>
                 <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
                 <div class="widget-action">
                     <button data-toggle="collapse" data-collapse="#widget-button" class="btn">
@@ -65,7 +65,7 @@
                 }
                 ?>
                 <div class="form-actions">
-                <?php echo "" ?>
+                    <?php echo "" ?>
                     <?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
@@ -78,7 +78,7 @@
 		)); ?>\n" ?>
                 </div>
 
-<?php echo "<?php \$this->endWidget(); ?>\n" ?>
+                <?php echo "<?php \$this->endWidget(); ?>\n" ?>
             </div>
         </div>
     </div>
