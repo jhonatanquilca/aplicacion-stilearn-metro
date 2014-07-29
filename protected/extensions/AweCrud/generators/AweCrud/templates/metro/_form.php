@@ -29,8 +29,7 @@
                 /** @var AweActiveForm $form */
                 $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
                 'id' => '<?php echo $this->class2id($this->modelClass) ?>-form',
-                'type'=>'horizontal',
-                'enableAjaxValidation' => false,
+                'type'=>'horizontal',                
                 'enableAjaxValidation' => <?php echo $this->validation == 1 || $this->validation == 3 ? 'true' : 'false' ?>,
                 'clientOptions' => array('validateOnSubmit' => <?php echo $this->validation == 2 || $this->validation == 3 ? 'true' : 'false' ?>, 'validateOnChange' => <?php echo $this->validation == 1 || $this->validation == 3 ? 'true' : 'false' ?>,),
                 'enableClientValidation' => <?php echo $this->validation == 2 || $this->validation == 3 ? 'true' : 'false' ?>,
@@ -43,6 +42,17 @@
                 </p>
 
                 <?php echo "<?php echo \$form->errorSummary(\$model) ?>\n" ?>
+
+                <?php echo' <!--@TODO: Utilizar la estructura comentada si el formulario es de--> 
+                <!--type=vertical caso contrario si es hirizontal no cambia-->
+                <!--                <div class="control-group">
+                <?php // echo $form->labelEx($model, \'nombre\', array(\'class\' => \'control-label\')); ?>
+                                    <div class="controls">
+                <?php // echo $form->textField($model, \'nombre\', array(\'maxlength\' => 64)) ?>
+                <?php // echo $form->error($model, \'nombre\') ?> 
+                                    </div>                                           
+                                </div>-->
+                                ' ?>
 
                 <?php foreach ($this->tableSchema->columns as $column): ?>
                     <?php
