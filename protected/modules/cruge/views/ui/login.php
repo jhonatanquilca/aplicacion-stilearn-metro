@@ -80,18 +80,26 @@
 
                 $('div.forgot>a').attr('class', 'forgot');
             </script>
-            <div class="forgot">
-                <?php echo Yii::app()->user->ui->passwordRecoveryLink; ?>
+            <div class="forgot tile-peek">
+                <h4>
+                    <div class="pull-left text-centere">
+                        <?php echo Yii::app()->user->ui->passwordRecoveryLink; ?>
+
+                    </div>
+                    <div class=" pull-right text-center">
+                        <?php
+                        if (Yii::app()->user->um->getDefaultSystem()->getn('registrationonlogin') === 1)
+                            echo Yii::app()->user->ui->registrationLink;
+                        ?>
+                    </div>
+                </h4>
             </div>
         </div>
     </div>
 
 
 
-    <?php
-    /* if(Yii::app()->user->um->getDefaultSystem()->getn('registrationonlogin')===1)
-      echo Yii::app()->user->ui->registrationLink; */
-    ?>
+
     <?php
     //	si el componente CrugeConnector existe lo usa:
     //
