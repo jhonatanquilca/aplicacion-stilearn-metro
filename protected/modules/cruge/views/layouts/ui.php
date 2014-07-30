@@ -23,8 +23,7 @@ if (Yii::app()->user->isSuperAdmin) {
 ?>
 <article class="content-page">
     <div class="main-page">
-        <div class="content-inner">
-
+        <div class="content-inner">            
             <?php foreach (Yii::app()->user->ui->EmpAdminItems as $menu) : ?>
                 <?php
                 $this->widget(
@@ -34,7 +33,7 @@ if (Yii::app()->user->isSuperAdmin) {
                 );
                 ?>
             <?php endforeach; ?>
-         
+
             <?php echo $content; ?>
 
             <?php if (Yii::app()->user->checkAccess('admin')) { ?>	

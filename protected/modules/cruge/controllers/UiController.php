@@ -292,7 +292,8 @@ class UiController extends Controller {
 
     public function actionRegistration($datakey = '') {
 
-        $this->layout = CrugeUtil::config()->registrationLayout;
+        $this->layout = '//layouts/registrar';
+//                CrugeUtil::config()->registrationLayout;
 
 
         $model = Yii::app()->user->um->createBlankUser();
