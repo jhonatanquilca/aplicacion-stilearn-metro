@@ -39,7 +39,7 @@
                     <?php echo $form->errorSummary($model); ?>
                     <?php
                     foreach (CrugeUtil::config()->availableAuthModes as $authmode) {
-                        echo "<div class='control-grouFp'>";
+                        echo "<div class='control-group'>";
                         echo $form->labelEx($model, $authmode, array('class' => 'control-label'));
                         echo "<div class='controls'>";
                         echo $form->textField($model, $authmode);
