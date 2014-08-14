@@ -8,12 +8,23 @@ class Menu {
         self::$_controller = $controller;
         $items = array(
 //            array('label' => '', 'itemOptions' => array('class' => 'divider '),),
-            array('label' => '<i class="aweso-dashboard"></i> Dashboard  ', 'url' => Yii::app()->homeUrl, 'access' => 'Cruge.ui.*',),
+            array('label' => '<i class="aweso-dashboard"></i> Dashboard  ', 
+                'url' => Yii::app()->homeUrl, 
+                'access' => 'action_dashboard_index',
+                'active_rules' => array('module' => 'principal', 'controller' => 'dashboard')
+                ),
+           
 //            array('label' => '', 'itemOptions' => array('class' => 'divider'),),
             array('label' => '<i class="aweso-desktop"></i> Cuentas ',
                 'url' => array('/tmp/ejemplo/admin'),
                 'access' => 'action_cuenta_admin',
-                'active_rules' => array('module' => 'principal', 'controller' => 'default')),
+                'active_rules' => array('module' => 'principal', 'controller' => 'default')
+                ),
+            array('label' => '<i class="aweso-group"></i> Usuarios ',
+                'url' => array('/usuario1/user1/admin'),
+                'access' => 'action_tbluser_admin',
+                'active_rules' => array('module' => 'usuarios', 'controller' => 'user1')
+                ),
 //            array('label' => '', 'itemOptions' => array('class' => 'divider'),),
             array('label' => '<i class=" aweso-book"></i> Reportes',
                 'url' => '#',
