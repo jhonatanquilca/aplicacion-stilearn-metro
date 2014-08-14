@@ -48,32 +48,41 @@
                         echo "</div>";
                     }
                     ?>
-                    <div class="col">            
+                    <div class="control-group">
                         <?php echo $form->labelEx($model, 'newPassword'); ?>
-                        <div class='item'>
-                            <?php echo $form->textField($model, 'newPassword'); ?>
-                            <p class='hint'><?php
-                                echo CrugeTranslator::t(
-                                        "su contrase&ncaron;a, letras o digitos o los caracteres @#$%. minimo 6 simbolos.");
-                                ?></p>
+                        <div class="controls">
+                            <div class="input-append input-append-inline">
+                                <?php echo $form->textField($model, 'newPassword'); ?>
+
+                                <script>
+                                    function fnSuccess(data) {
+                                        $('#CrugeStoredUser_newPassword').val(data);
+                                    }
+                                    function fnError(e) {
+                                        alert("error: " + e.responseText);
+                                    }
+                                    function generarPass() {
+                                        $('#yt0').click();
+                                    }
+                                </script>
+                                <button class="btn bg-cyan" type="button" onclick="generarPass()"><i class="icon-refresh"></i></button>
+                                <?php
+                                echo CHtml::ajaxbutton(
+                                        CrugeTranslator::t("Generar una nueva clave")
+                                        , Yii::app()->user->ui->ajaxGenerateNewPasswordUrl
+                                        , array('success' => new CJavaScriptExpression('fnSuccess'),
+                                    'error' => new CJavaScriptExpression('fnError'))
+                                        , array('class' => 'hidden'
+                                        ,)
+                                );
+                                ?>
+                            </div>
+                            <?php echo $form->error($model, 'newPassword'); ?>
                         </div>
-                        <?php echo $form->error($model, 'newPassword'); ?>
-                        <script>
-                            function fnSuccess(data) {
-                                $('#CrugeStoredUser_newPassword').val(data);
-                            }
-                            function fnError(e) {
-                                alert("error: " + e.responseText);
-                            }
-                        </script>
-                        <?php
-                        echo CHtml::ajaxbutton(
-                                CrugeTranslator::t("Generar una nueva clave")
-                                , Yii::app()->user->ui->ajaxGenerateNewPasswordUrl
-                                , array('success' => new CJavaScriptExpression('fnSuccess'),
-                            'error' => new CJavaScriptExpression('fnError'))
-                        );
-                        ?>
+                        <p class='hint'><?php
+                            echo CrugeTranslator::t(
+                                    "su contrase&ncaron;a, letras o digitos o los caracteres @#$%. minimo 6 simbolos.");
+                            ?></p>
                     </div>
                     <!--</div>-->
 
@@ -136,8 +145,11 @@
 
 
 
-                    <div class="row buttons">
-                        <?php Yii::app()->user->ui->tbutton("Registrarse"); ?>
+                    <div class="form-actions text-center">
+                        <div class="form-actions-float">
+                            <?php Yii::app()->user->ui->tbutton("Registrarse"); ?>
+                            <a onclick="javascript:history.go(-1)" class="btn btn-warning" id="yw1"><i class="icon-remove"></i> Cancelar</a>
+                        </div>
                     </div>
 
                     <?php $this->endWidget(); ?>

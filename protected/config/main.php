@@ -28,7 +28,8 @@ return array(
     'modules' => array(
 // aqui pones tus modulos        
         'principal',
-        'usuario1',
+        'mail',
+//        'usuario1',
         // uncomment the following to enable the Gii tool   
         'gii' => array(
             'class' => 'system.gii.GiiModule',
@@ -141,7 +142,7 @@ return array(
         ),
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+            'connectionString' => 'mysql:host=localhost;dbname=deudas',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',
