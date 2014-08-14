@@ -30,13 +30,13 @@
 
                 <p class="note">
                     <?php echo Yii::t('AweCrud.app', 'Fields with') ?> <span class="required">*</span>
-                <?php echo Yii::t('AweCrud.app', 'are required') ?>.                </p>
+                    <?php echo Yii::t('AweCrud.app', 'are required') ?>.                </p>
 
                 <?php echo $form->errorSummary($model) ?>
 
                 <?php echo $form->textFieldRow($model, 'username', array('maxlength' => 128)) ?>
                 <?php echo $form->passwordFieldRow($model, 'password', array('maxlength' => 128)) ?>
-                    <?php echo $form->textFieldRow($model, 'email', array('maxlength' => 128)) ?>
+                <?php echo $form->textFieldRow($model, 'email', array('maxlength' => 128)) ?>
                 <div class="form-actions">
                     <?php
                     $this->widget('bootstrap.widgets.TbButton', array(
@@ -54,7 +54,7 @@
                     ?>
                 </div>
 
-<?php $this->endWidget(); ?>
+                <?php $this->endWidget(); ?>
             </div>
         </div>
     </div>
