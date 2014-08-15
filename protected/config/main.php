@@ -30,6 +30,8 @@ return array(
         'principal',
         'mail',
         'cliente',
+        'transaccion',
+        'actividades',
 //        'usuario1',
         // uncomment the following to enable the Gii tool   
         'gii' => array(
@@ -149,8 +151,8 @@ return array(
             'password' => '',
             'charset' => 'utf8',
         ),
-         /* base de datos hostinget */
-       
+        /* base de datos hostinget */
+
 //          'db' => array(
 //
 //          'connectionString' => 'mysql:host=mysql.hostinger.co;dbname=u778181481_deuda',
