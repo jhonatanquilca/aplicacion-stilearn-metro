@@ -29,6 +29,7 @@ return array(
 // aqui pones tus modulos        
         'principal',
         'mail',
+        'cliente',
 //        'usuario1',
         // uncomment the following to enable the Gii tool   
         'gii' => array(

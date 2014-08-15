@@ -1,0 +1,15 @@
+.form-actions-float.flotante {
+    background: #ffffff;
+    border: 1px solid #E5E5E5;
+    border-bottom: none;
+    position: fixed;
+    bottom: 40px;
+    left: 49%;
+    -moz-box-shadow: 0 -1px 3px 1px #888;
+    -webkit-box-shadow: 0 -1px 3px 1px #888;
+    box-shadow: 0 -1px 3px 1px #888;
+    padding: 20px;
+}
+.span8 .form-actions-float.flotante {
+    left: 35%;
+}

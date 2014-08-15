@@ -1,6 +1,4 @@
 <div class="empty-model">
-
-
     <div class="row-fluid">
         <div class="span3">
             <div class="empty-model-icon"><i class="aweso-group"></i></div>
@@ -18,3 +16,4 @@
         </div>
     </div>
 </div>
+

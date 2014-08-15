@@ -77,18 +77,20 @@
                     }
                 }
                 ?>
-                <div class="form-actions">
-                    <?php echo "" ?>
-                    <?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
+                <div class="form-actions bg-silver">
+                    <div class="form-actions-float">
+                        <?php echo "" ?>
+                        <?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
 			'label'=>\$model->isNewRecord ? Yii::t('AweCrud.app', 'Create') : Yii::t('AweCrud.app', 'Save'),
 		)); ?>\n" ?>
-                    <?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
+                        <?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
 			//'buttonType'=>'submit',
 			'label'=> Yii::t('AweCrud.app', 'Cancel'),
 			'htmlOptions' => array('onclick' => 'javascript:history.go(-1)')
 		)); ?>\n" ?>
+                    </div>
                 </div>
 
                 <?php echo "<?php \$this->endWidget(); ?>\n" ?>

@@ -31,6 +31,8 @@
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/morrisjs/morris.css" rel="stylesheet" />
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/datatables/DT_bootstrap.css" rel="stylesheet" />
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/fullcalendar/fullcalendar.css" rel="stylesheet" />
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/empty-model.css" rel="stylesheet" />
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/form-actions-float.css" rel="stylesheet" />
 
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -233,6 +235,7 @@
         <!--@TODO revisar js problemas con bootstrap-->
 <!--        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.min.js"></script>  preoblema confiltro de grid-->
         <!--problema con  tile de botones de grid-->
+        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/common-scripts.js"></script>  
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui.min.js"></script>  
 
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.ui.touch-punch.min.js"></script>

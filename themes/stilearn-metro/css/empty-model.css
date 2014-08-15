@@ -1,0 +1,54 @@
+.empty {
+    padding: 8px 35px 8px 14px;
+}
+.empty-portlet {
+    display: block;
+    padding: 15px;
+}
+
+.empty-portlet i {
+    font-size: 50px;
+}
+.empty-model {
+    padding: 30px 0;
+}
+
+.empty-model-icon {
+    padding: 50px 25px;
+    font-size: 200px;
+    text-align: center;
+}
+
+.empty-model-description {
+    padding: 50px;
+    border-left: solid 5px #008AC5;
+    min-height: 200px !important;
+}
+
+.empty-model-description .btn {
+    margin-top: 10px; 
+}
+
+.empty-model-description h1 {
+    font-weight: bold;
+    font-size: 50px;
+    color: #008AC5;
+}
+
+.empty-model-header {
+    margin: 0 0 30px;
+}
+
+.empty-model-cuote {
+    color: #008AC5;
+    font-size: 40px;
+    line-height: 1.2;
+    font-style: italic;
+}
+
+.empty-model-cuote-author {
+    line-height: 1.5;
+    font-weight: bold;
+    font-size: 20px;
+}
+

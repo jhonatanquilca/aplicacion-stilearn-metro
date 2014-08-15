@@ -1,11 +1,11 @@
 <?php
 
-Yii::import('usuario1.models._base.BaseUser1');
+Yii::import('cliente.models._base.BaseCltCliente');
 
-class User1 extends BaseUser1
+class CltCliente extends BaseCltCliente
 {
     /**
-     * @return User1
+     * @return CltCliente
      */
     public static function model($className = __CLASS__)
     {
@@ -14,7 +14,7 @@ class User1 extends BaseUser1
 
     public static function label($n = 1)
     {
-        return Yii::t('app', 'User1|User1s', $n);
+        return Yii::t('app', 'CltCliente|CltClientes', $n);
     }
 
 }
