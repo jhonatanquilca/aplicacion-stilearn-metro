@@ -6,7 +6,7 @@
 // CWebApplication properties can be configured here.
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'Aplicacion Base',
+    'name' => 'Deudas CRM',
     'language' => 'es',
     //Uncoment if you have a theme on folder themes
     'theme' => 'stilearn-metro',
@@ -189,7 +189,7 @@ return array(
         'crugemailer' => array(
             'class' => 'application.modules.cruge.components.CrugeMailer',
             'mailfrom' => 'email-desde-donde-quieres-enviar-los-mensajes@xxxx.com',
-            'subjectprefix' => 'Bliblioteca CRM - ',
+            'subjectprefix' => 'Deudas SysLady - ',
             'debug' => true,
         ),
         'format' => array(

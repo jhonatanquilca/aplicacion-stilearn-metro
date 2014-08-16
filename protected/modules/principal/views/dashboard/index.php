@@ -1,16 +1,26 @@
 <?php
 /* @var $this SiteController */
 
-//$this->pageTitle = Yii::app()->name;
+$this->pageTitle = Yii::app()->name;
 ?>
 
 <!-- content header -->
-<header class="content-header no-border">
+<!--<header class="content-header no-border">-->
+<header class="content-header ">
     <!-- content title-->
-    <div class="page-header"><h3><i class="aweso-dashboard"></i> Dashboard</h3></div>
+
+    <ul class="page-header">
+         <!--content title-->
+        <div class="page-header">
+
+            <h2><i class="aweso-dashboard aweso-2x"></i> Dashboard</h2>
+
+        </div>
+
+    </ul>
 
     <!-- header extra -->
-    <!--    <ul class="header-ext">
+    <!--    <ul class="header-ext ">
             <li>
                 <span data-chart="sparklines" data-height="32px" data-color="#76608A">4,6,8,6,9,7,8,6,7,6,7,5,9,8,7,9,5,7,8,7</span>
                 <div class="header-ext-text color-mauve"><span class="muted">Traffic</span> 76,567</div>

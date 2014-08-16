@@ -9,7 +9,7 @@
                 <h2><?php echo"La mejor manera de tener la informaci&oacute;n de sus conocidos organizada." ?></h2>
              <?php echo "  <?php \n".
                 "echo CHtml::link('<i class=\"aweso-plus\"></i> Crear Nuevo', array('/modulo/controlador/create'), array( \n".
-                    "'class' => 'btn btn-large btn-primary' \n".
+                    "'class' => 'btn btn-large btn-success' \n".
                 "));" ?>
                 ?>
             </div>

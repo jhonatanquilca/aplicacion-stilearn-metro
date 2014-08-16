@@ -30,7 +30,10 @@ class CltClienteController extends AweController {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
+        
         $model = new CltCliente;
+        $model->usuario_creacion_id = Yii::app()->user->id;
+
 
         $this->performAjaxValidation($model, 'clt-cliente-form');
 
@@ -53,6 +56,7 @@ class CltClienteController extends AweController {
      */
     public function actionUpdate($id) {
         $model = $this->loadModel($id);
+        $model->usuario_actualizacion_id = Yii::app()->user->id;
 
         $this->performAjaxValidation($model, 'clt-cliente-form');
 
@@ -104,7 +108,7 @@ class CltClienteController extends AweController {
         if (isset($_GET['CltCliente']))
             $model->attributes = $_GET['CltCliente'];
 
-        if (count($model->findAll()) > 0) {
+        if ($model->getCountClientes() > 0) {
             $this->render('admin', array(
                 'model' => $model,
             ));

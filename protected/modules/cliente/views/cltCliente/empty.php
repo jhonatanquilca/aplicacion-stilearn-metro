@@ -8,8 +8,8 @@
                 <h1>Contactos</h1>
                 <h2>La mejor manera de tener la informaci&oacute;n de sus conocidos organizada.</h2>
                 <?php
-                echo CHtml::link('<i class="aweso-plus"></i> Crear Nuevo', array('/crm/contacto/create'), array(
-                    'class' => 'btn btn-large btn-primary'
+                echo CHtml::link('<i class="aweso-plus"></i> Crear Nuevo', array('/cliente/cltCliente/create'), array(
+                    'class' => 'btn btn-large btn-success'
                 ));
                 ?>
             </div>

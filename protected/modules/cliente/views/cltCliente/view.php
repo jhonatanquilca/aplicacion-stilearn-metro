@@ -1,13 +1,13 @@
 <?php
 /** @var CltClienteController $this */
 /** @var CltCliente $model */
-$this->breadcrumbs=array(
-	'Clt Clientes'=>array('index'),
-	$model->id,
+$this->breadcrumbs = array(
+    'Clt Clientes' => array('index'),
+    $model->id,
 );
 
-$this->header='<i class="aweso-info-sign aweso-2x"></i> '.  Yii::t('AweCrud.app', 'View') .' '. CltCliente::label() .' '. CHtml::encode($model);
-$this->menu=array(
+$this->header = '<i class="aweso-user aweso-2x"></i> ' . CHtml::encode($model);
+$this->menu = array(
 //array('label' => Yii::t('AweCrud.app', 'List') . ' ' . CltCliente::label(2), 'icon' => 'list', 'url' => array('index')),
 //array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . CltCliente::label(), 'icon' => 'plus', 'url' => array('create')),
 //array('label' => Yii::t('AweCrud.app', 'Update'), 'icon' => 'pencil', 'url' => array('update', 'id' => $model->id)),
@@ -36,24 +36,26 @@ $this->menu=array(
                 <!-- widget content -->
                 <div class="widget-content bg-white">
 
-                    <?php $this->widget('bootstrap.widgets.TbDetailView',array(
-                    'data' => $model,
-                    'attributes' => array(
-                                            'id',
-                                            'nombre',
-                                            'apellido',
-                                            'documento',
-                                            'telefono',
-                                            'celular',
-                                            'email_1',
-                                            'email_2',
-                                            'estado',
-                                            'usuario_creacion_id',
-                                            'usuario_actualizacion_id',
-                                            'fecha_creacion',
-                                            'fecha_actualizacion',
-                                        ),
-                    )); ?>
+                    <?php
+                    $this->widget('bootstrap.widgets.TbDetailView', array(
+                        'data' => $model,
+                        'attributes' => array(
+//                            'id',
+                            'nombre',
+                            'apellido',
+                            'documento',
+                            'telefono',
+                            'celular',
+                            'email_1',
+                            'email_2',
+                            'estado',
+//                            'usuario_creacion_id',
+//                            'usuario_actualizacion_id',
+                            'fecha_creacion',
+//                            'fecha_actualizacion',
+                        ),
+                    ));
+                    ?>
                 </div>
             </div>
         </div>
