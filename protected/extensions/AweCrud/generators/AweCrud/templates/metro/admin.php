@@ -78,19 +78,19 @@ array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . <?php echo $this->model
                     'view' => array(
                     'label' => '<button class="btn btn-success"><i class="aweso-eye-open"></i></button>',
                     'options' => array('title' => Yii::t('AweCrud.app', 'View')),
-                    // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
+                    // 'url' => 'array("tu-accion-del-controlador","id"=>$data->getPrimaryKey())',
                     'imageUrl' => false,
                     ),
                     'update' => array(
                     'label' => '<button class="btn btn-info"><i class="aweso-pencil"></i></button>',
                     'options' => array('title' => Yii::t('AweCrud.app', 'Update')),
-                    // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
+                    // 'url' => 'array("tu-accion-del-controlador","id"=>$data->getPrimaryKey())',
                     'imageUrl' => false,
                     ),
                     'delete' => array(
                     'label' => '<button class="btn btn-danger"><i class="aweso-trash"></i></button>',
                     'options' => array('title' => Yii::t('AweCrud.app','Delete')),
-                    // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
+                    // 'url' => 'array("tu-accion-del-controlador","id"=>$data->getPrimaryKey())',
                     'imageUrl' => false,
                     ),
                     ),

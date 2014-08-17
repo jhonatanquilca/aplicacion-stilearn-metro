@@ -51,6 +51,11 @@
         <style>
 
         </style>
+        <script>
+            var baseUrl = "<?php echo Yii::app()->baseUrl . '/'; ?>";
+            var themeUrl = "<?php echo Yii::app()->theme->baseUrl . '/'; ?>";
+            var user_id = "<?php echo Yii::app()->user->id; ?>";
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body class="fixed">
@@ -204,7 +209,7 @@
 
             <!-- start content -->
             <div class="content">
-
+                
                 <?php echo $content; ?>
 
             </div> <!--/ end content -->
@@ -263,5 +268,7 @@
         <!-- apps js -->
         <script type="text/ javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/demo/dashboard4.js"></script>
 
+        <!--extra js-->
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.mask.min.js" type="text/javascript"></script>
     </body>
 </html>

@@ -6,7 +6,7 @@ $this->breadcrumbs = array(
     $model->id,
 );
 
-$this->header = '<i class="aweso-user aweso-2x"></i> ' . CHtml::encode($model);
+$this->header = '<i class="aweso-user aweso-2x"></i> ' . $model->nombre_completo;
 $this->menu = array(
 //array('label' => Yii::t('AweCrud.app', 'List') . ' ' . CltCliente::label(2), 'icon' => 'list', 'url' => array('index')),
 //array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . CltCliente::label(), 'icon' => 'plus', 'url' => array('create')),
@@ -41,11 +41,12 @@ $this->menu = array(
                         'data' => $model,
                         'attributes' => array(
 //                            'id',
-                            'nombre',
-                            'apellido',
+//                            'nombre',
+//                            'apellido',
                             'documento',
                             'telefono',
-                            'celular',
+                            'celular'
+                            ,
                             'email_1',
                             'email_2',
                             'estado',

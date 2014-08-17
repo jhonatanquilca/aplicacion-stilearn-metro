@@ -1,14 +1,16 @@
 <?php
 /** @var CltClienteController $this */
 /** @var CltCliente $model */
-$this->breadcrumbs=array(
-	$model->label(2) => array('index'),
-	Yii::t('app', $model->id) => array('view', 'id'=>$model->id),
-	Yii::t('AweCrud.app', 'Update'),
+Util::tsRegisterAssetJs('_form.js');
+
+$this->breadcrumbs = array(
+    $model->label(2) => array('index'),
+    Yii::t('app', $model->id) => array('view', 'id' => $model->id),
+    Yii::t('AweCrud.app', 'Update'),
 );
 
 //$this->header='<i class="aweso-pencil aweso-2x"></i> '.  Yii::t('AweCrud.app', 'Update') .' '. CltCliente::label() ;
-$this->menu=array(
+$this->menu = array(
 //array('label' => Yii::t('AweCrud.app', 'List') . ' ' . CltCliente::label(2), 'icon' => 'list', 'url' => array('index')),
 //array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . CltCliente::label(), 'icon' => 'plus', 'url' => array('create')),
 //array('label' => Yii::t('AweCrud.app', 'View'), 'icon' => 'eye-open', 'url'=>array('view', 'id' => $model->id)),
@@ -18,5 +20,5 @@ $this->menu=array(
 ?>
 
 <fieldset>    
-    <?php echo $this->renderPartial('_form',array('model' => $model)); ?>
+    <?php echo $this->renderPartial('_form', array('model' => $model)); ?>
 </fieldset>

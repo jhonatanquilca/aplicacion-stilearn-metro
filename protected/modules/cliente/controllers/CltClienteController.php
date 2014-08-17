@@ -30,10 +30,10 @@ class CltClienteController extends AweController {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
-        
-        $model = new CltCliente;
-        $model->usuario_creacion_id = Yii::app()->user->id;
 
+        $model = new CltCliente('create');
+        $model->usuario_creacion_id = Yii::app()->user->id;
+        $model->estado = CltCliente::ESTADO_ACTIVO;
 
         $this->performAjaxValidation($model, 'clt-cliente-form');
 
@@ -41,6 +41,7 @@ class CltClienteController extends AweController {
             $model->attributes = $_POST['CltCliente'];
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->id));
+                
             }
         }
 
@@ -80,7 +81,11 @@ class CltClienteController extends AweController {
     public function actionDelete($id) {
         if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
-            $this->loadModel($id)->delete();
+            $model = $this->loadModel($id);
+
+            $estado = CltCliente::model()->updateByPk($id, array('estado' => CltCliente::ESTADO_INACTIVO,
+                'usuario_actualizacion_id' => Yii::app()->user->id,
+            ));
 
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if (!isset($_GET['ajax']))
@@ -105,8 +110,13 @@ class CltClienteController extends AweController {
     public function actionAdmin() {
         $model = new CltCliente('search');
         $model->unsetAttributes(); // clear any default values
-        if (isset($_GET['CltCliente']))
-            $model->attributes = $_GET['CltCliente'];
+
+        if (isset($_GET['search'])) {
+            $model->attributes = $this->assignParams($_GET['search']);
+        }
+
+//        if (isset($_GET['CltCliente']))
+//            $model->attributes = $_GET['CltCliente'];
 
         if ($model->getCountClientes() > 0) {
             $this->render('admin', array(
@@ -140,4 +150,39 @@ class CltClienteController extends AweController {
         }
     }
 
+    /* acction Extras */
+
+    public function actionRestore($id) {
+        if (Yii::app()->request->isPostRequest) {
+            // we only allow deletion via POST request
+            $model = $this->loadModel($id);
+
+            $estado = CltCliente::model()->updateByPk($id, array('estado' => CltCliente::ESTADO_ACTIVO,
+                'usuario_actualizacion_id' => Yii::app()->user->id,
+            ));
+
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if (!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        } else
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+    }
+
+    /* funcione extra */
+
+    public function assignParams($params) {
+        $result = array();
+        if ($params['filters'][0] == 'all') {
+            foreach (CltCliente::model()->searchParams() as $param) {
+                $result[$param] = $params['value'];
+            }
+        } else {
+            foreach ($params['filters'] as $param) {
+                $result[$param] = $params['value'];
+            }
+        }
+        return $result;
+    }
+
+    /* acction ajax */
 }

@@ -1,4 +1,4 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+﻿SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `deudas`.`actividad` (
   `detalle` TEXT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 14;
+AUTO_INCREMENT = 1;
 
 
 -- -----------------------------------------------------
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `deudas`.`clt_cliente` (
   `fecha_actualizacion` DATETIME NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13;
+AUTO_INCREMENT = 1;
 
 
 -- -----------------------------------------------------
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `deudas`.`cruge_user` (
   `currentsessioncounter` INT(11) NULL DEFAULT '0',
   PRIMARY KEY (`iduser`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 10
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = latin1;
 
 
@@ -320,7 +320,7 @@ CREATE TABLE IF NOT EXISTS `deudas`.`cruge_session` (
   PRIMARY KEY (`idsession`),
   INDEX `crugesession_iduser` (`iduser` ASC))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = latin1;
 
 
@@ -349,7 +349,7 @@ CREATE TABLE IF NOT EXISTS `deudas`.`cruge_system` (
   `registrationonlogin` INT(11) NULL DEFAULT '1',
   PRIMARY KEY (`idsystem`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = latin1;
 
 

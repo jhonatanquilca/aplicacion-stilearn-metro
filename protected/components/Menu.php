@@ -13,7 +13,7 @@ class Menu {
                 'access' => 'action_dashboard_index',
                 'active_rules' => array('module' => 'principal', 'controller' => 'dashboard')
             ),
-            array('label' => '<i class="aweso-desktop"></i> Clientes ',
+            array('label' => '<i class="aweso-group"></i> Clientes ',
                 'url' => array('/cliente/cltCliente/admin'),
                 'access' => 'action_cltCliente_admin',
                 'active_rules' => array('module' => 'cliente', 'controller' => 'cltCliente')
