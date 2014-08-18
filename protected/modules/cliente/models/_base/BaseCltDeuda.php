@@ -22,7 +22,7 @@
  */
 abstract class BaseCltDeuda extends AweActiveRecord {
 
-    public static function model($className=__CLASS__) {
+    public static function model($className = __CLASS__) {
         return parent::model($className);
     }
 
@@ -37,11 +37,11 @@ abstract class BaseCltDeuda extends AweActiveRecord {
     public function rules() {
         return array(
             array('monto, usuario_creacion_id, clt_cliente_id', 'required'),
-            array('usuario_creacion_id, usuario_actualizacion_id, clt_cliente_id', 'numerical', 'integerOnly'=>true),
+            array('usuario_creacion_id, usuario_actualizacion_id, clt_cliente_id', 'numerical', 'integerOnly' => true),
             array('monto', 'numerical'),
             array('fecha_actualizacion', 'safe'),
             array('usuario_actualizacion_id, fecha_actualizacion', 'default', 'setOnEmpty' => true, 'value' => null),
-            array('id, monto, usuario_creacion_id, fecha_creacion, usuario_actualizacion_id, fecha_actualizacion, clt_cliente_id', 'safe', 'on'=>'search'),
+            array('id, monto, usuario_creacion_id, fecha_creacion, usuario_actualizacion_id, fecha_actualizacion, clt_cliente_id', 'safe', 'on' => 'search'),
         );
     }
 
@@ -57,15 +57,15 @@ abstract class BaseCltDeuda extends AweActiveRecord {
      */
     public function attributeLabels() {
         return array(
-                'id' => Yii::t('app', 'ID'),
-                'monto' => Yii::t('app', 'Monto'),
-                'usuario_creacion_id' => Yii::t('app', 'Usuario Creacion'),
-                'fecha_creacion' => Yii::t('app', 'Fecha Creacion'),
-                'usuario_actualizacion_id' => Yii::t('app', 'Usuario Actualizacion'),
-                'fecha_actualizacion' => Yii::t('app', 'Fecha Actualizacion'),
-                'clt_cliente_id' => Yii::t('app', 'Clt Cliente'),
-                'cltCliente' => null,
-                'txTrasaccions' => null,
+            'id' => Yii::t('app', 'ID'),
+            'monto' => Yii::t('app', 'Monto'),
+            'usuario_creacion_id' => Yii::t('app', 'Usuario Creacion'),
+            'fecha_creacion' => Yii::t('app', 'Fecha Creacion'),
+            'usuario_actualizacion_id' => Yii::t('app', 'Usuario Actualizacion'),
+            'fecha_actualizacion' => Yii::t('app', 'Fecha Actualizacion'),
+            'clt_cliente_id' => Yii::t('app', 'Clt Cliente'),
+            'cltCliente' => null,
+            'txTrasaccions' => null,
         );
     }
 
@@ -93,6 +93,7 @@ abstract class BaseCltDeuda extends AweActiveRecord {
                 'updateAttribute' => 'fecha_actualizacion',
                 'timestampExpression' => new CDbExpression('NOW()'),
             )
-        ), parent::behaviors());
+                ), parent::behaviors());
     }
+
 }

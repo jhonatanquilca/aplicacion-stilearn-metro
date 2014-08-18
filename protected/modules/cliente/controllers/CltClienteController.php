@@ -20,8 +20,15 @@ class CltClienteController extends AweController {
      * @param integer $id the ID of the model to be displayed
      */
     public function actionView($id) {
+        $model = $this->loadModel($id);
+//        $modelDeuda = CltDeuda::model();
+//        $modelTransaccion = TxTrasaccion::model();
+
+
         $this->render('view', array(
-            'model' => $this->loadModel($id),
+            'model' => $model,
+//            'modelDeuda' => $modelDeuda,
+//            'modelTransaccion' => $modelTransaccion,
         ));
     }
 
@@ -41,7 +48,6 @@ class CltClienteController extends AweController {
             $model->attributes = $_POST['CltCliente'];
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->id));
-                
             }
         }
 

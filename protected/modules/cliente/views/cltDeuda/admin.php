@@ -35,60 +35,62 @@ array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . CltDeuda::label(), 'ico
                 </div><!-- /widget header -->
                 <!-- widget content -->
                 <div class="widget-content bg-white">
-                    <?php                    //$this->widget('bootstrap.widgets.TbGridView',array(
-                    $this->widget('ext.selgridview.BootSelGridView',array(                    
-                    'id' => 'clt-deuda-grid',
-                    'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
-                    'template' => '{summary}{items}{pager}',
-                    'dataProvider' => $model->search(),
-                    'pagerCssClass' => 'pagination text-center',
-                    'selectableRows' => 2,
-                    //'filter' => $model,
-                    'columns' => array(
-                                            'id',
-                                                'monto',
-                                                'usuario_creacion_id',
-                                                'fecha_creacion',
-                                                'usuario_actualizacion_id',
-                                                'fecha_actualizacion',
-                                                    /*
-                                                array(
-                    'name' => 'clt_cliente_id',
-                    'value' => 'isset($data->cltCliente) ? $data->cltCliente : null',
-                    'filter' => CHtml::listData(CltCliente::model()->findAll(), 'id', CltCliente::representingColumn()),
-                ),
-                                                */
-                                        array(
-                    //'class'=>'bootstrap.widgets.TbButtonColumn',
-                    'class'=>'CButtonColumn',
-                    'template' => '{view} {update} {delete}',
-                    'deleteConfirmation' => CrugeTranslator::t('admin', 'Are you sure you want to delete this user'),
-                    'buttons' => array(
-                    'view' => array(
-                    'label' => '<button class="btn btn-success"><i class="aweso-eye-open"></i></button>',
-                    'options' => array('title' => Yii::t('AweCrud.app', 'View')),
-                    // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
-                    'imageUrl' => false,
-                    ),
-                    'update' => array(
-                    'label' => '<button class="btn btn-info"><i class="aweso-pencil"></i></button>',
-                    'options' => array('title' => Yii::t('AweCrud.app', 'Update')),
-                    // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
-                    'imageUrl' => false,
-                    ),
-                    'delete' => array(
-                    'label' => '<button class="btn btn-danger"><i class="aweso-trash"></i></button>',
-                    'options' => array('title' => Yii::t('AweCrud.app','Delete')),
-                    // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
-                    'imageUrl' => false,
-                    ),
-                    ),
-                    'htmlOptions' => array(
-                    'width' => '206px'
-                    )
-                    ),
-                    ),
-                    )); ?>
+                    <?php
+                    //$this->widget('bootstrap.widgets.TbGridView',array(
+                    $this->widget('ext.selgridview.BootSelGridView', array(
+                        'id' => 'clt-deuda-grid',
+                        'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
+                        'template' => '{summary}{items}{pager}',
+                        'dataProvider' => $model->search(),
+                        'pagerCssClass' => 'pagination text-center',
+                        'selectableRows' => 2,
+                        //'filter' => $model,
+                        'columns' => array(
+                            'id',
+                            'monto',
+                            'usuario_creacion_id',
+                            'fecha_creacion',
+                            'usuario_actualizacion_id',
+                            'fecha_actualizacion',
+                            /*
+                              array(
+                              'name' => 'clt_cliente_id',
+                              'value' => 'isset($data->cltCliente) ? $data->cltCliente : null',
+                              'filter' => CHtml::listData(CltCliente::model()->findAll(), 'id', CltCliente::representingColumn()),
+                              ),
+                             */
+                            array(
+                                //'class'=>'bootstrap.widgets.TbButtonColumn',
+                                'class' => 'CButtonColumn',
+                                'template' => '{view} {update} {delete}',
+                                'deleteConfirmation' => CrugeTranslator::t('admin', 'Are you sure you want to delete this user'),
+                                'buttons' => array(
+                                    'view' => array(
+                                        'label' => '<button class="btn btn-success"><i class="aweso-eye-open"></i></button>',
+                                        'options' => array('title' => Yii::t('AweCrud.app', 'View')),
+                                        // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
+                                        'imageUrl' => false,
+                                    ),
+                                    'update' => array(
+                                        'label' => '<button class="btn btn-info"><i class="aweso-pencil"></i></button>',
+                                        'options' => array('title' => Yii::t('AweCrud.app', 'Update')),
+                                        // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
+                                        'imageUrl' => false,
+                                    ),
+                                    'delete' => array(
+                                        'label' => '<button class="btn btn-danger"><i class="aweso-trash"></i></button>',
+                                        'options' => array('title' => Yii::t('AweCrud.app', 'Delete')),
+                                        // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
+                                        'imageUrl' => false,
+                                    ),
+                                ),
+                                'htmlOptions' => array(
+                                    'width' => '206px'
+                                )
+                            ),
+                        ),
+                    ));
+                    ?>
                 </div>
             </div>
         </div>

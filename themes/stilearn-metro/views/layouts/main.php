@@ -209,26 +209,49 @@
 
             <!-- start content -->
             <div class="content">
-                
+                <a data-toggle="modal" href="#mainModal" class="btn bg-mauve bordered">Default modal</a>
+
                 <?php echo $content; ?>
 
             </div> <!--/ end content -->
+
+            <!-- MAIN MODAL -->
+            <div class="row-fluid">
+                <?php
+// El modal de la página
+                $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'mainModal', 'options' => array('backdrop' => 'static')));
+                ?>
+                <div class = "modal-header">
+                    <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;
+                    </button>
+                    <h3 id = "sampleModal1">Modal Heading</h3>
+                </div>
+                <div class = "modal-body">
+                    <h4>Text in a modal</h4>
+                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
+
+                    <h4>Popover in a modal</h4>
+                    <p>This <a href = "#" role = "button" data-toggle = "popover" class = "btn" title = "A Title" data-content = "And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.</p>
+
+                    <h4>Tooltips in a modal</h4>
+                    <p><a href = "#" data-toggle = "tooltip" title = "Tooltip">This link</a> and <a href = "#" data-toggle = "tooltip-right" title = "Tooltip">that link</a> should have tooltips on hover.</p>
+                </div>
+                <div class = "modal-footer">
+                    <button class = "btn" data-dismiss = "modal">Close</button>
+                    <button class = "btn bg-mauve">Save changes</button>
+                </div>
+                <?php
+                $this->endWidget();
+                ?>
+
+                <!-- END MAIN MODAL -->
         </section> <!-- /end section content-->
 
 
         <!-- footer, I place the footer on here. -->
-        <footer class="footer" 
-                style="
-                background: #DBD9D9;
-                bottom: 0;
-                color: #757575;
-                font-size: 12px;
-                padding: 5px;
-                position: fixed;
-                text-align: center;
-                width: 100%;
-                z-index: 101;
-                ">
+
+        <footer class="footer" >
+
             <p>Copyright &copy; 2013. All Right Reserved.</p>
         </footer><!--/ footer -->
 

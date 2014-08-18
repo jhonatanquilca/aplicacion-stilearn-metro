@@ -32,8 +32,8 @@ $this->menu = array(
                     <div class="widget-action" >
 
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#activos" >ACTIVOS</a></li>
-                            <li class=""><a data-toggle="tab" href="#inactivos" >INACTIVOS</a></li>
+                            <li class="active"><a data-toggle="tab" href="#activos" onclick="clickTab('<?php echo CltCliente::ESTADO_INACTIVO ?>')" >ACTIVOS</a></li>
+                            <li class=""><a data-toggle="tab" href="#inactivos" onclick="clickTab('<?php echo CltCliente::ESTADO_ACTIVO ?>')" >INACTIVOS</a></li>
                             <!--<li >-->
                             <!--                                <button data-toggle="collapse" data-collapse="#widget-button" class="btn bg-cyan">
                                                                 <i class="aweso-chevron-up color-white" data-toggle-icon="aweso-chevron-down  aweso-chevron-up"></i>
@@ -122,7 +122,7 @@ $this->menu = array(
 //                              'usuario_actualizacion_id',
                                         array(
                                             'name' => 'fecha_creacion',
-                                            'value' => 'Util::FormatDate($data->fecha_creacion, "d/m/y")',
+                                            'value' => 'Util::FormatDate($data->fecha_creacion, "d/m/Y")',
                                             'htmlOptions' => array(
                                                 'style' => 'text-align:center',
                                             ),
