@@ -31,6 +31,7 @@ $(function() {
                 var botonSubmit = $('form button.btn-success');
                 $(botonSubmit).attr("disabled", true);
                 $(botonSubmit).html('<img class="preload-small" src="' + themeUrl + 'img/preload-7-white.gif" alt=""> Espere...');
+                
                 $(botonSubmit).attr("disabled", true);
                 $('form a').attr("disabled", true);
                 $('form a').attr("onclick", "true");

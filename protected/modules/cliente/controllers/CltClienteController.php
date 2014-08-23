@@ -47,7 +47,9 @@ class CltClienteController extends AweController {
         if (isset($_POST['CltCliente'])) {
             $model->attributes = $_POST['CltCliente'];
             if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
+//                TODO borrar si no sirver
+//                $this->redirect(array('view', 'id' => $model->id));
+                $this->redirect(array('admin'));
             }
         }
 

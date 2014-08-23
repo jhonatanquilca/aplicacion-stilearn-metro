@@ -33,11 +33,12 @@
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'get',
-        'id' => $this->id
+        'id' => $this->id,
+        'htmlOptions' => array('style' => 'margin: 0 0 0px !important;'), // for inset effect
     ));
     ?>
 
-    <div class="input-prepend">
+    <div class="input-prepend" style=" margin-bottom: 0px !important;">
         <div class="btn-group">
             <button class="btn display-truulo-search-options">
                 <i class="icon-search"></i>

@@ -63,7 +63,7 @@ $this->menu = array(
                                 <?php
                                 $this->widget('ext.selgridview.BootSelGridView', array(
                                     'id' => CltCliente::ESTADO_ACTIVO . '-grid',
-                                    'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
+                                    'type' => 'striped bordered hover advance condensed ', // striped bordered hover advance condensed
                                     'template' => '{summary}{items}{pager}',
                                     'dataProvider' => $model->activos()->search(),
                                     'afterAjaxUpdate' => 'function(id){ if($("#activos").hasClass("active")){ $.fn.yiiGridView.update("' . CltCliente::ESTADO_INACTIVO . '-grid");} }',
