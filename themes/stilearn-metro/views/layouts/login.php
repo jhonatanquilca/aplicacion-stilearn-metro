@@ -41,7 +41,7 @@
     </head>
     <!-- END HEAD -->
     <!-- BEGIN BODY --> 
-    <body>
+    <body class="login">
         <!-- start section content-->
         <section class="section-content bg-none">
             <!-- start content -->

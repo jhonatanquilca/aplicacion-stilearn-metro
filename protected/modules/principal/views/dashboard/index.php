@@ -10,7 +10,7 @@ $this->pageTitle = Yii::app()->name;
     <!-- content title-->
 
     <ul class="page-header">
-         <!--content title-->
+        <!--content title-->
         <div class="page-header">
 
             <h2><i class="aweso-dashboard aweso-2x"></i> Dashboard</h2>
@@ -38,8 +38,9 @@ $this->pageTitle = Yii::app()->name;
 <!--/ content header -->
 
 <!-- content page -->
-<article class="content-page">
-
+<!--<article class="content-page">-->
+<div class=" content-page row-fluid">
+    <br/>
 
     <!-- main page, you're application here -->
     <div class="main-page">
@@ -47,6 +48,7 @@ $this->pageTitle = Yii::app()->name;
             <!-- SHORTCUT LINE DASHBOARD
             ================================================== -->
             <!-- row #1 -->
+
             <div class="shortcut row-fluid">
                 <!-- tile -->
                 <div data-looper="go" data-interval="6000" class="span3 tile bg-cyan looper slide up">
@@ -604,4 +606,6 @@ $this->pageTitle = Yii::app()->name;
 
         </div><!-- /content-inner-->
     </div><!-- /main-page-->
-</article> <!-- /content page -->
+</div>
+<!--</article>-->
+<!-- /content page -->

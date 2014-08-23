@@ -24,7 +24,8 @@
     </header>
 <?php endif; ?>
 
-<article class="content-page">
+<!--<article class="content-page">-->
+<div class="content-page row-fluid">
     <div class="main-page">
         <div class="content-inner">
             <?php if ($this->menu): ?>
@@ -50,6 +51,7 @@
             <?php echo $content; ?>
         </div>
     </div>
-</article>
+</div>
+<!--</article>-->
 
 <?php $this->endContent(); ?>
