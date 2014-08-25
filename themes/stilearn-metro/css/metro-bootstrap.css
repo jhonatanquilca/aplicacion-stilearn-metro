@@ -41,9 +41,9 @@ a {color: #0A5BC4; text-decoration: none;}a:hover,a:focus {color: #094AB2; text-
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding-box;
     background-clip: padding-box;
-    /*-webkit-border-radius: 0px;*/
-    /*-moz-border-radius: 0px;*/
-    /*border-radius: 0px;*/
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
     -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
