@@ -198,6 +198,6 @@ form.full-widget .controls{padding-right: 15px;}form.form-vertical.full-widget{m
     padding: 50px;
 }
 
-form{
-margin: 0 0 0px !important;
+search-form > form, .modal > form{
+    margin: 0 0 0px !important;
 }
