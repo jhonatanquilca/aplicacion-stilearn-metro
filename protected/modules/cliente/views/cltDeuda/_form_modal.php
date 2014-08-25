@@ -17,7 +17,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
 <div class = "modal-header">
     <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;
     </button>
-    <h3 id = "sampleModal1">Modal Heading</h3>
+    <h3 id = "sampleModal1"><i class="aweso-dollar"> <?php echo CltDeuda::label() ?></i></h3>
 </div>
 <div class = "modal-body">
     <p class="note">

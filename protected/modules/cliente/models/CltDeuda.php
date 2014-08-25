@@ -12,7 +12,7 @@ class CltDeuda extends BaseCltDeuda {
     }
 
     public static function label($n = 1) {
-        return Yii::t('app', 'CltDeuda|CltDeudas', $n);
+        return Yii::t('app', 'Deuda|Deudas', $n);
     }
 
     /* funciones de Base */

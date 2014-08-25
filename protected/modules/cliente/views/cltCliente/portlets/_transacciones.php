@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-amber">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                          ?></h4>
+        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                            ?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="fullscreen" data-fullscreen="#widget-button-transaccion" class="btn">
@@ -77,28 +77,30 @@
                     ),
                 ));
                 ?>
-                <!--<br/>-->
-            <?php endif; ?>
+
+            </div>
+        <?php endif; ?>
 
 
-            <?php
-            $this->widget(
-                    'bootstrap.widgets.TbButton', array(
-                'id' => 'add-Cobranza',
-                'label' => $countTransDeuda ?
-                        '<i class="aweso-plus-sign aweso-large "> </i>Agregar Transaccion' :
-                        '<i class="aweso-plus-sign aweso-large "> </i><h3 >Agregar Transaccion</h3>',
-                'encodeLabel' => false,
+        <?php
+        $this->widget(
+                'bootstrap.widgets.TbButton', array(
+            'id' => 'add-Cobranza',
+            'label' => $countTransDeuda ?
+                    '<i class="aweso-plus-sign aweso-large "> </i>Agregar Transaccion' :
+                    '<i class="aweso-plus-sign aweso-large "> </i><h3 >Agregar Transaccion</h3>',
+            'encodeLabel' => false,
 //                'icon' => true ? 'plus' : 'money',
-                'htmlOptions' => array(
-                    'onClick' => 'js:viewModal("cobranzas/cobranza/create/id_cuenta/' . $model->id . '",function(){'
-                    . 'maskAttributes();})',
-                    'class' => $countTransDeuda ? '' : 'empty-portlet',
-                ),
-                    )
-            );
-            ?>
+            'htmlOptions' => array(
+                'onClick' => 'js:viewModal("cobranzas/cobranza/create/id_cuenta/' . $model->id . '",function(){'
+                . 'maskAttributes();})',
+                'class' => $countTransDeuda ? '' : 'empty-portlet',
+            ),
+                )
+        );
+        ?>
 
-        </div>
+
     </div>
 </div>
+

@@ -18,22 +18,27 @@ $this->menu = array(
 ?>
 
 <!--<fieldset>-->
-<div class="row-fluid ">
+<div class="row-fluid span6">
 
-    <div class="span5">
+    <div class="">
         <?php echo $this->renderPartial('portlets/_info', array('model' => $model,)); ?>
     </div>
 
-    <div class="span7">
-        <?php echo $this->renderPartial('portlets/_transacciones', array('model' => $model, 'modelTransaccion' => TxTrasaccion::model())); ?>
+    <div class="">
+
+        <?php echo $this->renderPartial('portlets/_deuda', array('model' => $model, 'modelDeuda' => CltDeuda::model())); ?>
+
     </div>
 
 </div>
 
-<div class="row-fluid ">
+<div class="row-fluid span6 ">
 
-    <div class="span5">
-        <?php echo $this->renderPartial('portlets/_deuda', array('model' => $model, 'modelDeuda' => CltDeuda::model())); ?>
+    <div class="">
+
+        <?php echo $this->renderPartial('portlets/_transacciones', array('model' => $model, 'modelTransaccion' => TxTrasaccion::model())); ?>   
+
+
     </div>
 
 </div>
