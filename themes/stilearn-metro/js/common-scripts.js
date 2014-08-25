@@ -1,22 +1,8 @@
-$(function() {
+var scripts = $(function() {
 
     maskAttributes();
 
-    function maskAttributes() {
 
-        $('input.telefono').mask('0-000-000');
-        $('input.documento').mask('000000000-0');
-        $('input.celular').mask('0000000000');
-        $('input.ID').mask('0000000000');
-        $('input.fax').mask('000-000000');
-        $('input.numeric').mask('00000000000');
-        $('input.money').mask('P999999999999999999999.ZZ', {
-            translation: {
-                'Z': {pattern: /[0-9]/, optional: true},
-                'P': {pattern: /[1-9]/, },
-            }});
-        //continuar cargando formatos para input
-    }
 
 //acciones modal
     var primero = false;
@@ -31,7 +17,7 @@ $(function() {
                 var botonSubmit = $('form button.btn-success');
                 $(botonSubmit).attr("disabled", true);
                 $(botonSubmit).html('<img class="preload-small" src="' + themeUrl + 'img/preload-7-white.gif" alt=""> Espere...');
-                
+
                 $(botonSubmit).attr("disabled", true);
                 $('form a').attr("disabled", true);
                 $('form a').attr("onclick", "true");
@@ -72,3 +58,168 @@ $(function() {
         }
     }
 });
+
+function maskAttributes() {
+
+    $('input.telefono').mask('0-000-000');
+    $('input.documento').mask('000000000-0');
+    $('input.celular').mask('0000000000');
+    $('input.ID').mask('0000000000');
+    $('input.fax').mask('000-000000');
+    $('input.numeric').mask('00000000000');
+    $('input.money').mask('P999999999999999999999.ZZ', {
+        translation: {
+            'Z': {pattern: /[0-9]/, optional: true},
+            'P': {pattern: /[1-9]/, },
+        }});
+    //continuar cargando formatos para input
+}
+
+
+//funciones modal
+
+function showModalLoading() {
+    var html = "";
+    html += "<div class='modal-header'><a class='close' data-dismiss='modal'>&times;</a><h4><i class='icon-refresh'></i> Cargando</h4></div>";
+    html += "<div class='loading'><img src='" + themeUrl + "img/preload-7-black.gif' /></div>";
+    $("#mainModal").html(html);
+    $("#mainModal").modal("show");
+}
+
+function showModalData(html, large) {
+    if (large) {
+        $("#mainModal").addClass("modal-large")
+    }
+    $("#mainModal").html(html);
+    $('select.fix').selectBox();
+}
+/**
+ * 
+ * @param {cadena} url
+ * @returns {undefined}
+ */
+function viewModal(url, large, CallBack)
+{
+
+    $.ajax({
+        type: "POST",
+        url: baseUrl + url,
+        beforeSend: function() {
+            showModalLoading();
+        },
+        success: function(data) {
+            showModalData(data, large);
+            CallBack();
+
+        }
+    });
+}
+
+function AjaxAtualizacionInformacion(Formulario)
+{
+    BloquearBotonesModal(Formulario);
+    AjaxGestionModal(Formulario, function(list, data) {
+
+        ActualizarInformacion(list);
+    });
+}
+
+function BloquearBotonesModal($form)
+{
+    var elemento = $form + ' a[data-dismiss="modal"]';
+    $(elemento).attr("disabled", true);
+    $(elemento).attr('data-dismiss', 'long');
+    elemento = $form + ' a.btn-success';
+    $(elemento).html('<i src="' + themeUrl + 'img/preload-7-white.gif"></i> Espere...');
+    $(elemento).attr("disabled", true);
+    $(elemento).attr("onclick", "true");
+}
+function DesBloquearBotonesModal($form, Detalle, accion)
+{
+    var elemento = $form + ' a[data-dismiss="long"]';
+    $(elemento).attr("disabled", false);
+    $(elemento).attr('data-dismiss', 'modal');
+    elemento = $form + ' a.btn-success';
+    $(elemento).html('<i class="icon-ok"></i>' + Detalle);
+    $(elemento).attr("disabled", false);
+    $(elemento).attr("onclick", accion + '("' + $form + '");');
+}
+function AjaxGestionModal($form, CallBack) {
+    var form = $($form);
+    var settings = form.data('settings');
+
+    settings.submitting = true;
+
+    $.fn.yiiactiveform.validate(form, function(messages) {
+        console.log(messages + 'hola');
+        $.each(messages, function() {
+            console.log(this);
+        });
+
+
+        if ($.isEmptyObject(messages)) {
+            $.each(settings.attributes, function() {
+                $.fn.yiiactiveform.updateInput(this, messages, form);
+            });
+            AjaxGuardarModal(true, $form, CallBack);
+        }
+        else {
+            settings = form.data('settings'),
+                    $.each(settings.attributes, function() {
+                        $.fn.yiiactiveform.updateInput(this, messages, form);
+                    });
+            DesBloquearBotonesModal($form, 'Enviar', 'AjaxAtualizacionInformacion');
+        }
+    });
+}
+
+function AjaxGuardarModal(verificador, Formulario, callBack)
+{
+    if (verificador)
+    {
+//        var listaActualizar = Formulario.split('-');        
+//        listaActualizar = listaActualizar[0] + '-grid';
+        var listaActualizar = Formulario.replace('form', 'grid');
+//        listaActualizar = listaActualizar[0] + '-grid';
+        console.log(listaActualizar);
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: $(Formulario).attr('action'),
+            data: $(Formulario).serialize(),
+            beforeSend: function(xhr) {
+            },
+            success: function(data) {
+//                console.log(data);
+
+                if (data.success) {
+                    $("#mainModal").modal("hide");
+                    callBack(listaActualizar, data);
+
+                } else {
+
+                    DesBloquearBotonesModal(Formulario);
+                    bootbox.alert(data);
+                }
+            }
+        });
+    }
+
+}
+function ActualizarInformacion(lista)
+{
+    var listaActual = lista.replace('#', '');
+
+    if ($(lista).length == 0)
+    {
+        window.location.reload();
+    }
+    else
+    {
+        $.fn.yiiGridView.update(listaActual);
+    }
+
+
+
+
+}

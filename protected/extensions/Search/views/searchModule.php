@@ -38,7 +38,7 @@
     ));
     ?>
 
-    <div class="input-prepend" style=" margin-bottom: 0px !important;">
+    <div class="input-prepend" >
         <div class="btn-group">
             <button class="btn display-truulo-search-options">
                 <i class="icon-search"></i>

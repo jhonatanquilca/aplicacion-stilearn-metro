@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-green">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-money"></i> Deuda Total <?php // echo '- ' . $model->nombre_completo                                          ?></h4>
+        <h4 class="widget-title"><i class="aweso-money"></i> Deuda Total <?php // echo '- ' . $model->nombre_completo                                            ?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="collapse" data-collapse="#widget-button-deuda" class="btn">
@@ -65,7 +65,7 @@
                 'encodeLabel' => false,
 //                'icon' => true ? 'plus' : 'money',
                 'htmlOptions' => array(
-                    'onClick' => 'js:viewModal("cobranzas/cobranza/create/id_cuenta/' . $model->id . '",function(){'
+                    'onClick' => 'viewModal("cliente/cltDeuda/create/id_cliente/' . $model->id . '",false,function(){'
                     . 'maskAttributes();})',
                     'class' => $countDeudasCli ? '' : 'empty-portlet',
                 ),

@@ -192,3 +192,12 @@ form.full-widget .controls{padding-right: 15px;}form.form-vertical.full-widget{m
     margin: 0px !important;
     padding: 0px !important;
 }
+/*modal loading*/
+#mainModal .loading {
+    text-align: center;
+    padding: 50px;
+}
+
+form{
+margin: 0 0 0px !important;
+}
