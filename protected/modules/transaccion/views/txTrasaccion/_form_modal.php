@@ -7,9 +7,8 @@ Yii::app()->clientScript->scriptMap['bootstrap.css'] = false;
 /** @var CltDeuda $model */
 /** @var AweActiveForm $form */
 $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
-    'id' => 'clt-deuda-form',
+    'id' => 'tx-trasaccion-form',
     'type' => 'horizontal',
-//    'action' => Yii::app()->createUrl('/cliente/cltDeuda/create'),
     'enableAjaxValidation' => true,
     'clientOptions' => array('validateOnSubmit' => false, 'validateOnChange' => true,),
     'enableClientValidation' => false,
@@ -18,12 +17,14 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
 <div class = "modal-header">
     <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;
     </button>
-    <h3 id = "sampleModal1"><i class="aweso-dollar"> <?php echo CltDeuda::label() ?></i></h3>
+    <h3 id = "sampleModal1"><i class="aweso-dollar"> <?php echo TxTrasaccion::label() ?></i></h3>
 </div>
 <div class = "modal-body">
     <p class="note">
         <?php echo Yii::t('AweCrud.app', 'Fields with') ?> <span class="required">*</span>
-        <?php echo Yii::t('AweCrud.app', 'are required') ?>.                </p>
+        <?php echo Yii::t('AweCrud.app', 'are required') ?>.                
+    </p>
+
 
     <?php echo $form->errorSummary($model) ?>
 
@@ -37,10 +38,14 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
                         </div>                                           
                     </div>-->
 
-    <?php echo $form->textFieldRow($model, 'monto') ?>
+    <?php echo $form->textFieldRow($model, 'monto_cuota') ?>
+    <?php echo $form->dropDownListRow($model, 'tipo', array('' => ' -- Seleccione -- ', 'ADEUDAR' => 'ADEUDAR', 'PAGAR' => 'PAGAR',)) ?>
+    <?php echo $form->dropDownListRow($model, 'tx_descripcion_palntilla_id', array('' => ' -- Seleccione -- ') + CHtml::listData(TxDescripcionPalntilla::model()->findAll(), 'id', TxDescripcionPalntilla::representingColumn())) ?>
+    <?php echo $form->textAreaRow($model, 'observaciones', array('rows' => 3, 'cols' => 50)) ?>
     <?php // echo $form->textFieldRow($model, 'usuario_creacion_id') ?>
     <?php // echo $form->textFieldRow($model, 'usuario_actualizacion_id') ?>
-    <?php // echo $form->dropDownListRow($model, 'clt_cliente_id', array('' => ' -- Seleccione -- ') + CHtml::listData(CltCliente::model()->findAll(), 'id', CltCliente::representingColumn())) ?>
+    <?php // echo $form->dropDownListRow($model, 'clt_deuda_id', array('' => ' -- Seleccione -- ') + CHtml::listData(CltDeuda::model()->findAll(), 'id', CltDeuda::representingColumn())) ?>
+
 </div>
 <div class = "modal-footer">
     <?php
@@ -49,7 +54,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
         'icon' => 'ok',
         'label' => $model->isNewRecord ? Yii::t('AweCrud.app', 'Create') : Yii::t('AweCrud.app', 'Save'),
         'htmlOptions' => array(
-            'onClick' => 'js:AjaxAtualizacionInformacion("#clt-deuda-form")')
+            'onClick' => 'js:AjaxAtualizacionInformacion("#tx-trasaccion-form")')
     ));
     ?>
     <?php
@@ -59,6 +64,8 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
         'htmlOptions' => array('data-dismiss' => 'modal')
     ));
     ?>
+
+
 
 </div>
 

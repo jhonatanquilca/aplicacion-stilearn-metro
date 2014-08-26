@@ -19,28 +19,13 @@ $this->menu = array(
 
 <!--<fieldset>-->
 <div class="row-fluid span5">
-
-
     <?php echo $this->renderPartial('portlets/_info', array('model' => $model,)); ?>
-
-
-
-
     <?php echo $this->renderPartial('portlets/_deuda', array('model' => $model, 'modelDeuda' => CltDeuda::model())); ?>
-
-
-
 </div>
 
 <div class="row-fluid span7 ">
 
-
-
-    <?php echo $this->renderPartial('portlets/_transacciones', array('model' => $model, 'modelTransaccion' => TxTrasaccion::model())); ?>   
-
-
-
-
+    <?php echo $model->cltDeudas ? $this->renderPartial('portlets/_transacciones', array('model' => $model, 'modelTransaccion' => TxTrasaccion::model())) : ''; ?>   
 </div>
 <!--</fieldset>-->
 

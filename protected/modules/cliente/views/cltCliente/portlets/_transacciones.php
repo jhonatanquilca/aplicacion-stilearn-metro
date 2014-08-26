@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-amber">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                            ?></h4>
+        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                ?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="fullscreen" data-fullscreen="#widget-button-transaccion" class="btn">
@@ -18,8 +18,9 @@
         </div>
     </div><!-- /widget header -->
     <!-- widget content -->
-    <div class="widget-content bg-white">
-        <?php $countTransDeuda = $modelTransaccion->getCountTransaccionByDeuda($model->id) > 0; ?>
+    <div class="widget-content bg-white">        
+        <?php $countTransDeuda = $modelTransaccion->getCountTransaccionByDeuda($model->cltDeudas[0]['id']) > 0; ?>
+
         <?php if ($countTransDeuda): ?>
             <div style='overflow:auto'> 
 
@@ -29,7 +30,7 @@
                     'id' => 'tx-trasaccion-grid',
                     'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
                     'template' => '{summary}{items}{pager}',
-                    'dataProvider' => $modelTransaccion->de_deuda($model->id)->search(),
+                    'dataProvider' => $modelTransaccion->de_deuda($model->cltDeudas[0]['id'])->search(),
                     'pagerCssClass' => 'pagination text-center',
                     'selectableRows' => 2,
                     //'filter' => $model,
@@ -86,13 +87,11 @@
         $this->widget(
                 'bootstrap.widgets.TbButton', array(
             'id' => 'add-Cobranza',
-            'label' => $countTransDeuda ?
-                    '<i class="aweso-plus-sign aweso-large "> </i>Agregar Transaccion' :
-                    '<i class="aweso-plus-sign aweso-large "> </i><h3 >Agregar Transaccion</h3>',
+            'label' => $countTransDeuda ? 'Agregar Transaccion' : '<h3 >Agregar Transaccion</h3>',
             'encodeLabel' => false,
-//                'icon' => true ? 'plus' : 'money',
+            'icon' => $countTransDeuda ? 'plus-sign' : 'dollar',
             'htmlOptions' => array(
-                'onClick' => 'js:viewModal("cobranzas/cobranza/create/id_cuenta/' . $model->id . '",function(){'
+                'onClick' => 'js:viewModal("transaccion/txTrasaccion/create/id_deuda/' . $model->cltDeudas[0]['id'] . '",false,function(){'
                 . 'maskAttributes();})',
                 'class' => $countTransDeuda ? '' : 'empty-portlet',
             ),

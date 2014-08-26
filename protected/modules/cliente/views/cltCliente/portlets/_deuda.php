@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-green">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-money"></i> Deuda Total <?php // echo '- ' . $model->nombre_completo                                            ?></h4>
+        <h4 class="widget-title"><i class="aweso-money"></i> Deuda Total <?php // echo '- ' . $model->nombre_completo                                                 ?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="collapse" data-collapse="#widget-button-deuda" class="btn">
@@ -61,9 +61,9 @@
             $this->widget(
                     'bootstrap.widgets.TbButton', array(
                 'id' => 'add-Cobranza',
-                'label' => (false ? '' : '<br>') . '<i class="aweso-plus-sign aweso-large "> </i><h3 >Agregar Cobranza</h3>',
+                'label' => '<h3>Agregar Deuda</h3>',
                 'encodeLabel' => false,
-//                'icon' => true ? 'plus' : 'money',
+                'icon' => $countDeudasCli ? 'plus-sign' : 'money',
                 'htmlOptions' => array(
                     'onClick' => 'viewModal("cliente/cltDeuda/create/id_cliente/' . $model->id . '",false,function(){'
                     . 'maskAttributes();})',

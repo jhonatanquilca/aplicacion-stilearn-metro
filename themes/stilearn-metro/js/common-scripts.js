@@ -31,7 +31,7 @@ var scripts = $(function() {
 
         return;
     });
-    
+
     function verificarValidacionModal($contenedor)
     {
         var verificar = true;
@@ -152,7 +152,7 @@ function AjaxGestionModal($form, CallBack) {
     settings.submitting = true;
 
     $.fn.yiiactiveform.validate(form, function(messages) {
-        console.log(messages + 'hola');
+//        console.log(messages + 'hola');
         $.each(messages, function() {
             console.log(this);
         });
@@ -191,16 +191,19 @@ function AjaxGuardarModal(verificador, Formulario, callBack)
             beforeSend: function(xhr) {
             },
             success: function(data) {
-//                console.log(data);
-
+//                console.log(data.mensage);
+//                alert('entre');
                 if (data.success) {
                     $("#mainModal").modal("hide");
                     callBack(listaActualizar, data);
 
+
                 } else {
 
                     DesBloquearBotonesModal(Formulario);
-                    bootbox.alert(data);
+                    var x = bootbox.alert(data.mensage);
+
+
                 }
             }
         });

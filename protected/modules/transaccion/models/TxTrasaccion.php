@@ -5,6 +5,9 @@ Yii::import('cliente.models.*');
 
 class TxTrasaccion extends BaseTxTrasaccion {
 
+    const TIPO_ADEUDAR = ' ADEUDAR';
+    const TIPO_PAGAR = 'PAGAR';
+
     /**
      * @return TxTrasaccion
      */
@@ -17,6 +20,19 @@ class TxTrasaccion extends BaseTxTrasaccion {
     }
 
     /* funciones de Base */
+
+    public function rules() {
+        return array(
+            array('monto_cuota, usuario_creacion_id, clt_deuda_id,tipo', 'required'),
+            array('usuario_creacion_id, usuario_actualizacion_id, clt_deuda_id, tx_descripcion_palntilla_id', 'numerical', 'integerOnly' => true),
+            array('monto_cuota', 'numerical'),
+            array('tipo', 'length', 'max' => 7),
+            array('observaciones, fecha_actualizacion', 'safe'),
+            array('tipo', 'in', 'range' => array('ADEUDAR', 'PAGAR')), // enum,
+            array('tipo, observaciones, usuario_actualizacion_id, fecha_actualizacion, tx_descripcion_palntilla_id', 'default', 'setOnEmpty' => true, 'value' => null),
+            array('id, monto_cuota, tipo, observaciones, usuario_creacion_id, fecha_creacion, usuario_actualizacion_id, fecha_actualizacion, clt_deuda_id, tx_descripcion_palntilla_id', 'safe', 'on' => 'search'),
+        );
+    }
 
     /* scopes */
 
@@ -53,11 +69,11 @@ class TxTrasaccion extends BaseTxTrasaccion {
     }
 
     //transacciones por cliente
-    public function getCountTransaccionByDeuda($idCliente) {
+    public function getCountTransaccionByDeuda($idDeuda) {
         $command = Yii::app()->db->createCommand()
                 ->select('count(t.id) as total')
                 ->from('tx_trasaccion t')
-                ->where('t.clt_deuda_id =' . $idCliente);
+                ->where('t.clt_deuda_id =' . $idDeuda);
 
         $result = $command->queryAll();
         return $result[0]['total'];

@@ -29,23 +29,39 @@ class CltDeudaController extends AweController {
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate() {
+    public function actionCreate($id_cliente = null) {
         $result = array();
         $model = new CltDeuda;
 
+        $model->usuario_creacion_id = Yii::app()->user->id;
+        $model->usuario_actualizacion_id = Yii::app()->user->id;
+        $model->clt_cliente_id = $id_cliente;
+
+
         $this->performAjaxValidation($model, 'clt-deuda-form');
+
         $validadorPartial = false;
         if (Yii::app()->request->isAjaxRequest) {
+//            
+
             if (isset($_POST['CltDeuda'])) {
+
                 $model->attributes = $_POST['CltDeuda'];
+
+
+
                 $result['success'] = $model->save();
+
                 if (!$result['success']) {
                     $result['mensage'] = "Error al guardar";
                 }
+
                 $validadorPartial = TRUE;
                 echo json_encode($result);
             }
+
             if (!$validadorPartial) {
+
                 $this->renderPartial('_form_modal', array(
                     'model' => $model
                         ), false, true);
