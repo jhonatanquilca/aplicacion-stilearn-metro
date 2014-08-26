@@ -31,6 +31,7 @@ var scripts = $(function() {
 
         return;
     });
+    
     function verificarValidacionModal($contenedor)
     {
         var verificar = true;
@@ -51,7 +52,7 @@ var scripts = $(function() {
     });
 
     function floatButtons() {
-        if ($(window).scrollTop() + $(window).height() < $(document).height() - 30) { // To far, the navigation needs to be set in place
+        if ($(window).scrollTop() + $(window).height() < $(document).height() - 40) { // To far, the navigation needs to be set in place
             buttons.addClass('flotante');
         } else {
             buttons.removeClass('flotante');
