@@ -261,7 +261,7 @@
 
         <!-- javascript necesario
  ================================================== -->
-
+        <!--widgwra desplegablea-->
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui.min.js"></script>  
 
         <!--<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.ui.touch-punch.min.js"></script>-->

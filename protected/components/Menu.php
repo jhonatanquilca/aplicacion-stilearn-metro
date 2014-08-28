@@ -17,7 +17,18 @@ class Menu {
                 'url' => array('/cliente/cltCliente/admin'),
                 'access' => 'action_cltCliente_admin',
                 'active_rules' => array('module' => 'cliente', 'controller' => 'cltCliente')
-            )
+            ),
+            array('label' => '<i class="aweso-envelope"></i>  Mails', 'url' => '#',
+                'itemOptions' => array('class' => 'dropdown-list'),
+                'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown-list',),
+                'items' => array(
+                    array('label' => 'E-mails', 'url' => array('/mail/mail/admin'), 'access' => 'action_mail_admin', 'active_rules' => array('module' => 'mail', 'controller' => 'mail')),
+//                    array('label' => 'Motivo', 'url' => array('/incidencias/incidenciaMotivo/admin'), 'access' => 'action_incidenciaMotivo_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaMotivo')),
+//                    array('label' => 'Sub Motivo', 'url' => array('/incidencias/incidenciaSubmotivo/admin'), 'access' => 'action_incidenciaSubmotivo_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaSubmotivo')),
+//                    array('label' => 'Via ingreso', 'url' => array('/incidencias/incidenciaViaIngreso/admin'), 'access' => 'action_incidenciaViaIngreso_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaViaIngreso')),
+//                    array('label' => 'Estado', 'url' => array('/incidencias/incidenciaEstado/admin'), 'access' => 'action_incidenciaEstado_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaEstado')),
+//                    array('label' => 'Prioridad', 'url' => array('/incidencias/incidenciaPrioridad/admin'), 'access' => 'action_incidenciaPrioridad_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaPrioridad')),
+                )),
                 /* ejemplo menu simple */
 //            array('label' => '<i class="aweso-desktop"></i> Cuentas ',
 //                'url' => array('/tmp/ejemplo/admin'),
@@ -45,18 +56,19 @@ class Menu {
         $items = array(
             array('label' => '<i class="aweso-mail-reply"></i> Volver a la App', 'url' => Yii::app()->homeUrl),
             array('label' => '<i class="aweso-user"></i>  Usuarios', 'url' => Yii::app()->user->ui->userManagementAdminUrl, 'access' => 'Cruge.ui.*', 'active_rules' => array('module' => 'cruge')),
-                /* ejemplo menu 2 niveles */
-//            array('label' => '<i class="aweso-fire-extinguisher"></i>  Incidencias', 'url' => '#',
-//                'itemOptions' => array('class' => 'dropdown-list'),
-//                'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown-list',),
-//                'items' => array(
-//                    array('label' => 'Categoria', 'url' => array('/incidencias/incidenciaCategoria/admin'), 'access' => 'action_incidenciaCategoria_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaCategoria')),
-//                    array('label' => 'Motivo', 'url' => array('/incidencias/incidenciaMotivo/admin'), 'access' => 'action_incidenciaMotivo_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaMotivo')),
-//                    array('label' => 'Sub Motivo', 'url' => array('/incidencias/incidenciaSubmotivo/admin'), 'access' => 'action_incidenciaSubmotivo_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaSubmotivo')),
-//                    array('label' => 'Via ingreso', 'url' => array('/incidencias/incidenciaViaIngreso/admin'), 'access' => 'action_incidenciaViaIngreso_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaViaIngreso')),
-//                    array('label' => 'Estado', 'url' => array('/incidencias/incidenciaEstado/admin'), 'access' => 'action_incidenciaEstado_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaEstado')),
-//                    array('label' => 'Prioridad', 'url' => array('/incidencias/incidenciaPrioridad/admin'), 'access' => 'action_incidenciaPrioridad_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaPrioridad')),
-//                )),
+            /* ejemplo menu 2 niveles */
+            array('label' => '<i class="aweso-envelope"></i>  Mails', 'url' => '#',
+                'itemOptions' => array('class' => 'dropdown-list'),
+                'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown-list',),
+                'items' => array(
+                    array('label' => 'Plantilla Mail', 'url' => array('/mail/mailPlantilla/admin'), 'access' => 'action_mailPlantilla_admin', 'active_rules' => array('module' => 'mail', 'controller' => 'mailPlantilla')),
+                )),
+            array('label' => '<i class="aweso-bookmark"></i>  Transaccion', 'url' => '#',
+                'itemOptions' => array('class' => 'dropdown-list'),
+                'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown-list',),
+                'items' => array(
+                    array('label' => 'Plantillas', 'url' => array('/transaccion/txDescripcionPalntilla/admin'), 'access' => 'action_txDescripcionPalntilla_admin', 'active_rules' => array('module' => 'transaccion', 'controller' => 'txDescripcionPalntilla')),
+                )),
         );
 
         return self::generateMenu($items);

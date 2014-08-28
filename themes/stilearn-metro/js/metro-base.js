@@ -36,37 +36,8 @@ $(function() {
         var n = $(this), r = n.attr("data-theme") == undefined ? "light" : n.attr("data-theme"), i = n.attr("data-autohide") == undefined ? !0 : n.attr("data-autohide"), s = n.attr("data-button") == undefined ? !1 : n.attr("data-button"), o = $.parseJSON(i), u = $.parseJSON(s);
         n.mCustomScrollbar({autoHideScrollbar: o, scrollButtons: {enable: u, scrollSpeed: 100}, theme: r})
     });
-    var e = $("[data-toggle=dropdown-list]");
-    e.click(function(e) {
-//        e.preventDefault();
-//        var t = $(this).offsetParent(".dropdown-list"),
-//                n = t.find(".dropdown-menu");
-//
-//
-//        n.slideUp();
-//
-//        var r = t.hasClass("open");
-//        r == 0 ?
-//                (t.addClass("open"), n.slideDown())
-//
-//                :
-//                (t.removeClass("open"), n.slideUp())
-//                ;
-        var last = jQuery('.dropdown-list.open', $('#navside'));
-        last.removeClass("open");
-        jQuery('.arrow', last).removeClass("open");
-        jQuery('.dropdown-menu', last).slideUp();
-        var sub = jQuery(this).next();
-        if (sub.is(":visible")) {
-            jQuery('.arrow', jQuery(this)).removeClass("open");
-            jQuery(this).parent().removeClass("open");
-            sub.slideUp(200);
-        } else {
-            jQuery('.arrow', jQuery(this)).addClass("open");
-            jQuery(this).parent().addClass("open");
-            sub.slideDown();
-        }
-    });
+
+
 
     var t = $(".btn-navbar").attr("data-target"), n = $('[data-collapse="navbar"]').html();
     $(t).html(n), $(t).find(".nav").addClass("nav-list").find("li.dropdown-list").removeClass("dropdown-list").addClass("dropdown").find("a[data-toggle=dropdown-list]").attr("data-toggle", "dropdown").find("i").remove(), $(".nav-collapse").find("a[data-toggle=dropdown]").find("i, .caret").remove(), $("[data-toggle=collapse-all-widgets]").click(function(e) {

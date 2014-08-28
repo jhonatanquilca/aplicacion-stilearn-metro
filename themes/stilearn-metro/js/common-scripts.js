@@ -1,5 +1,9 @@
 var scripts = $(function() {
+    //sidebar lista desplegada activa
+    $('li[class="dropdown-list active open"]').children('ul').css('display', 'block');
 
+
+//amascara para imputs
     maskAttributes();
 
 
@@ -32,6 +36,28 @@ var scripts = $(function() {
         return;
     });
 
+//menu sidebar despligar y contraer menu
+    var e = $("[data-toggle=dropdown-list]");
+    jQuery(e).click(function() {
+        var last = jQuery('.dropdown-menu.open', $('#navside'));
+        last.removeClass("open");
+        jQuery('.arrow', last).removeClass("open");
+        jQuery('.dropdown-list', last).slideUp();
+        var sub = jQuery(this).next();
+
+        if (sub.is(":visible")) {
+
+            jQuery('.arrow', jQuery(this)).removeClass("open");
+            jQuery(this).parent().removeClass("open");
+            sub.slideUp(200);
+        } else {
+            jQuery('.arrow', jQuery(this)).addClass("open");
+            jQuery(this).parent().addClass("open");
+            sub.slideDown();
+        }
+    });
+
+//modal
     function verificarValidacionModal($contenedor)
     {
         var verificar = true;
@@ -59,6 +85,9 @@ var scripts = $(function() {
         }
     }
 });
+
+
+
 
 function maskAttributes() {
 
