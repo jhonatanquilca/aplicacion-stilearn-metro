@@ -1,6 +1,7 @@
 var scripts = $(function() {
     //sidebar lista desplegada activa
-    $('li[class="dropdown-list active open"]').children('ul').css('display', 'block');
+    $('li[class="dropdown-list active"]').children('ul').css('display', 'block');
+//    $('li[class="dropdown-list active open"]').children('ul').css('display', 'block');
 
 
 //amascara para imputs
