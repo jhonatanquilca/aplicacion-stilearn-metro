@@ -51,41 +51,47 @@ $this->pageTitle = Yii::app()->name;
 
             <div class="shortcut row-fluid">
                 <!-- tile -->
-                <div data-looper="go" data-interval="6000" class="span3 tile bg-cyan looper slide up">
+                <div data-looper="go" data-interval="4000" class="span3 tile bg-amber looper slide up">
                     <!-- tile-content -->
                     <div class="tile-content">
                         <!-- block looper -->
                         <div class="looper-inner">
                             <div class="item">
-                                <a href="#post"><i class="aweso-pencil"></i></a>
+                                <a href="<?php echo Yii::app()->createUrl('/cliente/cltCliente/admin') ?>"><i class="aweso-user"></i></a>
                             </div><!-- /item -->
                             <div class="item">
-                                <a href="#post1">
+                                <a href="<?php echo Yii::app()->createUrl('/cliente/cltCliente/admin') ?>">
                                     <div class="text-based">
-                                        <p class="lead">10 Best Design With Twitter Bootstrap</p>
+                                        <p class="lead">Administra a tus clientes activos.</p>
                                     </div>
                                 </a>
-                            </div><!-- /item -->
-                            <div class="item">
-                                <a href="#post2">
-                                    <div class="text-based">
-                                        <p class="lead">How To Master Your Habits</p>
-                                    </div>
-                                </a>
-                            </div><!--/item -->
-                            <div class="item">
-                                <a href="#post3">
-                                    <div class="text-based">
-                                        <p class="lead">Beyond The Inspiration</p>
-                                    </div>
-                                </a>
-                            </div><!-- /item -->
+                            </div>
+                            <!-- /item -->
+                            <!--                            <div class="item">
+                                                            <a href="<?php echo Yii::app()->createUrl('/cliente/cltCliente/admin') ?>">
+                                                                <div class="text-based">
+                                                                    <p class="lead">How To Master Your Habits</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>-->
+                            <!--/item -->
+                            <!--                            <div class="item">
+                                                            <a href="<?php echo Yii::app()->createUrl('/cliente/cltCliente/admin') ?>">
+                                                                <div class="text-based">
+                                                                    <p class="lead">Beyond The Inspiration</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>-->
+                            <!-- /item -->
                         </div><!-- /block looper -->
                     </div><!-- /tile-content -->
 
                     <div class="tile-peek">
-                        <span class="brand">Titulo</span>
-                        <span class="badge">Cantidad 12</span>
+                        <div class="icon"><i class="aweso-user"></i> </div>F
+                        <!--<span class="brand">-->
+                        <?php echo count(CltCliente::model()->findAll()) ?>
+                        <!--</span>-->
+                        <span class="badge"> <?php echo CltCliente::model()->label(2) ?></span>
                     </div><!-- /tile-peek -->
                 </div><!-- /tile -->
 

@@ -1,5 +1,5 @@
 <?php
-
+Yii::import('cliente.models.*');
 class DashboardController extends Controller {
 
     public function filters() {
