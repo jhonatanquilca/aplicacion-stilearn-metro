@@ -20,7 +20,7 @@ $this->pageTitle = Yii::app()->name;
     </ul>
 
     <!-- header extra -->
-    <!--    <ul class="header-ext ">
+<!--        <ul class="header-ext">
             <li>
                 <span data-chart="sparklines" data-height="32px" data-color="#76608A">4,6,8,6,9,7,8,6,7,6,7,5,9,8,7,9,5,7,8,7</span>
                 <div class="header-ext-text color-mauve"><span class="muted">Traffic</span> 76,567</div>
