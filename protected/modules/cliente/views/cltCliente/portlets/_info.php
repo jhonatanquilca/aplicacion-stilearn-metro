@@ -40,5 +40,21 @@
             ),
         ));
         ?>
+        <?php
+        $this->widget(
+                'bootstrap.widgets.TbButton', array(
+            'id' => 'add-Cobranza',
+            'type' => 'info',
+            'label' => 'Actualizar',
+            'encodeLabel' => false,
+            'icon' => 'pencil',
+            'url' => Yii::app()->createUrl('/cliente/cltCliente/update/', array('id' => $model->id)),
+            'htmlOptions' => array(
+//                'onClick' => 'js:viewModal("transaccion/txTrasaccion/create/id_deuda/' . $model->cltDeudas[0]['id'] . '",false,function(){'
+//                . 'maskAttributes();})',
+            ),
+                )
+        );
+        ?>
     </div>
 </div>

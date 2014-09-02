@@ -23,11 +23,13 @@
         <h1>
             <a href="index.html" class="help-block" title="your logo"><i class="aweso-th-large text-4x"></i></a>
             <!--Stilearn Metro-->
-            <h3 class="form-title"><?php echo CrugeTranslator::t('logon', 'Login to your account') ?></h3>
+            <h2 class="form-title"><?php echo CrugeTranslator::t('logon', 'Login') ?></h2>
         </h1>
     </div>
     <div class="control-group">
-        <label for="CrugeLogon_username">Usuario</label>
+        <h3>
+            <?php echo $form->labelEx($model, 'username', array('class' => 'control-label')); ?>
+        </h3>
         <div class="controls">
     <!--            <span class="input-group-addon">
                 <i class="icon-user"></i>
@@ -44,7 +46,8 @@
         <?php echo $form->error($model, 'username', array('style' => 'color:#FF0000')); ?>
     </div>
     <div class="control-group">
-        <label for="CrugeLogon_password">Password</label>
+
+        <?php echo $form->labelEx($model, 'password', array('class' => 'control-label')); ?>
         <div class="controls">
         <!--            <span class="input-group-addon">
             <i class="icon-lock"></i>
@@ -73,7 +76,7 @@
             </label>
 
             <button class="btn btn-large btn-block bg-cyan" type="submit">
-                <?php echo CrugeTranslator::t('logon', "Login") ?>
+                <?php echo CrugeTranslator::t('logon', "Entrar") ?>
                 <i class="m-icon-swapright m-icon-white"></i>                  
             </button>
             <script type="text/javascript">
@@ -83,13 +86,13 @@
             <div class="forgot tile-peek">
                 <h4>
                     <div class="pull-left text-centere">
-                        <?php echo Yii::app()->user->ui->passwordRecoveryLink; ?>
+                        <?php // echo Yii::app()->user->ui->passwordRecoveryLink;  ?>
 
                     </div>
                     <div class=" pull-right text-center">
                         <?php
-                        if (Yii::app()->user->um->getDefaultSystem()->getn('registrationonlogin') === 1)
-                            echo Yii::app()->user->ui->registrationLink;
+//                        if (Yii::app()->user->um->getDefaultSystem()->getn('registrationonlogin') === 1)
+//                            echo Yii::app()->user->ui->registrationLink;
                         ?>
                     </div>
                 </h4>

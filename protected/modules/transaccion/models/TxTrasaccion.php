@@ -16,7 +16,7 @@ class TxTrasaccion extends BaseTxTrasaccion {
     }
 
     public static function label($n = 1) {
-        return Yii::t('app', 'TxTrasaccion|TxTrasaccions', $n);
+        return Yii::t('app', 'Trasaccion|Trasaccions', $n);
     }
 
     /* funciones de Base */

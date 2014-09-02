@@ -20,9 +20,15 @@ class TxTrasaccionController extends AweController {
      * @param integer $id the ID of the model to be displayed
      */
     public function actionView($id) {
-        $this->render('view', array(
-            'model' => $this->loadModel($id),
-        ));
+        if (Yii::app()->request->isAjaxRequest) {
+            $this->renderPartial('_view_modal', array(
+                'model' => $this->loadModel($id),
+                    ), false, true);
+        } else {
+            $this->render('view', array(
+                'model' => $this->loadModel($id),
+            ));
+        }
     }
 
     /**
@@ -82,20 +88,48 @@ class TxTrasaccionController extends AweController {
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id) {
+        $result = array();
         $model = $this->loadModel($id);
+
+//         $model->clt_deuda_id = $id_deuda;        
+        $model->usuario_actualizacion_id = Yii::app()->user->id;
+
 
         $this->performAjaxValidation($model, 'tx-trasaccion-form');
 
-        if (isset($_POST['TxTrasaccion'])) {
-            $model->attributes = $_POST['TxTrasaccion'];
-            if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
-            }
-        }
+        $validadorPartial = false;
+        if (Yii::app()->request->isAjaxRequest) {
+            if (isset($_POST['TxTrasaccion'])) {
+                $model->attributes = $_POST['TxTrasaccion'];
 
-        $this->render('update', array(
-            'model' => $model,
-        ));
+                $result['success'] = $model->save();
+
+                if (!$result['success']) {
+                    $result['mensage'] = "Error al guardar";
+                }
+
+                $validadorPartial = TRUE;
+                echo json_encode($result);
+            }
+
+            if (!$validadorPartial) {
+
+                $this->renderPartial('_form_modal', array(
+                    'model' => $model
+                        ), false, true);
+            }
+        } else {
+            if (isset($_POST['TxTrasaccion'])) {
+                $model->attributes = $_POST['TxTrasaccion'];
+                if ($model->save()) {
+                    $this->redirect(array('view', 'id' => $model->id));
+                }
+            }
+
+            $this->render('update', array(
+                'model' => $model,
+            ));
+        }
     }
 
     /**

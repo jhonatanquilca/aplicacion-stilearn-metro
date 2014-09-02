@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-amber">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                ?></h4>
+        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                                                ?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="fullscreen" data-fullscreen="#widget-button-transaccion" class="btn">
@@ -37,8 +37,13 @@
                     'columns' => array(
                         array(
                             'name' => 'fecha_creacion',
-                            'value' => 'CHtml::link(Util::FormatDate($data->fecha_creacion, "d/m/Y"), "#",array("onclick"=>"alert(\'hola\')"))',
+                            'value' => 'CHtml::link(Util::FormatDate($data->fecha_creacion, "d/m/Y"), "#",'
+                            . 'array( "onclick"=>" viewModal(\'transaccion/txTrasaccion/view/id/$data->id\' ,false,function() {maskAttributes();});  "'
+                            . '))',
                             'type' => 'raw',
+                            'htmlOptions' => array(
+                                'onClick' => 'function(e){e.preventDefault(); viewModal($(this).attr("href"),false,function() {maskAttributes();});  return false; }',
+                            ),
                         ),
 //                        'id',
                         'monto_cuota',
@@ -67,8 +72,9 @@
                                 'update' => array(
                                     'label' => '<button class="btn btn-info"><i class="aweso-pencil"></i></button>',
                                     'options' => array('title' => Yii::t('AweCrud.app', 'Update')),
-//                                     'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
                                     'imageUrl' => false,
+                                    'url' => '"transaccion/txTrasaccion/update/id/".$data->id',
+                                    'click' => 'function(e){e.preventDefault(); viewModal($(this).attr("href"),false,function() {maskAttributes();});  return false; }',
                                 ),
                             ),
                             'htmlOptions' => array(
