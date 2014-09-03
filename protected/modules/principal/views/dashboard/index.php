@@ -87,7 +87,7 @@ $this->pageTitle = Yii::app()->name;
                     </div><!-- /tile-content -->
 
                     <div class="tile-peek">
-                        <div class="icon"><i class="aweso-user"></i> </div>F
+                        <div class="icon"><i class="aweso-user"></i> </div>
                         <!--<span class="brand">-->
                         <?php echo count(CltCliente::model()->findAll()) ?>
                         <!--</span>-->

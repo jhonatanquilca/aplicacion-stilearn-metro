@@ -155,9 +155,9 @@ return array(
 
 //          'db' => array(
 //
-//          'connectionString' => 'mysql:host=mysql.hostinger.co;dbname=u778181481_deuda',
+//          'connectionString' => 'mysql:host=mysql.hostinger.co;dbname=u814824078_deuda',
 //          'emulatePrepare' => true,
-//          'username' => 'u778181481_deuda',
+//          'username' => 'u814824078_deuda',
 //          'password' => '1004476568',
 //          'charset' => 'utf8',
 //          ), 
