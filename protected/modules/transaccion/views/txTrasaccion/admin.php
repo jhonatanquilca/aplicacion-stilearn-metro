@@ -18,10 +18,10 @@ $this->menu = array(
     <div class="row-fluid">
         <div class="span12">
             <!-- widget button -->
-            <div class="widget border-cyan" id="widget-button">
+            <div class="widget border-green" id="widget-button">
 
                 <!-- widget header -->
-                <div class="widget-header bg-cyan">
+                <div class="widget-header bg-green">
                     <!-- widget title -->
                     <h4 class="widget-title"><i class="aweso-user"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo TxTrasaccion::label(2) ?></h4>
                     <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
