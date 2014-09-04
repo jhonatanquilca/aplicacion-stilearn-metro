@@ -5,43 +5,61 @@ Yii::app()->clientScript->scriptMap['bootstrap.css'] = false;
 /** @var CltDeudaController $this */
 /** @var CltDeuda $model */
 /** @var AweActiveForm $form */
-$form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
-    'id' => 'tx-trasaccion-form',
-    'type' => 'horizontal',
-    'enableAjaxValidation' => true,
-    'clientOptions' => array('validateOnSubmit' => false, 'validateOnChange' => true,),
-    'enableClientValidation' => false,
+?>
+
+<?php
+$attributes = array();
+
+$attributes = array_merge($attributes, array(
+//            'id',
+    'monto_cuota',
+    'tipo',
+        ));
+
+if ($model->usuario_actualizacion_id) {
+    $attributes = array_merge($attributes, array(
+        array(
+            'name' => 'usuario_actualizacion_id',
+            'value' => Yii::app()->user->um->loadUserById($model->usuario_actualizacion_id)->username,
+        ),
+        'fecha_actualizacion',
+    ));
+} else {
+    $attributes = array_merge($attributes, array(
+        array(
+            'name' => 'usuario_creacion_id',
+            'value' => Yii::app()->user->um->loadUserById($model->usuario_creacion_id)->username,
+        ),
+        'fecha_creacion',
+    ));
+}
+
+$attributes = array_merge($attributes, array(
+//            array(
+//                'name' => 'clt_deuda_id',
+//                'value' => ($model->cltDeuda !== null) ? CHtml::link($model->cltDeuda, array('/cltDeuda/view', 'id' => $model->cltDeuda->id)) . ' ' : null,
+//                'type' => 'html',
+//            ),
+    array(
+        'name' => 'tx_descripcion_palntilla_id',
+        'value' => ($model->txDescripcionPalntilla !== null) ? CHtml::link($model->txDescripcionPalntilla, array('/txDescripcionPalntilla/view', 'id' => $model->txDescripcionPalntilla->id)) . ' ' : null,
+        'type' => 'html',
+    ),
+    'observaciones',
         ));
 ?>
+
+
 <div class = "modal-header">
     <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;
     </button>
-    <h3 id = "sampleModal1"><i class="aweso-dollar"> <?php echo TxTrasaccion::label() ?></i></h3>
+    <h3 id = "sampleModal1"><i class="aweso-dollar"> <?php echo TxTrasaccion::label() . ' #Nº ' . $model->getNumeroTransaccionByDeuda($model->clt_deuda_id, $model->id) ?></i></h3>
 </div>
 <div class = "modal-body">
     <?php
     $this->widget('bootstrap.widgets.TbDetailView', array(
         'data' => $model,
-        'attributes' => array(
-            'id',
-            'monto_cuota',
-            'tipo',
-            'observaciones',
-            'usuario_creacion_id',
-            'fecha_creacion',
-            'usuario_actualizacion_id',
-            'fecha_actualizacion',
-            array(
-                'name' => 'clt_deuda_id',
-                'value' => ($model->cltDeuda !== null) ? CHtml::link($model->cltDeuda, array('/cltDeuda/view', 'id' => $model->cltDeuda->id)) . ' ' : null,
-                'type' => 'html',
-            ),
-            array(
-                'name' => 'tx_descripcion_palntilla_id',
-                'value' => ($model->txDescripcionPalntilla !== null) ? CHtml::link($model->txDescripcionPalntilla, array('/txDescripcionPalntilla/view', 'id' => $model->txDescripcionPalntilla->id)) . ' ' : null,
-                'type' => 'html',
-            ),
-        ),
+        'attributes' => $attributes,
     ));
     ?>
 </div>
@@ -59,5 +77,4 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
 
 </div>
 
-<?php $this->endWidget(); ?>
-          
+

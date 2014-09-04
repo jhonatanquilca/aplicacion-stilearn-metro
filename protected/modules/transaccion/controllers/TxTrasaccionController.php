@@ -41,7 +41,7 @@ class TxTrasaccionController extends AweController {
 
         $model->clt_deuda_id = $id_deuda;
         $model->usuario_creacion_id = Yii::app()->user->id;
-        $model->usuario_actualizacion_id = Yii::app()->user->id;
+//        $model->usuario_actualizacion_id = Yii::app()->user->id;
 
 
         $this->performAjaxValidation($model, 'tx-trasaccion-form');

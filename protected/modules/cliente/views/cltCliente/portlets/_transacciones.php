@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-amber">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                                                ?></h4>
+        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                                                               ?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="fullscreen" data-fullscreen="#widget-button-transaccion" class="btn">
@@ -18,13 +18,15 @@
         </div>
     </div><!-- /widget header -->
     <!-- widget content -->
-    <div class="widget-content bg-white">        
+    <div class="widget-content bg-white"> 
+
         <?php $countTransDeuda = $modelTransaccion->getCountTransaccionByDeuda($model->cltDeudas[0]['id']) > 0; ?>
 
         <?php if ($countTransDeuda): ?>
             <div style='overflow:auto'> 
 
                 <?php
+                $modelTransaccion->pageSize = 5;
                 //$this->widget('bootstrap.widgets.TbGridView',array(
                 $this->widget('ext.selgridview.BootSelGridView', array(
                     'id' => 'tx-trasaccion-grid',
@@ -41,9 +43,6 @@
                             . 'array( "onclick"=>" viewModal(\'transaccion/txTrasaccion/view/id/$data->id\' ,false,function() {maskAttributes();});  "'
                             . '))',
                             'type' => 'raw',
-                            'htmlOptions' => array(
-                                'onClick' => 'function(e){e.preventDefault(); viewModal($(this).attr("href"),false,function() {maskAttributes();});  return false; }',
-                            ),
                         ),
 //                        'id',
                         'monto_cuota',
