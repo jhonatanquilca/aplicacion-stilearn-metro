@@ -52,6 +52,17 @@ class TxTrasaccionController extends AweController {
 
                 $model->attributes = $_POST['TxTrasaccion'];
 
+                $modelDeudaTotal = CltDeuda::model()->findAllByPk($id_deuda);
+        
+                if ($model->tipo == TxTrasaccion::TIPO_ADEUDAR) {
+                  CltDeuda::model()->updateByPk($id_deuda, array('monto' => floatval($modelDeudaTotal[0]['monto']) + floatval($model->monto_cuota)));
+                   
+                }
+                if ($model->tipo == TxTrasaccion::TIPO_PAGAR) {
+                    
+                }
+
+
                 $result['success'] = $model->save();
 
                 if (!$result['success']) {

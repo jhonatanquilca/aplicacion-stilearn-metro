@@ -3,6 +3,8 @@
 // Prevenir que jquery se cargue dos veces
 Yii::app()->clientScript->scriptMap['jquery.js'] = false;
 Yii::app()->clientScript->scriptMap['bootstrap.css'] = false;
+
+Util::tsRegisterAssetJs('_form_modal.js');
 /** @var CltDeudaController $this */
 /** @var CltDeuda $model */
 /** @var AweActiveForm $form */
@@ -54,7 +56,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
         'icon' => 'ok',
         'label' => $model->isNewRecord ? Yii::t('AweCrud.app', 'Create') : Yii::t('AweCrud.app', 'Save'),
         'htmlOptions' => array(
-            'onClick' => 'js:AjaxAtualizacionInformacion("#tx-trasaccion-form")')
+            'onClick' => 'js:AjaxAtualizacionInformacion("#tx-trasaccion-form",'.$model->clt_deuda_id.')')
     ));
     ?>
     <?php

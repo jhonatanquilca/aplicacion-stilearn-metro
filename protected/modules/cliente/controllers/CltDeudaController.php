@@ -166,4 +166,17 @@ class CltDeudaController extends AweController {
         }
     }
 
+    /*     * ********AJAX********** */
+
+    public function actionAjaxGetMonto($id) {
+        $result = array();
+        if (Yii::app()->request->isAjaxRequest) {
+
+
+            $model = $this->loadModel($id);
+            $result['monto'] = $model->monto;
+            echo json_encode($result);
+        }
+    }
+
 }

@@ -5,7 +5,7 @@ Yii::import('cliente.models.*');
 
 class TxTrasaccion extends BaseTxTrasaccion {
 
-    const TIPO_ADEUDAR = ' ADEUDAR';
+    const TIPO_ADEUDAR = 'ADEUDAR';
     const TIPO_PAGAR = 'PAGAR';
 
     public $pageSize = 10;
