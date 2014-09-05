@@ -26,6 +26,7 @@ class TxTrasaccion extends BaseTxTrasaccion {
     public function rules() {
         return array(
             array('monto_cuota, usuario_creacion_id, clt_deuda_id,tipo', 'required'),
+            array('monto_cuota', 'numerical', 'min' => 0.01, 'tooSmall' => 'La cantidad debe ser mayor a 0.00'),
             array('usuario_creacion_id, usuario_actualizacion_id, clt_deuda_id, tx_descripcion_palntilla_id', 'numerical', 'integerOnly' => true),
             array('monto_cuota', 'numerical'),
             array('tipo', 'length', 'max' => 7),

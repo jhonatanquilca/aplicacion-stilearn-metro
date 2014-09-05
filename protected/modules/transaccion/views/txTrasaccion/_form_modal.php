@@ -19,7 +19,13 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
 <div class = "modal-header">
     <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;
     </button>
-    <h3 id = "sampleModal1"><i class="aweso-dollar"> <?php echo TxTrasaccion::label() ?></i></h3>
+    <h3 id = "sampleModal1" >
+        <i class="aweso-dollar "> 
+            <?php echo $model->isNewRecord ? Yii::t('AweCrud.app', 'Create') : Yii::t('AweCrud.app', 'Update'); ?> 
+            <?php echo ' ' . TxTrasaccion::label() ?>
+            <?php echo ' - Deuda Total $' . number_format($model->cltDeuda->monto, 2, ',', '') ?>
+        </i>
+    </h3>
 </div>
 <div class = "modal-body">
     <p class="note">
@@ -56,7 +62,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
         'icon' => 'ok',
         'label' => $model->isNewRecord ? Yii::t('AweCrud.app', 'Create') : Yii::t('AweCrud.app', 'Save'),
         'htmlOptions' => array(
-            'onClick' => 'js:AjaxAtualizacionInformacion("#tx-trasaccion-form",'.$model->clt_deuda_id.')')
+            'onClick' => 'js:AjaxAtualizacionInformacion("#tx-trasaccion-form",' . $model->clt_deuda_id . ')')
     ));
     ?>
     <?php

@@ -53,21 +53,29 @@ class TxTrasaccionController extends AweController {
                 $model->attributes = $_POST['TxTrasaccion'];
 
                 $modelDeudaTotal = CltDeuda::model()->findAllByPk($id_deuda);
-        
+                $modelDeudaTotal = floatval($modelDeudaTotal[0]['monto']);
+                $montoInput = floatval($model->monto_cuota);
+
                 if ($model->tipo == TxTrasaccion::TIPO_ADEUDAR) {
-                  CltDeuda::model()->updateByPk($id_deuda, array('monto' => floatval($modelDeudaTotal[0]['monto']) + floatval($model->monto_cuota)));
-                   
+                    CltDeuda::model()->updateByPk($id_deuda, array('monto' => $modelDeudaTotal + $montoInput));
+                    $result['success'] = $model->save();
+                    if (!$result['success']) {
+                        $result['mensage'] = "Error al guardar";
+                    }
                 }
                 if ($model->tipo == TxTrasaccion::TIPO_PAGAR) {
-                    
+                    if ($modelDeudaTotal >= $montoInput) {
+                        CltDeuda::model()->updateByPk($id_deuda, array('monto' => $modelDeudaTotal - $montoInput));
+                        $result['success'] = $model->save();
+                        if (!$result['success']) {
+                            $result['mensage'] = "Error al guardar";
+                        }
+                    } else {
+                        $result['success'] = false;
+                        $result['mensage'] = "EL mono tingresado no puede se mayor a la deuda Total.";
+                    }
                 }
 
-
-                $result['success'] = $model->save();
-
-                if (!$result['success']) {
-                    $result['mensage'] = "Error al guardar";
-                }
 
                 $validadorPartial = TRUE;
                 echo json_encode($result);

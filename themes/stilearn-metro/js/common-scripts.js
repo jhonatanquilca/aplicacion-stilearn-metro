@@ -87,7 +87,7 @@ var scripts = $(function() {
     }
 });
 
-
+var attrBotonModal = {};
 
 
 function maskAttributes() {
@@ -157,23 +157,39 @@ function AjaxAtualizacionInformacion(Formulario)
 
 function BloquearBotonesModal($form)
 {
+    //Seleccionando el boton de guardado 
+
+    var btnSave = $form + " a.btn-success";
+    //Guardado caracterÃ­sticas 
+
+    attrBotonModal['action'] = $(btnSave).attr('onclick');
+
+    attrBotonModal['html'] = $(btnSave).html();
+
+    $(btnSave).attr("disabled", true);
+    $(btnSave).html('<img class="preload-small" src="' + themeUrl + 'img/preload-7-white.gif" alt=""> Espere...');
+    $(btnSave).attr("onclick", "true");
+
+
     var elemento = $form + ' a[data-dismiss="modal"]';
     $(elemento).attr("disabled", true);
     $(elemento).attr('data-dismiss', 'long');
-    elemento = $form + ' a.btn-success';
-    $(elemento).html('<i src="' + themeUrl + 'img/preload-7-white.gif"></i> Espere...');
-    $(elemento).attr("disabled", true);
-    $(elemento).attr("onclick", "true");
+
+
+
 }
-function DesBloquearBotonesModal($form, Detalle, accion)
+function DesBloquearBotonesModal($form)
 {
+    var btnSave = $form + " a.btn-success";
+    $(btnSave).html(attrBotonModal.html);
+    $(btnSave).attr("disabled", false);
+    $(btnSave).attr("onclick", attrBotonModal.action);
+
     var elemento = $form + ' a[data-dismiss="long"]';
     $(elemento).attr("disabled", false);
     $(elemento).attr('data-dismiss', 'modal');
-    elemento = $form + ' a.btn-success';
-    $(elemento).html('<i class="icon-ok"></i>' + Detalle);
-    $(elemento).attr("disabled", false);
-    $(elemento).attr("onclick", accion + '("' + $form + '");');
+
+
 }
 function AjaxGestionModal($form, CallBack) {
     var form = $($form);
@@ -212,7 +228,7 @@ function AjaxGuardarModal(verificador, Formulario, callBack)
 //        listaActualizar = listaActualizar[0] + '-grid';
         var listaActualizar = Formulario.replace('form', 'grid');
 //        listaActualizar = listaActualizar[0] + '-grid';
-        console.log(listaActualizar);
+//        console.log(listaActualizar);
         $.ajax({
             type: "POST",
             dataType: 'json',
@@ -230,8 +246,9 @@ function AjaxGuardarModal(verificador, Formulario, callBack)
 
                 } else {
 
-                    DesBloquearBotonesModal(Formulario);
-                    var x = bootbox.alert(data.mensage);
+                    bootbox.alert(data.mensage, function() {
+                        DesBloquearBotonesModal(Formulario);
+                    });
 
 
                 }

@@ -36,7 +36,7 @@
                     'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
                     'template' => '{summary}{items}{pager}',
                     'dataProvider' => $modelTransaccion->masRecientes()->de_deuda($model->cltDeudas[0]['id'])->search(),
-                    'pagerCssClass' => 'pagination text-center',
+                    'pagerCssClass' => 'pagination pagination-right pagination-smal',
                     'selectableRows' => 2,
                     //'filter' => $model,
                     'columns' => array(
