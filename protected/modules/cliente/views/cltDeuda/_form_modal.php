@@ -37,7 +37,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
                         </div>                                           
                     </div>-->
 
-    <?php echo $form->textFieldRow($model, 'monto') ?>
+    <?php echo $form->textFieldRow($model, 'monto', array('class' => 'money')) ?>
     <?php // echo $form->textFieldRow($model, 'usuario_creacion_id') ?>
     <?php // echo $form->textFieldRow($model, 'usuario_actualizacion_id') ?>
     <?php // echo $form->dropDownListRow($model, 'clt_cliente_id', array('' => ' -- Seleccione -- ') + CHtml::listData(CltCliente::model()->findAll(), 'id', CltCliente::representingColumn())) ?>

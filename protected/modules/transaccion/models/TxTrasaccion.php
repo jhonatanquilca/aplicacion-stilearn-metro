@@ -67,6 +67,8 @@ class TxTrasaccion extends BaseTxTrasaccion {
         $criteria->compare('clt_deuda_id', $this->clt_deuda_id);
         $criteria->compare('tx_descripcion_palntilla_id', $this->tx_descripcion_palntilla_id);
 
+
+
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
             'pagination' => array('pageSize' => $this->pageSize,),
@@ -74,6 +76,14 @@ class TxTrasaccion extends BaseTxTrasaccion {
     }
 
     /* scopes */
+
+    public function scopes() {
+        return array(
+            'masRecientes' => array(
+                'order' => 'fecha_creacion DESC'
+            ),
+        );
+    }
 
     /*
      * @autor Jhonatan Quilca

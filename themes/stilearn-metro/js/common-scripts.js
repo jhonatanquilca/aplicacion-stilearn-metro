@@ -98,10 +98,10 @@ function maskAttributes() {
     $('input.ID').mask('0000000000');
     $('input.fax').mask('000-000000');
     $('input.numeric').mask('00000000000');
-    $('input.money').mask('P999999999999999999999.ZZ', {
+    $('input.money').mask('P99.ZZ', {
         translation: {
             'Z': {pattern: /[0-9]/, optional: true},
-            'P': {pattern: /[1-9]/, },
+            'P': {pattern: /[0-9]/, },
         }});
     //continuar cargando formatos para input
 }

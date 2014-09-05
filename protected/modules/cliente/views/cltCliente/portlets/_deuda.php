@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-green">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-money"></i> Deuda Total <?php // echo '- ' . $model->nombre_completo                                                  ?></h4>
+        <h4 class="widget-title"><i class="aweso-money"></i> Deuda Total <?php // echo '- ' . $model->nombre_completo                                                        ?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="collapse" data-collapse="#widget-button-deuda" class="btn">
@@ -31,7 +31,10 @@
                     //'filter' => $model,
                     'columns' => array(
 //                'id',
-                        'monto',
+                        array(
+                            'name' => 'monto',
+                            'value' => '"$ ".number_format($data->monto, 2,".", " ")." ctv"',
+                        ),
                         array(
                             'name' => 'usuario_creacion_id',
                             'value' => 'Yii::app()->user->um->loadUserById($data->usuario_creacion_id )->username',

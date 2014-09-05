@@ -38,7 +38,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
                         </div>                                           
                     </div>-->
 
-    <?php echo $form->textFieldRow($model, 'monto_cuota') ?>
+    <?php echo $form->textFieldRow($model, 'monto_cuota', array('class' => 'money')) ?>
     <?php echo $form->dropDownListRow($model, 'tipo', array('' => ' -- Seleccione -- ', 'ADEUDAR' => 'ADEUDAR', 'PAGAR' => 'PAGAR',)) ?>
     <?php echo $form->dropDownListRow($model, 'tx_descripcion_palntilla_id', array('' => ' -- Seleccione -- ') + CHtml::listData(TxDescripcionPalntilla::model()->findAll(), 'id', TxDescripcionPalntilla::representingColumn())) ?>
     <?php echo $form->textAreaRow($model, 'observaciones', array('rows' => 3, 'cols' => 50)) ?>

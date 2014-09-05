@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-amber">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                                                               ?></h4>
+        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                                                                           ?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="fullscreen" data-fullscreen="#widget-button-transaccion" class="btn">
@@ -20,9 +20,12 @@
     <!-- widget content -->
     <div class="widget-content bg-white"> 
 
-        <?php $countTransDeuda = $modelTransaccion->getCountTransaccionByDeuda($model->cltDeudas[0]['id']) > 0; ?>
+        <?php
+        $totalTransacciones = $modelTransaccion->getCountTransaccionByDeuda($model->cltDeudas[0]['id']);
+        $countTransDeuda = $totalTransacciones > 0;
+        ?>
 
-        <?php if ($countTransDeuda): ?>
+<?php if ($countTransDeuda): ?>
             <div style='overflow:auto'> 
 
                 <?php
@@ -32,7 +35,7 @@
                     'id' => 'tx-trasaccion-grid',
                     'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
                     'template' => '{summary}{items}{pager}',
-                    'dataProvider' => $modelTransaccion->de_deuda($model->cltDeudas[0]['id'])->search(),
+                    'dataProvider' => $modelTransaccion->masRecientes()->de_deuda($model->cltDeudas[0]['id'])->search(),
                     'pagerCssClass' => 'pagination text-center',
                     'selectableRows' => 2,
                     //'filter' => $model,
@@ -45,7 +48,10 @@
                             'type' => 'raw',
                         ),
 //                        'id',
-                        'monto_cuota',
+                        array(
+                            'name' => 'monto_cuota',
+                            'value' => '"$ ".number_format($data->monto_cuota, 2,".", " ")." ctv"',
+                        ),
                         array(
                             'name' => 'tipo',
                             'filter' => array('ADEUDAR' => 'ADEUDAR', 'PAGAR' => 'PAGAR',),
@@ -74,6 +80,7 @@
                                     'imageUrl' => false,
                                     'url' => '"transaccion/txTrasaccion/update/id/".$data->id',
                                     'click' => 'function(e){e.preventDefault(); viewModal($(this).attr("href"),false,function() {maskAttributes();});  return false; }',
+                                    'visible' => $totalTransacciones . '- $data->getNumeroTransaccionByDeuda(' . $model->cltDeudas[0]["id"] . ', $data->id) < 5?true:false',
                                 ),
                             ),
                             'htmlOptions' => array(
@@ -85,7 +92,7 @@
                 ?>
 
             </div>
-        <?php endif; ?>
+<?php endif; ?>
 
 
         <?php
