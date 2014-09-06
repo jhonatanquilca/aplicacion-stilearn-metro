@@ -16,8 +16,7 @@ $this->menu = array(
     array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . CltCliente::label(), 'icon' => 'plus', 'url' => array('create')),
 );
 ?>
-
-<fieldset>    
+ 
 
     <div class="row-fluid ">
         <div class="span12">
@@ -63,7 +62,7 @@ $this->menu = array(
                                 <?php
                                 $this->widget('ext.selgridview.BootSelGridView', array(
                                     'id' => CltCliente::ESTADO_ACTIVO . '-grid',
-                                    'type' => 'striped bordered hover advance condensed ', // striped bordered hover advance condensed
+                                    'type' => 'striped bordered hover advance condensed', // striped bordered hover advance condensed
                                     'template' => '{summary}{items}{pager}',
                                     'dataProvider' => $model->activos()->search(),
                                     'afterAjaxUpdate' => 'function(id){ if($("#activos").hasClass("active")){ $.fn.yiiGridView.update("' . CltCliente::ESTADO_INACTIVO . '-grid");} }',
@@ -172,7 +171,7 @@ $this->menu = array(
                                 <?php
                                 $this->widget('ext.selgridview.BootSelGridView', array(
                                     'id' => CltCliente::ESTADO_INACTIVO . '-grid',
-                                    'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
+                                    'type' => 'striped bordered hover advance condensed', // striped bordered hover advance condensed
                                     'template' => '{summary}{items}{pager}',
                                     'dataProvider' => $model->inactivos()->search(),
                                     'pagerCssClass' => 'pagination text-center',
@@ -273,4 +272,3 @@ $this->menu = array(
             </div>
         </div>
     </div>
-</fieldset>

@@ -63,14 +63,18 @@ $this->pageTitle = Yii::t('app', 'Administrador de Usuarios');
                         ),
                     ),
                 );
-                $this->widget('bootstrap.widgets.TbGridView', array(
-                    'id' => 'llamada-grid',
-                    'type' => 'striped condensed',
-                    'dataProvider' => $model->search(),
-                    'filter' => $model,
-                    'columns' => $cols
-                ));
                 ?>
+                <div style='overflow:auto'> 
+                    <?php
+                    $this->widget('bootstrap.widgets.TbGridView', array(
+                        'id' => 'llamada-grid',
+                        'type' => 'striped condensed',
+                        'dataProvider' => $model->search(),
+                        'filter' => $model,
+                        'columns' => $cols
+                    ));
+                    ?>
+                </div>
             </div>
         </div>
     </div>

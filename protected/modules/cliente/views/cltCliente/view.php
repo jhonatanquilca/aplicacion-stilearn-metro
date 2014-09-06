@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 );
 $this->pageTitle = CltCliente::label(2);
 
-$this->header = '<i class="aweso-user aweso-2x"></i> ' . $model->nombre_completo . ' - <strong id="totalDeuda">Deuda Total ' . ($model->cltDeudas ? '$ ' . number_format($model->cltDeudas['0']['monto'], 2,".", " ") : '$ 0.00').' ctvs.</strong>';
+$this->header = '<div style="overflow:auto"> <i class="aweso-user aweso-2x"></i> ' . $model->nombre_completo . '&nbsp;&nbsp;<strong id="totalDeuda">Deuda Total ' . ($model->cltDeudas ? '$ ' . number_format($model->cltDeudas['0']['monto'], 2, ".", " ") : '$ 0.00') . ' ctvs.</strong></div>';
 $this->menu = array(
 //array('label' => Yii::t('AweCrud.app', 'List') . ' ' . CltCliente::label(2), 'icon' => 'list', 'url' => array('index')),
 //array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . CltCliente::label(), 'icon' => 'plus', 'url' => array('create')),

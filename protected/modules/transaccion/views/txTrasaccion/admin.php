@@ -8,31 +8,32 @@
 <?php
 $this->header = '<i class="aweso-dashboard aweso-2x"></i> ' . Yii::t('AweCrud.app', 'Manage') . ' ' . TxTrasaccion::label(2);
 $this->menu = array(
-    array('label' => Yii::t('AweCrud.app', 'List') . ' ' . TxTrasaccion::label(2), 'icon' => 'list', 'url' => array('index')),
+//    array('label' => Yii::t('AweCrud.app', 'List') . ' ' . TxTrasaccion::label(2), 'icon' => 'list', 'url' => array('index')),
     array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . TxTrasaccion::label(), 'icon' => 'plus', 'url' => array('create')),
 );
 ?>
 
-<fieldset>    
+<!--<fieldset>    -->
 
-    <div class="row-fluid">
-        <div class="span12">
-            <!-- widget button -->
-            <div class="widget border-green" id="widget-button">
+<div class="row-fluid">
+    <div class="span12">
+        <!-- widget button -->
+        <div class="widget border-green" id="widget-button">
 
-                <!-- widget header -->
-                <div class="widget-header bg-green">
-                    <!-- widget title -->
-                    <h4 class="widget-title"><i class="aweso-user"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo TxTrasaccion::label(2) ?></h4>
-                    <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
-                    <div class="widget-action">
-                        <button data-toggle="collapse" data-collapse="#widget-button" class="btn">
-                            <i class="aweso-chevron-up color-cyan" data-toggle-icon="aweso-chevron-down  aweso-chevron-up"></i>
-                        </button>
-                    </div>
-                </div><!-- /widget header -->
-                <!-- widget content -->
-                <div class="widget-content bg-white">
+            <!-- widget header -->
+            <div class="widget-header bg-green">
+                <!-- widget title -->
+                <h4 class="widget-title"><i class="aweso-user"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo TxTrasaccion::label(2) ?></h4>
+                <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
+                <div class="widget-action">
+                    <button data-toggle="collapse" data-collapse="#widget-button" class="btn">
+                        <i class="aweso-chevron-up color-cyan" data-toggle-icon="aweso-chevron-down  aweso-chevron-up"></i>
+                    </button>
+                </div>
+            </div><!-- /widget header -->
+            <!-- widget content -->
+            <div class="widget-content bg-white">
+                <div style='overflow:auto'> 
                     <?php
 //$this->widget('bootstrap.widgets.TbGridView',array(
                     $this->widget('ext.selgridview.BootSelGridView', array(
@@ -103,4 +104,5 @@ $this->menu = array(
             </div>
         </div>
     </div>
-</fieldset>
+</div>
+<!--</fieldset>-->

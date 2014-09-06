@@ -6,6 +6,7 @@ var scripts = $(function() {
 
 //amascara para imputs
     maskAttributes();
+    dessabilitarEntreOnForm();
 
 
 
@@ -86,6 +87,14 @@ var scripts = $(function() {
         }
     }
 });
+function dessabilitarEntreOnForm() {
+    $("form").keypress(function(e) {
+//        alert(e.which);
+        if (e.which == 13) {
+            return false;
+        }
+    });
+}
 
 var attrBotonModal = {};
 

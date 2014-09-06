@@ -1,5 +1,5 @@
 $(function() {
-
+    dessabilitarEntreOnForm();
 
 });
 function AjaxAtualizacionInformacion(Formulario, idDeuda)
@@ -28,7 +28,7 @@ function ActualizarTotalDeudaHeader(idDeuda)
             number = Number(data.monto);
 
             $('#totalDeuda').text('Deuda Total $ ' + number.toFixed(2) + ' ctvs.');
-            $('#totalDeuda').fadeIn();
+            $('#totalDeuda').fadeIn('slow');
         }
     });
 

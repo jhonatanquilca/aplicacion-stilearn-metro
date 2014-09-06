@@ -2,7 +2,9 @@
 //var_dump($model->attributes);
 // Prevenir que jquery se cargue dos veces
 Yii::app()->clientScript->scriptMap['jquery.js'] = false;
-Yii::app()->clientScript->scriptMap['bootstrap.css'] = false;
+Yii::app()->clientScript->scriptMap['bootstrap.css'] = false;\
+
+Util::tsRegisterAssetJs('_form_modal.js');
 /** @var CltDeudaController $this */
 /** @var CltDeuda $model */
 /** @var AweActiveForm $form */
@@ -11,7 +13,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
     'type' => 'horizontal',
 //    'action' => Yii::app()->createUrl('/cliente/cltDeuda/create'),
     'enableAjaxValidation' => true,
-    'clientOptions' => array('validateOnSubmit' => false, 'validateOnChange' => true,),
+    'clientOptions' => array('validateOnSubmit' => true, 'validateOnChange' => true,),
     'enableClientValidation' => false,
         ));
 ?>
@@ -25,7 +27,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
         <?php echo Yii::t('AweCrud.app', 'Fields with') ?> <span class="required">*</span>
         <?php echo Yii::t('AweCrud.app', 'are required') ?>.                </p>
 
-    <?php echo $form->errorSummary($model) ?>
+    <?php // echo $form->errorSummary($model) ?>
 
     <!--@TODO: Utilizar la estructura comentada si el formulario es de--> 
     <!--type=vertical caso contrario si es hirizontal no cambia-->
@@ -37,7 +39,19 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
                         </div>                                           
                     </div>-->
 
-    <?php echo $form->textFieldRow($model, 'monto', array('class' => 'money')) ?>
+
+    <div class="control-group">
+        <?php echo $form->labelEx($model, 'monto', array('class' => 'control-label')); ?>
+        <div class="controls">
+            <div class="input-prepend ">
+                <?php echo $form->textField($model, 'monto', array('class' => 'money', 'placeholder' => '0.00')) ?>
+                <span class="add-on">$</span>
+
+            </div>
+            <?php echo $form->error($model, 'monto') ?> 
+        </div>
+    </div>
+
     <?php // echo $form->textFieldRow($model, 'usuario_creacion_id') ?>
     <?php // echo $form->textFieldRow($model, 'usuario_actualizacion_id') ?>
     <?php // echo $form->dropDownListRow($model, 'clt_cliente_id', array('' => ' -- Seleccione -- ') + CHtml::listData(CltCliente::model()->findAll(), 'id', CltCliente::representingColumn())) ?>

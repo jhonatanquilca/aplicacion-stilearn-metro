@@ -12,7 +12,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
     'id' => 'tx-trasaccion-form',
     'type' => 'horizontal',
     'enableAjaxValidation' => true,
-    'clientOptions' => array('validateOnSubmit' => false, 'validateOnChange' => true,),
+    'clientOptions' => array('validateOnSubmit' => true, 'validateOnChange' => true,),
     'enableClientValidation' => false,
         ));
 ?>
@@ -23,7 +23,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
         <i class="aweso-dollar "> 
             <?php echo $model->isNewRecord ? Yii::t('AweCrud.app', 'Create') : Yii::t('AweCrud.app', 'Update'); ?> 
             <?php echo ' ' . TxTrasaccion::label() ?>
-            <?php echo ' - Deuda Total $' . number_format($model->cltDeuda->monto, 2, ',', '') ?>
+            <?php echo ' - Deuda Total $' . number_format($model->cltDeuda->monto, 2, '.', '') ?>
         </i>
     </h3>
 </div>
@@ -34,19 +34,20 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
     </p>
 
 
-    <?php echo $form->errorSummary($model) ?>
+    <?php // echo $form->errorSummary($model) ?>
 
-    <!--@TODO: Utilizar la estructura comentada si el formulario es de--> 
-    <!--type=vertical caso contrario si es hirizontal no cambia-->
-    <!--                <div class="control-group">
-    <?php // echo $form->labelEx($model, 'nombre', array('class' => 'control-label')); ?>
-                        <div class="controls">
-    <?php // echo $form->textField($model, 'nombre', array('maxlength' => 64)) ?>
-    <?php // echo $form->error($model, 'nombre') ?> 
-                        </div>                                           
-                    </div>-->
+    <div class="control-group">
+        <?php echo $form->labelEx($model, 'monto_cuota', array('class' => 'control-label')); ?>
+        <div class="controls">
+            <div class="input-prepend ">
+                <?php echo $form->textField($model, 'monto_cuota', array('class' => 'money', 'placeholder' => '0.00')) ?>
+                <span class="add-on">$</span>
 
-    <?php echo $form->textFieldRow($model, 'monto_cuota', array('class' => 'money')) ?>
+            </div>
+            <?php echo $form->error($model, 'monto_cuota') ?> 
+        </div>
+    </div>
+
     <?php echo $form->dropDownListRow($model, 'tipo', array('' => ' -- Seleccione -- ', 'ADEUDAR' => 'ADEUDAR', 'PAGAR' => 'PAGAR',)) ?>
     <?php echo $form->dropDownListRow($model, 'tx_descripcion_palntilla_id', array('' => ' -- Seleccione -- ') + CHtml::listData(TxDescripcionPalntilla::model()->findAll(), 'id', TxDescripcionPalntilla::representingColumn())) ?>
     <?php echo $form->textAreaRow($model, 'observaciones', array('rows' => 3, 'cols' => 50)) ?>
