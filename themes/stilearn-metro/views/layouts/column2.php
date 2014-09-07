@@ -6,7 +6,8 @@
 
 <?php if (!empty($this->header)): ?>
 
-    <header class="content-header">
+    <!--<header class="content-header">-->
+    <header class="content-header no-border">
 
         <ul class="page-header">
             <!-- content title-->

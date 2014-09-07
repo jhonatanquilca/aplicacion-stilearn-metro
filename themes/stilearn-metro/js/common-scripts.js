@@ -22,7 +22,7 @@ var scripts = $(function() {
             {
                 var botonSubmit = $('form button.btn-success');
                 $(botonSubmit).attr("disabled", true);
-                $(botonSubmit).html('<img class="preload-small" src="' + themeUrl + 'img/preload-7-white.gif" alt=""> Espere...');
+                $(botonSubmit).html('<img class="preload-mini" src="' + themeUrl + 'img/preload-6-white.gif" alt=""> Espere...');
 
                 $(botonSubmit).attr("disabled", true);
                 $('form a').attr("disabled", true);
@@ -121,7 +121,7 @@ function maskAttributes() {
 function showModalLoading() {
     var html = "";
     html += "<div class='modal-header'><a class='close' data-dismiss='modal'>&times;</a><h4><i class='icon-refresh'></i> Cargando</h4></div>";
-    html += "<div class='loading'><img src='" + themeUrl + "img/preload-7-black.gif' /></div>";
+    html += "<div class='loading'><img src='" + themeUrl + "img/preload-6-black.gif' /></div>";
     $("#mainModal").html(html);
     $("#mainModal").modal("show");
 }
