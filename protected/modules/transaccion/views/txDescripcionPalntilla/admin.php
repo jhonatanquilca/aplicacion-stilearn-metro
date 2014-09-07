@@ -32,7 +32,7 @@ $this->menu = array(
                 </div>
             </div><!-- /widget header -->
             <!-- widget content -->
-            <div class="widget-content bg-white"> ;
+            <div class="widget-content bg-white"> 
                 <div style='overflow:auto'> 
                     <?php
 //$this->widget('bootstrap.widgets.TbGridView',array(
