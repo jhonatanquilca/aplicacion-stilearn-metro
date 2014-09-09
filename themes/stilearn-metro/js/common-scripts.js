@@ -176,7 +176,7 @@ function BloquearBotonesModal($form)
     attrBotonModal['html'] = $(btnSave).html();
 
     $(btnSave).attr("disabled", true);
-    $(btnSave).html('<img class="preload-small" src="' + themeUrl + 'img/preload-7-white.gif" alt=""> Espere...');
+    $(btnSave).html('<img class="preload-mini" src="' + themeUrl + 'img/preload-6-white.gif" alt=""> Espere...');
     $(btnSave).attr("onclick", "true");
 
 
