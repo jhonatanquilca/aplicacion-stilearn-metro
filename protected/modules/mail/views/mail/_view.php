@@ -92,6 +92,18 @@
 
         <?php endif; ?>
                 
+        <?php if (!empty($data->contacto_id)): ?>
+        <div class="field">
+            <div class="field_name">
+                <b><?php echo CHtml::encode($data->getAttributeLabel('contacto_id')); ?>:</b>
+            </div>
+            <div class="field_value">
+                <?php echo CHtml::encode($data->contacto_id); ?>
+            </div>
+        </div>
+
+        <?php endif; ?>
+                
         <?php if (!empty($data->plantilla->nombre)): ?>
         <div class="field">
             <div class="field_name">

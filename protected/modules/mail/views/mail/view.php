@@ -53,6 +53,7 @@ $this->menu=array(
                                             'fecha_envio',
                                             'usuario_creacion_id',
                                             'estado',
+                                            'contacto_id',
                                             array(
 			'name' => 'plantilla_id',
 			'value'=>($model->plantilla !== null) ? CHtml::link($model->plantilla, array('/mailPlantilla/view', 'id' => $model->plantilla->id)).' ' : null,

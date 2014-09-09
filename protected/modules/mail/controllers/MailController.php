@@ -104,10 +104,15 @@ class MailController extends AweController {
         $model->unsetAttributes(); // clear any default values
         if (isset($_GET['Mail']))
             $model->attributes = $_GET['Mail'];
-
-        $this->render('admin', array(
-            'model' => $model,
-        ));
+        if ($model->getCountMails() > 0) {
+            $this->render('admin', array(
+                'model' => $model,
+            ));
+        } else {
+            $this->render('empty', array(
+                'model' => $model,
+            ));
+        }
     }
 
     /**

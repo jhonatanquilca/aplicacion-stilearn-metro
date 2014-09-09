@@ -22,6 +22,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 <?php echo $form->dropDownListRow($model, 'estado', array('PENDIENTE' => 'PENDIENTE','ENVIADO' => 'ENVIADO','NO_ENVIADO' => 'NO_ENVIADO',)); ?>
 
+<?php echo $form->textFieldRow($model, 'contacto_id', array('maxlength' => 45)); ?>
+
 <?php echo $form->dropDownListRow($model, 'plantilla_id', array('' => ' -- Seleccione -- ') + CHtml::listData(MailPlantilla::model()->findAll(), 'id', MailPlantilla::representingColumn()), array('prompt' => Yii::t('AweApp', 'None'))); ?>
 
 <div class="form-actions">

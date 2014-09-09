@@ -104,10 +104,15 @@ class MailPlantillaController extends AweController {
         $model->unsetAttributes(); // clear any default values
         if (isset($_GET['MailPlantilla']))
             $model->attributes = $_GET['MailPlantilla'];
-
-        $this->render('admin', array(
-            'model' => $model,
-        ));
+        if ($model->getCountMailPlantilla() > 0) {
+            $this->render('admin', array(
+                'model' => $model,
+            ));
+        } else {
+            $this->render('empty', array(
+                'model' => $model,
+            ));
+        }
     }
 
     /**
