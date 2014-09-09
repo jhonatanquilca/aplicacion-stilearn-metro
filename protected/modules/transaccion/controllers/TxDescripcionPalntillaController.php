@@ -105,9 +105,15 @@ class TxDescripcionPalntillaController extends AweController {
         if (isset($_GET['TxDescripcionPalntilla']))
             $model->attributes = $_GET['TxDescripcionPalntilla'];
 
-        $this->render('admin', array(
-            'model' => $model,
-        ));
+        if ($model->getCountDescipcionPlantilla() > 0) {
+            $this->render('admin', array(
+                'model' => $model,
+            ));
+        } else {
+            $this->render('empty', array(
+                'model' => $model,
+            ));
+        }
     }
 
     /**
