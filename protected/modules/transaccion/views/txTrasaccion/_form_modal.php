@@ -49,7 +49,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
     </div>
 
     <?php echo $form->dropDownListRow($model, 'tipo', array('' => ' -- Seleccione -- ', 'ADEUDAR' => 'ADEUDAR', 'PAGAR' => 'PAGAR',)) ?>
-    <?php echo $form->dropDownListRow($model, 'tx_descripcion_palntilla_id', array('' => ' -- Seleccione -- ') + CHtml::listData(TxDescripcionPalntilla::model()->findAll(), 'id', TxDescripcionPalntilla::representingColumn())) ?>
+    <?php echo $form->dropDownListRow($model, 'tx_descripcion_palntilla_id', array('' => ' -- Seleccione -- ') + CHtml::listData(TxDescripcionPalntilla::model()->activos()->findAll(), 'id', TxDescripcionPalntilla::representingColumn())) ?>
     <?php echo $form->textAreaRow($model, 'observaciones', array('rows' => 3, 'cols' => 50)) ?>
     <?php // echo $form->textFieldRow($model, 'usuario_creacion_id') ?>
     <?php // echo $form->textFieldRow($model, 'usuario_actualizacion_id') ?>
