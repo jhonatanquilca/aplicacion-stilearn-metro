@@ -52,6 +52,11 @@
                             'name' => 'monto_cuota',
                             'value' => '"$ ".number_format($data->monto_cuota, 2,".", " ")." ctv"',
                         ),
+                        
+                        array(
+                           'name'=> 'tx_descripcion_palntilla_id',
+                            'value'=>'$data->txDescripcionPalntilla',
+                        ),
                         array(
                             'name' => 'tipo',
                             'filter' => array('ADEUDAR' => 'ADEUDAR', 'PAGAR' => 'PAGAR',),
