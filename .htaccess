@@ -6,6 +6,6 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 #internamente
-RewriteRule ^(.*)\?*$ index.php/$1 [L,QSA
+RewriteRule ^(.*)\?*$ index.php/$1 [L,QSA]
 #para hostinger descomentar la sigiente y descomentar la anterior
 #RewriteRule .index.php
