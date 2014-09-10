@@ -3,6 +3,7 @@
 // Prevenir que jquery se cargue dos veces
 Yii::app()->clientScript->scriptMap['jquery.js'] = false;
 Yii::app()->clientScript->scriptMap['bootstrap.css'] = false;
+Yii::app()->clientScript->scriptMap['bootstrap.js'] = false;
 
 Util::tsRegisterAssetJs('_form_modal.js');
 /** @var CltDeudaController $this */
