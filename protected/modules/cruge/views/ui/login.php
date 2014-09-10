@@ -21,7 +21,10 @@
 
     <div class="text-center color-silver">
         <h1>
-            <a href="index.html" class="help-block" title="your logo"><i class="aweso-th-large text-4x"></i></a>
+            <a href="#" class="help-block" title="your logo">
+                <!--<i class="aweso-th-large text-4x"></i>-->
+                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/ico/monedas.png" />
+            </a>
             <!--Stilearn Metro-->
             <h2 class="form-title"><?php echo CrugeTranslator::t('logon', 'Login') ?></h2>
         </h1>
