@@ -2,6 +2,7 @@
 // Prevenir que jquery se cargue dos veces
 Yii::app()->clientScript->scriptMap['jquery.js'] = false;
 Yii::app()->clientScript->scriptMap['bootstrap.css'] = false;
+Yii::app()->clientScript->scriptMap['bootstrap.js'] = false;
 /** @var CltDeudaController $this */
 /** @var CltDeuda $model */
 /** @var AweActiveForm $form */
@@ -12,7 +13,11 @@ $attributes = array();
 
 $attributes = array_merge($attributes, array(
 //            'id',
-    'monto_cuota',
+
+    array(
+        'name' => 'monto_cuota',
+        'value' => "$ " . number_format($model->monto_cuota, 2, ".", "") . " ctv",
+    ),
     'tipo',
         ));
 
@@ -42,8 +47,9 @@ $attributes = array_merge($attributes, array(
 //            ),
     array(
         'name' => 'tx_descripcion_palntilla_id',
-        'value' => ($model->txDescripcionPalntilla !== null) ? CHtml::link($model->txDescripcionPalntilla, array('/txDescripcionPalntilla/view', 'id' => $model->txDescripcionPalntilla->id)) . ' ' : null,
-        'type' => 'html',
+//        'value' => ($model->txDescripcionPalntilla !== null) ? CHtml::link($model->txDescripcionPalntilla, array('/txDescripcionPalntilla/view', 'id' => $model->txDescripcionPalntilla->id)) . ' ' : null,
+        'value' => ($model->txDescripcionPalntilla !== null) ? $model->txDescripcionPalntilla->descripcion : null,
+//        'type' => 'html',
     ),
     'observaciones',
         ));

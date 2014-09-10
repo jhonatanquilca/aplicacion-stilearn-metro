@@ -20,20 +20,20 @@ $this->pageTitle = Yii::app()->name;
     </ul>
 
     <!-- header extra -->
-<!--        <ul class="header-ext">
-            <li>
-                <span data-chart="sparklines" data-height="32px" data-color="#76608A">4,6,8,6,9,7,8,6,7,6,7,5,9,8,7,9,5,7,8,7</span>
-                <div class="header-ext-text color-mauve"><span class="muted">Traffic</span> 76,567</div>
-            </li>
-            <li>
-                <span data-chart="sparklines" data-height="32px" data-color="#647687">4,6,7,9,5,6,9,5,6,7,6,5,7,8,7,5,7,8,6,5</span>
-                <div class="header-ext-text color-steel"><span class="muted">Orders</span> 9,537</div>
-            </li>
-            <li>
-                <span data-chart="sparklines" data-height="32px" data-color="#6D8764">3,7,8,4,5,9,5,10,5,5,6,7,8,4,7,9,5,5,6,7</span>
-                <div class="header-ext-text color-olive"><span class="muted">Ballance</span> 4,5M$</div>
-            </li>
-        </ul>-->
+    <!--        <ul class="header-ext">
+                <li>
+                    <span data-chart="sparklines" data-height="32px" data-color="#76608A">4,6,8,6,9,7,8,6,7,6,7,5,9,8,7,9,5,7,8,7</span>
+                    <div class="header-ext-text color-mauve"><span class="muted">Traffic</span> 76,567</div>
+                </li>
+                <li>
+                    <span data-chart="sparklines" data-height="32px" data-color="#647687">4,6,7,9,5,6,9,5,6,7,6,5,7,8,7,5,7,8,6,5</span>
+                    <div class="header-ext-text color-steel"><span class="muted">Orders</span> 9,537</div>
+                </li>
+                <li>
+                    <span data-chart="sparklines" data-height="32px" data-color="#6D8764">3,7,8,4,5,9,5,10,5,5,6,7,8,4,7,9,5,5,6,7</span>
+                    <div class="header-ext-text color-olive"><span class="muted">Ballance</span> 4,5M$</div>
+                </li>
+            </ul>-->
 </header> 
 <!--/ content header -->
 
@@ -51,13 +51,13 @@ $this->pageTitle = Yii::app()->name;
 
             <div class="shortcut row-fluid">
                 <!-- tile -->
-                <div data-looper="go" data-interval="4000" class="span3 tile bg-amber looper slide up">
+                <div data-looper="go" data-interval="4000" class="span3 tile bg-green looper slide up">
                     <!-- tile-content -->
                     <div class="tile-content">
                         <!-- block looper -->
                         <div class="looper-inner">
                             <div class="item">
-                                <a href="<?php echo Yii::app()->createUrl('/cliente/cltCliente/admin') ?>"><i class="aweso-user"></i></a>
+                                <a href="<?php echo Yii::app()->createUrl('/cliente/cltCliente/admin') ?>"><i class="aweso-group "></i></a>
                             </div><!-- /item -->
                             <div class="item">
                                 <a href="<?php echo Yii::app()->createUrl('/cliente/cltCliente/admin') ?>">
@@ -89,7 +89,7 @@ $this->pageTitle = Yii::app()->name;
                     <div class="tile-peek">
                         <div class="icon"><i class="aweso-user"></i> </div>
                         <!--<span class="brand">-->
-                        <?php echo count(CltCliente::model()->findAll()) ?>
+                        <?php echo count(CltCliente::model()->activos()->findAll()) ?>
                         <!--</span>-->
                         <span class="badge"> <?php echo CltCliente::model()->label(2) ?></span>
                     </div><!-- /tile-peek -->

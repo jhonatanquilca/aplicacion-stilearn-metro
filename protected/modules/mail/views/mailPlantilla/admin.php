@@ -8,7 +8,7 @@
 
 
 <?php 
-$this->header='<i class="aweso-dashboard aweso-2x"></i> '.  Yii::t('AweCrud.app', 'Manage') .' '. MailPlantilla::label(2) ;
+$this->header='<i class="aweso-envelope aweso-2x"></i> '.  Yii::t('AweCrud.app', 'Manage') .' '. MailPlantilla::label(2) ;
 $this->menu = array(
 //array('label' => Yii::t('AweCrud.app', 'List') . ' ' . MailPlantilla::label(2), 'icon' => 'list', 'url' => array('index')),
 array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . MailPlantilla::label(), 'icon' => 'plus', 'url' => array('create')),
@@ -25,7 +25,7 @@ array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . MailPlantilla::label(),
             <!-- widget header -->
             <div class="widget-header bg-cyan">
                 <!-- widget title -->
-                <h4 class="widget-title"><i class="aweso-user"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo MailPlantilla::label(2) ?></h4>
+                <h4 class="widget-title"><i class="aweso-envelope"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo MailPlantilla::label(2) ?></h4>
                 <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
                 <div class="widget-action">
                     <button data-toggle="collapse" data-collapse="#widget-button" class="btn">

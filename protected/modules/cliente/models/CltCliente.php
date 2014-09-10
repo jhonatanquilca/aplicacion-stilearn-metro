@@ -26,7 +26,8 @@ class CltCliente extends BaseCltCliente {
     public function rules() {
         return array(
             array('nombre, apellido, usuario_creacion_id', 'required'),
-            array('nombre,telefono,celular,email_1,documento', 'unique', 'on' => 'create'),
+            array('telefono,celular,email_1,documento', 'unique', 'on' => 'create'),
+//            array('nombre', 'unique', 'on' => 'create'),
             array('usuario_creacion_id, usuario_actualizacion_id', 'numerical', 'integerOnly' => true),
             array('nombre, apellido', 'length', 'max' => 32),
             array('documento', 'length', 'max' => 20),

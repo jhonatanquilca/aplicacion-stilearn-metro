@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-amber">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                                                                           ?></h4>
+        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                                                                            ?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="fullscreen" data-fullscreen="#widget-button-transaccion" class="btn">
@@ -25,7 +25,7 @@
         $countTransDeuda = $totalTransacciones > 0;
         ?>
 
-<?php if ($countTransDeuda): ?>
+        <?php if ($countTransDeuda): ?>
             <div style='overflow:auto'> 
 
                 <?php
@@ -50,12 +50,11 @@
 //                        'id',
                         array(
                             'name' => 'monto_cuota',
-                            'value' => '"$ ".number_format($data->monto_cuota, 2,".", " ")." ctv"',
+                            'value' => '"$ ".number_format($data->monto_cuota, 2,".", "")." ctv"',
                         ),
-                        
                         array(
-                           'name'=> 'tx_descripcion_palntilla_id',
-                            'value'=>'$data->txDescripcionPalntilla',
+                            'name' => 'tx_descripcion_palntilla_id',
+                            'value' => '$data->txDescripcionPalntilla',
                         ),
                         array(
                             'name' => 'tipo',
@@ -97,7 +96,7 @@
                 ?>
 
             </div>
-<?php endif; ?>
+        <?php endif; ?>
 
 
         <?php
