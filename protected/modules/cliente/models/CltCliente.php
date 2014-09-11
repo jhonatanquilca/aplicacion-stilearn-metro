@@ -28,6 +28,7 @@ class CltCliente extends BaseCltCliente {
             array('nombre, apellido, usuario_creacion_id', 'required'),
             array('telefono,celular,email_1,documento', 'unique', 'on' => 'create'),
 //            array('nombre', 'unique', 'on' => 'create'),
+            array('nombre+apellido', 'application.extensions.uniqueMultiColumnValidator.uniqueMultiColumnValidator', 'message' => 'Nombre y Apellido ya estan registrados.'),
             array('usuario_creacion_id, usuario_actualizacion_id', 'numerical', 'integerOnly' => true),
             array('nombre, apellido', 'length', 'max' => 32),
             array('documento', 'length', 'max' => 20),
