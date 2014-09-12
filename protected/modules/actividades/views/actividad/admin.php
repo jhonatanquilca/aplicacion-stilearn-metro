@@ -1,97 +1,70 @@
 <?php
 /** @var ActividadController $this */
 /** @var Actividad $model */
+Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/css/timeline-component.css');
 ?>
+<script>
+    $(function() {
+//                                         Infinite Ajax Scroll v2.1.2
+        var ias = $('div.widget-tareas').ias({
+            container: "#lista-infinita",
+            item: "div.itemSelector",
+            pagination: "div.pagination",
+            delay: 1000,
+            html: '<img class="preload-mini" src="' + themeUrl + 'img/preload-6-white.gif" alt=""> Espere...',
+            next: "#lista-infinita div.pagination ul.yiiPager li.next:not(.disabled):not(.hidden) a",
+        });
 
 
+        ias.extension(new IASSpinnerExtension({            
+            html: '<div class="ias-spinner" style="text-align: center;"><img class="preload-mini" src=" ' + themeUrl + 'img/preload-6-black.gif" alt=""><br/><b> Espere...</b></div>', // optionally
+        }));
+        ias.extension(new IASNoneLeftExtension({
+//            text: 'No hay mas datos.'
+//            html: '<div class="ias-noneleft" style="text-align: center;"><b>No hay mas datos.</b></div>'
+            html: '<p class="alert-danger"style="text-align: center; height:30px"><b>No hay mas datos.</b></p>'
+        }));
+    })
 
-<?php
-$this->header = '<i class="aweso-dashboard aweso-2x"></i> ' . Yii::t('AweCrud.app', 'Manage') . ' ' . Actividad::label(2);
-$this->menu = array(
-//    array('label' => Yii::t('AweCrud.app', 'List') . ' ' . Actividad::label(2), 'icon' => 'list', 'url' => array('index')),
-    array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . Actividad::label(), 'icon' => 'plus', 'url' => array('create')),
-);
-?>
-
-
-
+</script>
 <div class="row-fluid">
     <div class="span12">
         <!-- widget button -->
-        <div class="widget border-green" id="widget-button">
+        <div class="widget border-black" id="widget-button" >
 
             <!-- widget header -->
-            <div class="widget-header bg-green">
+            <div class="widget-header bg-black">
                 <!-- widget title -->
-                <h4 class="widget-title"><i class="aweso-user"></i> <?php echo Yii::t('AweCrud.app', 'Manage') ?> <?php echo Actividad::label(2) ?></h4>
+                <h4 class="widget-title"><i class="aweso-user"></i> <?php echo Yii::t('app', 'Historial de') ?> <?php echo Actividad::label(2) ?></h4>
                 <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
                 <div class="widget-action">
-                    <button data-toggle="collapse" data-collapse="#widget-button" class="btn">
+                    <button data-toggle="collapse" data-collapse="widget-button" class="btn">
                         <i class="aweso-chevron-up color-cyan" data-toggle-icon="aweso-chevron-down  aweso-chevron-up"></i>
                     </button>
                 </div>
             </div><!-- /widget header -->
-            <!-- widget content -->
-            <div class="widget-content bg-white">
-                <div style='overflow:auto'> 
+
+            <div class="widget-content bg-white"  data-scrollbar="mscroll"  >
+                <!--<div  >-->
+                <div class="widget-tareas"  style="height: 470px; overflow: auto;position: relative;">
+                    <!--<div style='overflow:auto'>--> 
+                    <?php // var_dump($providerInfinite) ;?>
                     <?php
-//$this->widget('bootstrap.widgets.TbGridView',array(
-                    $this->widget('ext.selgridview.BootSelGridView', array(
-                        'id' => 'actividad-grid',
-                        'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
-                        'template' => '{summary}{items}{pager}',
-                        'dataProvider' => $model->search(),
-                        'pagerCssClass' => 'pagination text-center',
-                        'selectableRows' => 2,
-                        //'filter' => $model,
-                        'columns' => array(
-                            'id',
-                            'entidad_tipo',
-                            'entidad_id',
-                            array(
-                                'name' => 'tipo',
-                                'filter' => array('CREATE' => 'CREATE', 'UPDATE' => 'UPDATE', 'DELETE' => 'DELETE',),
-                            ),
-                            'usuario_id',
-                            'fecha',
-                            /*
-                              'detalle',
-                             */
-                            array(
-                                //'class'=>'bootstrap.widgets.TbButtonColumn',
-                                'class' => 'CButtonColumn',
-                                'template' => '{view} {update} {delete}',
-                                'deleteConfirmation' => CrugeTranslator::t('admin', 'Are you sure you want to delete this user'),
-                                'buttons' => array(
-                                    'view' => array(
-                                        'label' => '<button class="btn btn-success"><i class="aweso-eye-open"></i></button>',
-                                        'options' => array('title' => Yii::t('AweCrud.app', 'View')),
-                                        // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
-                                        'imageUrl' => false,
-                                    ),
-                                    'update' => array(
-                                        'label' => '<button class="btn btn-info"><i class="aweso-pencil"></i></button>',
-                                        'options' => array('title' => Yii::t('AweCrud.app', 'Update')),
-                                        // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
-                                        'imageUrl' => false,
-                                    ),
-                                    'delete' => array(
-                                        'label' => '<button class="btn btn-danger"><i class="aweso-trash"></i></button>',
-                                        'options' => array('title' => Yii::t('AweCrud.app', 'Delete')),
-                                        // 'url' => 'array("tu-controlador","id"=>$data->getPrimaryKey())',
-                                        'imageUrl' => false,
-                                    ),
-                                ),
-                                'htmlOptions' => array(
-                                    'width' => '206px'
-                                )
-                            ),
+                    $this->widget('ext.bootstrap.widgets.TbListView', array(//TODO: crear widget para scrollinfinito   Infinite Ajax Scroll v2.1.2
+                        'id' => 'lista-infinita',
+                        'dataProvider' => $providerInfinite,
+//                            'viewData' => array('model' => $model, 'modal' => false),
+                        'itemView' => 'portlets/_actividades',
+                        'template' => '{items}{pager}',
+                        'htmlOptions' => array(
+                            'style' => 'margin-right: 10px;'
                         ),
                     ));
                     ?>
+                    <!--</div>-->
                 </div>
+                <!--</div>-->
             </div>
         </div>
     </div>
 </div>
-</fieldset>

@@ -7,7 +7,8 @@ class ActividadController extends AweController {
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
-    public $defaultAction = 'admin';
+
+//    public $defaultAction = 'admin';
 
     public function filters() {
         return array(
@@ -26,85 +27,29 @@ class ActividadController extends AweController {
     }
 
     /**
-     * Creates a new model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     */
-    public function actionCreate() {
-        $model = new Actividad;
-
-        $this->performAjaxValidation($model, 'actividad-form');
-
-        if (isset($_POST['Actividad'])) {
-            $model->attributes = $_POST['Actividad'];
-            if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
-            }
-        }
-
-        $this->render('create', array(
-            'model' => $model,
-        ));
-    }
-
-    /**
-     * Updates a particular model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id the ID of the model to be updated
-     */
-    public function actionUpdate($id) {
-        $model = $this->loadModel($id);
-
-        $this->performAjaxValidation($model, 'actividad-form');
-
-        if (isset($_POST['Actividad'])) {
-            $model->attributes = $_POST['Actividad'];
-            if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
-            }
-        }
-
-        $this->render('update', array(
-            'model' => $model,
-        ));
-    }
-
-    /**
-     * Deletes a particular model.
-     * If deletion is successful, the browser will be redirected to the 'admin' page.
-     * @param integer $id the ID of the model to be deleted
-     */
-    public function actionDelete($id) {
-        if (Yii::app()->request->isPostRequest) {
-            // we only allow deletion via POST request
-            $this->loadModel($id)->delete();
-
-            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-            if (!isset($_GET['ajax']))
-                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-        } else
-            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
-    }
-
-    /**
-     * Lists all models.
-     */
-    public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('Actividad');
-        $this->render('index', array(
-            'dataProvider' => $dataProvider,
-        ));
-    }
-
-    /**
      * Manages all models.
      */
-    public function actionAdmin() {
+    public function actionAdmin($paginacion = NULL) {
+
+        $providerInfinite = Actividad::model()->search();
+        if ($paginacion) {
+            $providerInfinite->model->pageSize = $paginacion;
+            $providerInfinite->pagination->pageSize = $paginacion;
+        }
+
+
+        $this->render('admin', array(
+            'providerInfinite' => $providerInfinite,
+        ));
+    }
+
+    public function actionAdminDefault() {
         $model = new Actividad('search');
         $model->unsetAttributes(); // clear any default values
         if (isset($_GET['Actividad']))
             $model->attributes = $_GET['Actividad'];
         if ($model->getCountActividades() > 0) {
-            $this->render('admin', array(
+            $this->render('adminDefault', array(
                 'model' => $model,
             ));
         } else {
@@ -114,26 +59,46 @@ class ActividadController extends AweController {
         }
     }
 
+    /*     * **************************funciones ajax**************************** */
+
     /**
-     * Returns the data model based on the primary key given in the GET variable.
-     * If the data model is not found, an HTTP exception will be raised.
-     * @param integer the ID of the model to be loaded
+     * retorna la lista de actividades por entidada.
+     * @author Alex Yepez <ayepez@tradesystem.com.ec>
+     * @param type $entidad_tipo
+     * @param type $entidad_id
+     * @param type $page
      */
-    public function loadModel($id, $modelClass = __CLASS__) {
-        $model = Actividad::model()->findByPk($id);
-        if ($model === null)
-            throw new CHttpException(404, 'The requested page does not exist.');
-        return $model;
+    public function actionAjaxloadingActivities($entidad_tipo = null, $entidad_id = null, $page) {
+        $colors = array('green', 'purple', 'red', 'yellow', 'blue', 'orange', 'gray', 'red', 'purple', 'yellow');
+        $providerInfinite = Actividad::model()->searchActivites($entidad_tipo, $entidad_id);
+        $providerInfinite->pagination->setCurrentPage($page);
+        $data = $providerInfinite->getData();
+        echo '<ul id="ulActivities_' . $entidad_tipo . '_page-' . $page . '" data-page="' . $page . '" class="metro_tmtimeline ulActivities">';
+        $i = 0;
+        foreach ($data as $actividad) {
+            $mensaje = Actividad::getMensaje($actividad['oldValues']);
+            echo '<li class = "' . $colors[$i] . '">';
+            echo $mensaje;
+            echo '</li>';
+            $i++;
+            if ($i == count($colors)) {
+                $i = 0;
+            }
+        }
+        echo '</ul>';
     }
 
     /**
-     * Performs the AJAX validation.
-     * @param CModel the model to be validated
+     * retornana paginacion de el dataprovider de actividades 
+     * @param type $entidad_tipo
+     * @param type $entidad_id
      */
-    protected function performAjaxValidation($model, $form = null) {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'actividad-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
+    public function actionAjaxGetPagination($entidad_tipo = null, $entidad_id = null) {
+        if (Yii::app()->request->isAjaxRequest) {
+            $providerInfinite = Actividad::model()->searchActivites($entidad_tipo, $entidad_id);
+            $providerInfinite->getData();
+            $pagination = $providerInfinite->getPagination();
+            echo $pagination->pageCount;
         }
     }
 

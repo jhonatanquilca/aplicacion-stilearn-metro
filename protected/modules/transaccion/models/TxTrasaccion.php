@@ -1,7 +1,7 @@
 <?php
 
 Yii::import('transaccion.models._base.BaseTxTrasaccion');
-Yii::import('cliente.models.*');
+
 
 class TxTrasaccion extends BaseTxTrasaccion {
 

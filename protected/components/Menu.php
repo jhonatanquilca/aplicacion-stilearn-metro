@@ -29,12 +29,12 @@ class Menu {
 //                    array('label' => 'Estado', 'url' => array('/incidencias/incidenciaEstado/admin'), 'access' => 'action_incidenciaEstado_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaEstado')),
 //                    array('label' => 'Prioridad', 'url' => array('/incidencias/incidenciaPrioridad/admin'), 'access' => 'action_incidenciaPrioridad_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaPrioridad')),
                 )),
-                /* ejemplo menu simple */
-//            array('label' => '<i class="aweso-desktop"></i> Cuentas ',
-//                'url' => array('/tmp/ejemplo/admin'),
-//                'access' => 'action_cuenta_admin',
-//                'active_rules' => array('module' => 'principal', 'controller' => 'default', 'action' => 'admin')
-//            ),
+            /* ejemplo menu simple */
+            array('label' => '<i class="aweso-time"></i> Actividades',
+                'url' => array('/actividades/actividad/admin'),
+                'access' => 'action_actividad_admin',
+                'active_rules' => array('module' => 'actividad', 'controller' => 'actividades', 'action' => 'admin')
+            ),
                 /* ejemplo menu 2 niveles */
 //            array('label' => '<i class=" aweso-book"></i> Reportes',
 //                'url' => '#',

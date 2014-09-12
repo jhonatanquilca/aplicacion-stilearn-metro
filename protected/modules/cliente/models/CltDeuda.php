@@ -1,7 +1,7 @@
 <?php
 
 Yii::import('cliente.models._base.BaseCltDeuda');
-Yii::import('transaccion.models.*');
+
 
 class CltDeuda extends BaseCltDeuda {
 

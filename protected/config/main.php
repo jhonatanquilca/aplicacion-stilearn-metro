@@ -24,6 +24,13 @@ return array(
         'ext.AweCrud.components.*', // AweCrud components
         'application.modules.cruge.components.*',
         'application.modules.cruge.extensions.crugemailer.*',
+        //clientes       
+        'application.modules.cliente.models.*',
+        //actividades
+        'application.modules.actividades.components.*',
+        'application.modules.actividades.models.*',
+        //transaccion
+        'application.modules.transaccion.models.*',
     ),
     'modules' => array(
 // aqui pones tus modulos        
