@@ -48,6 +48,7 @@ class CltClienteController extends AweController {
             $model->attributes = $_POST['CltCliente'];
             if ($model->save()) {
 //                TODO borrar si no sirver
+                Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
                 $this->redirect(array('view', 'id' => $model->id));
 //                $this->redirect(array('admin'));
             }
@@ -72,6 +73,7 @@ class CltClienteController extends AweController {
         if (isset($_POST['CltCliente'])) {
             $model->attributes = $_POST['CltCliente'];
             if ($model->save()) {
+                Actividad::registrarActividad($model, Actividad::TIPO_UPDATE);
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }
@@ -94,6 +96,9 @@ class CltClienteController extends AweController {
             $estado = CltCliente::model()->updateByPk($id, array('estado' => CltCliente::ESTADO_INACTIVO,
                 'usuario_actualizacion_id' => Yii::app()->user->id,
             ));
+            if ($estado > 0) {
+                Actividad::registrarActividad($model, Actividad::TIPO_DELETE, null, 'asd');
+            }
 
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if (!isset($_GET['ajax']))

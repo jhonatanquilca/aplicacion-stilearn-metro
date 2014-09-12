@@ -33,7 +33,8 @@ class Menu {
             array('label' => '<i class="aweso-time"></i> Actividades',
                 'url' => array('/actividades/actividad/admin'),
                 'access' => 'action_actividad_admin',
-                'active_rules' => array('module' => 'actividad', 'controller' => 'actividades', 'action' => 'admin')
+                'active_rules' => array('module' => 'actividades', 'controller' => 'actividad')
+//                'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'admin')
             ),
                 /* ejemplo menu 2 niveles */
 //            array('label' => '<i class=" aweso-book"></i> Reportes',

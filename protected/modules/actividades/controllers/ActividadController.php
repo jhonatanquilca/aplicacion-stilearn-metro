@@ -30,17 +30,28 @@ class ActividadController extends AweController {
      * Manages all models.
      */
     public function actionAdmin($paginacion = NULL) {
+        $providerInfinite = new Actividad;
 
-        $providerInfinite = Actividad::model()->search();
-        if ($paginacion) {
-            $providerInfinite->model->pageSize = $paginacion;
-            $providerInfinite->pagination->pageSize = $paginacion;
+
+
+        if ($providerInfinite->getCountActividades() > 0) {
+            $providerInfinite = Actividad::model()->ordenFecha()->search();
+//si hay paginacion
+            if ($paginacion) {
+                $providerInfinite->model->pageSize = $paginacion;
+                $providerInfinite->pagination->pageSize = $paginacion;
+            }
+
+            $this->render('admin', array(
+                'paginacion' => $paginacion,
+                'providerInfinite' => $providerInfinite,
+            ));
+        } else {
+//
+            $this->render('empty', array(
+                'model' => $providerInfinite,
+            ));
         }
-
-
-        $this->render('admin', array(
-            'providerInfinite' => $providerInfinite,
-        ));
     }
 
     public function actionAdminDefault() {

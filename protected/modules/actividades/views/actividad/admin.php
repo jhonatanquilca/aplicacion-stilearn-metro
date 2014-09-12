@@ -16,7 +16,7 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/cs
         });
 
 
-        ias.extension(new IASSpinnerExtension({            
+        ias.extension(new IASSpinnerExtension({
             html: '<div class="ias-spinner" style="text-align: center;"><img class="preload-mini" src=" ' + themeUrl + 'img/preload-6-black.gif" alt=""><br/><b> Espere...</b></div>', // optionally
         }));
         ias.extension(new IASNoneLeftExtension({
@@ -45,10 +45,8 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/cs
             </div><!-- /widget header -->
 
             <div class="widget-content bg-white"  data-scrollbar="mscroll"  >
-                <!--<div  >-->
-                <div class="widget-tareas"  style="height: 470px; overflow: auto;position: relative;">
-                    <!--<div style='overflow:auto'>--> 
-                    <?php // var_dump($providerInfinite) ;?>
+
+                <div class="widget-tareas"  style="height: <?php echo $paginacion != NULL ? ($paginacion * 47) . 'px' : '470px' ?>; overflow: auto;position: relative; ">
                     <?php
                     $this->widget('ext.bootstrap.widgets.TbListView', array(//TODO: crear widget para scrollinfinito   Infinite Ajax Scroll v2.1.2
                         'id' => 'lista-infinita',
@@ -57,13 +55,12 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/cs
                         'itemView' => 'portlets/_actividades',
                         'template' => '{items}{pager}',
                         'htmlOptions' => array(
-                            'style' => 'margin-right: 10px;'
+                            'style' => 'margin-right: 10px; padding-top: 0px !important'
                         ),
                     ));
-                    ?>
-                    <!--</div>-->
+                    ?>            
                 </div>
-                <!--</div>-->
+
             </div>
         </div>
     </div>
