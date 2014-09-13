@@ -96,38 +96,31 @@ $this->pageTitle = Yii::app()->name;
                 </div><!-- /tile -->
 
                 <!-- tile -->
-                <!--                <div data-looper="go" data-interval="9000" class="span3 tile bg-magenta looper slide up">
-                                     tile-content 
-                                    <div class="tile-content">
-                                         block looper 
-                                        <div class="looper-inner">
-                                            <div class="item">
-                                                <a href="#message"><i class="aweso-envelope"></i></a>
-                                            </div> /item 
-                                            <div class="item">
-                                                <a href="#message1">
-                                                    <div class="text-based">
-                                                        <h4>Re: Dinner Invitation</h4>
-                                                        <p>Hi Bent, Vestibulum pellentesque risus wisi orci laoreet. Semper sagittis...</p>
-                                                    </div>
-                                                </a>
-                                            </div> /item 
-                                            <div class="item">
-                                                <a href="#message1">
-                                                    <div class="text-based">
-                                                        <h4>Re: Sales Support</h4>
-                                                        <p>Hi Bent, Netus est suspendisse, euismod phasellus aliquam wisi sed...</p>
-                                                    </div>
-                                                </a>
-                                            </div> /item 
-                                        </div> /block looper 
-                                    </div> /tile-content 
-                
-                                    <div class="tile-peek">
-                                        <span class="brand">Messages</span>
-                                        <span class="badge">3</span>
-                                    </div> /tile-peek 
-                                </div>-->
+                <div data-looper="go" data-interval="6000" class="span2 tile bg-cyan looper slide up">
+                    <!--tile-content--> 
+                    <div class="tile-content">
+                        <!--                        block looper -->
+                        <div class="looper-inner">
+                            <div class="item">
+                                <a href="#message"><i class="aweso-time"></i></a>
+                            </div> 
+                            <!--/item--> 
+                           <div class="item">
+                                <a href="<?php echo Yii::app()->createUrl('/actividades/actividad/admin') ?>">
+                                    <div class="text-based">
+                                        <p class="lead">Revisa todas tus Actividades.</p>
+                                    </div>
+                                </a>
+                            </div> 
+                            <!--/item--> 
+                        </div> 
+                        <!--/block looper--> 
+                    </div> 
+                    <!--/tile-content--> 
+                    <div class="tile-peek">
+                        <span class="badge"> <?php echo Actividad::model()->label(2) ?></span>
+                    </div><!-- /tile-peek -->
+                </div>
                 <!-- /tile -->
 
                 <!-- tile -->

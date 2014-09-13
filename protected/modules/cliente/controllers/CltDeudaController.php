@@ -53,7 +53,10 @@ class CltDeudaController extends AweController {
                 $result['success'] = $model->save();
 
                 if (!$result['success']) {
+
                     $result['mensage'] = "Error al guardar";
+                } else {
+                    Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
                 }
 
                 $validadorPartial = TRUE;
@@ -71,6 +74,7 @@ class CltDeudaController extends AweController {
                 $model->attributes = $_POST['CltDeuda'];
 
                 if ($model->save()) {
+                    Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
                     $this->redirect(array('view', 'id' => $model->id));
                 }
             }

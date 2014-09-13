@@ -95,12 +95,12 @@ class Actividad extends BaseActividad {
                     $cliente = CltCliente::model()->findByPk($actividad['entidad_id']);
                     $icon = 'group';
                     if ($actividad['tipo'] == self::TIPO_CREATE) {
-                        $mensaje = "<b>" . $usuario->username . "</b> creó el cliente " . CHtml::link($cliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $cliente->id), array('class' => 'btn btn-small btn-inverse'));
+                        $mensaje = "<b>" . $usuario->username . "</b> creó el cliente " . CHtml::link($cliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $cliente->id), array('class' => 'btn btn-small btn-silver'));
                     } elseif ($actividad['tipo'] == self::TIPO_UPDATE) {
                         if ($actividad['detalle'] != null) {
-                            $mensaje = "<b>" . $usuario->username . "</b>  " . $actividad['detalle'] . " del contacto " . CHtml::link($cliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $cliente->id), array('class' => 'btn btn-small btn-inverse'));
+                            $mensaje = "<b>" . $usuario->username . "</b>  " . $actividad['detalle'] . " del contacto " . CHtml::link($cliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $cliente->id), array('class' => 'btn btn-small btn-silver'));
                         } else {
-                            $mensaje = $usuario->username . " actualizó los datos del contacto " . CHtml::link($cliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $cliente->id), array('class' => 'btn btn-small btn-inverse'));
+                            $mensaje = $usuario->username . " actualizó los datos del contacto " . CHtml::link($cliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $cliente->id), array('class' => 'btn btn-small btn-silver'));
                         }
                     } elseif ($actividad['tipo'] == self::TIPO_DELETE) {
                         $mensaje = "<b>" . $usuario->username . "</b>  eliminó el contacto \"" . Util::Truncate($cliente->nombre_completo, 15) . "\"";
@@ -111,16 +111,34 @@ class Actividad extends BaseActividad {
                     $deuda = CltDeuda::model()->findByPk($actividad['entidad_id']);
                     $icon = 'usd';
                     if ($actividad['tipo'] == self::TIPO_CREATE) {
-                        $mensaje = "<b>" . $usuario->username . "</b> creó agrego la deuda al cliente " . CHtml::link($deuda->cltCliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $deuda->cltCliente->id), array('class' => 'btn btn-small btn-inverse')) . " por la cantidad de $" . $deuda->monto;
+                        $mensaje = "<b>" . $usuario->username . "</b> agrego la deuda al cliente " . CHtml::link($deuda->cltCliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $deuda->cltCliente->id), array('class' => 'btn btn-small btn-silver')) . " por la cantidad de $" . $deuda->monto;
                     } elseif ($actividad['tipo'] == self::TIPO_UPDATE) {
                         if ($actividad['detalle'] != null) {
-                            $mensaje = "<b>" . $usuario->username . "</b>  " . $actividad['detalle'] . " del contacto " . CHtml::link($deuda->cltCliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $deuda->cltCliente->id), array('class' => 'btn btn-small btn-inverse'));
+                            $mensaje = "<b>" . $usuario->username . "</b>  " . $actividad['detalle'] . " del contacto " . CHtml::link($deuda->cltCliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $deuda->cltCliente->id), array('class' => 'btn btn-small btn-silver'));
                         } else {
-                            $mensaje = $usuario->username . " actualizó los datos del contacto " . CHtml::link($deuda->cltCliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $deuda->cltCliente->id), array('class' => 'btn btn-small btn-inverse'));
+                            $mensaje = $usuario->username . " actualizó los datos del contacto " . CHtml::link($deuda->cltCliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $deuda->cltCliente->id), array('class' => 'btn btn-small btn-silver'));
                         }
                     } elseif ($actividad['tipo'] == self::TIPO_DELETE) {
-                        $mensaje = "<b>" . $usuario->username . "</b>  eliminó el contacto \"" . Util::Truncate($deuda->cltCliente->nombre_completo, 15) . "\"";
+                        $mensaje = "<b>" . $usuario->username . "</b>  eliminó la deuda de \"" . Util::Truncate($deuda->cltCliente->nombre_completo, 15) . "\"";
                     }
+                    break;
+                // Si es una actividad sobre una Transaccion
+                case TxTrasaccion::model()->tableName():
+                    $transaccion = TxTrasaccion::model()->findByPk($actividad['entidad_id']);
+                    $icon = 'usd';
+                    if ($actividad['tipo'] == self::TIPO_CREATE) {
+                        $mensaje = "<b>" . $usuario->username . "</b> creao una transaccion de tipo <b>" . $transaccion->tipo . "</b> al cliente " . CHtml::link($transaccion->cltDeuda->cltCliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $transaccion->cltDeuda->cltCliente->id), array('class' => 'btn btn-small btn-silver')) . " por la cantidad de $" . $transaccion->monto_cuota;
+                    } elseif ($actividad['tipo'] == self::TIPO_UPDATE) {
+                        if ($actividad['detalle'] != null) {
+                            $mensaje = "<b>" . $usuario->username . "</b>  " . $actividad['detalle'] . " del cliente  " . CHtml::link($transaccion->cltCliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $transaccion->cltDeuda->cltCliente->id), array('class' => 'btn btn-small btn-silver'));
+                        } else {
+                            $mensaje = "<b>" . $usuario->username . "</b> actualizó una transaccion al tipo <b>" . $transaccion->tipo . "</b> del clienete " . CHtml::link($transaccion->cltDeuda->cltCliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $transaccion->cltDeuda->cltCliente->id), array('class' => 'btn btn-small btn-silver'));
+                        }
+                    } elseif ($actividad['tipo'] == self::TIPO_DELETE) {
+                        $mensaje = "<b>" . $usuario->username . "</b>  eliminó la transaccion de \"" . Util::Truncate($transaccion->cltDeuda->cltCliente->nombre_completo, 15) . "\"";
+                    }
+
+                    $mensaje.= "<br/><p><b>Deuda Todal : $" . number_format($transaccion->cltDeuda->monto,2,'.','') . " ctvs.</b></p>";
                     break;
 
                 // Si es una actividad sobre una tarea

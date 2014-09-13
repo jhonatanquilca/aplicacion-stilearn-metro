@@ -1,7 +1,7 @@
 
 
 <?php
-$colores = array('green', 'purple', 'red', 'yellow', 'blue', 'orange', 'gray', 'red', 'purple', 'yellow');
+$colores = array('green', 'purple', 'red', 'yellow', 'blue', 'orange','blue', 'red', 'purple', 'yellow');
 //$xi = 0;
 //if ($modal) {
 //    Yii::app()->clientScript->scriptMap['jquery.js'] = false;

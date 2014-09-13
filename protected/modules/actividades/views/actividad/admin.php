@@ -19,10 +19,22 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/cs
         ias.extension(new IASSpinnerExtension({
             html: '<div class="ias-spinner" style="text-align: center;"><img class="preload-mini" src=" ' + themeUrl + 'img/preload-6-black.gif" alt=""><br/><b> Espere...</b></div>', // optionally
         }));
+        var html = '\
+        <div class="itemSelector">\n\
+            <ul class="metro_tmtimeline"><li class=" green">\n\
+                <div class="metro_tmicon">\n\
+                    <i class="aweso-time"></i>\n\
+                </div> \n\
+                <div class="metro_tmlabel"><h4><b>Origen de los Tiempos</b></h4></div>    \n\
+                </li>    \n\
+            </ul>\n\
+        </div>'
+        html += '<p class="alert-danger"style="text-align: center; height:30px"><b>No hay mas datos.</b></p>';
         ias.extension(new IASNoneLeftExtension({
 //            text: 'No hay mas datos.'
 //            html: '<div class="ias-noneleft" style="text-align: center;"><b>No hay mas datos.</b></div>'
-            html: '<p class="alert-danger"style="text-align: center; height:30px"><b>No hay mas datos.</b></p>'
+//            html: '<p class="alert-danger"style="text-align: center; height:30px"><b>No hay mas datos.</b></p>'
+            html: html,
         }));
     })
 

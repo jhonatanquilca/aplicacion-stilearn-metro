@@ -62,6 +62,8 @@ class TxTrasaccionController extends AweController {
                     $result['success'] = $model->save();
                     if (!$result['success']) {
                         $result['mensage'] = "Error al guardar";
+                    } else {
+                        Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
                     }
                 }
                 if ($model->tipo == TxTrasaccion::TIPO_PAGAR) {
@@ -70,6 +72,8 @@ class TxTrasaccionController extends AweController {
                         $result['success'] = $model->save();
                         if (!$result['success']) {
                             $result['mensage'] = "Error al guardar";
+                        } else {
+                            Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
                         }
                     } else {
                         $result['success'] = false;
@@ -135,6 +139,8 @@ class TxTrasaccionController extends AweController {
                         $result['success'] = $model->save();
                         if (!$result['success']) {
                             $result['mensage'] = "Error al guardar";
+                        } else {
+                            Actividad::registrarActividad($model, Actividad::TIPO_UPDATE);
                         }
                     }
 
@@ -144,6 +150,8 @@ class TxTrasaccionController extends AweController {
                             $result['success'] = $model->save();
                             if (!$result['success']) {
                                 $result['mensage'] = "Error al guardar";
+                            } else {
+                                Actividad::registrarActividad($model, Actividad::TIPO_UPDATE);
                             }
                         } else {
                             $result['success'] = false;
@@ -161,6 +169,8 @@ class TxTrasaccionController extends AweController {
                         $result['success'] = $model->save();
                         if (!$result['success']) {
                             $result['mensage'] = "Error al guardar";
+                        } else {
+                            Actividad::registrarActividad($model, Actividad::TIPO_UPDATE);
                         }
                     }
 
@@ -174,6 +184,8 @@ class TxTrasaccionController extends AweController {
                             $result['success'] = $model->save();
                             if (!$result['success']) {
                                 $result['mensage'] = "Error al guardar";
+                            } else {
+                                Actividad::registrarActividad($model, Actividad::TIPO_UPDATE);
                             }
                         } else {
                             $result['success'] = false;
