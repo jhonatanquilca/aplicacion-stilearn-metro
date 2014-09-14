@@ -29,13 +29,21 @@ class Menu {
 //                    array('label' => 'Estado', 'url' => array('/incidencias/incidenciaEstado/admin'), 'access' => 'action_incidenciaEstado_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaEstado')),
 //                    array('label' => 'Prioridad', 'url' => array('/incidencias/incidenciaPrioridad/admin'), 'access' => 'action_incidenciaPrioridad_admin', 'active_rules' => array('module' => 'incidencias', 'controller' => 'incidenciaPrioridad')),
                 )),
-            /* ejemplo menu simple */
-            array('label' => '<i class="aweso-time"></i> Actividades',
-                'url' => array('/actividades/actividad/admin'),
-                'access' => 'action_actividad_admin',
-                'active_rules' => array('module' => 'actividades', 'controller' => 'actividad')
-//                'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'admin')
-            ),
+            array('label' => '<i class="aweso-time"></i> Actividades', 'url' => '#',
+                'itemOptions' => array('class' => 'dropdown-list'),
+                'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown-list',),
+                'items' => array(
+                    array('label' => 'Diarias', 'url' => array('/actividades/actividad/adminDirarias/'), 'access' => 'action_mail_admin', 'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'adminDirarias')),
+                    array('label' => 'Mes Actual', 'url' => array('/actividades/actividad/adminMensual/'), 'access' => 'action_mail_admin', 'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'adminMensual')),
+                    array('label' => 'Todas', 'url' => array('/actividades/actividad/admin'), 'access' => 'action_mail_admin', 'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'admin')),
+                )),
+                /* ejemplo menu simple */
+//            array('label' => '<i class="aweso-time"></i> Actividades',
+//                'url' => array('/actividades/actividad/admin'),
+//                'access' => 'action_actividad_admin',
+//                'active_rules' => array('module' => 'actividades', 'controller' => 'actividad')
+////                'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'admin')
+//            ),
                 /* ejemplo menu 2 niveles */
 //            array('label' => '<i class=" aweso-book"></i> Reportes',
 //                'url' => '#',

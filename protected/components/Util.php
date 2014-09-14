@@ -248,7 +248,6 @@ class Util {
 
     /**
      * Retorna los años cercanos al año actual
-     * @author Santiago Benítez <sbenitez@tradesystem.com.ec>
      * @param type $yearsMin
      * @param type $yearsMax
      * @return array
@@ -491,13 +490,17 @@ class Util {
 
         $colores = array("rgb(116,183,73)", "rgb(274,70,74)", "rgb(70,191,189)",
             "rgb(253,180,92)", "rgb(77,83,96)", "rgb(70,136,71)", "rgb(78,138,199)",
-            "rgb(119,128,138)", "rgb(243,123,83)", "rgb(13,174,211)", "rgb(148,159,167)","rgb(139,20,15)","rgb(222,87,123)");
+            "rgb(119,128,138)", "rgb(243,123,83)", "rgb(13,174,211)", "rgb(148,159,167)", "rgb(139,20,15)", "rgb(222,87,123)");
 
 
-    
-     shuffle($colores);
-  
-        return $colores ;
+
+        shuffle($colores);
+
+        return $colores;
+    }
+
+    public static function formatPrimeraMayuscula($string) {
+        return ucwords(strtolower($string));
     }
 
 }

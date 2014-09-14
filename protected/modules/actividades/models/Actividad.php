@@ -8,6 +8,8 @@ class Actividad extends BaseActividad {
     const TIPO_UPDATE = 'UPDATE';
     const TIPO_DELETE = 'DELETE';
     const TIPO_RESTORE = 'RESTORE';
+    const ACTIVIDADES_DIARIAS = 'DIARIAS';
+    const ACTIVIDADES_MENSUAL = 'MENSUAL';
 
     public $pageSize = 10;
 
@@ -45,6 +47,14 @@ class Actividad extends BaseActividad {
 
     public function scopes() {
         return array(
+            'actividaddesDiarias' => array(
+                'condition' => 'date_format(t.fecha, "%Y-%m-%d") = :fecha',
+                'params' => array('fecha' => Util::FormatDate(Util::FechaActual(), 'Y-m-d'))
+            ),
+            'actividaddesMensual' => array(
+                'condition' => 'date_format(t.fecha, "%Y-%m") = :fecha',
+                'params' => array('fecha' => Util::FormatDate(Util::FechaActual(), 'Y-m'))
+            ),
             'ordenFecha' => array(
                 'order' => 't.fecha DESC',
             ),
@@ -138,7 +148,7 @@ class Actividad extends BaseActividad {
                         $mensaje = "<b>" . $usuario->username . "</b>  eliminó la transaccion de \"" . Util::Truncate($transaccion->cltDeuda->cltCliente->nombre_completo, 15) . "\"";
                     }
 
-                    $mensaje.= "<br/><p><b>Deuda Todal : $" . number_format($transaccion->cltDeuda->monto,2,'.','') . " ctvs.</b></p>";
+                    $mensaje.= "<br/><p><b>Deuda Todal : $" . number_format($transaccion->cltDeuda->monto, 2, '.', '') . " ctvs.</b></p>";
                     break;
 
                 // Si es una actividad sobre una tarea
@@ -311,10 +321,19 @@ class Actividad extends BaseActividad {
         return $criteria;
     }
 
-    public function getCountActividades() {
+    public function getCountActividades($tipo = NULL) {
+
         $command = Yii::app()->db->createCommand()
                 ->select('count(id) as total')
                 ->from('actividad');
+
+
+        if ($tipo == self::ACTIVIDADES_DIARIAS) {
+            $command->where('date_format(fecha, "%Y-%m-%d") = :fecha', array('fecha' => Util::FormatDate(Util::FechaActual(), 'Y-m-d')));
+        }
+        if ($tipo == self::ACTIVIDADES_MENSUAL) {
+            $command->where('date_format(fecha, "%Y-%m") = :fecha', array('fecha' => Util::FormatDate(Util::FechaActual(), 'Y-m')));
+        }
 
         $result = $command->queryAll();
         return $result[0]['total'];

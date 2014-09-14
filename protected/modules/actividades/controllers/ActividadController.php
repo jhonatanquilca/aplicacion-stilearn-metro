@@ -31,11 +31,10 @@ class ActividadController extends AweController {
      */
     public function actionAdmin($paginacion = NULL) {
         $providerInfinite = new Actividad;
-
-
-
+        $pie = null;
         if ($providerInfinite->getCountActividades() > 0) {
             $providerInfinite = Actividad::model()->ordenFecha()->search();
+
 //si hay paginacion
             if ($paginacion) {
                 $providerInfinite->model->pageSize = $paginacion;
@@ -43,6 +42,59 @@ class ActividadController extends AweController {
             }
 
             $this->render('admin', array(
+                'pie' => $pie,
+                'paginacion' => $paginacion,
+                'providerInfinite' => $providerInfinite,
+            ));
+        } else {
+//
+            $this->render('empty', array(
+                'model' => $providerInfinite,
+            ));
+        }
+    }
+
+    public function actionAdminDirarias($paginacion = NULL) {
+        $providerInfinite = new Actividad;
+        $pie = null;
+
+        if ($providerInfinite->getCountActividades(Actividad::ACTIVIDADES_DIARIAS) > 0) {
+            $providerInfinite = Actividad::model()->actividaddesDiarias()->ordenFecha()->search();
+            $pie = Actividad::ACTIVIDADES_DIARIAS;
+//si hay paginacion
+            if ($paginacion) {
+                $providerInfinite->model->pageSize = $paginacion;
+                $providerInfinite->pagination->pageSize = $paginacion;
+            }
+
+            $this->render('admin', array(
+                'pie' => $pie,
+                'paginacion' => $paginacion,
+                'providerInfinite' => $providerInfinite,
+            ));
+        } else {
+//
+            $this->render('empty', array(
+                'model' => $providerInfinite,
+            ));
+        }
+    }
+
+    public function actionAdminMensual($paginacion = NULL) {
+        $providerInfinite = new Actividad;
+        $pie = null;
+
+        if ($providerInfinite->getCountActividades(Actividad::ACTIVIDADES_MENSUAL) > 0) {
+            $providerInfinite = Actividad::model()->actividaddesMensual()->ordenFecha()->search();
+            $pie = Actividad::ACTIVIDADES_MENSUAL;
+//si hay paginacion
+            if ($paginacion) {
+                $providerInfinite->model->pageSize = $paginacion;
+                $providerInfinite->pagination->pageSize = $paginacion;
+            }
+
+            $this->render('admin', array(
+                'pie' => $pie,
                 'paginacion' => $paginacion,
                 'providerInfinite' => $providerInfinite,
             ));

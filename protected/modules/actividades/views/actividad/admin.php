@@ -1,4 +1,6 @@
 <?php
+//var_dump(empty($pie));
+//die();
 /** @var ActividadController $this */
 /** @var Actividad $model */
 Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/css/timeline-component.css');
@@ -14,21 +16,25 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/cs
             html: '<img class="preload-mini" src="' + themeUrl + 'img/preload-6-white.gif" alt=""> Espere...',
             next: "#lista-infinita div.pagination ul.yiiPager li.next:not(.disabled):not(.hidden) a",
         });
-
-
         ias.extension(new IASSpinnerExtension({
             html: '<div class="ias-spinner" style="text-align: center;"><img class="preload-mini" src=" ' + themeUrl + 'img/preload-6-black.gif" alt=""><br/><b> Espere...</b></div>', // optionally
         }));
-        var html = '\
-        <div class="itemSelector">\n\
-            <ul class="metro_tmtimeline"><li class=" green">\n\
-                <div class="metro_tmicon">\n\
-                    <i class="aweso-time"></i>\n\
-                </div> \n\
-                <div class="metro_tmlabel"><h4><b>Origen de los Tiempos</b></h4></div>    \n\
-                </li>    \n\
-            </ul>\n\
-        </div>'
+        var html =
+                '<?php
+if (empty($pie)) {
+    print
+            'bbbbbbbbbbbbb<div class="itemSelector">'
+            . '<ul class="metro_tmtimeline">'
+            . '<li class=" green">'
+            . '<div class="metro_tmicon">'
+            . '<i class="aweso-time"></i>'
+            . '</div>'
+            . '<div class="metro_tmlabel"><h4><b>Origen de los Tiempos</b></h4></div>'
+            . '</li>'
+            . '</ul>'
+            . '</div>';
+}
+?>';
         html += '<p class="alert-danger"style="text-align: center; height:30px"><b>No hay mas datos.</b></p>';
         ias.extension(new IASNoneLeftExtension({
 //            text: 'No hay mas datos.'
@@ -47,7 +53,7 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/cs
             <!-- widget header -->
             <div class="widget-header bg-black">
                 <!-- widget title -->
-                <h4 class="widget-title"><i class="aweso-time"></i> <?php echo Yii::t('app', 'Historial de') ?> <?php echo Actividad::label(2) ?></h4>
+                <h4 class="widget-title"><i class="aweso-time"></i> <?php echo Yii::t('app', 'Historial de') ?> <?php echo Actividad::label(2) ?> <?php echo!empty($pie) ? Util::formatPrimeraMayuscula($pie) : '' ?></h4>
                 <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
                 <div class="widget-action" >
                     <button data-toggle="collapse" data-collapse="#widget-button" class="btn ">
