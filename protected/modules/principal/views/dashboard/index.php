@@ -102,7 +102,7 @@ $this->pageTitle = Yii::app()->name;
                         <!--                        block looper -->
                         <div class="looper-inner">
                             <div class="item">
-                                <a href="#message"><i class="aweso-time"></i></a>
+                                <a href="<?php echo Yii::app()->createUrl('/actividades/actividad/admin') ?>"><i class="aweso-time"></i></a>
                             </div> 
                             <!--/item--> 
                            <div class="item">

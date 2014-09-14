@@ -74,7 +74,6 @@ class ActividadController extends AweController {
 
     /**
      * retorna la lista de actividades por entidada.
-     * @author Alex Yepez <ayepez@tradesystem.com.ec>
      * @param type $entidad_tipo
      * @param type $entidad_id
      * @param type $page
