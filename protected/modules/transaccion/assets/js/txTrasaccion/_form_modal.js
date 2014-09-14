@@ -1,7 +1,9 @@
 $(function() {
     dessabilitarEntreOnForm();
+    ajustarModal(45);
 
 });
+
 function AjaxAtualizacionInformacion(Formulario, idDeuda)
 {
     BloquearBotonesModal(Formulario);

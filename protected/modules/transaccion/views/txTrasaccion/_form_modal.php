@@ -5,6 +5,7 @@ Yii::app()->clientScript->scriptMap['jquery.js'] = false;
 Yii::app()->clientScript->scriptMap['bootstrap.css'] = false;
 Yii::app()->clientScript->scriptMap['bootstrap.js'] = false;
 
+
 Util::tsRegisterAssetJs('_form_modal.js');
 /** @var CltDeudaController $this */
 /** @var CltDeuda $model */
@@ -28,6 +29,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
         </i>
     </h3>
 </div>
+<
 <div class = "modal-body">
     <p class="note">
         <?php echo Yii::t('AweCrud.app', 'Fields with') ?> <span class="required">*</span>
@@ -78,6 +80,4 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
 
 
 </div>
-
 <?php $this->endWidget(); ?>
-          

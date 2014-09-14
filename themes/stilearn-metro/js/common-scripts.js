@@ -60,6 +60,8 @@ var scripts = $(function() {
     });
 
 //modal
+
+
     function verificarValidacionModal($contenedor)
     {
         var verificar = true;
@@ -87,6 +89,7 @@ var scripts = $(function() {
         }
     }
 });
+
 function dessabilitarEntreOnForm() {
     $("form").keypress(function(e) {
 //        alert(e.which);
@@ -94,7 +97,9 @@ function dessabilitarEntreOnForm() {
             return false;
         }
     });
+
 }
+
 
 var attrBotonModal = {};
 
@@ -118,6 +123,28 @@ function maskAttributes() {
 
 //funciones modal
 
+function ajustarModal(porcentaje) {
+
+    function   fit_modal_body(modal) {
+        var body, height;
+        body = $(".modal-body", modal);
+        ywindows = parseInt($(window).height());
+        if (porcentaje > 0) {
+            height = ((ywindows * porcentaje) / 100);
+        } else {
+            height = 264;
+        }
+//        alert(height);
+        return body.css("height", "" + height + "px");
+    }
+
+    fit_modal_body($("#mainModal"));
+
+    $(window).resize(function() {
+//        alert('asdas');
+        fit_modal_body($("#mainModal"));
+    });
+}
 function showModalLoading() {
     var html = "";
     html += "<div class='modal-header'><a class='close' data-dismiss='modal'>&times;</a><h4><i class='icon-refresh'></i> Cargando</h4></div>";
