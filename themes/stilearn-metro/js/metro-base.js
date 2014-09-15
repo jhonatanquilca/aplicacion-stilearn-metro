@@ -84,16 +84,8 @@ $(function() {
         var t = e.target;
         !$(t).is(".appbar") && !$(t).parents().is(".appbar") && !$(t).is('[data-toggle="appbar"]') && $(".appbar").removeClass("open")
     });
-    var r = '<div class="splash">    <div class="splash-inner">        <i class="icomo-atom"></i>        <p class="brand">Stilearn Metro</p>        <p class="splash-text">Destination progress text</p>        <div class="splash-loader">            <img class="preload-large" src="img/preload-6-white.gif" alt="" />        </div>    </div></div>', i = '<div class="splash splash-inline">    <div class="splash-inner">        <div class="splash-loader">          <img src="img/preload-5-black.gif" alt="" />        </div>    </div></div>', s = $("body").attr("data-splash"), o = $("body").attr("data-splash-type");
-    if (s == 1 || s == "true")
-        o == "inline" ? ($("body").append(i), $("body > *").css({visibility: "visible"}), $(".splash.splash-inline").fadeIn()) : ($("body").append(r), $(".splash").fadeIn(function() {
-            $(this).css({visibility: "visible"})
-        }));
-    $(window).bind("load", function() {
-        o == "inline" ? $(".splash.splash-inline").fadeOut() : $(".splash").fadeOut(2e3, function() {
-            $("body > *").not(".splash").css({visibility: "visible"})
-        })
-    }), $('[data-ui="slider"]').each(function() {
+
+    $('[data-ui="slider"]').each(function() {
         var e = $(this), t = e.attr("data-slider-animate") == undefined ? !1 : e.attr("data-slider-animate"), n = e.attr("data-slider-disabled") == undefined ? !1 : Boolean(e.attr("data-slider-disabled")), r = e.attr("data-slider-max") == undefined ? 100 : parseInt(e.attr("data-slider-max")), i = e.attr("data-slider-min") == undefined ? 0 : parseInt(e.attr("data-slider-min")), s = e.attr("data-slider-orientation") == undefined ? "horizontal" : e.attr("data-slider-orientation"), o = e.attr("data-slider-range") == undefined ? !1 : e.attr("data-slider-range"), u = e.attr("data-slider-step") == undefined ? 1 : parseInt(e.attr("data-slider-step")), a = e.attr("data-slider-value") == undefined ? 0 : parseInt(e.attr("data-slider-value")), f = e.attr("data-slider-values") == undefined ? null : e.attr("data-slider-values").split(","), l = o == "true" ? Boolean(o) : o, c = {animate: t, disabled: n, max: r, min: i, orientation: s, range: l, step: u, value: a, values: f};
         e.slider(c)
     }), $("[data-toggle=tooltip]").tooltip(), $("[data-toggle=tooltip-bottom]").tooltip({placement: "bottom"}), $("[data-toggle=tooltip-right]").tooltip({placement: "right"}), $("[data-toggle=tooltip-left]").tooltip({placement: "left"}), $("[data-toggle=popover]").click(function(e) {

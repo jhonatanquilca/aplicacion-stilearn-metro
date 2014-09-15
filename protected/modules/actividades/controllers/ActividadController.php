@@ -40,12 +40,20 @@ class ActividadController extends AweController {
                 $providerInfinite->model->pageSize = $paginacion;
                 $providerInfinite->pagination->pageSize = $paginacion;
             }
+            if (Yii::app()->request->isAjaxRequest) {
 
-            $this->render('admin', array(
-                'pie' => $pie,
-                'paginacion' => $paginacion,
-                'providerInfinite' => $providerInfinite,
-            ));
+                $this->renderPartial('noportlet/actividades', array(
+                    'pie' => $pie,
+                    'paginacion' => $paginacion,
+                    'providerInfinite' => $providerInfinite,
+                        ), false, true);
+            } else {
+                $this->render('admin', array(
+                    'pie' => $pie,
+                    'paginacion' => $paginacion,
+                    'providerInfinite' => $providerInfinite,
+                ));
+            }
         } else {
 //
             $this->render('empty', array(

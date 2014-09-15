@@ -54,7 +54,8 @@
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
-    <body class="fixed">
+    <body class="fixed" >
+    <!--<body class="fixed" data-splash="true">-->
         <!-- start header-->
         <header class="header">
             <!-- start navbar, this navbar on top -->

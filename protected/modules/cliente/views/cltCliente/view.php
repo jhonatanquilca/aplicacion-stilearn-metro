@@ -26,6 +26,7 @@ $this->menu = array(
 <div class="row-fluid span7 ">
 
     <?php echo $model->cltDeudas ? $this->renderPartial('portlets/_transacciones', array('model' => $model, 'modelTransaccion' => TxTrasaccion::model())) : ''; ?>   
+    <?php echo $model->cltDeudas ? $this->renderPartial('portlets/_actividades', array('model' => $model, 'modelTransaccion' => TxTrasaccion::model())) : ''; ?>   
 </div>
 <!--</fieldset>-->
 

@@ -6,7 +6,7 @@
     <!-- widget header -->
     <div class="widget-header bg-amber">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->nombre_completo                                                                                                                                                            ?></h4>
+        <h4 class="widget-title"><i class="aweso-dollar"></i> Deuda - Transacciones <?php // echo '- ' . $model->?></h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">
             <button data-toggle="fullscreen" data-fullscreen="#widget-button-transaccion" class="btn">

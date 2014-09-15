@@ -306,7 +306,50 @@ function ActualizarInformacion(lista)
         $.fn.yiiGridView.update(listaActual);
     }
 
+}
 
+//SPLASH
+function splashIn(etiquetaId, texto) {
+    if (!texto) {
+        texto = "";
+    }
+    var etiqueta = $('#' + etiquetaId);
+
+    var r = '<div class="splash "  >'
+            + '<div class="splash-inner">'
+            + '<i class="icomo-atom"></i>' +
+            '<p class="brand">Stilearn Metro</p>'
+//                       
+            + '<p class="splash-text">' + texto + '</p>'
+            + '<div class="splash-loader">'
+            + ' <img class="preload-large" src="' + themeUrl + 'img/preload-6-white.gif" alt="" />'
+            + '</div> '
+            + '</div>'
+            + '</div>';
+
+
+    $(etiqueta).append(r);
+
+    $(".splash").attr('style', 'position: absolute; '
+            + ' background: #323232;'
+            + 'color: #FFFFFF; ');
+
+//  $(".splash").fadeIn('slow', function() {
+//        var $this = $(this);
+//        setTimeout(function() {
+//            $this.fadeOut();
+//        }, 6000);
+//    });
+
+}
+
+function splashShow() {
+    $(".splash").fadeIn('slow');
+}
+function splashHide() {
+
+    $(".splash").fadeOut();
 
 
 }
+
