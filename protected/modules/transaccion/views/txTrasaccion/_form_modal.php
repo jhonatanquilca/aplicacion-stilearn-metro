@@ -29,7 +29,6 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
         </i>
     </h3>
 </div>
-<
 <div class = "modal-body">
     <p class="note">
         <?php echo Yii::t('AweCrud.app', 'Fields with') ?> <span class="required">*</span>

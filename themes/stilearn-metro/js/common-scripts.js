@@ -332,23 +332,33 @@ function splashIn(etiquetaId, texto) {
 
     $(".splash").attr('style', 'position: absolute; '
             + ' background: #323232;'
+            + ' z-index: 1;'
             + 'color: #FFFFFF; ');
 
-//  $(".splash").fadeIn('slow', function() {
-//        var $this = $(this);
-//        setTimeout(function() {
-//            $this.fadeOut();
-//        }, 6000);
-//    });
+
 
 }
 
-function splashShow() {
-    $(".splash").fadeIn('slow');
-}
-function splashHide() {
 
-    $(".splash").fadeOut();
+function splashAutimatico() {
+    $(".splash").fadeIn('slow', function() {
+        var $this = $(this);
+        setTimeout(function() {
+            $this.fadeOut();
+        }, 6000);
+    });
+}
+function splashShow(velocidad) {
+    if (velocidad == 0) {
+        $(".splash").css('display', 'block');
+    } else {
+        $(".splash").fadeIn(velocidad ? velocidad : 'slow');
+    }
+
+}
+function splashHide(velocidad) {
+
+    $(".splash").fadeOut(velocidad ? velocidad : 'slow');
 
 
 }

@@ -32,33 +32,70 @@ class ActividadController extends AweController {
     public function actionAdmin($paginacion = NULL) {
         $providerInfinite = new Actividad;
         $pie = null;
-        if ($providerInfinite->getCountActividades() > 0) {
-            $providerInfinite = Actividad::model()->ordenFecha()->search();
 
+        $providerInfinite = Actividad::model()->ordenFecha()->search();
 //si hay paginacion
-            if ($paginacion) {
-                $providerInfinite->model->pageSize = $paginacion;
-                $providerInfinite->pagination->pageSize = $paginacion;
-            }
-            if (Yii::app()->request->isAjaxRequest) {
+        if ($paginacion) {
+            $providerInfinite->model->pageSize = $paginacion;
+            $providerInfinite->pagination->pageSize = $paginacion;
+        }
+        if (Yii::app()->request->isAjaxRequest) {
 
-                $this->renderPartial('noportlet/actividades', array(
-                    'pie' => $pie,
-                    'paginacion' => $paginacion,
-                    'providerInfinite' => $providerInfinite,
-                        ), false, true);
-            } else {
+            $this->renderPartial('noportlet/actividades', array(
+                'pie' => $pie,
+                'paginacion' => $paginacion,
+                'providerInfinite' => $providerInfinite,
+                    ), false, true);
+        } else {
+            if (Actividad::model()->getCountActividades() > 0) {
                 $this->render('admin', array(
                     'pie' => $pie,
                     'paginacion' => $paginacion,
                     'providerInfinite' => $providerInfinite,
                 ));
-            }
-        } else {
+            } else {
 //
-            $this->render('empty', array(
-                'model' => $providerInfinite,
-            ));
+                $this->render('empty', array(
+                    'model' => $providerInfinite,
+                ));
+            }
+        }
+    }
+
+    public function actionActividadesCliente($paginacion = NULL, $idCliente) {
+        $providerInfinite = new Actividad;
+        $pie = null;
+
+
+        $providerInfinite = Actividad::model()->ordenFecha()->deCliente($idCliente);
+//            var_dump(sizeof($providerInfinite->criteria->params));
+//            die();
+//si hay paginacion
+        if ($paginacion) {
+            $providerInfinite->model->pageSize = $paginacion;
+            $providerInfinite->pagination->pageSize = $paginacion;
+        }
+
+        if (Yii::app()->request->isAjaxRequest) {
+
+            $this->renderPartial('noportlet/actividades', array(
+                'pie' => $pie,
+                'paginacion' => $paginacion,
+                'providerInfinite' => $providerInfinite,
+                    ), false, true);
+        } else {
+            if (sizeof($providerInfinite->criteria->params) > 0) {
+                $this->render('admin', array(
+                    'pie' => $pie,
+                    'paginacion' => $paginacion,
+                    'providerInfinite' => $providerInfinite,
+                ));
+            } else {
+//
+                $this->render('empty', array(
+                    'model' => $providerInfinite,
+                ));
+            }
         }
     }
 

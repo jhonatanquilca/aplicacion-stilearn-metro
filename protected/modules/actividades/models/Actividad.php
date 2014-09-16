@@ -61,6 +61,76 @@ class Actividad extends BaseActividad {
         );
     }
 
+    public function deCliente($idCliente) {
+        $finalArray = array();
+        $deudaClienteCommand = array();
+        $clienteCommand = array();
+        $transaClienteCommand = array();
+
+//para el cliente
+        $params = array(':idCliente' => $idCliente, ':entidadTipo' => CltCliente::model()->tableName());
+        $commad = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from('actividad')
+                ->where('entidad_id = :idCliente AND entidad_tipo=:entidadTipo');
+        $commad->params = $params;
+        $clienteCommand = $commad->queryAll();
+//para la deuda
+        $cliente = CltCliente::model()->findByPk($idCliente);
+
+        if ($cliente->cltDeudas) {
+            $idDeuda = $cliente->cltDeudas['0']['id'];
+            $params = array(':idDeuda' => $idDeuda, ':entidadTipo' => CltDeuda::model()->tableName());
+            $commad = Yii::app()->db->createCommand()
+                    ->select('*')
+                    ->from('actividad')
+                    ->where('entidad_id = :idDeuda AND entidad_tipo=:entidadTipo');
+            $commad->params = $params;
+            $deudaClienteCommand = $commad->queryAll();
+
+//PARA LAS TRANSACCIONES
+
+            $deuda = CltDeuda::model()->findByPk($idDeuda);
+            $transacciones = $deuda->txTrasaccions;
+//            var_dump($transacciones);die();
+            $transaClienteCommand = array();
+            foreach ($transacciones as $transaccion) {
+//            var_dump($transaccion->id);
+                $params = array(':idDeuda' => $transaccion->id, ':entidadTipo' => TxTrasaccion::model()->tableName());
+                $commad = Yii::app()->db->createCommand()
+                        ->select('*')
+                        ->from('actividad')
+                        ->where('entidad_id = :idDeuda AND entidad_tipo=:entidadTipo');
+                $commad->params = $params;
+                $transaClienteCommand = array_merge($transaClienteCommand, $commad->queryAll());
+            }
+        }
+
+
+        $finalArray = array_merge($deudaClienteCommand, $clienteCommand);
+        $finalArray = array_merge($finalArray, $transaClienteCommand);
+
+        $arrayId = array();
+        foreach ($finalArray as $dato) {
+            array_push($arrayId, $dato['id']);
+        }
+//        F
+        $criteria = new CDbCriteria;
+
+        $criteria->addInCondition('id', $arrayId);
+        $criteria->compare('entidad_tipo', $this->entidad_tipo, true);
+        $criteria->compare('entidad_id', $this->entidad_id);
+        $criteria->compare('tipo', $this->tipo, true);
+        $criteria->compare('usuario_id', $this->usuario_id);
+        $criteria->compare('fecha', $this->fecha, true);
+        $criteria->compare('detalle', $this->detalle, true);
+
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+            'pagination' => array('pageSize' => $this->pageSize,),
+        ));
+    }
+
     /* funciones exras */
 
     /**

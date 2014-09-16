@@ -26,9 +26,14 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/cs
                 '<?php
 if (empty($pie)) {
     print
-            'bbbbbbbbbbbbb<div class="itemSelector">'
+            '<div class="itemSelector">'
             . '<ul class="metro_tmtimeline">'
             . '<li class=" green">'
+            . '<div class="metro_tmtime" datetime="2013-04-10 18:30">'
+            . '<span class="date">&nbsp;</span>'
+            . ' <span class="time">&nbsp;</span>'
+            . '</div>'
+            . ''
             . '<div class="metro_tmicon">'
             . '<i class="aweso-time"></i>'
             . '</div>'
@@ -51,16 +56,16 @@ if (empty($pie)) {
 
 
 <div class="widget-tareas"  style="height: <?php echo $paginacion != NULL ? ($paginacion * 47) . 'px' : '470px' ?>; overflow: auto;position: relative; ">
-    <?php
-    $this->widget('ext.bootstrap.widgets.TbListView', array(//TODO: crear widget para scrollinfinito   Infinite Ajax Scroll v2.1.2
-        'id' => 'lista-infinita',
-        'dataProvider' => $providerInfinite,
+<?php
+$this->widget('ext.bootstrap.widgets.TbListView', array(//TODO: crear widget para scrollinfinito   Infinite Ajax Scroll v2.1.2
+    'id' => 'lista-infinita',
+    'dataProvider' => $providerInfinite,
 //                            'viewData' => array('model' => $model, 'modal' => false),
-        'itemView' => 'portlets/_actividades',
-        'template' => '{items}{pager}',
-        'htmlOptions' => array(
-            'style' => 'margin-right: 10px; padding-top: 0px !important'
-        ),
-    ));
-    ?>            
+    'itemView' => 'portlets/_actividades',
+    'template' => '{items}{pager}',
+    'htmlOptions' => array(
+        'style' => 'margin-right: 10px; padding-top: 0px !important'
+    ),
+));
+?>            
 </div>
