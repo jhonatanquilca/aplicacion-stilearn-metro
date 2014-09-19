@@ -100,10 +100,6 @@ function dessabilitarEntreOnForm() {
 
 }
 
-
-var attrBotonModal = {};
-
-
 function maskAttributes() {
 
     $('input.telefono').mask('0-000-000');
@@ -112,13 +108,35 @@ function maskAttributes() {
     $('input.ID').mask('0000000000');
     $('input.fax').mask('000-000000');
     $('input.numeric').mask('00000000000');
-    $('input.money').mask('P99.ZZ', {
-        translation: {
-            'Z': {pattern: /[0-9]/, optional: true},
-            'P': {pattern: /[0-9]/, },
-        }});
+    $('input.money').mask('999.99', {
+//        translation: {
+//            'Z': {pattern: /[0-9]/, optional: true},
+////            'P': {pattern: /[0-9]/, },
+//    }
+    });
     //continuar cargando formatos para input
+    inputMoney();
 }
+
+function inputMoney() {
+    $("input.money").keyup(function(event) {
+        cant = $('input.money').val();
+//        console.log(cant.charAt(0));
+//        console.log(cant.charAt(1));
+        if (cant.charAt(0) == '0' && cant.charAt(1) >= 0 && cant.charAt(1) != '') {
+
+            $('input.money').val(cant.substring(1, cant.length));
+
+        }
+    });
+
+}
+
+
+var attrBotonModal = {};
+
+
+
 
 
 //funciones modal
