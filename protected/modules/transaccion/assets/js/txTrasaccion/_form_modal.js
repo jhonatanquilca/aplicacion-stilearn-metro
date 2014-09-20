@@ -12,6 +12,8 @@ function AjaxAtualizacionInformacion(Formulario, idDeuda)
         ActualizarInformacion(list);
         ActualizarInformacion('#clt-deuda-grid');
         ActualizarTotalDeudaHeader(idDeuda);
+//        loadActividades();
+        reLoadActividadesSobre();
     });
 }
 function ActualizarTotalDeudaHeader(idDeuda)

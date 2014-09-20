@@ -55,7 +55,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body class="fixed" >
-    <!--<body class="fixed" data-splash="true">-->
+        <!--<body class="fixed" data-splash="true">-->
         <!-- start header-->
         <header class="header">
             <!-- start navbar, this navbar on top -->
@@ -72,17 +72,23 @@
                             <span class="icon-bar"></span>
                         </a>
 
-                        <!-- Your brand here, images or text -->
+                        <!-- Your brand here, images or text -->                        
                         <a class="brand" href="#">
                             <!-- just a sample brand, replace with your own -->
-                            <i class="aweso-th-large"></i> Stilearn
+                            <i class="aweso-th-large"></i> Deudas - CRM
                         </a>
+
+
 
                         <!-- Un-collapse nav -->
                         <div class="nav-uncollapse">
-
-
-
+                            <ul class="nav pull-left  hidden-phone">
+                                <li>                                    <!--this btn-navbar contains the menu on the side-left, will be seen on portrait tablet and less.--> 
+                                    <a id="ocultaBarra" style="display: block;"  title="Ocutla la Barra lateral"  >  
+                                        <div class="aweso-reorder"></div>
+                                    </a>
+                                </li>
+                            </ul>
                             <!-- pull right menu-->
                             <ul class="nav pull-right">
 
@@ -182,7 +188,7 @@
         <!-- start section content-->
         <section class="section-content">
             <!-- side left, its part to menu on left-->
-            <div id="navside" class="side-left side-left-fixed" data-collapse="navbar" style="min-height: 100%;">
+            <div id="navside" class="side-left side-left-fixed " data-collapse="navbar" style="min-height: 100%;">
                 <!--@form search-->
                 <!--                <form class="form-inline search-module" action="?" method="post" >
                                     <div class="input-append input-append-inline">

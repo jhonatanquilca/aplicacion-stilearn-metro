@@ -2,6 +2,28 @@ var scripts = $(function() {
     //sidebar lista desplegada activa
     $('li[class="dropdown-list active"]').children('ul').css('display', 'block');
 //    $('li[class="dropdown-list active open"]').children('ul').css('display', 'block');
+//    showOrHide = true;
+    $('#ocultaBarra').toggle(
+            function() {
+                $('div#navside').fadeOut('slow', function() {
+                    $('div.content').css('padding-left', '0');
+                });
+            },
+            function() {
+                $('div.content').css('padding-left', '200px');
+                $('div#navside').fadeIn('slow');
+            }
+    );
+
+
+//        $('div#navside').toggle('slow', function() {
+//            $('div.content').css('padding-left', '0');
+//        }
+//        , function() {          
+//            $('div.content').css('padding-left', '200');
+//        }
+//        );
+//    });
 
 
 //amascara para imputs
