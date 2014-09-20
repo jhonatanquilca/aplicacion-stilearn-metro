@@ -2,10 +2,10 @@ RewriteEngine On
 #Si es necesario activar para url limpias 
 #RewriteBase /nombre de tu placacion/
 #para hostinger solamente un slash
-RewriteBase /
+#RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 #internamente
-#RewriteRule ^(.*)\?*$ index.php/$1 [L,QSA]
+RewriteRule ^(.*)\?*$ index.php/$1 [L,QSA]
 #para hostinger descomentar la sigiente y descomentar la anterior
-RewriteRule . index.php
+#RewriteRule . index.php

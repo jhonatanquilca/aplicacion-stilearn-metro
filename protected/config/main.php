@@ -151,21 +151,21 @@ return array(
 //            ),
 //        ),
         // uncomment the following to use a MySQL database
-//        'db' => array(
-//            'connectionString' => 'mysql:host=localhost;dbname=deudas',
-//            'emulatePrepare' => true,
-//            'username' => 'root',
-//            'password' => '',
-//            'charset' => 'utf8',
-//        ),
-        /* base de datos hostinget */
         'db' => array(
-            'connectionString' => 'mysql:host=mysql.hostinger.co;dbname=u814824078_deuda',
+            'connectionString' => 'mysql:host=localhost;dbname=deudas',
             'emulatePrepare' => true,
-            'username' => 'u814824078_deuda',
-            'password' => '1004476568',
+            'username' => 'root',
+            'password' => '',
             'charset' => 'utf8',
         ),
+        /* base de datos hostinget */
+//        'db' => array(
+//            'connectionString' => 'mysql:host=mysql.hostinger.co;dbname=u814824078_deuda',
+//            'emulatePrepare' => true,
+//            'username' => 'u814824078_deuda',
+//            'password' => '1004476568',
+//            'charset' => 'utf8',
+//        ),
         'errorHandler' => array(
             // use 'site/error' action to display errors
 //            'errorAction' => 'site/error',

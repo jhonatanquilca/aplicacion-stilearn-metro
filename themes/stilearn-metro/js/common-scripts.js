@@ -358,7 +358,7 @@ function splashIn(etiquetaId, texto) {
     var r = '<div class="splash "  >'
             + '<div class="splash-inner">'
             + '<i class="icomo-atom"></i>' +
-            '<p class="brand">Stilearn Metro</p>'
+            '<p class="brand">Deudas - CRM</p>'
 //                       
             + '<p class="splash-text">' + texto + '</p>'
             + '<div class="splash-loader">'
