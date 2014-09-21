@@ -33,9 +33,9 @@ class Menu {
                 'itemOptions' => array('class' => 'dropdown-list'),
                 'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown-list',),
                 'items' => array(
-                    array('label' => 'Diarias', 'url' => array('/actividades/actividad/adminDirarias/'), 'access' => 'action_mail_admin', 'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'adminDirarias')),
-                    array('label' => 'Mes Actual', 'url' => array('/actividades/actividad/adminMensual/'), 'access' => 'action_mail_admin', 'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'adminMensual')),
-                    array('label' => 'Todas', 'url' => array('/actividades/actividad/admin'), 'access' => 'action_mail_admin', 'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'admin')),
+                    array('label' => 'Diarias', 'url' => array('/actividades/actividad/adminDirarias/'), 'access' => 'action_actividad_adminDirarias', 'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'adminDirarias')),
+                    array('label' => 'Mes Actual', 'url' => array('/actividades/actividad/adminMensual/'), 'access' => 'action_actividad_adminMensual', 'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'adminMensual')),
+                    array('label' => 'Todas', 'url' => array('/actividades/actividad/admin'), 'access' => 'action_actividad_admin', 'active_rules' => array('module' => 'actividades', 'controller' => 'actividad', 'action' => 'admin')),
                 )),
                 /* ejemplo menu simple */
 //            array('label' => '<i class="aweso-time"></i> Actividades',

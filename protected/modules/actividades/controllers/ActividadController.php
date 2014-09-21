@@ -7,8 +7,8 @@ class ActividadController extends AweController {
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
-
 //    public $defaultAction = 'admin';
+//    public $admin = false;
 
     public function filters() {
         return array(
@@ -33,6 +33,7 @@ class ActividadController extends AweController {
         $providerInfinite = new Actividad;
         $pie = null;
 
+
         $providerInfinite = Actividad::model()->ordenFecha()->search();
 //si hay paginacion
         if ($paginacion) {
@@ -54,9 +55,10 @@ class ActividadController extends AweController {
                     'providerInfinite' => $providerInfinite,
                 ));
             } else {
-//
+
                 $this->render('empty', array(
-                    'model' => $providerInfinite,
+//                    'model' => $providerInfinite,
+                    'model' => new Actividad,
                 ));
             }
         }

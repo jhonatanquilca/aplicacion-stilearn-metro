@@ -10,8 +10,12 @@ var scripts = $(function() {
                 });
             },
             function() {
-                $('div.content').css('padding-left', '200px');
-                $('div#navside').fadeIn('slow');
+
+                $('div#navside').fadeIn('fast', function() {
+                    $('div.content').css('padding-left', '200px');
+                    $('div.content').attr('style', '');
+                });
+
             }
     );
 

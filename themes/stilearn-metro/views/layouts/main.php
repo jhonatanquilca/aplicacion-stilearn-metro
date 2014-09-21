@@ -188,7 +188,7 @@
         <!-- start section content-->
         <section class="section-content">
             <!-- side left, its part to menu on left-->
-            <div id="navside" class="side-left side-left-fixed " data-collapse="navbar" style="min-height: 100%;">
+            <div id="navside" class="side-left side-left-fixed  hidden-phone " data-collapse="navbar" style="min-height: 100%;">
                 <!--@form search-->
                 <!--                <form class="form-inline search-module" action="?" method="post" >
                                     <div class="input-append input-append-inline">

@@ -161,10 +161,7 @@ class TxTrasaccionController extends AweController {
                 } else {
 
                     if ($model->tipo == TxTrasaccion::TIPO_ADEUDAR) {
-//                        var_dump(($modelDeudaTotal + $modelAnt) + $montoInput);
-//                        echo '<br/>';
-//                        var_dump($modelDeudaTotal, $modelAnt, $montoInput);
-//                        die();
+
                         CltDeuda::model()->updateByPk($model->clt_deuda_id, array('monto' => ($modelDeudaTotal + $modelAnt) + $montoInput));
                         $result['success'] = $model->save();
                         if (!$result['success']) {
@@ -175,10 +172,7 @@ class TxTrasaccionController extends AweController {
                     }
 
                     if ($model->tipo == TxTrasaccion::TIPO_PAGAR) {
-//                        var_dump(($modelDeudaTotal - $modelAnt) - $montoInput);
-//                        echo '<br/>';
-//                        var_dump($modelDeudaTotal, $modelAnt, $montoInput);
-//                        die();
+
                         if ($modelDeudaTotal >= $montoInput) {
                             CltDeuda::model()->updateByPk($model->clt_deuda_id, array('monto' => ($modelDeudaTotal - $modelAnt) - $montoInput));
                             $result['success'] = $model->save();

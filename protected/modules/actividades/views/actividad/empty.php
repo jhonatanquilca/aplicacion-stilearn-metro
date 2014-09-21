@@ -11,7 +11,7 @@
 //                echo CHtml::link('<i class="aweso-plus"></i> Crear Nuevo', array('/actividades/actividad/create'), array(
 //                    'class' => 'btn btn-large btn-success'
 //                ));
-?>                
+                ?>                
             </div>
         </div>
     </div>

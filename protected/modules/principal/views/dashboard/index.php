@@ -105,10 +105,10 @@ $this->pageTitle = Yii::app()->name;
                                 <a href="<?php echo Yii::app()->createUrl('/actividades/actividad/admin') ?>"><i class="aweso-time"></i></a>
                             </div> 
                             <!--/item--> 
-                           <div class="item">
+                            <div class="item">
                                 <a href="<?php echo Yii::app()->createUrl('/actividades/actividad/admin') ?>">
                                     <div class="text-based">
-                                        <p class="lead">Revisa todas tus Actividades.</p>
+                                        <p class="lead">Revisa el Historial Actividades.</p>
                                     </div>
                                 </a>
                             </div> 
