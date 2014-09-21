@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- Base de datos: `deudas`
 --
 
-USE `deudas`;
+-- USE `deudas`;
 
 --
 -- Truncar tablas antes de insertar `cruge_authassignment`
