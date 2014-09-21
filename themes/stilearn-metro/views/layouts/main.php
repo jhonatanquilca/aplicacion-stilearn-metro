@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" >
     <head>
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
         <!--<title>Dashboard #4 - Stilearn Metro Admin Bootstrap</title>-->
@@ -59,7 +59,7 @@
         <!-- start header-->
         <header class="header">
             <!-- start navbar, this navbar on top -->
-            <div id="navbar-top" class="navbar navbar-cyan  navbar-fixed-top">
+            <div id="navbar-top" class="navbar navbar-teal navbar-fixed-top">
                 <!-- navbar inner-->
                 <div class="navbar-inner">
                     <!-- container-->
@@ -92,55 +92,20 @@
                             <!-- pull right menu-->
                             <ul class="nav pull-right">
 
-                                <li class="dropdown hidden">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="aweso-cog"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-extend" data-dropdown="no-propagation" role="menu" aria-labelledby="dropdownMenu">
-                                        <li class="dropdown-header">General settings</li>
-                                        <li>
-                                            <div class="setting-list">
-                                                <div class="icon"><i class="aweso-2x aweso-columns"></i></div>
-                                                <div class="content">Fluid Layout</div>
-                                                <div class="checker">
-                                                    <div class="checkbox-slide bg-silver help-block">
-                                                        <input class="input-fx" type="checkbox" id="layout-mode" name="layout-mode"  />
-                                                        <label for="layout-mode"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="setting-list">
-                                                <div class="icon"><i class="aweso-2x aweso-pushpin"></i></div>
-                                                <div class="content">Fixed Header</div>
-                                                <div class="checker">
-                                                    <div class="checkbox-slide bg-silver help-block">
-                                                        <input class="input-fx" type="checkbox" id="header-mode" name="header-mode" checked/>
-                                                        <label for="header-mode"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="setting-list">
-                                                <div class="icon"><i class="aweso-2x aweso-pushpin"></i></div>
-                                                <div class="content">Fixed Sidebar</div>
-                                                <div class="checker">
-                                                    <div class="checkbox-slide bg-silver help-block">
-                                                        <input class="input-fx" type="checkbox" id="sidebar-mode" name="sidebar-mode" />
-                                                        <label for="sidebar-mode"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="dropdown-footer">
-                                            <a tabindex="-1" href="#"><i class="aweso-angle-right pull-right"></i> Settings page</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <!--                                <li class="dropdown">
+                                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                                        <i class="aweso-cog"></i>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu dropdown-extend" data-dropdown="no-propagation" role="menu" aria-labelledby="dropdownMenu">
+                                                                        <li class="dropdown-header">General settings</li>
+                                
+                                
+                                
+                                                                        <li class="dropdown-footer">
+                                                                            <a tabindex="-1" href="#"><i class="aweso-angle-right pull-right"></i> Settings page</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>-->
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
@@ -253,7 +218,7 @@
         ================================================== -->
         <!-- required js -->
         <!--@TODO revisar js problemas con bootstrap-->
-<!--        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.min.js"></script>  preoblema confiltro de grid-->
+        <!--<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.min.js"></script>  preoblema confiltro de grid-->
         <!--problema con  tile de botones de grid-->
 
         <!--@TODO revisar js bootstrap.min.js dedicado a calendar y hichrats-->
@@ -298,5 +263,6 @@
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.selectBox.js" type="text/javascript"></script>
         <!--scroll infinito-->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ias.min.js" type="text/javascript"></script> 
+
     </body>
 </html>

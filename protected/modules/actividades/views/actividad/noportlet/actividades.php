@@ -10,6 +10,7 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->theme->baseUrl . '/cs
 ?>
 <script>
     $(function() {
+         $("#widget-tareas").mCustomScrollbar({autoHideScrollbar: null, scrollButtons: {enable: false, scrollSpeed: 100}, theme: 'dark'});
 //                                         Infinite Ajax Scroll v2.1.2
         var ias = $('div.widget-tareas').ias({
             container: "#lista-infinita",
@@ -55,7 +56,7 @@ if (empty($pie)) {
 </script>
 
 
-<div class="widget-tareas"  style="height: <?php echo $paginacion != NULL ? ($paginacion * 47) . 'px' : '470px' ?>; overflow: auto;position: relative; ">
+<div class="widget-tareas" data-scrollbar="mscroll" data-theme="dark-thick" style="height: <?php echo $paginacion != NULL ? ($paginacion * 47) . 'px' : '470px' ?>; overflow: auto;position: relative; ">
 <?php
 $this->widget('ext.bootstrap.widgets.TbListView', array(//TODO: crear widget para scrollinfinito   Infinite Ajax Scroll v2.1.2
     'id' => 'lista-infinita',

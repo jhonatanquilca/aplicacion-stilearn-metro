@@ -1,43 +1,22 @@
 $(function() {
-    $('[name="layout-mode"]').on("change", function() {
-        $(".section-content, .footer").toggleClass("container"), $(this).is(":checked") ? $(".backgrounds").hide() : $(".backgrounds").show()
-    }), $(".backgrounds .background-choice > a").on("click", function(e) {
-        e.preventDefault();
-        var t = $(this).attr("data-bg") == "noimage" ? "#323232" : "url(img/backgrounds/" + $(this).attr("data-bg") + ")";
-        $("body").css({background: t, "background-repeat": "no-repeat", "background-attachment": "fixed", "background-size": "100% 100%"})
-    }), $('[name="header-mode"]').on("change", function() {
-        $("#navbar-top").toggleClass("navbar-fixed-top"), $("body").toggleClass("fixed");
-        if ($('[name="sidebar-mode"]').is(":checked")) {
-            var e = $(window).scrollTop();
-            e > 40 && $("#navside").removeClass("fixed-top").addClass("fixed-top")
-        }
-    }), $('[name="sidebar-mode"]').on("change", function() {
-        $(".side-left").toggleClass("side-left-fixed"), $(this).is(":checked") ? $(".side-left").css({"min-height": "100%"}) : u()
-    }), $(window).scroll(function() {
-        $(window).scrollTop() > 40 ? $('[name="header-mode"]').is(":checked") || $("#navside").addClass("fixed-top") : $("#navside").removeClass("fixed-top")
-    }), $('[name="theme-mode"]').on("change", function() {
-        var e = $('[name="theme-mode"]:checked').val();
-        e == "dark" ? ($("#navbar-top").attr("class", "navbar navbar-inverse"), $("#navside").attr("class", "side-left side-black"), $(".footer").hasClass("container") ? $(".footer").attr("class", "footer container bg-black") : $(".footer").attr("class", "footer bg-black"), $(".side-left > .search-module, .nav-collapse > .search-module").find(".btn").attr("class", "btn bg-black")) : e == "light" && ($("#navbar-top").attr("class", "navbar navbar-cyan"), $("#navside").attr("class", "side-left"), $(".footer").hasClass("container") ? $(".footer").attr("class", "footer container bg-silver") : $(".footer").attr("class", "footer bg-silver"), $(".side-left > .search-module, .nav-collapse > .search-module").find(".btn").attr("class", "btn bg-cyan")), $('[name="header-mode"]').is(":checked") && $("#navbar-top").addClass("navbar-fixed-top"), $('[name="sidebar-mode"]').is(":checked") && $("#navside").toggleClass("side-left-fixed")
-    }), $('[name="syncronize-theme"]').on("change", function() {
-        $(this).is(":checked") ? ($(".syncronize").show(), $(".unsyncronize").hide()) : ($(".syncronize").hide(), $(".unsyncronize").show())
-    }), $(".syncronize .themes-choice > a").on("click", function(e) {
-        e.preventDefault();
-        var t = $(this).attr("data-theme"), n = $('[name="theme-mode"]:checked').val();
-        $('[name="syncronize-theme"]').is(":checked") && n == "dark" ? ($("#navbar-top").attr("class", "navbar navbar-inverse"), $("#navside").attr("class", "side-left side-" + t), $(".footer").hasClass("container") ? $(".footer").attr("class", "footer container bg-" + t) : $(".footer").attr("class", "footer bg-" + t)) : $('[name="syncronize-theme"]').is(":checked") && n == "light" && ($("#navbar-top").attr("class", "navbar navbar-" + t), $("#navside").attr("class", "side-left")), $('[name="header-mode"]').is(":checked") && $("#navbar-top").addClass("navbar-fixed-top"), $('[name="sidebar-mode"]').is(":checked") && $("#navside").toggleClass("side-left-fixed"), $(".side-left > .search-module, .nav-collapse > .search-module").find(".btn").attr("class", "btn bg-" + t)
-    }), $(".unsyncronize .themes-navbar > a").on("click", function(e) {
-        e.preventDefault();
-        var t = $(this).attr("data-theme");
-        $("#navbar-top").attr("class", "navbar navbar-" + t), $('[name="header-mode"]').is(":checked") && $("#navbar-top").addClass("navbar-fixed-top"), $(".side-left > .search-module, .nav-collapse > .search-module").find(".btn").attr("class", "btn bg-" + t)
-    }), $(".unsyncronize .themes-sidebar > a").on("click", function(e) {
-        e.preventDefault();
-        var t = $(this).attr("data-theme");
-        $("#navside").attr("class", "side-left side-" + t), $(".footer").hasClass("container") ? $(".footer").attr("class", "footer container bg-" + t) : $(".footer").attr("class", "footer bg-" + t), $('[name="sidebar-mode"]').is(":checked") && $("#navside").toggleClass("side-left-fixed")
-    }), $('[data-scrollbar="mscroll"]').each(function(e, t) {
-        var n = $(this), r = n.attr("data-theme") == undefined ? "light" : n.attr("data-theme"), i = n.attr("data-autohide") == undefined ? !0 : n.attr("data-autohide"), s = n.attr("data-button") == undefined ? !1 : n.attr("data-button"), o = $.parseJSON(i), u = $.parseJSON(s);
-        n.mCustomScrollbar({autoHideScrollbar: o, scrollButtons: {enable: u, scrollSpeed: 100}, theme: r})
+//    $('[name="layout-mode"]').on("change", function() {
+//        $(".section-content, .footer").toggleClass("container"), $(this).is(":checked") ? $(".backgrounds").hide() : $(".backgrounds").show()
+//    });
+//    $(".backgrounds .background-choice > a").on("click", function(e) {
+//        e.preventDefault();
+//        var t = $(this).attr("data-bg") == "noimage" ? "#323232" : "url(img/backgrounds/" + $(this).attr("data-bg") + ")";
+//        $("body").css({background: t, "background-repeat": "no-repeat", "background-attachment": "fixed", "background-size": "100% 100%"})
+//    });
+
+    $('[data-scrollbar="mscroll"]').each(function(e, t) {
+        var n = $(this);
+        var r = n.attr("data-theme") == undefined ? "light" : n.attr("data-theme");
+        var i = n.attr("data-autohide") == undefined ? !0 : n.attr("data-autohide");
+        var s = n.attr("data-button") == undefined ? !1 : n.attr("data-button");
+        var o = $.parseJSON(i);
+        var u = $.parseJSON(s);
+        n.mCustomScrollbar({autoHideScrollbar: o, scrollButtons: {enable: u, scrollSpeed: 100}, theme: r});
     });
-
-
 
     var t = $(".btn-navbar").attr("data-target"), n = $('[data-collapse="navbar"]').html();
     $(t).html(n), $(t).find(".nav").addClass("nav-list").find("li.dropdown-list").removeClass("dropdown-list").addClass("dropdown").find("a[data-toggle=dropdown-list]").attr("data-toggle", "dropdown").find("i").remove(), $(".nav-collapse").find("a[data-toggle=dropdown]").find("i, .caret").remove(), $("[data-toggle=collapse-all-widgets]").click(function(e) {
@@ -88,11 +67,14 @@ $(function() {
     $('[data-ui="slider"]').each(function() {
         var e = $(this), t = e.attr("data-slider-animate") == undefined ? !1 : e.attr("data-slider-animate"), n = e.attr("data-slider-disabled") == undefined ? !1 : Boolean(e.attr("data-slider-disabled")), r = e.attr("data-slider-max") == undefined ? 100 : parseInt(e.attr("data-slider-max")), i = e.attr("data-slider-min") == undefined ? 0 : parseInt(e.attr("data-slider-min")), s = e.attr("data-slider-orientation") == undefined ? "horizontal" : e.attr("data-slider-orientation"), o = e.attr("data-slider-range") == undefined ? !1 : e.attr("data-slider-range"), u = e.attr("data-slider-step") == undefined ? 1 : parseInt(e.attr("data-slider-step")), a = e.attr("data-slider-value") == undefined ? 0 : parseInt(e.attr("data-slider-value")), f = e.attr("data-slider-values") == undefined ? null : e.attr("data-slider-values").split(","), l = o == "true" ? Boolean(o) : o, c = {animate: t, disabled: n, max: r, min: i, orientation: s, range: l, step: u, value: a, values: f};
         e.slider(c)
-    }), $("[data-toggle=tooltip]").tooltip(), $("[data-toggle=tooltip-bottom]").tooltip({placement: "bottom"}), $("[data-toggle=tooltip-right]").tooltip({placement: "right"}), $("[data-toggle=tooltip-left]").tooltip({placement: "left"}), $("[data-toggle=popover]").click(function(e) {
+    });
+    $("[data-toggle=tooltip]").tooltip(), $("[data-toggle=tooltip-bottom]").tooltip({placement: "bottom"}), $("[data-toggle=tooltip-right]").tooltip({placement: "right"}), $("[data-toggle=tooltip-left]").tooltip({placement: "left"}), $("[data-toggle=popover]").click(function(e) {
         e.preventDefault()
-    }), $("[data-toggle=popover]").popover(), $("[data-toggle=popover-bottom]").popover({placement: "bottom"}), $("[data-toggle=popover-right]").popover({placement: "right"}), $("[data-toggle=popover-left]").popover({placement: "left"}), $("a[data-scroll=true]").click(function(e) {
+    });
+    $("[data-toggle=popover]").popover(), $("[data-toggle=popover-bottom]").popover({placement: "bottom"}), $("[data-toggle=popover-right]").popover({placement: "right"}), $("[data-toggle=popover-left]").popover({placement: "left"}), $("a[data-scroll=true]").click(function(e) {
         e.preventDefault(), $(document.body).animate({scrollTop: $(this.hash).offset().top}, "slow")
-    }), $("[data-chart=sparklines]").each(function() {
+    });
+    $("[data-chart=sparklines]").each(function() {
         var e = $(this), t = $(e).html(), n = t.split(","), r = e.attr("data-height"), i = e.attr("data-color"), s = function() {
             e.sparkline(n, {type: "bar", height: r, width: "100%", barColor: i, barWidth: 5})
         }, o;
@@ -126,7 +108,6 @@ $(function() {
 
 
 }
-
 );
 
 

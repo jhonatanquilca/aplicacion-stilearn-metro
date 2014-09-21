@@ -18,7 +18,7 @@ Util::tsRegisterAssetJs('_actividadesSobre.js');
         </div>
     </div><!-- /widget header -->
     <!-- widget content -->
-    <div id="widget-actividades-sobre" class="widget-content bg-white" style="height:250px" > 
+    <div id="widget-actividades-sobre" class="widget-content bg-white"  style="height:250px" > 
 
     </div>
 </div>
