@@ -131,9 +131,15 @@ $this->menu = array(
                                     array(
                                         //'class'=>'bootstrap.widgets.TbButtonColumn',
                                         'class' => 'CButtonColumn',
-                                        'template' => ' {update} {delete}',
+                                        'template' => '{mail} {update} {delete}',
                                         'deleteConfirmation' => CrugeTranslator::t('admin', 'Esta seguro de querer morver a Inactivos.'),
                                         'buttons' => array(
+                                            'mail' => array(
+                                                'label' => '<button class="btn btn-success"><i class="aweso-envelope"></i></button>',
+                                                'options' => array('title' => 'Enviar Mail'),
+                                                 'url' => 'Yii::app()->baseUrl."/mail/mail/sendEmail"',
+                                                'imageUrl' => false,
+                                            ),
                                             'update' => array(
                                                 'label' => '<button class="btn btn-info"><i class="aweso-pencil"></i></button>',
                                                 'options' => array('title' => Yii::t('AweCrud.app', 'Update')),
@@ -148,7 +154,7 @@ $this->menu = array(
                                             ),
                                         ),
                                         'htmlOptions' => array(
-                                            'width' => '100px',
+                                            'width' => '150px',
                                             'style' => 'text-align:center',
                                         )
                                     ),
@@ -157,7 +163,7 @@ $this->menu = array(
                             ?>
                         </div>
                     </div>
-                    <div class="tab-pane fade " id="inactivos">
+                    <div class="tab-pane fade" id="inactivos">
                         <?php
                         $this->widget('ext.Search.SearchModule', array(
                             'model' => $model,

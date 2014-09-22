@@ -24,6 +24,8 @@ return array(
         'ext.AweCrud.components.*', // AweCrud components
         'application.modules.cruge.components.*',
         'application.modules.cruge.extensions.crugemailer.*',
+        //yiimailler
+        'ext.YiiMailer.YiiMailer',
         //clientes       
         'application.modules.cliente.models.*',
         //actividades
