@@ -153,7 +153,7 @@ $this->menu = array(
                                         ),
                                         'htmlOptions' => array(
                                             'width' => '150px',
-                                            'style' => 'text-align:center',
+                                            'style' => 'text-align:right',
                                         )
                                     ),
                                 ),
