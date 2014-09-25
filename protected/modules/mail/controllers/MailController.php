@@ -138,16 +138,40 @@ class MailController extends AweController {
         }
     }
 
-    /**
+    /*
+     */
+
+    function actionAjaxEnvioMailSolo($id_cliente) {
+        $result = array();
+        $modelCliente = CltCliente::model()->findByPk($id_cliente);
+        $model = new Mail;
+
+        $model->usuario_creacion_id = Yii::app()->user->id;
+        $model->asunto = 'test1';
+        $model->contenido = 'hola como estas miju';
+        $model->contacto_id = $id_cliente;
+        $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
+
+        $result['success'] = $this->sendEmail($model);
+        if ($result['success']) {
+            $result['messaje'] = 'Mail enviado a ' . $modelCliente->nombre_completo;
+        } else {
+            $result['messaje'] = 'Error! No se pudo enviar el email';
+        }
+        echo json_encode($result);
+    }
+
+    /*
      * sendEmail : Es el metodo que usa la ext.YiiMailer  para el envio del mail.
      * @param $email es el modelo de mail dond tenemos el contenido la direccion
      * @param $att es la variable que recive cuando adjuntamos un archivo
      * @param $imgatt es la variable que recive cuando adjuntamos una imagen     
      */
-    function actionSendEmail($email = null, $att = null, $imgatt = null) {
+
+    function sendEmail($email, $att = null, $imgatt = null) {
         try {
             $mail = new YiiMailer();
-            /* Configuracion para el Envio de Mails */
+            /* Configuracion para el Envio de Mails activar la extension openssl en el wamp */
             $mail->Timeout = 3000;
             $mail->IsSMTP();
             $mail->SMTPAuth = true;
@@ -157,17 +181,19 @@ class MailController extends AweController {
             $mail->IsHTML(true);
             $mail->Username = 'cyberLadyinfo2014@gmail.com';
             $mail->Password = 'cyberlady2014';
+//            $mail->Username = 'jhonatand.quilca@gmail.com';
+//            $mail->Password = '1004476568';
 
             $mail->clearLayout(); //if layout is already set in config
-            $mail->setFrom('jhonatand.quilca@gmail.com', 'Info');
-//            $mail->setTo($email->email);
-            $mail->setTo('jquilca@tradesystem.com.ec');
+            $mail->setFrom('cyberLadyinfo2014@gmail', 'Info');
+            $mail->setTo($email->email);
+//            $mail->setTo('jquilca@tradesystem.com.ec');
 //            $mail->setTo('jhosy25000@hotmail.com');
 //            $mail->setTo('jhonydavis@facebook.com');
-//            $mail->setSubject($email->asunto);
-            $mail->setSubject('test');
-//            $mail->setBody($email->contenido, 'text/html');
-            $mail->setBody('<b>hola como estas</b>', 'text/html');
+            $mail->setSubject($email->asunto);
+//            $mail->setSubject('test s');
+            $mail->setBody($email->contenido, 'text/html');
+//            $mail->setBody('<b>hola como estas</b> miju', 'text/html');
 //            $mail->setAttachment($imgatt); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt
 //            $mail->setAttachment('http://localhost/TruuloCRM/uploads/mail_upload/e143b27b51886fddcb119339deeeaa31.jpg'); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt
 //            $mail->setAttachment($att); //Añadimos al mail como adjunto el Archivo q nos envia por la variable $att
@@ -175,19 +201,18 @@ class MailController extends AweController {
             $mail->send();
 
             //Actualizar el estado del mail
-//            $email->fecha_envio = date('Y-m-d H:i:s');
-//            $email->estado = Mail::ESTADO_ENVIADO;
-//            $email->save();
+            $email->fecha_envio = date('Y-m-d H:i:s');
+            $email->estado = Mail::ESTADO_ENVIADO;
+            $email->save();
             // Crear registro de actividad
-//            Actividad::registrarActividad($email, Actividad::TIPO_CREATE);
+            Actividad::registrarActividad($email, Actividad::TIPO_CREATE);
             $_SESSION['attm'] = null;
             $_SESSION['imgattm'] = null;
-            echo 'paso';
             return true;
         } catch (Exception $ex) {
             echo $ex;
-//            $email->estado = Mail::ESTADO_NO_ENVIADO;
-//            $email->save();
+            $email->estado = Mail::ESTADO_NO_ENVIADO;
+            $email->save();
             $_SESSION['attm'] = null;
             $_SESSION['imgattm'] = null;
             return false;

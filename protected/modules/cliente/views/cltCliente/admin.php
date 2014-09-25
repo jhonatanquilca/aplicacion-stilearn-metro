@@ -3,10 +3,6 @@
 /** @var CltCliente $model */
 Util::tsRegisterAssetJs('admin.js');
 $this->pageTitle = CltCliente::label(2);
-//TODO: borrar vardumps
-//var_dump($model->attributes);
-//var_dump(count($model->activos()->search()));
-//die();
 ?>
 
 <?php
@@ -129,16 +125,18 @@ $this->menu = array(
 //                              'fecha_actualizacion',
 //                            
                                     array(
-                                        //'class'=>'bootstrap.widgets.TbButtonColumn',
+//                                        'class'=>'bootstrap.widgets.TbButtonColumn',
                                         'class' => 'CButtonColumn',
                                         'template' => '{mail} {update} {delete}',
                                         'deleteConfirmation' => CrugeTranslator::t('admin', 'Esta seguro de querer morver a Inactivos.'),
                                         'buttons' => array(
                                             'mail' => array(
                                                 'label' => '<button class="btn btn-success"><i class="aweso-envelope"></i></button>',
-                                                'options' => array('title' => 'Enviar Mail'),
-                                                 'url' => 'Yii::app()->baseUrl."/mail/mail/sendEmail"',
+                                                'options' => array('title' => 'Enviar Mail',),
                                                 'imageUrl' => false,
+                                                'url' => '$data->id',
+                                                'visible' => '$data->email_1||$data->email_2?true:false',
+                                                'click' => 'function(){enviarMailSolo($(this).attr("href"));return false;}',
                                             ),
                                             'update' => array(
                                                 'label' => '<button class="btn btn-info"><i class="aweso-pencil"></i></button>',

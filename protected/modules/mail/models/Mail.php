@@ -4,6 +4,10 @@ Yii::import('mail.models._base.BaseMail');
 
 class Mail extends BaseMail {
 
+    const ESTADO_PENDIENTE = 'PENDIENTE';
+    const ESTADO_ENVIADO = 'ENVIADO';
+    const ESTADO_NO_ENVIADO = 'NO_ENVIADO';
+
     /**
      * @return Mail
      */
