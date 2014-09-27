@@ -326,9 +326,22 @@ function AjaxGuardarModal(verificador, Formulario, callBack)
 
                 } else {
 
-                    bootbox.alert(data.mensage, function() {
-                        DesBloquearBotonesModal(Formulario);
-                    });
+//                    bootbox.alert(data.mensage, function() {
+//                        DesBloquearBotonesModal(Formulario);
+//                    });
+
+                    bootbox.dialog(data.mensage,
+                            [
+                                {
+                                    "label": "OK",
+                                    "class": "btn btn-primary",
+                                    "callback": function() {
+                                        DesBloquearBotonesModal(Formulario);
+                                    },
+                                },
+                            ]
+                            , {backdrop: "static"}
+                    );
 
 
                 }

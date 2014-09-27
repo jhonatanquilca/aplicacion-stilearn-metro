@@ -17,6 +17,8 @@ function clickTab(searchFormId)
     }
     );
 }
+
+
 function enviarMailSolo(id) {
 
     bootbox.dialog("DESEAS EVIAR UN E-MAIL PERSONALIZADO?",
@@ -33,16 +35,18 @@ function enviarMailSolo(id) {
                     "label": "No",
                     "class": "btn btn-success",
                     "callback": function() {
-                        console.log("NO");
+
                         $.ajax({
                             type: "POST",
                             url: baseUrl + "mail/mail/ajaxEnvioMailSolo/id_cliente/" + id,
                             dataType: 'json',
                             data: {clientes: id},
                             beforeSend: function() {
-                                showModalLoading();
-
-
+                                var html = "";
+                                html += "<div class='modal-header bg-silver' ><div class='text-center'><img src='" + themeUrl + "img/preload-6-black.gif' /></div > <h4 class='text-center'>Enviando</h4></div></div>";
+//                                html += "<div class='loading'><img src='" + themeUrl + "img/preload-6-black.gif' /></div>";
+                                $("#mainModal").html(html);
+                                $("#mainModal").modal("show");
                             },
                             success: function(data) {
                                 $("#mainModal").modal("hide");
@@ -81,10 +85,7 @@ function enviarMailSolo(id) {
                         });
                     }
                 },
-            ]);
+            ], {backdrop: "static"});
 
 }
-
-
-
 
