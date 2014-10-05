@@ -185,7 +185,22 @@
 
             <!-- start content -->
             <div class="content">
+                <!-- FLASH MESSAGES -->
 
+                <div class="row-fluid" id="maiMessages" class="flash-messages">                    
+                    <!--<div id="maiMessages" >-->
+                    <?php
+                    $messages = Yii::app()->user->getFlashes();
+                    if ($messages) {
+                        foreach ($messages as $key => $message) {
+                            echo '<div class="alert alert-' . $key . '">'
+                            . '<button data-dismiss="alert" class="close" type="button">×</button>'
+                            . $message . "</div>\n";
+                        }
+                    }
+                    ?>
+                    <!--</div>-->
+                </div>
 
                 <?php echo $content; ?>
 

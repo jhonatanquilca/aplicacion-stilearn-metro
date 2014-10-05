@@ -196,6 +196,13 @@ function showModalLoading() {
     $("#mainModal").html(html);
     $("#mainModal").modal("show");
 }
+function showModalSending() {
+    var html = "";
+    html += "<div class='modal-header bg-silver' ><div class='text-center'><img src='" + themeUrl + "img/preload-6-black.gif' /></div > <h4 class='text-center'>Enviando</h4></div></div>";
+//                                html += "<div class='loading'><img src='" + themeUrl + "img/preload-6-black.gif' /></div>";
+    $("#mainModal").html(html);
+    $("#mainModal").modal("show");
+}
 
 function showModalData(html, large) {
     if (large) {

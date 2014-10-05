@@ -33,6 +33,8 @@ return array(
         'application.modules.actividades.models.*',
         //transaccion
         'application.modules.transaccion.models.*',
+        //mail
+        'application.modules.mail.models.*',
     ),
     'modules' => array(
 // aqui pones tus modulos        

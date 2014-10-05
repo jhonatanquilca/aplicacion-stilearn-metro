@@ -8,7 +8,7 @@ Util::tsRegisterAssetJs('_actividadesSobre.js');
     <!-- widget header -->
     <div class="widget-header bg-indigo">
         <!-- widget title -->
-        <h4 class="widget-title"><i class="aweso-time"></i> Historial de  <?php echo Actividad::label(2) ?>
+        <h4 class="widget-title"><i class="aweso-time"></i><?php echo Actividad::label(2) ?>
         </h4>
         <!-- widget action, you can also use btn, btn-group, nav-tabs or nav-pills (also support dropdown). enjoy! -->
         <div class="widget-action">            

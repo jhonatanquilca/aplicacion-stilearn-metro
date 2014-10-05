@@ -10,6 +10,19 @@ $this->pageTitle = CltCliente::label(2);
 $this->menu = array(
 //    array('label' => Yii::t('AweCrud.app', 'List') . ' ' . CltCliente::label(2), 'icon' => 'list', 'url' => array('index')),
     array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . CltCliente::label(), 'icon' => 'plus', 'url' => array('create')),
+    array(
+        'label' => 'Enviar Email ', 'icon' => 'envelope', 'url' => '#',
+        'htmlOptions' => array('id' => 'sedMail',),
+        'dropdownOptions' => array('class' => 'steel',),
+        'items' => array(
+            array('label' => 'Todos', 'url' => '#', 'linkOptions' => array(
+                    'onclick' => 'enviarMailContactos(true)',
+                )),
+            array('label' => 'Seleccionados', 'url' => '#', 'linkOptions' => array(
+                    'onclick' => 'enviarMailContactos(false)',
+                )),
+        ),
+    ),
 );
 ?>
 
@@ -66,7 +79,13 @@ $this->menu = array(
                                 'selectableRows' => 2,
                                 //'filter' => $model,
                                 'columns' => array(
-//                            'id',
+                                    array(
+                                        'id' => 'check_id',
+                                        'class' => 'CCheckBoxColumn',
+                                        'value' => '$data->id',
+//                                        'headerTemplate' => '<label>{item}<span></span></label>',
+//                                        'htmlOptions' => array('style' => 'width: 20px', 'class' => 'chandran'),
+                                    ),
 //                            'nombre',
 //                            'apellido',
                                     array(
@@ -131,12 +150,12 @@ $this->menu = array(
                                         'deleteConfirmation' => CrugeTranslator::t('admin', 'Esta seguro de querer morver a Inactivos.'),
                                         'buttons' => array(
                                             'mail' => array(
-                                                'label' => '<button class="btn btn-success"><i class="aweso-envelope"></i></button>',
+                                                'label' => '<button class="btn bg-orange"><i class="aweso-envelope"></i></button>',
                                                 'options' => array('title' => 'Enviar Mail',),
                                                 'imageUrl' => false,
                                                 'url' => '$data->id',
                                                 'visible' => '$data->email_1||$data->email_2?true:false',
-                                                'click' => 'function(){enviarMailSolo($(this).attr("href"));return false;}',
+                                                'click' => 'function(){enviarMailRow($(this).attr("href"));return false;}',
                                             ),
                                             'update' => array(
                                                 'label' => '<button class="btn btn-info"><i class="aweso-pencil"></i></button>',

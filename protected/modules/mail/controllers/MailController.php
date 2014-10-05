@@ -26,6 +26,10 @@ class MailController extends AweController {
         ));
     }
 
+    public function actionViewPlantilla() {
+        $this->renderPartial('mailer1');
+    }
+
     /**
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -141,20 +145,79 @@ class MailController extends AweController {
     /*
      */
 
-    function actionAjaxEnvioMailSolo($id_cliente) {
+    function actionAjaxEnvioMailTodos() {
         $result = array();
-        $modelCliente = CltCliente::model()->findByPk($id_cliente);
-        $model = new Mail;
+        $clientes = CltCliente::model()->activos()->findAll();
 
-        $model->usuario_creacion_id = Yii::app()->user->id;
-        $model->asunto = 'test1';
-        $model->contenido = 'hola como estas miju';
-        $model->contacto_id = $id_cliente;
-        $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
+        $envioClientes = array();
+
+        foreach ($clientes as $cliente) {
+            if ($cliente->email_1 || $cliente->email_2) {
+                array_push($envioClientes, $cliente);
+            }
+        }
+
+        if (!empty($envioClientes)) {
+            $result['success'] = true;
+            $result['message'] = 'Se enviaron ' . count($envioClientes) . ' correos correctamente!';
+            foreach ($envioClientes as $cliente) {
+                $model = $this->envioEmailSoloPredefinido($cliente->id);
+                $envio = $this->sendEmail($model);
+                while (!$envio) {
+                    $envio = $this->sendEmail($model);
+                }
+            }
+        } else {
+            $result['message'] = 'Uno o mas Clientes seleccionados no tienen nungun correo electronico.';
+            $result['success'] = false;
+        }
+
+        echo json_encode($result);
+    }
+
+    function actionAjaxEnvioMailSeleccionados() {
+        $result = array();
+        $idsClientes = $_POST['id_cliente'];
+        $envioClientes = array();
+
+        foreach ($idsClientes as $id) {
+            $modelCiente = CltCliente::model()->findByPk($id);
+
+            if ($modelCiente->email_1 || $modelCiente->email_2) {
+                array_push($envioClientes, $modelCiente);
+            }
+        }
+
+        if (!empty($envioClientes)) {
+            $result['success'] = true;
+            $result['message'] = 'Se enviaron ' . count($envioClientes) . ' correos correctamente!';
+            foreach ($envioClientes as $cliente) {
+                $model = $this->envioEmailSoloPredefinido($cliente->id);
+                $envio = $this->sendEmail($model);
+                while (!$envio) {
+                    $envio = $this->sendEmail($model);
+                }
+            }
+        } else {
+            $result['message'] = 'Uno o mas Clientes seleccionados no tienen nungun correo electronico.';
+            $result['success'] = false;
+        }
+
+        echo json_encode($result);
+    }
+
+    /* envia mail a un solo cliente
+     */
+
+    function actionAjaxEnvioMailSolo($id_cliente) {
+        $modelCliente = CltCliente::model()->findByPk($id_cliente);
+        $result = array();
+
+        $model = $this->envioEmailSoloPredefinido($id_cliente);
 
         $result['success'] = $this->sendEmail($model);
         if ($result['success']) {
-            $result['messaje'] = 'Mail enviado a ' . $modelCliente->nombre_completo;
+            $result['messaje'] = 'Mail enviado a: ' . $modelCliente->nombre_completo;
         } else {
             $result['messaje'] = 'Error! No se pudo enviar el email';
         }
@@ -168,6 +231,17 @@ class MailController extends AweController {
      * @param $imgatt es la variable que recive cuando adjuntamos una imagen     
      */
 
+    function envioEmailSoloPredefinido($id_cliente) {
+        $modelCliente = CltCliente::model()->findByPk($id_cliente);
+        $model = new Mail;
+        $model->usuario_creacion_id = Yii::app()->user->id;
+        $model->asunto = 'test1';
+        $model->contenido = Util::getMensajeMail();
+        $model->contacto_id = $id_cliente;
+        $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
+        return $model;
+    }
+
     function sendEmail($email, $att = null, $imgatt = null) {
         try {
             $mail = new YiiMailer();
@@ -180,18 +254,17 @@ class MailController extends AweController {
             $mail->SMTPSecure = "ssl";
             $mail->IsHTML(true);
             $mail->Username = 'cyberLadyinfo2014@gmail.com';
+//            $mail->Username = '100005388197930@facebook.com';
             $mail->Password = 'cyberlady2014';
+
 //            $mail->Username = 'jhonatand.quilca@gmail.com';
 //            $mail->Password = '1004476568';
 
             $mail->clearLayout(); //if layout is already set in config
             $mail->setFrom('cyberLadyinfo2014@gmail', 'Info');
             $mail->setTo($email->email);
-//            $mail->setTo('jquilca@tradesystem.com.ec');
 //            $mail->setTo('jhosy25000@hotmail.com');
-//            $mail->setTo('jhonydavis@facebook.com');
             $mail->setSubject($email->asunto);
-//            $mail->setSubject('test s');
             $mail->setBody($email->contenido, 'text/html');
 //            $mail->setBody('<b>hola como estas</b> miju', 'text/html');
 //            $mail->setAttachment($imgatt); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt

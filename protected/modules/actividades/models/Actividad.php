@@ -75,6 +75,24 @@ class Actividad extends BaseActividad {
                 ->where('entidad_id = :idCliente AND entidad_tipo=:entidadTipo');
         $commad->params = $params;
         $clienteCommand = $commad->queryAll();
+
+        //para el mail de cliente
+        $params = array(':idCliente' => $idCliente);
+        $commad = Yii::app()->db->createCommand()->select('id')->from('mail')->where('contacto_id=:idCliente');
+        $commad->params = $params;
+        $mails = $commad->queryAll();
+        $clienteMailCommand = array();
+        foreach ($mails as $mail) {
+
+            $params = array(':idMail' => $mail['id'], ':entidadTipo' => Mail::model()->tableName());
+            $commad = Yii::app()->db->createCommand()
+                    ->select('*')
+                    ->from('actividad')
+                    ->where('entidad_id = :idMail AND entidad_tipo=:entidadTipo');
+            $commad->params = $params;
+            $clienteMailCommand = array_merge($clienteMailCommand, $commad->queryAll());
+        }
+
 //para la deuda
         $cliente = CltCliente::model()->findByPk($idCliente);
 
@@ -109,12 +127,13 @@ class Actividad extends BaseActividad {
 
         $finalArray = array_merge($deudaClienteCommand, $clienteCommand);
         $finalArray = array_merge($finalArray, $transaClienteCommand);
+        $finalArray = array_merge($finalArray, $clienteMailCommand);
 
         $arrayId = array();
         foreach ($finalArray as $dato) {
             array_push($arrayId, $dato['id']);
         }
-//        F
+
         $criteria = new CDbCriteria;
 
         $criteria->addInCondition('id', $arrayId);
@@ -124,6 +143,7 @@ class Actividad extends BaseActividad {
         $criteria->compare('usuario_id', $this->usuario_id);
         $criteria->compare('fecha', $this->fecha, true);
         $criteria->compare('detalle', $this->detalle, true);
+        $criteria->order = 'fecha DESC';
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -219,6 +239,19 @@ class Actividad extends BaseActividad {
                     }
 
                     $mensaje.= "<br/><p><b>Deuda Todal : $" . number_format($transaccion->cltDeuda->monto, 2, '.', '') . " ctvs.</b></p>";
+                    break;
+
+                // Si es una actividad sobre un mail
+                case Mail::model()->tableName():
+                    $mail = Mail::model()->findByPk($actividad['entidad_id']);
+                    if (isset($mail)) {
+                        $contacto = CltCliente::model()->findByPk($mail->contacto_id);
+                        $icon = 'envelope';
+
+                        if ($actividad['tipo'] == self::TIPO_CREATE) {
+                            $mensaje = $usuario->username . " envió un mail a " . CHtml::link($contacto->nombre_completo, array('/cliente/cltCliente/view', 'id' => $contacto->id), array('class' => 'btn btn-small btn-silver'));
+                        }
+                    }
                     break;
 
                 // Si es una actividad sobre una tarea
@@ -337,6 +370,10 @@ class Actividad extends BaseActividad {
         //actividades de eventos
         $criteria->condition.= ' OR (ac.entidad_tipo = :entidad_evento and ac.entidad_id in(select evento.id from evento where evento.entidad_tipo = :entidad_tipo and evento.entidad_id = :entidad_id))';
         $arrayParams = array_merge($arrayParams, array(':entidad_evento' => Actividades_Constants::ENTIDAD_TIPO_EVENTO));
+
+        //actividade mail
+//        $criteria->condition.='OR(ac.entidad_tipo = :entidad_mail AND (ac.entidad_id in (select mail.id from mail where mail.contacto_id = :entidad_id)))';
+//        $arrayParams = array_merge($arrayParams, array(':entidad_mail' => Actividades_Constants::ENTIDAD_TIPO_MAIL));
         //filtros de campaña
 //        if ($entidad_tipo == Actividades_Constants::ENTIDAD_TIPO_CAMPANIA) {
 //            //tareas programadas
