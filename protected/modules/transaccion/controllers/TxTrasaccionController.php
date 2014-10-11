@@ -173,7 +173,7 @@ class TxTrasaccionController extends AweController {
 
                     if ($model->tipo == TxTrasaccion::TIPO_PAGAR) {
                         $upMonto = ($modelDeudaTotal - $modelAnt) - $montoInput;
-                        if ($modelDeudaTotal >= $montoInput && $upMonto > 0.00) {
+                        if ($modelDeudaTotal >= $montoInput && $upMonto >= 0.00) {
                             CltDeuda::model()->updateByPk($model->clt_deuda_id, array('monto' => $upMonto));
                             $result['success'] = $model->save();
                             if (!$result['success']) {
