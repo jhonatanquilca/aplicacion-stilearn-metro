@@ -235,7 +235,7 @@ class MailController extends AweController {
         $modelCliente = CltCliente::model()->findByPk($id_cliente);
         $model = new Mail;
         $model->usuario_creacion_id = Yii::app()->user->id;
-        $model->asunto = 'test1';
+        $model->asunto = 'NOTIFICACION DE DEUDA';
         $model->contenido = Util::getMensajeMail();
         $model->contacto_id = $id_cliente;
         $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
@@ -261,14 +261,14 @@ class MailController extends AweController {
 //            $mail->Password = '1004476568';
 
             $mail->clearLayout(); //if layout is already set in config
-            $mail->setFrom('cyberLadyinfo2014@gmail', 'Info');
+            $mail->setFrom('cyberLadyinfo2014@gmail', 'Info - CyberLady');
             $mail->setTo($email->email);
 //            $mail->setTo('jhosy25000@hotmail.com');
             $mail->setSubject($email->asunto);
             $mail->setBody($email->contenido, 'text/html');
 //            $mail->setBody('<b>hola como estas</b> miju', 'text/html');
 //            $mail->setAttachment($imgatt); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt
-//            $mail->setAttachment('http://localhost/TruuloCRM/uploads/mail_upload/e143b27b51886fddcb119339deeeaa31.jpg'); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt
+//            $mail->setAttachment('http://demoapps.url.ph/themes/stilearn-metro/img/images/pic002.jpg'); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt
 //            $mail->setAttachment($att); //Añadimos al mail como adjunto el Archivo q nos envia por la variable $att
             /* Envia el Mail */
             $mail->send();

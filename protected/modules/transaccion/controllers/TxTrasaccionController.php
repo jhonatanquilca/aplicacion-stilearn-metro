@@ -172,9 +172,9 @@ class TxTrasaccionController extends AweController {
                     }
 
                     if ($model->tipo == TxTrasaccion::TIPO_PAGAR) {
-
-                        if ($modelDeudaTotal >= $montoInput) {
-                            CltDeuda::model()->updateByPk($model->clt_deuda_id, array('monto' => ($modelDeudaTotal - $modelAnt) - $montoInput));
+                        $upMonto = ($modelDeudaTotal - $modelAnt) - $montoInput;
+                        if ($modelDeudaTotal >= $montoInput && $upMonto > 0.00) {
+                            CltDeuda::model()->updateByPk($model->clt_deuda_id, array('monto' => $upMonto));
                             $result['success'] = $model->save();
                             if (!$result['success']) {
                                 $result['mensage'] = "Error al guardar";

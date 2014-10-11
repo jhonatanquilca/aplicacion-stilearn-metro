@@ -4,7 +4,7 @@ $(function() {
 function reLoadActividadesSobre() {
     $('#widget-actividades-sobre').attr('style', 'height: 250px');
     $('#widget-actividades-sobre').html('');
-    console.log($('#widget-actividades-sobre').html());
+//    console.log($('#widget-actividades-sobre').html());
     loadActividadesSobre();
 }
 function loadActividadesSobre() {
