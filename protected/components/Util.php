@@ -3,7 +3,6 @@
 /**
  * Description of Util
  *
- * @author Santiago Benítez <sbenitez@tradesystem.com.ec>
  */
 class Util {
 
@@ -23,7 +22,6 @@ class Util {
     }
 
     /**
-     * @author Alex Yepez <ayepez@tradesystem.com.ec>
      * @param array $elementos 
      * altera el valor en forma acendente desde 0 de una determinada columna
      * @return array $NewArray nuevo array con la columna 'id' con valores desde 0 a $elementos.length
@@ -62,7 +60,6 @@ class Util {
     }
 
     /**
-     * @author Alex Yepez <ayepez@tradesystem.com.ec>
      * retona la fecha actual del sistema
      * @return string
      */
@@ -74,7 +71,6 @@ class Util {
     }
 
     /**
-     * @author Alex Yepez <ayepez@tradesystem.com.ec>
      * @param type $fechaAt
      * @param type $tipo
      * @return string
@@ -171,7 +167,6 @@ class Util {
      * @param type $button
      * @param type $data
      * @return type
-     * @author Ivan Naranjo <inaranjo@tradesystem.com.ec>
      */
     public static function getGridViewId($options, $data) {
         foreach ($options as &$option) {
@@ -186,7 +181,6 @@ class Util {
     /**
      * // regresa la cadena sin subguiones("_"), y los convierte en espacios, ademas de poner letra capital
      * @param type $nomre
-     * @author Ivan Naranjo <inaranjo@tradesystem.com.ec>
      */
     public static function setName($nombre) {
         $nombre = str_replace('_', " ", $nombre);
@@ -199,7 +193,6 @@ class Util {
      * @param type $fCreacion
      * @param type $tIncidencia
      * @return type
-     * @author Ivan Naranjo <inaranjo@tradesystem.com.ec>
      */
     //TODO: Borrar en caso que ya no se utilice
     public static function semaforoUtil($fCreacion, $tIncidencia) {
@@ -220,7 +213,6 @@ class Util {
      * @param type $fCreacion
      * @param type $tIncidencia
      * @return type
-     * @author Ivan Naranjo <inaranjo@tradesystem.com.ec>
      */
     public static function semaforo($fGestion) {
         $tiempoDias = (strtotime($fGestion) - strtotime(date("Y-m-d H:i:s"))) / 86400;
@@ -263,7 +255,6 @@ class Util {
 
     /**
      * exporta una tabla a pdf
-     * @author Esteban Preciado <epreciado@tradesystem.com.ec>
      * @param type $pag_render
      * @param array $options
      * @param type $boolean

@@ -192,7 +192,8 @@ function ajustarModal(porcentaje) {
 function showModalLoading() {
     var html = "";
     html += "<div class='modal-header'><a class='close' data-dismiss='modal'>&times;</a><h4><i class='icon-refresh'></i> Cargando</h4></div>";
-    html += "<div class='loading'><img src='" + themeUrl + "img/preload-6-black.gif' /></div>";
+//    html += "<div class='loading'><img class='preload-large' src='" + themeUrl + "img/preload-6-black.gif' /></div>";
+    html += "<div class='loading'><img  src='" + themeUrl + "img/ajax-loading.gif' /></div>";
     $("#mainModal").html(html);
     $("#mainModal").modal("show");
 }

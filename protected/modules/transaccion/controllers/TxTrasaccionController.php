@@ -53,8 +53,9 @@ class TxTrasaccionController extends AweController {
 
                 $model->attributes = $_POST['TxTrasaccion'];
 
-                $modelDeudaTotal = CltDeuda::model()->findAllByPk($id_deuda);
-                $modelDeudaTotal = floatval($modelDeudaTotal[0]['monto']);
+                $modelDeudaTotal = CltDeuda::model()->findByPk($model->clt_deuda_id);
+                $modelDeudaTotal = floatval($modelDeudaTotal->monto);
+
                 $montoInput = floatval($model->monto_cuota);
 
                 if ($model->tipo == TxTrasaccion::TIPO_ADEUDAR) {
@@ -129,8 +130,9 @@ class TxTrasaccionController extends AweController {
 
                 $model->attributes = $_POST['TxTrasaccion'];
 
-                $modelDeudaTotal = CltDeuda::model()->findAllByPk($model->clt_deuda_id);
-                $modelDeudaTotal = floatval($modelDeudaTotal[0]['monto']);
+                $modelDeudaTotal = CltDeuda::model()->findByPk($model->clt_deuda_id);
+                $modelDeudaTotal = floatval($modelDeudaTotal->monto);
+
                 $montoInput = floatval($model->monto_cuota);
 
                 if ($model->tipo == $modelAntTipo) {
@@ -162,7 +164,7 @@ class TxTrasaccionController extends AweController {
 
                     if ($model->tipo == TxTrasaccion::TIPO_ADEUDAR) {
 
-                        CltDeuda::model()->updateByPk($model->clt_deuda_id, array('monto' => ($modelDeudaTotal + $montoInput)));
+                        CltDeuda::model()->updateByPk($model->clt_deuda_id, array('monto' => ($modelDeudaTotal + $modelAnt) + $montoInput));
                         $result['success'] = $model->save();
                         if (!$result['success']) {
                             $result['mensage'] = "Error al guardar";
@@ -172,13 +174,9 @@ class TxTrasaccionController extends AweController {
                     }
 
                     if ($model->tipo == TxTrasaccion::TIPO_PAGAR) {
-//                        var_dump($modelDeudaTotal);
-//                        var_dump($montoInput);
-//                        var_dump($modelAnt);
 
-                        $upMonto = $modelDeudaTotal - $montoInput;
-//                        var_dump($upMonto);
-//                        die();
+                        $upMonto = ($modelDeudaTotal - $modelAnt) - $montoInput;
+
                         if ($modelDeudaTotal >= $montoInput && $upMonto >= 0.00) {
                             CltDeuda::model()->updateByPk($model->clt_deuda_id, array('monto' => $upMonto));
                             $result['success'] = $model->save();
