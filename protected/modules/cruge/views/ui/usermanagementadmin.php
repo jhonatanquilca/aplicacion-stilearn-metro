@@ -34,6 +34,8 @@ $this->pageTitle = Yii::t('app', 'Administrador de Usuarios');
                 $cols = array();
 
                 // presenta los campos de ICrugeStoredUser
+//                var_dump($model->findAll());
+//                die();
                 foreach (Yii::app()->user->um->getSortFieldNamesForICrugeStoredUser() as $key => $fieldName) {
                     $value = null; // default
                     $filter = null; // default, textbox
@@ -44,6 +46,7 @@ $this->pageTitle = Yii::t('app', 'Administrador de Usuarios');
                     }
                     if ($fieldName == 'logondate') {
                         $type = 'datetime';
+                        $value = ' strtotime ( "-4 hour" , $data->logondate ) ';
                     }
                     if ($fieldName != 'iduser') {
                         $cols[] = array('name' => $fieldName, 'value' => $value, 'filter' => $filter, 'type' => $type);
