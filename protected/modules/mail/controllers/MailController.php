@@ -236,7 +236,7 @@ class MailController extends AweController {
         $model = new Mail;
         $model->usuario_creacion_id = Yii::app()->user->id;
         $model->asunto = 'NOTIFICACION DE DEUDA';
-        $model->contenido = Util::getMensajeMail();
+        $model->contenido = 'test';
         $model->contacto_id = $id_cliente;
         $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
         return $model;
@@ -265,7 +265,7 @@ class MailController extends AweController {
             $mail->setTo($email->email);
 //            $mail->setTo('jhosy25000@hotmail.com');
             $mail->setSubject($email->asunto);
-            $mail->setBody($email->contenido, 'text/html');
+            $mail->setBody(Util::getMensajeMail(null,$email->contenido), 'text/html');
 //            $mail->setBody('<b>hola como estas</b> miju', 'text/html');
 //            $mail->setAttachment($imgatt); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt
 //            $mail->setAttachment('http://demoapps.url.ph/themes/stilearn-metro/img/images/pic002.jpg'); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt
