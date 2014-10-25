@@ -494,21 +494,20 @@ class Util {
         return ucwords(strtolower($string));
     }
 
-    public static function getMensajeMail($titulo = null, $mensaje = null) {
-        $titulo = 'sadmaslkd';
-        $mensaje = 'asdkasdlkasdkjalskdjlaksjdlkasdklaslkdaslkjda';
+    public static function getMensajeMail($titulo, $mensaje) {
+
         $fecha = self::FechaActual();
         $cuerpo = '
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td align="center" valign="top" bgcolor="#726627" style="background-color:#726627;"><br/>
+                <td align="center" valign="top" bgcolor="#726627" style="background-color:#65926B;"><br/>
                     <br/>
                     <table width="600" border="0" cellspacing="0" cellpadding="0">              
                             <tr>
                             <td align="center" valign="top" bgcolor="#006c00" style="background-color:#006c00; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000000; border-radius: 10px 10px 0px 0px;"><table width="100%" border="0" cellspacing="0" cellpadding="5">
                                     <tr>
                                         <td width="50%" align="left" valign="top" style="color:#ffffff; font-family:Verdana, Geneva, sans-serif; font-size:11px;">&nbsp;&nbsp;'
-                . $fecha
+                . self::FormatDate($fecha, 'd/m/Y') . ' ' . self::FormatDate($fecha, 'H:i:s')
                 . '</td>
                                     </tr>
                                 </table></td>
@@ -524,7 +523,7 @@ class Util {
                                                 </b></h2>
                                                 </div>
                                             <div>
-                                                ' . $mensaje . '
+                                                ' . 'ESTIMADO/A <b>' . $mensaje['nombre'] . '</b> CYBERLADY TE INFORMA QUE TU DEUDA ES DE <b>$' . $mensaje['monto'] . ' ctvs.</b>' . '
                                                 <br/>                                          
                                             </div></td>
                                     </tr>

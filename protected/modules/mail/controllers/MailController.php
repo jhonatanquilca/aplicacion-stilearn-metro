@@ -232,11 +232,14 @@ class MailController extends AweController {
      */
 
     function envioEmailSoloPredefinido($id_cliente) {
+        $mensaje = NULL;
+        $titulo = NULL;
+
         $modelCliente = CltCliente::model()->findByPk($id_cliente);
         $model = new Mail;
         $model->usuario_creacion_id = Yii::app()->user->id;
         $model->asunto = 'NOTIFICACION DE DEUDA';
-        $model->contenido = 'test';
+        $model->contenido = array('nombre' => $modelCliente->nombre_completo, 'monto' => $modelCliente->cltDeudas[0]->monto);
         $model->contacto_id = $id_cliente;
         $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
         return $model;
@@ -265,7 +268,7 @@ class MailController extends AweController {
             $mail->setTo($email->email);
 //            $mail->setTo('jhosy25000@hotmail.com');
             $mail->setSubject($email->asunto);
-            $mail->setBody(Util::getMensajeMail(null,$email->contenido), 'text/html');
+            $mail->setBody(Util::getMensajeMail($email->asunto . ' - CYBERLADY', $email->contenido), 'text/html');
 //            $mail->setBody('<b>hola como estas</b> miju', 'text/html');
 //            $mail->setAttachment($imgatt); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt
 //            $mail->setAttachment('http://demoapps.url.ph/themes/stilearn-metro/img/images/pic002.jpg'); //Añadimos como adjunto la Imagen q nos envio por la variable $imgatt
@@ -274,6 +277,8 @@ class MailController extends AweController {
             $mail->send();
 
             //Actualizar el estado del mail
+            
+            $email->contenido = 'ESTIMADO/A ' . $email->contenido['nombre'] . ' CYBERLADY TE INFORMA QUE TU DEUDA ES DE $' . $email->contenido['monto'] . ' ctvs.';
             $email->fecha_envio = date('Y-m-d H:i:s');
             $email->estado = Mail::ESTADO_ENVIADO;
             $email->save();
@@ -284,6 +289,7 @@ class MailController extends AweController {
             return true;
         } catch (Exception $ex) {
             echo $ex;
+            $model->contenido = 'ESTIMADO/A ' . $model->contenido['nombre'] . ' CYBERLADY TE INFORMA QUE TU DEUDA ES DE $' . $model->contenido['monto'] . ' ctvs.';
             $email->estado = Mail::ESTADO_NO_ENVIADO;
             $email->save();
             $_SESSION['attm'] = null;
