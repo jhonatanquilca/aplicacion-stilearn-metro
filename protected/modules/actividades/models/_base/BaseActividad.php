@@ -37,9 +37,9 @@ abstract class BaseActividad extends AweActiveRecord {
             array('entidad_tipo, entidad_id, tipo, usuario_id, fecha', 'required'),
             array('entidad_id, usuario_id', 'numerical', 'integerOnly'=>true),
             array('entidad_tipo', 'length', 'max'=>64),
-            array('tipo', 'length', 'max'=>6),
+            array('tipo', 'length', 'max'=>7),
             array('detalle', 'safe'),
-            array('tipo', 'in', 'range' => array('CREATE','UPDATE','DELETE')), // enum,
+            array('tipo', 'in', 'range' => array('CREATE','UPDATE','DELETE','RESTORE')), // enum,
             array('detalle', 'default', 'setOnEmpty' => true, 'value' => null),
             array('id, entidad_tipo, entidad_id, tipo, usuario_id, fecha, detalle', 'safe', 'on'=>'search'),
         );

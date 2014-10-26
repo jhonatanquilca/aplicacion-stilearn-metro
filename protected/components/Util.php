@@ -523,7 +523,7 @@ class Util {
                                                 </b></h2>
                                                 </div>
                                             <div>
-                                                ' . 'ESTIMADO/A <b>' . $mensaje['nombre'] . '</b> CYBERLADY TE INFORMA QUE TU DEUDA ES DE <b>$' . $mensaje['monto'] . ' ctvs.</b>' . '
+                                                ' . (is_array($mensaje) ? 'ESTIMADO/A <b>' . $mensaje['nombre'] . '</b> CYBERLADY TE INFORMA QUE TU DEUDA ES DE <b>$' . $mensaje['monto'] . ' ctvs.</b>' : $mensaje) . '
                                                 <br/>                                          
                                             </div></td>
                                     </tr>

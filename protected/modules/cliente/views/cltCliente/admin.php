@@ -73,6 +73,7 @@ $this->menu = array(
                                 'id' => CltCliente::ESTADO_ACTIVO . '-grid',
                                 'type' => 'striped bordered hover advance condensed', // striped bordered hover advance condensed
                                 'template' => '{summary}{items}{pager}',
+//                                'showTableOnEmpty' => false,
                                 'dataProvider' => $model->activos()->search(),
                                 'afterAjaxUpdate' => 'function(id){ if($("#activos").hasClass("active")){ $.fn.yiiGridView.update("' . CltCliente::ESTADO_INACTIVO . '-grid");} }',
                                 'pagerCssClass' => 'pagination text-center',
@@ -100,13 +101,13 @@ $this->menu = array(
                                             'style' => 'text-align:center',
                                         ),
                                     ),
-                                    array(
-                                        'name' => 'telefono',
-                                        'value' => '$data->telefono?"(06) ".$data->telefono:"-"',
-                                        'htmlOptions' => array(
-                                            'style' => 'text-align:center',
-                                        ),
-                                    ),
+//                                    array(
+//                                        'name' => 'telefono',
+//                                        'value' => '$data->telefono?"(06) ".$data->telefono:"-"',
+//                                        'htmlOptions' => array(
+//                                            'style' => 'text-align:center',
+//                                        ),
+//                                    ),
                                     array(
                                         'name' => 'celular',
                                         'value' => '$data->celular?$data->celular:"-"',
@@ -141,6 +142,15 @@ $this->menu = array(
                                             'style' => 'text-align:center',
                                         ),
                                     ),
+                                    array(
+//                                        'header' => 'Mails Enviados',
+                                        'name' => 'cantidad_mails',
+                                        'value' => 'CHtml::tag("span", array("class"=>$data->cantidad_mails==0?"badge":"badge badge-success"),$data->cantidad_mails)',
+                                        'type' => 'raw',
+                                        'htmlOptions' => array(
+                                            'style' => 'text-align:center',
+                                        ),
+                                    ),
 //                              'fecha_actualizacion',
 //                            
                                     array(
@@ -150,7 +160,8 @@ $this->menu = array(
                                         'deleteConfirmation' => CrugeTranslator::t('admin', 'Esta seguro de querer morver a Inactivos.'),
                                         'buttons' => array(
                                             'mail' => array(
-                                                'label' => '<button class="btn bg-orange"><i class="aweso-envelope"></i></button>',
+                                                'label' => '<button class="btn bg-inverse"><i class="aweso-envelope"></i></button>',
+//                                                'label' => '<button class="btn bg-inverse"><span class="badge badge-success"><i class="aweso-envelope"></i> 0</span></button>',
                                                 'options' => array('title' => 'Enviar Mail',),
                                                 'imageUrl' => false,
                                                 'url' => '$data->id',
@@ -171,7 +182,7 @@ $this->menu = array(
                                             ),
                                         ),
                                         'htmlOptions' => array(
-                                            'width' => '150px',
+                                            'width' => '120px',
                                             'style' => 'text-align:right',
                                         )
                                     ),
@@ -196,6 +207,7 @@ $this->menu = array(
                                 'id' => CltCliente::ESTADO_INACTIVO . '-grid',
                                 'type' => 'striped bordered hover advance condensed', // striped bordered hover advance condensed
                                 'template' => '{summary}{items}{pager}',
+//                                'showTableOnEmpty' => false,
                                 'dataProvider' => $model->inactivos()->search(),
                                 'pagerCssClass' => 'pagination text-center',
                                 'afterAjaxUpdate' => 'function(id){if($("#inactivos").hasClass("active")){$.fn.yiiGridView.update("' . CltCliente::ESTADO_ACTIVO . '-grid");}}',

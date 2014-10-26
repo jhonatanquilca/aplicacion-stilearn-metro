@@ -34,21 +34,57 @@ class MailController extends AweController {
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate() {
+    public function actionCreate($cliente_ids = null) {
+        $result = array();
         $model = new Mail;
 
+
         $this->performAjaxValidation($model, 'mail-form');
+        $validadorPartial = false;
+        if (Yii::app()->request->isAjaxRequest) {
 
-        if (isset($_POST['Mail'])) {
-            $model->attributes = $_POST['Mail'];
-            if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
+            if (isset($_POST['Mail'])) {
+                $model->attributes = $_POST['Mail'];
+//                $result['success'] = $model->save();
+//                $model = $this->envioEmailSoloPredefinido($id_cliente);
+                $result['success'] = $this->sendEmail($model);
+                if (!$result['success']) {
+                    $result['mensage'] = "Error al guardar";
+                } else {
+                    Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
+                }
+                $validadorPartial = TRUE;
+                echo json_encode($result);
             }
-        }
+            if (!$validadorPartial) {
+                $model->usuario_creacion_id = Yii::app()->user->id;
+                //TODO: falta el evio para varios
+                if (is_array($cliente_ids)) {
+                    $model->contacto_id = json_encode($cliente_ids);
+                    $model->email = 'ejemplo@abc.com';
+                } else {
+                    $model->contacto_id = $cliente_ids;
+                    $modelCliente = CltCliente::model()->findByPk($cliente_ids);
+                    $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
+                }
+                $this->renderPartial('_form_modal', array(
+                    'model' => $model
+                        ), false, true);
+            }
+        } else {
 
-        $this->render('create', array(
-            'model' => $model,
-        ));
+            if (isset($_POST['Mail'])) {
+                $model->attributes = $_POST['Mail'];
+                if ($model->save()) {
+                    Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
+                    $this->redirect(array('view', 'id' => $model->id));
+                }
+            }
+
+            $this->render('create', array(
+                'model' => $model,
+            ));
+        }
     }
 
     /**
@@ -219,8 +255,9 @@ class MailController extends AweController {
         if ($result['success']) {
             $result['messaje'] = 'Mail enviado a: ' . $modelCliente->nombre_completo;
         } else {
-            $result['messaje'] = 'Error! No se pudo enviar el email';
+            $result['error'] = 'Error! No se pudo enviar el email';
         }
+
         echo json_encode($result);
     }
 
@@ -277,8 +314,8 @@ class MailController extends AweController {
             $mail->send();
 
             //Actualizar el estado del mail
-            
-            $email->contenido = 'ESTIMADO/A ' . $email->contenido['nombre'] . ' CYBERLADY TE INFORMA QUE TU DEUDA ES DE $' . $email->contenido['monto'] . ' ctvs.';
+
+            $email->contenido = is_array($email->contenido) ? 'ESTIMADO/A ' . $email->contenido['nombre'] . ' CYBERLADY TE INFORMA QUE TU DEUDA ES DE $' . $email->contenido['monto'] . ' ctvs.' : $email->contenido;
             $email->fecha_envio = date('Y-m-d H:i:s');
             $email->estado = Mail::ESTADO_ENVIADO;
             $email->save();

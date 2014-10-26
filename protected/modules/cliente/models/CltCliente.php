@@ -8,6 +8,7 @@ class CltCliente extends BaseCltCliente {
     const ESTADO_INACTIVO = 'INACTIVO';
 
     private $nombre_completo;
+    public $cantidad_mails;
 
     /**
      * @return CltCliente
@@ -58,35 +59,59 @@ class CltCliente extends BaseCltCliente {
             'fecha_creacion' => Yii::t('app', 'Fecha de Creación'),
             'fecha_actualizacion' => Yii::t('app', 'Fecha de Actualización'),
             'nombre_completo' => Yii::t('app', 'Nombre'),
+            'cantidad_mails' => Yii::t('app', 'Mails Enviados'),
             'cltDeudas' => null,
         );
     }
 
     public function search() {
         $criteria = new CDbCriteria;
-
+        $sort = new CSort;
+//        $sort->multiSort = true;
 //        $criteria->compare('id', $this->id);
 //        $criteria->compare('nombre', $this->nombre, true);
 //        $criteria->compare('apellido', $this->apellido, true);
+//        ;
+        $criteria->select = 't.*,(select count(*) from mail m where m.estado=:estado_mail and m.contacto_id=t.id) as cantidad_mails';
         $criteria->compare('CONCAT(CONCAT(t.nombre," "),t.apellido)', $this->nombre_completo, true, 'OR');
-        $criteria->compare('documento', $this->documento, true, 'OR');
-        $criteria->compare('telefono', $this->telefono, true, 'OR');
-        $criteria->compare('celular', $this->celular, true, 'OR');
-        $criteria->compare('email_1', $this->email_1, true, 'OR');
-        $criteria->compare('email_2', $this->email_2, true, 'OR');
-        $criteria->compare('estado', $this->estado, true, 'OR');
-        $criteria->compare('usuario_creacion_id', $this->usuario_creacion_id, true, 'OR');
-        $criteria->compare('usuario_actualizacion_id', $this->usuario_actualizacion_id, true, 'OR');
-        $criteria->compare('fecha_creacion', $this->fecha_creacion, true, 'OR');
-        $criteria->compare('fecha_actualizacion', $this->fecha_actualizacion, true, 'OR');
+        $criteria->compare('t.documento', $this->documento, true, 'OR');
+        $criteria->compare('t.telefono', $this->telefono, true, 'OR');
+        $criteria->compare('t.celular', $this->celular, true, 'OR');
+        $criteria->compare('t.email_1', $this->email_1, true, 'OR');
+        $criteria->compare('t.email_2', $this->email_2, true, 'OR');
+        $criteria->compare('t.estado', $this->estado, true, 'OR');
+        $criteria->compare('t.usuario_creacion_id', $this->usuario_creacion_id, true, 'OR');
+        $criteria->compare('t.usuario_actualizacion_id', $this->usuario_actualizacion_id, true, 'OR');
+        $criteria->compare('t.fecha_creacion', $this->fecha_creacion, true, 'OR');
+        $criteria->compare('t.fecha_actualizacion', $this->fecha_actualizacion, true, 'OR');
 
-        $criteria->order = 'CONCAT(CONCAT(t.nombre," "),t.apellido)  ASC';
+        if (!Yii::app()->request->isAjaxRequest) {
+            $criteria->order = 'CONCAT(CONCAT(t.nombre," "),t.apellido)  ASC';
+        }
+
+        $Params = array(':estado_mail' => Mail::ESTADO_ENVIADO);
+        $criteria->params = array_merge($criteria->params, $Params);
+
+        $sort->attributes = array(
+            '*',
+            'nombre_completo' => array(
+                'asc' => 'CONCAT(CONCAT(t.nombre," "),t.apellido) asc',
+                'desc' => 'CONCAT(CONCAT(t.nombre," "),t.apellido) desc',
+                'default' => 'desc',
+            ),
+            'cantidad_mails' => array(
+//                'asc' => '(select count(*) from mail m where m.estado=:estado_mail and m.contacto_id=t.id) asc',
+                'asc' => 'cantidad_mails  asc',
+                'desc' => 'cantidad_mails desc',
+            ),
+        );
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
             'pagination' => array(
                 'pageSize' => 7,
             ),
+            'sort' => $sort,
         ));
     }
 

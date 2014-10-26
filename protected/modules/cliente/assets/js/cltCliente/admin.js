@@ -39,19 +39,18 @@ function enviarMailRow(id) {
                     "callback": function() {
                         $.ajax({
                             type: "POST",
-                            url: baseUrl + "mail/mail/ajaxEnvioMailSolo/id_cliente/" + id,
                             dataType: 'json',
-                            data: {clientes: id},
+                            url: baseUrl + "mail/mail/ajaxEnvioMailSolo/id_cliente/" + id,
                             beforeSend: function() {
                                 showModalSending();
                             },
                             success: function(data) {
                                 $("#mainModal").modal("hide");
-                                console.log('success');
+//                                console.log(data);
                                 if (data.success) {
                                     bootbox.alert(data.messaje);
                                 } else {
-                                    bootbox.alert(data.messaje);
+                                    bootbox.alert(data.error);
                                 }
                             }
                         });
@@ -61,25 +60,12 @@ function enviarMailRow(id) {
                     "icon": "aweso-ok",
                     "class": "btn btn-primary",
                     "callback": function() {
-                        console.log("SI");
-                        $.ajax({
-                            type: "POST",
-                            url: baseUrl + "mail/mail/sendEmail",
-                            dataType: 'json',
-                            data: {clientes: id},
-                            beforeSend: function() {
-                                showModalLoading();
-                            },
-                            success: function(data) {
+//                        console.log("SI");
+                        url = "mail/mail/create/cliente_ids/" + id;
+//                        window.console.log(baseUrl + url);
+                        viewModal(url, false, function() {
 
-                                if (data.success) {
-                                    showModalData(data.html);
-                                } else {
-                                    $("#mainModal").modal("hide");
-                                    bootbox.alert(data.error);
-                                }
-                            }
-                        });
+                        })
                     }
                 },
             ], {backdrop: "static"});

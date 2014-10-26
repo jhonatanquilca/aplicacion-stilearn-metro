@@ -1453,3 +1453,7 @@ form.form-vertical .ui-slider-horizontal {margin-top: auto; margin-bottom: 10px;
 search-form > form, .modal > form{
     margin: 0 0 0px !important;
 }
+/*quita la flecha fea del un grid view*/
+.grid-view table.items th:hover a:after{
+    background-image:none !important;
+}

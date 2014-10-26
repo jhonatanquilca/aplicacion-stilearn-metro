@@ -203,7 +203,9 @@ class Actividad extends BaseActividad {
                             $mensaje = $usuario->username . " actualizó los datos del contacto " . CHtml::link($cliente->nombre_completo, array('/cliente/cltCliente/view', 'id' => $cliente->id), array('class' => 'btn btn-small btn-silver'));
                         }
                     } elseif ($actividad['tipo'] == self::TIPO_DELETE) {
-                        $mensaje = "<b>" . $usuario->username . "</b>  eliminó el contacto \"" . Util::Truncate($cliente->nombre_completo, 15) . "\"";
+                        $mensaje = "<b>" . $usuario->username . "</b>  movió el contacto \"" . Util::Truncate($cliente->nombre_completo, 15) . "\" a INACTIVOS";
+                    } elseif ($actividad['tipo'] == self::TIPO_RESTORE) {
+                        $mensaje = "<b>" . $usuario->username . "</b>  movió el contacto \"" . Util::Truncate($cliente->nombre_completo, 15) . "\" a ACTIVOS";
                     }
                     break;
                 // Si es una actividad sobre un deuda

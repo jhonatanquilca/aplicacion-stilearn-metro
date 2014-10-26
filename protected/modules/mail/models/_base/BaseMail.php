@@ -17,6 +17,7 @@
  * @property string $fecha_envio
  * @property integer $usuario_creacion_id
  * @property string $estado
+ * @property string $contacto_id
  * @property integer $plantilla_id
  *
  * @property MailPlantilla $plantilla
@@ -37,16 +38,16 @@ abstract class BaseMail extends AweActiveRecord {
 
     public function rules() {
         return array(
-            array('contenido, email, usuario_creacion_id', 'required'),
+            array('contenido, email, usuario_creacion_id, contacto_id', 'required'),
             array('usuario_creacion_id, plantilla_id', 'numerical', 'integerOnly'=>true),
             array('email', 'email'),
             array('asunto', 'length', 'max'=>200),
-            array('email', 'length', 'max'=>45),
+            array('email, contacto_id', 'length', 'max'=>45),
             array('estado', 'length', 'max'=>10),
             array('fecha_envio', 'safe'),
             array('estado', 'in', 'range' => array('PENDIENTE','ENVIADO','NO_ENVIADO')), // enum,
             array('asunto, fecha_envio, estado, plantilla_id', 'default', 'setOnEmpty' => true, 'value' => null),
-            array('id, asunto, contenido, email, fecha_creacion, fecha_envio, usuario_creacion_id, estado, plantilla_id', 'safe', 'on'=>'search'),
+            array('id, asunto, contenido, email, fecha_creacion, fecha_envio, usuario_creacion_id, estado, contacto_id, plantilla_id', 'safe', 'on'=>'search'),
         );
     }
 
@@ -69,6 +70,7 @@ abstract class BaseMail extends AweActiveRecord {
                 'fecha_envio' => Yii::t('app', 'Fecha Envio'),
                 'usuario_creacion_id' => Yii::t('app', 'Usuario Creacion'),
                 'estado' => Yii::t('app', 'Estado'),
+                'contacto_id' => Yii::t('app', 'Contacto'),
                 'plantilla_id' => Yii::t('app', 'Plantilla'),
                 'plantilla' => null,
         );
@@ -85,6 +87,7 @@ abstract class BaseMail extends AweActiveRecord {
         $criteria->compare('fecha_envio', $this->fecha_envio, true);
         $criteria->compare('usuario_creacion_id', $this->usuario_creacion_id);
         $criteria->compare('estado', $this->estado, true);
+        $criteria->compare('contacto_id', $this->contacto_id, true);
         $criteria->compare('plantilla_id', $this->plantilla_id);
 
         return new CActiveDataProvider($this, array(

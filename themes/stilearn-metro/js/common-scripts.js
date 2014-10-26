@@ -206,6 +206,7 @@ function showModalSending() {
 }
 
 function showModalData(html, large) {
+      $("#mainModal").html('');
     if (large) {
         $("#mainModal").addClass("modal-large")
     }
@@ -214,8 +215,9 @@ function showModalData(html, large) {
 }
 /**
  * 
- * @param {cadena} url
- * @returns {undefined}
+ * @param {url} direccion de la accion
+ * @param {large} true para modal largo false para normal
+ * @param {CallBack} funcion callback
  */
 function viewModal(url, large, CallBack)
 {

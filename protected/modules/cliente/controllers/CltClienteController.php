@@ -97,7 +97,7 @@ class CltClienteController extends AweController {
                 'usuario_actualizacion_id' => Yii::app()->user->id,
             ));
             if ($estado > 0) {
-                Actividad::registrarActividad($model, Actividad::TIPO_DELETE, null, 'asd');
+                Actividad::registrarActividad($model, Actividad::TIPO_DELETE, null);
             }
 
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -173,7 +173,9 @@ class CltClienteController extends AweController {
             $estado = CltCliente::model()->updateByPk($id, array('estado' => CltCliente::ESTADO_ACTIVO,
                 'usuario_actualizacion_id' => Yii::app()->user->id,
             ));
-
+            if ($estado > 0) {
+                Actividad::registrarActividad($model, Actividad::TIPO_RESTORE, null);
+            }
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if (!isset($_GET['ajax']))
                 $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
