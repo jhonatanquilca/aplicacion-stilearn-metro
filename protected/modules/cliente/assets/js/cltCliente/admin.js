@@ -159,6 +159,9 @@ function ajaxEnvio(selected, tipo) {
                         data.message.toString() +
                         '</div>');
                 $("#mainModal").modal("hide");
+                $.fn.yiiGridView.update('ACTIVO-grid', {
+                    data: baseUrl + 'cliente/cltCliente/admin/CltCliente_sel%5B0%5D/2/ajax/ACTIVO-grid/sort%2Fnombre_completo_desc//sort/nombre_completo.asc'
+                });
             } else {
                 $("#mainModal").modal("hide");
                 bootbox.alert(data.message);

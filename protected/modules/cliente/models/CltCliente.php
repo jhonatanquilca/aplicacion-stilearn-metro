@@ -127,6 +127,9 @@ class CltCliente extends BaseCltCliente {
                 'condition' => 't.estado=:estado',
                 'params' => array(':estado' => self::ESTADO_INACTIVO),
             ),
+            'conCorreo' => array(
+                'condition' => 't.email_1 is not null or t.email_2 is not null',
+            ),
         );
     }
 

@@ -5,6 +5,7 @@ Yii::app()->clientScript->scriptMap['jquery.js'] = false;
 Yii::app()->clientScript->scriptMap['bootstrap.css'] = false;
 Yii::app()->clientScript->scriptMap['bootstrap.js'] = false;
 
+
 //var_dump($model->attributes);
 Util::tsRegisterAssetJs('_form_modal.js');
 /** @var CltDeudaController $this */
@@ -43,7 +44,17 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
     <?php // echo $form->error($model, 'nombre') ?> 
                         </div>                                           
                     </div>-->
-    <?php echo $form->textFieldRow($model, 'contacto_id', array('maxlength' => 45)) ?>
+    <?php // echo $form->textFieldRow($model, 'contacto_id', array('maxlength' => 45)) ?>
+    <?php
+    echo $form->select2Row($model, 'contacto_id', array(
+        'data' => CHtml::listData(CltCliente::model()->activos()->conCorreo()->findAll(), 'id', 'nombre_completo'),
+        'class' => 'span12',
+        'multiple' => 'multiple',
+        'options' => array(
+            'tokenSeparators' => array(','),
+        )
+    ));
+    ?>
     <?php echo $form->textFieldRow($model, 'asunto', array('maxlength' => 200)) ?>
     <?php echo $form->textAreaRow($model, 'contenido', array('rows' => 3, 'cols' => 50)) ?>
     <?php echo $form->hiddenField($model, 'email', array('maxlength' => 45)) ?>

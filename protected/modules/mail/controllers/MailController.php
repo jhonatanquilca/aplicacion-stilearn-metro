@@ -42,17 +42,39 @@ class MailController extends AweController {
         $this->performAjaxValidation($model, 'mail-form');
         $validadorPartial = false;
         if (Yii::app()->request->isAjaxRequest) {
-
+            $model->scenario = 'modal';
             if (isset($_POST['Mail'])) {
-                $model->attributes = $_POST['Mail'];
-//                $result['success'] = $model->save();
-//                $model = $this->envioEmailSoloPredefinido($id_cliente);
-                $result['success'] = $this->sendEmail($model);
-                if (!$result['success']) {
-                    $result['mensage'] = "Error al guardar";
+//                var_dump($_POST['Mail']);
+//                die();
+
+                if (is_array($_POST['Mail']['contacto_id'])) {
+                    $contactos = $_POST['Mail']['contacto_id'];
+
+                    foreach ($contactos as $id) {
+                        $model = new Mail;
+                        $model->attributes = $_POST['Mail'];
+                        $model->contacto_id = $id;
+
+                        $validadorSend = true;
+                        $result['success'] = $this->sendEmail($model);
+//                        var_dump($result['success']);
+                        if (!$result['success']) {
+                            $validadorSend = $validadorSend && $result['success'];
+                        } else {
+                            Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
+                        }
+                    }
+//                    die();
+                    $result['mensage'] = $validadorSend ? "" : "Error al guardar";
                 } else {
-                    Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
+                    $result['success'] = $this->sendEmail($model);
+                    if (!$result['success']) {
+                        $result['mensage'] = "Error al guardar";
+                    } else {
+                        Actividad::registrarActividad($model, Actividad::TIPO_CREATE);
+                    }
                 }
+
                 $validadorPartial = TRUE;
                 echo json_encode($result);
             }
@@ -276,7 +298,7 @@ class MailController extends AweController {
         $model = new Mail;
         $model->usuario_creacion_id = Yii::app()->user->id;
         $model->asunto = 'NOTIFICACION DE DEUDA';
-        $model->contenido = array('nombre' => $modelCliente->nombre_completo, 'monto' => $modelCliente->cltDeudas[0]->monto);
+        $model->contenido = array('nombre' => $modelCliente->nombre_completo, 'monto' => isset($modelCliente->cltDeudas[0]->monto) ? $modelCliente->cltDeudas[0]->monto : 0);
         $model->contacto_id = $id_cliente;
         $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
         return $model;

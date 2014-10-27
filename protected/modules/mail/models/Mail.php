@@ -21,19 +21,37 @@ class Mail extends BaseMail {
 
     /* funciones de Base */
 
-  public function attributeLabels() {
+    public function attributeLabels() {
         return array(
-                'id' => Yii::t('app', 'ID'),
-                'asunto' => Yii::t('app', 'Asunto'),
-                'contenido' => Yii::t('app', 'Contenido'),
-                'email' => Yii::t('app', 'Email'),
-                'fecha_creacion' => Yii::t('app', 'Fecha Creación'),
-                'fecha_envio' => Yii::t('app', 'Fecha Envío'),
-                'usuario_creacion_id' => Yii::t('app', 'Usuario Creación'),
-                'estado' => Yii::t('app', 'Estado'),
-                'contacto_id' => Yii::t('app', 'Contacto'),
-                'plantilla_id' => Yii::t('app', 'Plantilla'),
-                'plantilla' => null,
+            'id' => Yii::t('app', 'ID'),
+            'asunto' => Yii::t('app', 'Asunto'),
+            'contenido' => Yii::t('app', 'Contenido'),
+            'email' => Yii::t('app', 'Email'),
+            'fecha_creacion' => Yii::t('app', 'Fecha Creación'),
+            'fecha_envio' => Yii::t('app', 'Fecha Envío'),
+            'usuario_creacion_id' => Yii::t('app', 'Usuario Creación'),
+            'estado' => Yii::t('app', 'Estado'),
+            'contacto_id' => Yii::t('app', 'Contacto'),
+            'plantilla_id' => Yii::t('app', 'Plantilla'),
+            'plantilla' => null,
+        );
+    }
+
+    /* funciones de Base */
+
+    public function rules() {
+        return array(
+            array('contenido, email, usuario_creacion_id, contacto_id', 'required'),
+            array('asunto', 'required', 'on' => 'modal'),
+            array('usuario_creacion_id, plantilla_id', 'numerical', 'integerOnly' => true),
+            array('email', 'email'),
+            array('asunto', 'length', 'max' => 200),
+//            array('email, contacto_id', 'length', 'max' => 45),
+            array('estado', 'length', 'max' => 10),
+            array('fecha_envio', 'safe'),
+            array('estado', 'in', 'range' => array('PENDIENTE', 'ENVIADO', 'NO_ENVIADO')), // enum,
+            array('asunto, fecha_envio, estado, plantilla_id', 'default', 'setOnEmpty' => true, 'value' => null),
+            array('id, asunto, contenido, email, fecha_creacion, fecha_envio, usuario_creacion_id, estado, contacto_id, plantilla_id', 'safe', 'on' => 'search'),
         );
     }
 

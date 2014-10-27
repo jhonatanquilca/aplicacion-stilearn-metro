@@ -44,14 +44,24 @@
                 <?php // echo $form->error($model, 'nombre') ?> 
                                     </div>                                           
                                 </div>-->
-
+                <?php
+                echo $form->select2Row($model, 'contacto_id', array(
+                    'data' => CHtml::listData(CltCliente::model()->activos()->conCorreo()->findAll(), 'id', 'nombre_completo'),
+                    'class' => 'span6',
+                    'multiple' => 'multiple',
+                    'options' => array(
+                        'tokenSeparators' => array(','),
+                        'placeholder' => 'Elije uno o mas contactos.',
+                    ),
+                ));
+                ?>
                 <?php echo $form->textFieldRow($model, 'asunto', array('maxlength' => 200)) ?>
                 <?php echo $form->textAreaRow($model, 'contenido', array('rows' => 3, 'cols' => 50)) ?>
                 <?php echo $form->textFieldRow($model, 'email', array('maxlength' => 45)) ?>
                 <?php echo $form->textFieldRow($model, 'fecha_envio') ?>
                 <?php echo $form->textFieldRow($model, 'usuario_creacion_id') ?>
                 <?php echo $form->dropDownListRow($model, 'estado', array('PENDIENTE' => 'PENDIENTE', 'ENVIADO' => 'ENVIADO', 'NO_ENVIADO' => 'NO_ENVIADO',)) ?>
-                <?php echo $form->textFieldRow($model, 'contacto_id', array('maxlength' => 45)) ?>
+                <?php // echo $form->textFieldRow($model, 'contacto_id', array('maxlength' => 45)) ?>
                 <?php echo $form->dropDownListRow($model, 'plantilla_id', array('' => ' -- Seleccione -- ') + CHtml::listData(MailPlantilla::model()->findAll(), 'id', MailPlantilla::representingColumn()), array('prompt' => Yii::t('AweApp', 'None'))) ?>
                 <div class="form-actions bg-silver">
                     <div class="form-actions-float">
