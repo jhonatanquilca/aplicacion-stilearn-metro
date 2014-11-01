@@ -61,7 +61,7 @@ function enviarMailRow(id) {
                     "class": "btn btn-primary",
                     "callback": function() {
 //                        console.log("SI");
-                        url = "mail/mail/create/cliente_ids/" + id;
+                        url = "mail/mail/create/cliente_id/" + id;
 //                        window.console.log(baseUrl + url);
                         viewModal(url, false, function() {
 
@@ -96,7 +96,21 @@ function enviarMailContactos(all) {
                         "icon": "aweso-ok",
                         "class": "btn btn-primary",
                         "callback": function() {
-                            console.log("SI");
+
+                            $.ajax({
+                                type: "POST",
+                                url: baseUrl + 'mail/mail/create',
+                                data: {contactos: 'all'},
+                                beforeSend: function() {
+                                    showModalLoading();
+                                },
+                                success: function(data) {
+//                                    window.console.log('emytp');
+                                    showModalData(data);
+//                                    CallBack();
+
+                                }
+                            });
 
                         }
                     },
@@ -128,7 +142,20 @@ function enviarMailContactos(all) {
                             "icon": "aweso-ok",
                             "class": "btn btn-primary",
                             "callback": function() {
-                                console.log("SI");
+                                $.ajax({
+                                    type: "POST",
+                                    url: baseUrl + 'mail/mail/create',
+                                    data: {contactos: selected},
+                                    beforeSend: function() {
+                                        showModalLoading();
+                                    },
+                                    success: function(data) {
+//                                    window.console.log('emytp');
+                                        showModalData(data);
+//                                    CallBack();
+
+                                    }
+                                });
 
                             }
                         },

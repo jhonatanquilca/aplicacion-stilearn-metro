@@ -48,15 +48,53 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
     <?php
     echo $form->select2Row($model, 'contacto_id', array(
         'data' => CHtml::listData(CltCliente::model()->activos()->conCorreo()->findAll(), 'id', 'nombre_completo'),
-        'class' => 'span12',
+        'class' => 'span12',        
         'multiple' => 'multiple',
         'options' => array(
             'tokenSeparators' => array(','),
         )
     ));
+//        $this->widget(
+//            'bootstrap.widgets.TbSelect2', array(
+//        'model' => $model,
+//        'attribute' => 'contacto_id',
+////        'asDropDownList' => false,
+////        'name' => 'clevertech',
+//        'data' => CHtml::listData(CltCliente::model()->activos()->conCorreo()->findAll(), 'id', 'nombre_completo'),
+//        'options' => array(
+////            'multiple' => 'multiple',
+////            'tags' => CHtml::listData(CltCliente::model()->activos()->conCorreo()->findAll(), 'id', 'nombre_completo'),
+////            'placeholder' => 'type clever, or is, or just type!',
+//            'width' => '40%',
+//            'tokenSeparators' => array(',', ' ')
+//        ),
+//        'htmlOptions' => array(
+//            'multiple' => 'multiple',
+//        ),
+//            )
+//    );
     ?>
     <?php echo $form->textFieldRow($model, 'asunto', array('maxlength' => 200)) ?>
-    <?php echo $form->textAreaRow($model, 'contenido', array('rows' => 3, 'cols' => 50)) ?>
+    <?php // echo $form->textAreaRow($model, 'contenido', array('rows' => 3, 'cols' => 50)) ?>
+    <?php echo $form->error($model, 'contenido') ?>
+    <?php
+    $this->widget(
+            'bootstrap.widgets.TbRedactorJs', array(
+        'model' => $model,
+        'attribute' => 'contenido',
+//        'name' => 'contenido',
+        'value' => 'Press Enter in here to test the callback.',
+        'editorOptions' => array(
+//            'enterCallback' => new CJavaScriptExpression(
+//                    'function (event) {
+//                    console.debug(event);
+//                    $.notify("I see you have pressed Enter...", "warning");
+//                }'
+//            )
+        ),
+            )
+    );
+    ?>
     <?php echo $form->hiddenField($model, 'email', array('maxlength' => 45)) ?>
     <?php // echo $form->textFieldRow($model, 'fecha_envio') ?>
     <?php echo $form->hiddenField($model, 'usuario_creacion_id') ?>

@@ -25,7 +25,7 @@ class Mail extends BaseMail {
         return array(
             'id' => Yii::t('app', 'ID'),
             'asunto' => Yii::t('app', 'Asunto'),
-            'contenido' => Yii::t('app', 'Contenido'),
+            'contenido' => Yii::t('app', 'Mensaje'),
             'email' => Yii::t('app', 'Email'),
             'fecha_creacion' => Yii::t('app', 'Fecha Creación'),
             'fecha_envio' => Yii::t('app', 'Fecha Envío'),
@@ -36,8 +36,6 @@ class Mail extends BaseMail {
             'plantilla' => null,
         );
     }
-
-    /* funciones de Base */
 
     public function rules() {
         return array(

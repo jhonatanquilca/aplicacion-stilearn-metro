@@ -34,17 +34,18 @@ class MailController extends AweController {
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate($cliente_ids = null) {
+    public function actionCreate($cliente_id = null) {
         $result = array();
         $model = new Mail;
 
 
-        $this->performAjaxValidation($model, 'mail-form');
+
         $validadorPartial = false;
         if (Yii::app()->request->isAjaxRequest) {
             $model->scenario = 'modal';
+            $this->performAjaxValidation($model, 'mail-form');
             if (isset($_POST['Mail'])) {
-//                var_dump($_POST['Mail']);
+//                var_dump($_POST['Mail']['contacto_id']);
 //                die();
 
                 if (is_array($_POST['Mail']['contacto_id'])) {
@@ -54,6 +55,8 @@ class MailController extends AweController {
                         $model = new Mail;
                         $model->attributes = $_POST['Mail'];
                         $model->contacto_id = $id;
+                        $modelCliente = CltCliente::model()->findByPk($id);
+                        $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
 
                         $validadorSend = true;
                         $result['success'] = $this->sendEmail($model);
@@ -81,20 +84,31 @@ class MailController extends AweController {
             if (!$validadorPartial) {
                 $model->usuario_creacion_id = Yii::app()->user->id;
                 //TODO: falta el evio para varios
-                if (is_array($cliente_ids)) {
-                    $model->contacto_id = json_encode($cliente_ids);
-                    $model->email = 'ejemplo@abc.com';
+                if (isset($_POST['contactos'])) {
+                    $contactos = array();
+                    if ($_POST['contactos'] == 'all') {
+
+                        foreach (CltCliente::model()->activos()->conCorreo()->findAll() as $contact) {
+                            array_push($contactos, $contact->id);
+                        }
+                        $model->contacto_id = $contactos;
+                    } else {
+                        $model->contacto_id = $_POST['contactos'];
+                    }
+                    $model->email = 'ejemplo@ejemplo.com';
                 } else {
-                    $model->contacto_id = $cliente_ids;
-                    $modelCliente = CltCliente::model()->findByPk($cliente_ids);
+                    $model->contacto_id = $cliente_id;
+                    $modelCliente = CltCliente::model()->findByPk($cliente_id);
                     $model->email = $modelCliente->email_1 ? $modelCliente->email_1 : $modelCliente->email_2;
                 }
+
+
                 $this->renderPartial('_form_modal', array(
                     'model' => $model
                         ), false, true);
             }
         } else {
-
+            $this->performAjaxValidation($model, 'mail-form');
             if (isset($_POST['Mail'])) {
                 $model->attributes = $_POST['Mail'];
                 if ($model->save()) {
