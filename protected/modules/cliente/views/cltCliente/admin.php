@@ -72,11 +72,11 @@ $this->menu = array(
                             $this->widget('ext.selgridview.BootSelGridView', array(
                                 'id' => CltCliente::ESTADO_ACTIVO . '-grid',
                                 'type' => 'striped bordered hover advance condensed', // striped bordered hover advance condensed
-                                'template' => '{summary}{items}{pager}',
+                                'template' => '{items}<div class="row-fluid"><div class="span6" style="display: -webkit-box;">{summary}</div><div class="span6">{pager}</div></div>',
 //                                'showTableOnEmpty' => false,
                                 'dataProvider' => $model->activos()->search(),
                                 'afterAjaxUpdate' => 'function(id){ if($("#activos").hasClass("active")){ $.fn.yiiGridView.update("' . CltCliente::ESTADO_INACTIVO . '-grid");} }',
-                                'pagerCssClass' => 'pagination text-center',
+                                'pagerCssClass' => 'pagination text-right',
                                 'selectableRows' => 2,
                                 //'filter' => $model,
                                 'columns' => array(
