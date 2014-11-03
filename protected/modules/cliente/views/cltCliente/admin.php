@@ -57,15 +57,30 @@ $this->menu = array(
                 <div class="tab-content">
 
                     <div class="tab-pane fade active in" id="activos">
-                        <?php
-                        $this->widget('ext.Search.SearchModule', array(
-                            'model' => $model,
-                            'grid_id' => CltCliente::ESTADO_ACTIVO . '-grid',
-                            'nameInput' => 'input_' . CltCliente::ESTADO_ACTIVO,
-                            'id' => 'form_' . CltCliente::ESTADO_ACTIVO,
-                            'idList' => 'sel_' . CltCliente::ESTADO_ACTIVO,
-                        ));
-                        ?>
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <?php
+                                $this->widget('ext.Search.SearchModule', array(
+                                    'model' => $model,
+                                    'grid_id' => CltCliente::ESTADO_ACTIVO . '-grid',
+                                    'nameInput' => 'input_' . CltCliente::ESTADO_ACTIVO,
+                                    'id' => 'form_' . CltCliente::ESTADO_ACTIVO,
+                                    'idList' => 'sel_' . CltCliente::ESTADO_ACTIVO,
+                                ));
+                                ?>
+                            </div>
+                            <div class="span6">
+                                <?php
+                                $this->widget('ext.ColumsVisible.ColumsVisibleModule', array(
+                                    'model' => $model,
+                                    'grid_id' => CltCliente::ESTADO_ACTIVO . '-grid',
+                                    'nameInput' => 'input_column_' . CltCliente::ESTADO_ACTIVO,
+                                    'id' => 'form_column_' . CltCliente::ESTADO_ACTIVO,
+                                    'idList' => 'sel_column_' . CltCliente::ESTADO_ACTIVO,
+                                ));
+                                ?>
+                            </div>
+                        </div>
                         <div style='overflow:auto'> 
 
                             <?php
@@ -78,80 +93,9 @@ $this->menu = array(
                                 'afterAjaxUpdate' => 'function(id){ if($("#activos").hasClass("active")){ $.fn.yiiGridView.update("' . CltCliente::ESTADO_INACTIVO . '-grid");} }',
                                 'pagerCssClass' => 'pagination text-right',
                                 'selectableRows' => 2,
-                                //'filter' => $model,
-                                'columns' => array(
-                                    array(
-                                        'id' => 'check_id',
-                                        'class' => 'CCheckBoxColumn',
-                                        'value' => '$data->id',
-//                                        'headerTemplate' => '<label>{item}<span></span></label>',
-//                                        'htmlOptions' => array('style' => 'width: 20px', 'class' => 'chandran'),
-                                    ),
-//                            'nombre',
-//                            'apellido',
-                                    array(
-                                        'name' => 'nombre_completo',
-                                        'value' => 'CHtml::link($data->nombre_completo, Yii::app()->createUrl("cliente/cltCliente/view",array("id"=>$data->id)))',
-                                        'type' => 'raw',
-                                    ),
-                                    array(
-                                        'name' => 'documento',
-                                        'value' => '$data->documento?$data->documento:"-"',
-                                        'htmlOptions' => array(
-                                            'style' => 'text-align:center',
-                                        ),
-                                    ),
-//                                    array(
-//                                        'name' => 'telefono',
-//                                        'value' => '$data->telefono?"(06) ".$data->telefono:"-"',
-//                                        'htmlOptions' => array(
-//                                            'style' => 'text-align:center',
-//                                        ),
-//                                    ),
-                                    array(
-                                        'name' => 'celular',
-                                        'value' => '$data->celular?$data->celular:"-"',
-                                        'htmlOptions' => array(
-                                            'style' => 'text-align:center',
-                                        ),
-                                    ),
-                                    array(
-                                        'header' => 'Email',
-                                        'name' => 'email_1',
-                                        'value' => '$data->email_1?$data->email_1:($data->email_2?$data->email_2:"-")',
-                                        'htmlOptions' => array(
-                                            'style' => 'text-align:center',
-                                        ),
-                                    ),
-//                                        array(
-//                                            'name' => 'estado',
-//                                            'filter' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',),
-//                                        ),
-//                                        array(
-//                                            'name' => 'usuario_creacion_id',
-//                                            'value' => 'Yii::app()->user->um->loadUserById($data->usuario_creacion_id )->username',
-//                                            'htmlOptions' => array(
-//                                                'style' => 'text-align:center',
-//                                            ),
-//                                        ),
-//                              'usuario_actualizacion_id',
-                                    array(
-                                        'name' => 'fecha_creacion',
-                                        'value' => 'Util::FormatDate($data->fecha_creacion, "d/m/Y")',
-                                        'htmlOptions' => array(
-                                            'style' => 'text-align:center',
-                                        ),
-                                    ),
-                                    array(
-//                                        'header' => 'Mails Enviados',
-                                        'name' => 'cantidad_mails',
-                                        'value' => 'CHtml::tag("span", array("class"=>$data->cantidad_mails==0?"badge":"badge badge-success"),$data->cantidad_mails)',
-                                        'type' => 'raw',
-                                        'htmlOptions' => array(
-                                            'style' => 'text-align:center',
-                                        ),
-                                    ),
-//                              'fecha_actualizacion',
+                                'summaryCssClass' => 'label bg-green',
+                                //'filter' => $model,                              
+                                'columns' => array_merge($columns, array(
 //                            
                                     array(
 //                                        'class'=>'bootstrap.widgets.TbButtonColumn',
@@ -185,8 +129,9 @@ $this->menu = array(
                                             'width' => '120px',
                                             'style' => 'text-align:right',
                                         )
-                                    ),
-                                ),
+                                    )
+                                        )
+                                )
                             ));
                             ?>
                         </div>

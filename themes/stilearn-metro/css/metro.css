@@ -1456,4 +1456,6 @@ search-form > form, .modal > form{
 /*quita la flecha fea del un grid view*/
 .grid-view table.items th:hover a:after{
     background-image:none !important;
+    /*background: url('../img/datatables/sort_both.png')  no-repeat center right !important;*/
+    
 }

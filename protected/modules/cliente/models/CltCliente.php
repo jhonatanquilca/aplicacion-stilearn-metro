@@ -60,6 +60,7 @@ class CltCliente extends BaseCltCliente {
             'fecha_actualizacion' => Yii::t('app', 'Fecha de Actualización'),
             'nombre_completo' => Yii::t('app', 'Nombre'),
             'cantidad_mails' => Yii::t('app', 'Mails Enviados'),
+            'nombre_completo' => Yii::t('app', 'Nombre'),
             'cltDeudas' => null,
         );
     }
@@ -67,7 +68,7 @@ class CltCliente extends BaseCltCliente {
     public function search() {
         $criteria = new CDbCriteria;
         $sort = new CSort;
-//        $sort->multiSort = true;
+        $sort->multiSort = true;
 //        $criteria->compare('id', $this->id);
 //        $criteria->compare('nombre', $this->nombre, true);
 //        $criteria->compare('apellido', $this->apellido, true);
@@ -143,6 +144,138 @@ class CltCliente extends BaseCltCliente {
             'celular',
             'email_1',
         );
+    }
+
+    public function allColumns() {
+        return array(
+            array('attribute' => 'nombre_completo', 'cheked' => true, 'disabled' => true),
+            array('attribute' => 'documento', 'cheked' => true),
+            array('attribute' => 'celular', 'cheked' => true),
+            array('attribute' => 'email_1', 'cheked' => true, 'disabled' => true),
+            array('attribute' => 'fecha_creacion', 'cheked' => true),
+            array('attribute' => 'cantidad_mails', 'cheked' => true),
+            array('attribute' => 'fecha_actualizacion', 'cheked' => false),
+            array('attribute' => 'estado', 'cheked' => false),
+            array('attribute' => 'telefono', 'cheked' => false),
+            array('attribute' => 'usuario_creacion_id', 'cheked' => false),
+            array('attribute' => 'usuario_actualizacion_id', 'cheked' => false),
+        );
+    }
+
+    public function getColumns($columns = NULL) {
+        $showColumns = array();
+        $defaultColumns = array(
+            array(
+                'id' => 'check_id',
+                'class' => 'CCheckBoxColumn',
+                'value' => '$data->id',
+//                                        'headerTemplate' => '<label>{item}<span></span></label>',
+//                                        'htmlOptions' => array('style' => 'width: 20px', 'class' => 'chandran'),
+            ),
+            array(
+                'name' => 'nombre_completo',
+                'value' => 'CHtml::link($data->nombre_completo, Yii::app()->createUrl("cliente/cltCliente/view",array("id"=>$data->id)))',
+                'type' => 'raw',
+            ),
+            array(
+                'name' => 'documento',
+                'value' => '$data->documento?$data->documento:"-"',
+                'htmlOptions' => array(
+                    'style' => 'text-align:center',
+                ),
+            ),
+            array(
+                'name' => 'celular',
+                'value' => '$data->celular?$data->celular:"-"',
+                'htmlOptions' => array(
+                    'style' => 'text-align:center',
+                ),
+            ),
+            array(
+                'header' => 'Email',
+                'name' => 'email_1',
+                'value' => '$data->email_1?$data->email_1:($data->email_2?$data->email_2:"-")',
+                'htmlOptions' => array(
+                    'style' => 'text-align:center',
+                ),
+            ),
+            array(
+                'name' => 'fecha_creacion',
+                'value' => 'Util::FormatDate($data->fecha_creacion, "d/m/Y")',
+                'htmlOptions' => array(
+                    'style' => 'text-align:center',
+                ),
+            ),
+            array(
+//                                        'header' => 'Mails Enviados',
+                'name' => 'cantidad_mails',
+                'value' => 'CHtml::tag("span", array("class"=>$data->cantidad_mails==0?"badge":"badge badge-success"),$data->cantidad_mails)',
+                'type' => 'raw',
+                'htmlOptions' => array(
+                    'style' => 'text-align:center',
+                ),
+            ),
+        );
+        if (is_null($columns)) {
+            return $defaultColumns;
+        } else {
+
+            $defaultColumns = array_merge($defaultColumns, array(
+                array(
+                    'name' => 'fecha_actualizacion',
+                    'value' => 'Util::FormatDate($data->fecha_actualizacion, "d/m/Y")',
+                    'htmlOptions' => array(
+                        'style' => 'text-align:center',
+                    ),
+                ),
+                array(
+                    'name' => 'estado',
+                    'filter' => array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO',),
+                ),
+                array(
+                    'name' => 'telefono',
+                    'value' => '$data->telefono?"(06) ".$data->telefono:"-"',
+                    'htmlOptions' => array(
+                        'style' => 'text-align:center',
+                    ),
+                ),
+                array(
+                    'name' => 'usuario_creacion_id',
+                    'value' => '$data->usuario_creacion_id?Yii::app()->user->um->loadUserById($data->usuario_creacion_id)->username:""',
+                    'htmlOptions' => array(
+                        'style' => 'text-align:center',
+                    ),
+                ),
+                array(
+                    'name' => 'usuario_actualizacion_id',
+                    'value' => '$data->usuario_actualizacion_id?Yii::app()->user->um->loadUserById($data->usuario_actualizacion_id)->username:"-"',
+                    'htmlOptions' => array(
+                        'style' => 'text-align:center',
+                    ),
+                ),
+                    )
+            );
+            foreach ($defaultColumns as $dfcolumn) {
+//                var_dump($columns['columns']);
+                if (is_array($dfcolumn)) {
+                    if (isset($dfcolumn['name'])) {
+                        if (in_array($dfcolumn['name'], $columns['columns'])) {
+                            array_push($showColumns, $dfcolumn);
+                        }
+                    } else {
+                        array_push($showColumns, $dfcolumn);
+                    }
+                } elseif (is_string($dfcolumn)) {
+
+                    if (in_array($dfcolumn, $columns['columns'])) {
+
+                        array_push($showColumns, $dfcolumn);
+                    }
+                }
+            }
+//            var_dump($showColumns);
+            return $showColumns;
+        }
     }
 
     public function getNombre_completo() {

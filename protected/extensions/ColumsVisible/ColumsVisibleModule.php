@@ -55,6 +55,7 @@ class ColumsVisibleModule extends CWidget {
             var disabled = $('#" . $this->id . "').find(':input:disabled').removeAttr('disabled');
           if($('input#'+$(this).attr('id')+'').is(':checked')) {
           $('input#' + $(this).attr('id') + '').removeAttr('checked');
+//            console.log($('#" . $this->id . "').serialize());
           $.fn.yiiGridView.update('" . $this->grid_id . "',{
             data:$('#" . $this->id . "').serialize(),
             complete:function(jqXHR, status) {
@@ -70,6 +71,7 @@ class ColumsVisibleModule extends CWidget {
           });
         } else {
         $('input#' + $(this).attr('id') + '').attr('checked', 'checked');
+//        console.log($('#" . $this->id . "').serialize());
             $.fn.yiiGridView.update('" . $this->grid_id . "',{
             data:$('#" . $this->id . "').serialize(),
             complete:function(jqXHR, status) {

@@ -52,8 +52,22 @@ array('label' => Yii::t('AweCrud.app', 'Create') . ' ' . <?php echo $this->model
                     'type' => 'striped bordered hover advance ', // striped bordered hover advance condensed
                     'template' => '{summary}{items}{pager}',
                     'dataProvider' => $model->search(),
+                    'summaryCssClass' => 'label label-info',
                     'pagerCssClass' => 'pagination text-center',
                     'selectableRows' => 2,
+//                  'pager' => array(
+//                      'header' => '',
+//                      'cssFile' => false,
+//                      'maxButtonCount' => 10,
+//                      'selectedPageCssClass' => 'active',
+//                      'hiddenPageCssClass' => 'disabled',
+//                      'firstPageCssClass' => 'previous',
+//                      'lastPageCssClass' => 'next',
+//                      'firstPageLabel' => '<<',
+//                      'lastPageLabel' => '>>',
+//                      'prevPageLabel' => '<',
+//                      'nextPageLabel' => '>',
+//                   ),
                     //'filter' => $model,
                     'columns' => array(
                     <?php
