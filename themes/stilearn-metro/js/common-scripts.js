@@ -38,10 +38,7 @@ var scripts = $(function() {
 
 //acciones modal
     var primero = false;
-
     $("form").submit(function(e) {
-//        alert($('form button.btn-success').attr('class'));
-
         if (verificarValidacionModal("form"))
         {
             if (primero)
@@ -53,14 +50,18 @@ var scripts = $(function() {
                 $(botonSubmit).attr("disabled", true);
                 $('form a').attr("disabled", true);
                 $('form a').attr("onclick", "true");
+
             }
             else
             {
                 primero = true;
             }
 
+
         }
 
+
+        window.console.log(submit);
         return;
     });
 
@@ -115,6 +116,7 @@ var scripts = $(function() {
         }
     }
 });
+
 
 function dessabilitarEntreOnForm() {
     $("form").keypress(function(e) {
@@ -206,7 +208,7 @@ function showModalSending() {
 }
 
 function showModalData(html, large) {
-      $("#mainModal").html('');
+    $("#mainModal").html('');
     if (large) {
         $("#mainModal").addClass("modal-large")
     }
