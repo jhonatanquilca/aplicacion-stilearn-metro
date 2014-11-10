@@ -241,7 +241,9 @@
 
         <!-- javascript necesario
  ================================================== -->
-        <!--widgwra desplegablea-->
+        <!--portlet desplegablea-->
+<!--        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.easing.1.3.js"></script>-->
+        <!--<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.ui.core.js"></script>-->
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui.min.js"></script>
 
         <!--<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.ui.touch-punch.min.js"></script>-->

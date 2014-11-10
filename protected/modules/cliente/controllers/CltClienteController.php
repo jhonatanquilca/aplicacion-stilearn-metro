@@ -126,8 +126,6 @@ class CltClienteController extends AweController {
         $columns =  $model->getColumns();
         if (isset($_GET['table'])) {
             $columns = $model->getColumns($_GET['table']);
-//            var_dump($columns[7]);
-//            die();
         }
         if (isset($_GET['search'])) {
             $model->attributes = $this->assignParams($_GET['search']);
@@ -137,7 +135,8 @@ class CltClienteController extends AweController {
 //            $model->attributes = $_GET['CltCliente'];
 
         if ($model->getCountClientes() > 0) {
-            $this->render('admin', array(
+//            $this->render('admin', array(
+            $this->render('admin_1', array(
                 'model' => $model,
                 'columns' => $columns,
             ));

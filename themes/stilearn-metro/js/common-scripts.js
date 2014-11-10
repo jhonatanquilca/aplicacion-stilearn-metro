@@ -46,7 +46,6 @@ var scripts = $(function() {
                 var botonSubmit = $('form button.btn-success');
                 $(botonSubmit).attr("disabled", true);
                 $(botonSubmit).html('<img class="preload-mini" src="' + themeUrl + 'img/preload-6-white.gif" alt=""> Espere...');
-
                 $(botonSubmit).attr("disabled", true);
                 $('form a').attr("disabled", true);
                 $('form a').attr("onclick", "true");
@@ -57,13 +56,11 @@ var scripts = $(function() {
                 primero = true;
             }
 
-
         }
 
-
-        window.console.log(submit);
         return;
     });
+
 
 //menu sidebar despligar y contraer menu
     var e = $("[data-toggle=dropdown-list]");
