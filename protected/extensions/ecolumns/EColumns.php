@@ -47,7 +47,7 @@ class EColumns extends CJuiSortable
 
     public function init()
     {
-        parent::init();
+//        parent::init();
 
         //register assets
         $cssUrl = Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('ext.ecolumns.assets'));  
