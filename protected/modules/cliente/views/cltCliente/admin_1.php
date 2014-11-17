@@ -69,7 +69,7 @@ $this->menu = array(
                                 ));
                                 ?>
                             </div>
-                            <div class="span6">
+                            <div class="span2">
                                 <?php
                                 $eColumns = $this->widget('ext.ecolumns.EColumns', array(
                                     'gridId' => CltCliente::ESTADO_ACTIVO . '-grid',

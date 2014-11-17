@@ -1,7 +1,7 @@
 $(function() {
 
     var loadGrid;
-    
+
 }
 );
 //$("#droppable").droppable({

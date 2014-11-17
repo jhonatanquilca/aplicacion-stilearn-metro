@@ -92,7 +92,7 @@ class EColumns extends CJuiSortable {
         $widgetColumns = $this->getWidgetColumns();
         $this->items = array();
         foreach ($widgetColumns as $key => $column) {
-            $this->items[$key] = '<label><input type="checkbox" name="' . $this->getRequestParam() . '[]" value="' . $key . '" ' . (isset($column['visible']) ? 'checked' : '') . '>&nbsp;' . CHtml::encode($column['header']) . '</label>';
+            $this->items[$key] = '<label><input type="checkbox" style="Z-index:-1;" name="' . $this->getRequestParam() . '[]" value="' . $key . '" ' . (isset($column['visible']) ? 'checked' : '') . '>&nbsp;' . CHtml::encode($column['header']) . '</label>';
         }
 
         $formId = $this->gridId . '-ecolumns';
@@ -105,20 +105,38 @@ class EColumns extends CJuiSortable {
 
         parent::run();
 
-        //submit button
-        echo '<div>';
-        if (!empty($this->buttonApply))
-            echo $this->buttonApply;
-        if (!empty($this->buttonCancel))
-            echo $this->buttonCancel;
-        if (!empty($this->buttonReset))
-            echo $this->buttonReset;
-        echo '</div>';
-
-        //submit handler
+//        submit button
+//        echo '<div>';
+//        if (!empty($this->buttonApply))
+//            echo $this->buttonApply;
+//        if (!empty($this->buttonCancel))
+//            echo $this->buttonCancel;
+//        if (!empty($this->buttonReset))
+//            echo $this->buttonReset;
+//        echo '</div>';
+//        submit handler
         $defaultOrder = array();
 
         Yii::app()->getClientScript()->registerScript(__CLASS__ . '#' . $formId, "
+
+            //evento click on check box
+            $('li.ui-state-default>label>input').click(function(){
+            console.log($(this).is(':checked'));
+            });
+            //evento click on label
+            $('li.ui-state-default').click(
+                function (){          
+                li=$(this).attr('id');
+//                console.log(li);
+
+                if($('li.ui-state-default>label>input[value='+li+']').is(':checked')){
+                $('li.ui-state-default>label>input[value='+li+']').removeAttr('checked');
+                }else{
+                  $('li.ui-state-default>label>input[value='+li+']').attr('checked', 'checked');
+                }
+                     jQuery('#{$formId}').submit();
+                }
+            );
     
 //drag and drop
                $('.ui-sortable').droppable({
@@ -140,15 +158,16 @@ class EColumns extends CJuiSortable {
             return false;
         });
         ");
-
-        if (!empty($this->buttonReset)) {
-            $defaultOrder = array();
-            foreach ($this->columns as $key => $column) {
-                $defaultOrder[] = array('key' => $key, 'visible' => $this->isVisible($column));
-            }
+//reset on load form
+//        if (!empty($this->buttonReset)) {
+        $defaultOrder = array();
+        foreach ($this->columns as $key => $column) {
+            $defaultOrder[] = array('key' => $key, 'visible' => $this->isVisible($column));
+//            }
 
             Yii::app()->getClientScript()->registerScript(__CLASS__ . '#' . $formId . '-reset', "
-                jQuery('#{$formId} .reset').on('click', function(){
+//                jQuery('#{$formId} .reset').on('click', function(){
+                    console.log('reset');
                    var ul = jQuery('#{$formId} ul'),
                        defaultOrder = " . CJSON::encode($defaultOrder) . ",
                        buffer = jQuery('<ul>').append(ul.children().detach()),
@@ -161,7 +180,7 @@ class EColumns extends CJuiSortable {
                    }
 
                    ul.sortable('refresh');
-                });
+//                });
             ");
         }
 
