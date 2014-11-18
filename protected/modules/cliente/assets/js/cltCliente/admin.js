@@ -1,5 +1,5 @@
 $(function() {
-
+    $('form#ACTIVO-grid-ecolumns').css('margin', '0 0 0px');
 }
 );
 function clickTab(searchFormId)

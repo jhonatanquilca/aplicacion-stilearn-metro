@@ -46,8 +46,6 @@ class EColumns extends CJuiSortable {
         //register assets
         $cssUrl = Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('ext.ecolumns.assets'));
         Yii::app()->getClientScript()->registerCssFile($cssUrl . '/css/ecolumns.css');
-        $jsUrl = Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('ext.ecolumns.assets'));
-        Yii::app()->getClientScript()->registerCssFile($jsUrl . '/js/ecolumns.js');
 
         //gridId is required
         if (empty($this->gridId))
@@ -118,31 +116,40 @@ class EColumns extends CJuiSortable {
         $defaultOrder = array();
 
         Yii::app()->getClientScript()->registerScript(__CLASS__ . '#' . $formId, "
-
             //evento click on check box
-            $('li.ui-state-default>label>input').click(function(){
-            console.log($(this).is(':checked'));
-            });
-            //evento click on label
-            $('li.ui-state-default').click(
-                function (){          
-                li=$(this).attr('id');
-//                console.log(li);
+            $('li.ui-state-default>label>input').click(function(e){
+//            console.log('on checkbox');
 
-                if($('li.ui-state-default>label>input[value='+li+']').is(':checked')){
-                $('li.ui-state-default>label>input[value='+li+']').removeAttr('checked');
-                }else{
+                jQuery('#{$formId}').submit();
+                e.stopPropagation();
+//                return false;
+            });
+            //evento click on li
+            $('li.ui-state-default').click(
+                function (e){          
+                li=$(this).attr('id');
+//                console.log('on li');
+                 if($('li.ui-state-default>label>input[value='+li+']').is(':checked')){
+                   $('li.ui-state-default>label>input[value='+li+']').removeAttr('checked');
+                  }else{
                   $('li.ui-state-default>label>input[value='+li+']').attr('checked', 'checked');
-                }
+                 }
                      jQuery('#{$formId}').submit();
+                          e.stopPropagation(); 
+                }
+            );
+            //label
+            $('li.ui-state-default>label').click(
+                function (e){          
+                    e.stopPropagation();                 
                 }
             );
     
-//drag and drop
+        //drag and drop
                $('.ui-sortable').droppable({
                      accept: '.ui-sortable li',
                      drop: function(event, ui) {
-//                     console.log('drop');
+                     console.log('drop');
                      setTimeout(function(){
                       jQuery('#{$formId}').submit();
                      },10);
