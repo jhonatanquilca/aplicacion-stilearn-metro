@@ -545,6 +545,17 @@ class Util {
         return $cuerpo;
     }
 
+    public static function getFirstRolUser($user_id) {
+        $consulta = Yii::app()->db->createCommand()
+                ->select('as.itemname')
+                ->from('cruge_authassignment as')
+                ->where('(as.userid =:userid)', array(':userid' => $user_id))
+                ->andWhere('as.itemname != "" and as.itemname is not null')
+                ->limit(1)
+                ->queryScalar();
+        return $consulta ? $consulta : null;
+    }
+
 }
 
 ?>

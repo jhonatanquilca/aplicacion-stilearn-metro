@@ -259,8 +259,26 @@ class CrugeSession extends CActiveRecord implements ICrugeSession {
     public function generateLineReport() {
         $inicio = Util::FechaActual();
         $fin = date('Y-m-d H:m:s', strtotime('-1 week'));
+        $inicio = DateTime::createFromFormat('Y-m-d H:i:s', $inicio)->setTime(0, 0, 0);
+        $fin = DateTime::createFromFormat('Y-m-d H:i:s', $fin)->setTime(0, 0, 0);
+        $interval = DateInterval::createFromDateString('1 day');
+        $reporte = array();
+        $reporte['title']['text'] = '';
+        $reporte['credits']['enabled'] = false;
+        $reporte['chart']['height'] = '320';
+        $reporte['plotOptions'] = array('column' => array(
+                'depth' => 70
+        ));
+//        $reporte['subtitle']['text'] = ' Desde: ' . $inicio->format('d-m-Y') . '  Hasta: ' . $fin->format('d-m-Y');
+        $reporte['xAxis']['labels'] = array("rotation" => -25);
+        $reporte['yAxis']['min'] = 0;
+        $reporte['yAxis']['title']['text'] = "Sesiones";
+        $reporte['yAxis']['allowDecimals'] = false;
+        $reporte['xAxis']['categories'] = array();
+        $reporte['series'] = array();
+
         $consulta = Yii::app()->db->createCommand()
-                ->select('FROM_UNIXTIME(created, "%d-%m-%Y") as fecha, COUNT(*)')
+                ->select('FROM_UNIXTIME(created, "%d-%m-%Y") as fecha, COUNT(*) as data')
                 ->from('cruge_session se')
                 //->where('se.created between :inicio and :fin', array(':inicio' => $inicio, ':fin' => $inicio))
                 ->group('fecha')
@@ -271,37 +289,19 @@ class CrugeSession extends CActiveRecord implements ICrugeSession {
         $data = array();
         foreach ($consulta as $option) {
             $labels[] = array($option['fecha']);
-            $data[] = array($option['COUNT(*)']);
+//            $data[] = (int) array($option['data']);
+            array_push($data, array((int) $option['data']));
+            $date = DateTime::createFromFormat('d-m-Y', $option['fecha'])->setTime(0, 0, 0);
+            $categoria = $date->format('d/M/Y');
+            $reporte['xAxis']['categories'][] = $categoria;
         }
-
         $ordenado = $data;
         rsort($ordenado);
         $max = $ordenado[0];
         $labels = array_reverse($labels);
+        $reporte['xAxis']['categories'] = array_reverse($reporte['xAxis']['categories']);
         $data = array_reverse($data);
-        $reporte = array(
-            'width' => 600,
-            'height' => 300,
-            'htmlOptions' => array(),
-            'labels' => $labels,
-            'datasets' => array(
-                array(
-                    "fillColor" => "rgba(151,185,205,0.5)",
-                        "strokeColor" => "rgba(220,220,220,1)",
-                        "pointColor" => "rgba(220,220,220,1)",
-                        "pointStrokeColor" => "#ffffff",
-                    "data" => $data,
-                ),
-            ),
-            'options' => array(
-                'scaleOverride' => true,
-                'scaleSteps' => $max,
-                'scaleStepWidth' => 1,
-                'scaleStartValue' => 0,
-//                                    'scaleLineWidth' => 2,
-                'scaleLabel' => "<%=parseInt(value)+1%>"
-            )
-        );
+        array_push($reporte['series'], array('name' => 'Sesiones', 'data' => $data, 'type' => 'column'));
         return $reporte;
     }
 

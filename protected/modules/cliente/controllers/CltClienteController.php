@@ -122,23 +122,18 @@ class CltClienteController extends AweController {
      */
     public function actionAdmin() {
         $model = new CltCliente('search');
-        $model->unsetAttributes(); // clear any default values
-        $columns =  $model->getColumns();
-        if (isset($_GET['table'])) {
-            $columns = $model->getColumns($_GET['table']);
-        }
+        $model->unsetAttributes(); // clear any default values                
         if (isset($_GET['search'])) {
             $model->attributes = $this->assignParams($_GET['search']);
         }
 
-//        if (isset($_GET['CltCliente']))
-//            $model->attributes = $_GET['CltCliente'];
+        if (isset($_GET['CltCliente']))
+            $model->attributes = $_GET['CltCliente'];
 
         if ($model->getCountClientes() > 0) {
-//            $this->render('admin', array(
-            $this->render('admin_1', array(
+
+            $this->render('admin', array(
                 'model' => $model,
-                'columns' => $columns,
             ));
         } else {
             $this->render('empty');

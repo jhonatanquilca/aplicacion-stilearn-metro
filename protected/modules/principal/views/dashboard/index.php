@@ -2,6 +2,8 @@
 /* @var $this SiteController */
 
 $this->pageTitle = Yii::app()->name;
+$rolUser = Util::getFirstRolUser(Yii::app()->user->id);
+//die(var_dump($rolUser));
 ?>
 
 <!-- content header -->
@@ -608,3 +610,8 @@ $this->pageTitle = Yii::app()->name;
 </div>
 <!--</article>-->
 <!-- /content page -->
+<div class="row-fluid">
+    <div class="span7 space10">
+        <?php $rolUser != 'OPERADOR' ? $this->renderPartial('portlets/_sessionReporte') : '' ?>
+    </div>
+</div>
