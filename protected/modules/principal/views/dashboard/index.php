@@ -614,4 +614,7 @@ $rolUser = Util::getFirstRolUser(Yii::app()->user->id);
     <div class="span7 space10">
         <?php $rolUser != 'OPERADOR' ? $this->renderPartial('portlets/_sessionReporte') : '' ?>
     </div>
+    <div class="span5 space10">
+        <?php $this->renderPartial('portlets/_pagos_deudas') ?>
+    </div>
 </div>
