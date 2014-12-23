@@ -18,12 +18,18 @@ class TxTrasaccionReport extends CModel {
                 ->select('tt.tipo,count(*) as total')->from('tx_trasaccion tt')
                 ->group('tt.tipo');
         $command = $command->queryAll();
-        var_dump($command);
+//        var_dump($command);
         $data = array();
         foreach ($command as $value) {
-            array_push($data, array($value['tipo'], (int) $value['total']));
+            array_push($data, array($value['tipo'] == self::TIPO_PAGAR ? 'PAGOS' : 'DEUDAS', (int) $value['total']));
         }
         $report = array();
+        $report['chart'] = array(
+            'plotBackgroundColor' => null,
+            'plotBorderWidth' => 1, //null,
+            'plotShadow' => false,
+            'height' => '320',
+        );
         $report['plotOptions'] = array(
             'pie' => array(
                 'allowPointSelect' => true,
@@ -44,15 +50,7 @@ class TxTrasaccionReport extends CModel {
         $report['series'][0]['type'] = 'pie';
 //        $report['series'][]['name'] = 'Percentage';
         $report['series'][0]['data'] = $data;
-        var_dump($data);
-        $data = array(
-            // array('Ready / Deployable', 15),
-            array('User Maintenance', 30),
-            array('Manufacturer Maintenance', 40),
-            array('Not Operation Ready', 10),
-            array('Checked Out', 5)
-        );
-        var_dump($data);
+//        var_dump($data);
 
         return $report;
     }
