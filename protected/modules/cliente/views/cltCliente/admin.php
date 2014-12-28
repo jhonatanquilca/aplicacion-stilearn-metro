@@ -74,6 +74,8 @@ $this->menu = array(
                                     <button class="btn dropdown-toggle" data-toggle="dropdown">Mostrar / Ocultar Columnas <span class="caret"></span></button>
                                     <ul class="dropdown-menu silver" style="padding-top: 0px;height:auto;padding-bottom: 0px;">
                                         <!--<div style="">-->
+
+                                        <?php // var_dump() ?>
                                         <?php
                                         $eColumns = $this->widget('ext.ecolumns.EColumns', array(
                                             'gridId' => CltCliente::ESTADO_ACTIVO . '-grid',
@@ -177,6 +179,14 @@ $this->menu = array(
                                     'name' => 'nombre_completo',
                                     'value' => 'CHtml::link($data->nombre_completo, Yii::app()->createUrl("cliente/cltCliente/view",array("id"=>$data->id)))',
                                     'type' => 'raw',
+                                ),
+                                array(
+                                    'name' => 'monto',
+                                    'value' => '$data->monto',
+//                                    'type' => 'raw',
+//                                    'htmlOptions' => array(
+//                                        'style' => 'text-align:center',
+//                                    ),
                                 )
                                     ), $eColumns->columns());
                             //Despues

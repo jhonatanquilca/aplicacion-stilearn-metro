@@ -9,6 +9,7 @@ class CltCliente extends BaseCltCliente {
 
     private $nombre_completo;
     public $cantidad_mails;
+    public $monto;
 
     /**
      * @return CltCliente
@@ -60,6 +61,7 @@ class CltCliente extends BaseCltCliente {
             'fecha_actualizacion' => Yii::t('app', 'Fecha de Actualización'),
             'nombre_completo' => Yii::t('app', 'Nombre'),
             'cantidad_mails' => Yii::t('app', 'Mails Enviados'),
+            'monto' => Yii::t('app', 'Deuda'),
             'nombre_completo' => Yii::t('app', 'Nombre'),
             'cltDeudas' => null,
         );
@@ -73,7 +75,8 @@ class CltCliente extends BaseCltCliente {
 //        $criteria->compare('nombre', $this->nombre, true);
 //        $criteria->compare('apellido', $this->apellido, true);
 //        ;
-        $criteria->select = 't.*,(select count(*) from mail m where m.estado=:estado_mail and m.contacto_id=t.id) as cantidad_mails';
+        $criteria->select = 't.*,(select count(*) from mail m where m.estado=:estado_mail and m.contacto_id=t.id) as cantidad_mails,'
+                . '(select monto from clt_deuda where clt_cliente_id=t.id) as monto';
         $criteria->compare('CONCAT(CONCAT(t.nombre," "),t.apellido)', $this->nombre_completo, true, 'OR');
         $criteria->compare('t.documento', $this->documento, true, 'OR');
         $criteria->compare('t.telefono', $this->telefono, true, 'OR');
@@ -105,6 +108,11 @@ class CltCliente extends BaseCltCliente {
                 'asc' => 'cantidad_mails  asc',
                 'desc' => 'cantidad_mails desc',
             ),
+            'monto' => array(
+                'asc' => 'monto  asc',
+                'desc' => 'monto desc',
+            ),
+
         );
 
         return new CActiveDataProvider($this, array(
