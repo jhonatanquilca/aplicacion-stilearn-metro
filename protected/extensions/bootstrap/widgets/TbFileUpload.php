@@ -1,8 +1,7 @@
 <?php
 /**
- * TbFileUpload.php
+ *## TbFileUpload class file
  *
- * Modified version from the great implementation of XUpload Yii Extension
  * @author AsgarothBelem <asgaroth.belem@gmail.com>
  * @link http://blueimp.github.com/jQuery-File-Upload/
  * @link https://github.com/Asgaroth/xupload
@@ -11,7 +10,16 @@
  * Date: 11/5/12
  * Time: 12:46 AM
  */
+
 Yii::import('zii.widgets.jui.CJuiInputWidget');
+
+/**
+ * Class TbFileUpload
+ *
+ * Modified version from the great implementation of XUpload Yii Extension
+ *
+ * @package booster.widgets.forms.inputs
+ */
 class TbFileUpload extends CJuiInputWidget
 {
 	/**
@@ -73,14 +81,17 @@ class TbFileUpload extends CJuiInputWidget
 	 */
 	public function init()
 	{
-		if ($this->uploadTemplate === null)
+		if ($this->uploadTemplate === null) {
 			$this->uploadTemplate = "#template-upload";
+		}
 
-		if ($this->downloadTemplate === null)
+		if ($this->downloadTemplate === null) {
 			$this->downloadTemplate = "#template-download";
+		}
 
-		if (!isset($this->htmlOptions['enctype']))
+		if (!isset($this->htmlOptions['enctype'])) {
 			$this->htmlOptions['enctype'] = 'multipart/form-data';
+		}
 
 		parent::init();
 	}
@@ -93,84 +104,84 @@ class TbFileUpload extends CJuiInputWidget
 
 		list($name, $id) = $this->resolveNameID();
 
-		$this->htmlOptions['id'] = ($this->hasModel()? get_class($this->model): 'fileupload') . '-form';
+		$this->htmlOptions['id'] = $this->id.'-'.($this->hasModel() ? get_class($this->model) : 'fileupload') . '-form';
 
 		$this->options['url'] = $this->url;
 
 		// if acceptFileTypes is not set as option, try getting it from models rules
-		if (!isset($this->options['acceptFileTypes']))
-		{
+		if (!isset($this->options['acceptFileTypes'])) {
 			$fileTypes = $this->getFileValidatorProperty($this->model, $this->attribute, 'types');
-			if (isset($fileTypes))
-			{
-				$fileTypes = (preg_match(':jpg:', $fileTypes) && !preg_match(':jpe:', $fileTypes) ? preg_replace(':jpg:','jpe?g',$fileTypes) : $fileTypes);
-				$this->options['acceptFileTypes'] = 'js:/(\.)('.preg_replace(':,:', '|', $fileTypes).')$/i';
+			if (isset($fileTypes)) {
+				$fileTypes = (preg_match(':jpg:', $fileTypes) && !preg_match(':jpe:', $fileTypes) ? preg_replace(
+					':jpg:',
+					'jpe?g',
+					$fileTypes
+				) : $fileTypes);
+				$this->options['acceptFileTypes'] = 'js:/(\.)(' . preg_replace(':,:', '|', $fileTypes) . ')$/i';
 			}
 		}
 
 		// if maxFileSize is not set as option, try getting it from models rules
-		if (!isset($this->options['maxFileSize']))
-		{
+		if (!isset($this->options['maxFileSize'])) {
 			$fileSize = $this->getFileValidatorProperty($this->model, $this->attribute, 'maxSize');
-			if (isset($fileSize))
+			if (isset($fileSize)) {
 				$this->options['maxFileSize'] = $fileSize;
+			}
 		}
 
-		$htmlOptions = array();
-
-		if ($this->multiple)
-			$htmlOptions["multiple"] = true;
+		if ($this->multiple) {
+			$this->htmlOptions["multiple"] = true;
+		}
 
 		$this->render($this->uploadView);
 		$this->render($this->downloadView);
-			$this->render($this->formView, array('name'=>$name, 'htmlOptions'=>$this->htmlOptions));
+		$this->render($this->formView, array('name' => $name, 'htmlOptions' => $this->htmlOptions));
 
-		if ($this->previewImages || $this->imageProcessing)
+		if ($this->previewImages || $this->imageProcessing) {
 			$this->render($this->previewImagesView);
+		}
 
 		$this->registerClientScript($this->htmlOptions['id']);
 	}
 
 	/**
 	 * Registers and publishes required scripts
+	 *
 	 * @param string $id
 	 */
 	public function registerClientScript($id)
 	{
-
-		Yii::app()->bootstrap->registerAssetCss('fileupload/jquery.fileupload-ui.css');
+        $booster = Bootstrap::getBooster();
+        $booster->registerAssetCss('fileupload/jquery.fileupload-ui.css');
 
 		// Upgrade widget factory
 		// @todo remove when jquery.ui 1.9+ is fully integrated into stable Yii versions
-		Yii::app()->bootstrap->registerAssetJs('fileupload/vendor/jquery.ui.widget.js');
+        $booster->registerAssetJs('fileupload/vendor/jquery.ui.widget.js');
 		//The Templates plugin is included to render the upload/download listings
-		Yii::app()->bootstrap->registerAssetJs("fileupload/tmpl.min.js", CClientScript::POS_END);
+        $booster->registerAssetJs("fileupload/tmpl.min.js", CClientScript::POS_END);
 
-		if ($this->previewImages || $this->imageProcessing)
-		{
-			Yii::app()->bootstrap->registerAssetJs("fileupload/load-image.min.js", CClientScript::POS_END);
-			Yii::app()->bootstrap->registerAssetJs("fileupload/canvas-to-blob.min.js", CClientScript::POS_END);
-			// gallery :)
-			Yii::app()->bootstrap->registerAssetCss("bootstrap-image-gallery.min.css");
-			Yii::app()->bootstrap->registerAssetJs("bootstrap-image-gallery.min.js", CClientScript::POS_END);
+		if ($this->previewImages || $this->imageProcessing) {
+            $booster->registerAssetJs("fileupload/load-image.min.js", CClientScript::POS_END);
+            $booster->registerAssetJs("fileupload/canvas-to-blob.min.js", CClientScript::POS_END);
+			// gallery :) and one smile from me ;)
+            $booster->registerAssetCss("bootstrap-image-gallery.min.css");
+            $booster->registerAssetJs("bootstrap-image-gallery.min.js", CClientScript::POS_END);
 		}
 		//The Iframe Transport is required for browsers without support for XHR file uploads
-		Yii::app()->bootstrap->registerAssetJs('fileupload/jquery.iframe-transport.js');
-		Yii::app()->bootstrap->registerAssetJs('fileupload/jquery.fileupload.js');
+        $booster->registerAssetJs('fileupload/jquery.iframe-transport.js');
+        $booster->registerAssetJs('fileupload/jquery.fileupload.js');
 		// The File Upload image processing plugin
-		if ($this->imageProcessing)
-		{
-			Yii::app()->bootstrap->registerAssetJs('fileupload/jquery.fileupload-ip.js');
+		if ($this->imageProcessing) {
+            $booster->registerAssetJs('fileupload/jquery.fileupload-ip.js');
 		}
 		// The File Upload file processing plugin
-		if ($this->previewImages)
-		{
-			Yii::app()->bootstrap->registerAssetJs('fileupload/jquery.fileupload-fp.js');
+		if ($this->previewImages) {
+            $booster->registerAssetJs('fileupload/jquery.fileupload-fp.js');
 		}
 		// locale
-		Yii::app()->bootstrap->registerAssetJs('fileupload/jquery.fileupload-locale.js');
+        $booster->registerAssetJs('fileupload/jquery.fileupload-locale.js');
 		//The File Upload user interface plugin
-		Yii::app()->bootstrap->registerAssetJs('fileupload/jquery.fileupload-ui.js');
+        $booster->registerAssetJs('fileupload/jquery.fileupload-ui.js');
 
 		$options = CJavaScript::encode($this->options);
 		Yii::app()->clientScript->registerScript(__CLASS__ . '#' . $id, "jQuery('#{$id}').fileupload({$options});");
@@ -178,20 +189,23 @@ class TbFileUpload extends CJuiInputWidget
 
 	/**
 	 * Check for a property of CFileValidator
+	 *
 	 * @param CModel $model
 	 * @param string $attribute
 	 * @param null $property
+	 *
 	 * @return string property's value or null
 	 */
-	private function getFileValidatorProperty($model=null, $attribute=null, $property=null)
+	private function getFileValidatorProperty($model = null, $attribute = null, $property = null)
 	{
-		if (!isset($model,$attribute,$property))
+		if (!isset($model, $attribute, $property)) {
 			return null;
+		}
 
-		foreach($model->getValidators($attribute) as $validator)
-		{
-			if ($validator instanceof CFileValidator)
+		foreach ($model->getValidators($attribute) as $validator) {
+			if ($validator instanceof CFileValidator) {
 				$ret = $validator->$property;
+			}
 		}
 		return isset($ret) ? $ret : null;
 	}

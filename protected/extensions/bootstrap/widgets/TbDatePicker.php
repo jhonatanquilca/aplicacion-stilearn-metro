@@ -1,12 +1,22 @@
 <?php
-/*## TbDatePicker widget class
+/**
+ *## TbDatePicker widget class
  *
  * @author: antonio ramirez <antonio@clevertech.biz>
  * @copyright Copyright &copy; Clevertech 2012-
  * @license [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
- * @package YiiBooster bootstrap.widgets
  */
-class TbDatePicker extends CInputWidget
+
+/**
+ * Bootstrap DatePicker widget
+ * @see http://www.eyecon.ro/bootstrap-datepicker/
+ *
+ * @package booster.widgets.forms.inputs
+ */
+
+Yii::import('bootstrap.widgets.TbBaseInputWidget');
+
+class TbDatePicker extends TbBaseInputWidget
 {
 	/**
 	 * @var TbActiveForm when created via TbActiveForm.
@@ -34,17 +44,14 @@ class TbDatePicker extends CInputWidget
 	{
 		$this->htmlOptions['type'] = 'text';
 		$this->htmlOptions['autocomplete'] = 'off';
-
-		if (!isset($this->options['language']))
+		
+		if (!isset($this->options['language'])) {
 			$this->options['language'] = substr(Yii::app()->getLanguage(), 0, 2);
-
-		if (!isset($this->options['format']))
-			$this->options['format'] = 'mm/dd/yyyy';
-
-		if (!isset($this->options['weekStart']))
-			$this->options['weekStart'] = 0; // Sunday
+		}
+		
+		parent::setDefaultPlaceholder();
 	}
-
+	
 	/**
 	 *### .run()
 	 *
@@ -54,15 +61,16 @@ class TbDatePicker extends CInputWidget
 	{
 		list($name, $id) = $this->resolveNameID();
 
-		if ($this->hasModel())
-		{
-			if ($this->form)
+		if ($this->hasModel()) {
+			if ($this->form) {
 				echo $this->form->textField($this->model, $this->attribute, $this->htmlOptions);
-			else
+			} else {
 				echo CHtml::activeTextField($this->model, $this->attribute, $this->htmlOptions);
+			}
 
-		} else
+		} else {
 			echo CHtml::textField($name, $this->value, $this->htmlOptions);
+		}
 
 		$this->registerClientScript();
 		$this->registerLanguageScript();
@@ -70,8 +78,9 @@ class TbDatePicker extends CInputWidget
 
 		ob_start();
 		echo "jQuery('#{$id}').datepicker({$options})";
-		foreach ($this->events as $event => $handler)
+		foreach ($this->events as $event => $handler) {
 			echo ".on('{$event}', " . CJavaScript::encode($handler) . ")";
+		}
 
 		Yii::app()->getClientScript()->registerScript(__CLASS__ . '#' . $this->getId(), ob_get_clean() . ';');
 
@@ -85,17 +94,34 @@ class TbDatePicker extends CInputWidget
 	 */
 	public function registerClientScript()
 	{
-		Yii::app()->bootstrap->registerAssetCss('bootstrap-datepicker.css');
-		Yii::app()->bootstrap->registerAssetJs('bootstrap.datepicker.js');
+        Bootstrap::getBooster()->registerPackage('datepicker');
 	}
 
+	/**
+	 * FIXME: this method delves too deeply into the internals of Bootstrap component
+	 */
 	public function registerLanguageScript()
 	{
+		$booster = Bootstrap::getBooster();
+
 		if (isset($this->options['language']) && $this->options['language'] != 'en')
 		{
-			$file = 'locales/bootstrap-datepicker.'.$this->options['language'].'.js';
-			if (@file_exists(Yii::getPathOfAlias('bootstrap.assets').'/js/'.$file))
-				Yii::app()->bootstrap->registerAssetJs('locales/bootstrap-datepicker.'.$this->options['language'].'.js', CClientScript::POS_END);
+			$filename = '/bootstrap-datepicker/js/locales/bootstrap-datepicker.' . $this->options['language'] . '.js';
+
+			if (file_exists(Yii::getPathOfAlias('bootstrap.assets') . $filename))
+			{
+				if ($booster->enableCdn)
+				{
+					Yii::app()->clientScript->registerScriptFile(
+						'//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/locales/bootstrap-datepicker.' . $this->options['language'] . '.js',
+						CClientScript::POS_HEAD
+					);
+				}
+				else
+				{
+					$booster->assetsRegistry->registerScriptFile($booster->getAssetsUrl() . $filename, CClientScript::POS_HEAD);
+				}
+			}
 		}
 	}
 }

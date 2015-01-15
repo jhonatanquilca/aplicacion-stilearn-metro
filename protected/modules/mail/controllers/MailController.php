@@ -109,7 +109,7 @@ class MailController extends AweController {
             }
         } else {
             $this->performAjaxValidation($model, 'mail-form');
-            if (isset($_POST['Mail'])) {
+            if (isset($_POST['Mail'])) {             
                 $model->attributes = $_POST['Mail'];
                 if ($model->save()) {
                     Actividad::registrarActividad($model, Actividad::TIPO_CREATE);

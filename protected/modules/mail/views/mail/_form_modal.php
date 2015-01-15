@@ -8,6 +8,7 @@ Yii::app()->clientScript->scriptMap['bootstrap.js'] = false;
 
 //var_dump($model->attributes);
 Util::tsRegisterAssetJs('_form_modal.js');
+
 /** @var CltDeudaController $this */
 /** @var CltDeuda $model */
 /** @var AweActiveForm $form */
@@ -47,32 +48,17 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
     <?php // echo $form->textFieldRow($model, 'contacto_id', array('maxlength' => 45)) ?>
     <?php
     echo $form->select2Row($model, 'contacto_id', array(
+        'asDropDownList' => true,
         'data' => CHtml::listData(CltCliente::model()->activos()->conCorreo()->findAll(), 'id', 'nombre_completo'),
-        'class' => 'span12',        
-        'multiple' => 'multiple',
-        'options' => array(
-            'tokenSeparators' => array(','),
+        'htmlOptions' => array(
+            'class' => 'span12',
+            'multiple' => 'multiple',
+            'options' => array(
+                'tokenSeparators' => array(','),
+                'placeholder' => 'Elije uno o mas contactos.',
+            )
         )
     ));
-//        $this->widget(
-//            'bootstrap.widgets.TbSelect2', array(
-//        'model' => $model,
-//        'attribute' => 'contacto_id',
-////        'asDropDownList' => false,
-////        'name' => 'clevertech',
-//        'data' => CHtml::listData(CltCliente::model()->activos()->conCorreo()->findAll(), 'id', 'nombre_completo'),
-//        'options' => array(
-////            'multiple' => 'multiple',
-////            'tags' => CHtml::listData(CltCliente::model()->activos()->conCorreo()->findAll(), 'id', 'nombre_completo'),
-////            'placeholder' => 'type clever, or is, or just type!',
-//            'width' => '40%',
-//            'tokenSeparators' => array(',', ' ')
-//        ),
-//        'htmlOptions' => array(
-//            'multiple' => 'multiple',
-//        ),
-//            )
-//    );
     ?>
     <?php echo $form->textFieldRow($model, 'asunto', array('maxlength' => 200)) ?>
     <?php // echo $form->textAreaRow($model, 'contenido', array('rows' => 3, 'cols' => 50)) ?>
@@ -100,7 +86,7 @@ $form = $this->beginWidget('ext.AweCrud.components.AweActiveForm', array(
     <?php echo $form->hiddenField($model, 'usuario_creacion_id') ?>
     <?php // echo $form->dropDownListRow($model, 'estado', array('PENDIENTE' => 'PENDIENTE', 'ENVIADO' => 'ENVIADO', 'NO_ENVIADO' => 'NO_ENVIADO',)) ?>
 
-    <?php // echo $form->dropDownListRow($model, 'plantilla_id', array('' => ' -- Seleccione -- ') + CHtml::listData(MailPlantilla::model()->findAll(), 'id', MailPlantilla::representingColumn()), array('prompt' => Yii::t('AweApp', 'None'))) ?>
+    <?php // echo $form->dropDownListRow($model, 'plantilla_id', array('' => ' -- Seleccione -- ') + CHtml::listData(MailPlantilla::model()->findAll(), 'id', MailPlantilla::representingColumn()), array('prompt' => Yii::t('AweApp', 'None')))   ?>
 </div>
 <div class = "modal-footer">
     <?php
