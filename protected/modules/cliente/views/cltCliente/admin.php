@@ -182,7 +182,7 @@ $this->menu = array(
                                 ),
                                 array(
                                     'name' => 'monto',
-                                    'value' => '$data->monto',
+                                    'value' => '"$".number_format($data->monto,2)',
 //                                    'type' => 'raw',
 //                                    'htmlOptions' => array(
 //                                        'style' => 'text-align:center',
