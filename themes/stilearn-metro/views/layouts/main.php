@@ -63,7 +63,7 @@
                 <!-- navbar inner-->
                 <div class="navbar-inner">
                     <!-- container-->
-                    <div class="container">
+                    <div class="container" style="margin-left: 10px;margin-right: 10px;width: auto;">
 
                         <!--this btn-navbar contains the menu on the side-left, will be seen on portrait tablet and less. -->
                         <a class="btn btn-navbar help-inline" data-toggle="collapse" data-target="#navbar-collapse">
